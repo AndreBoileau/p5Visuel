@@ -1,0 +1,14 @@
+Programme p5Visuel
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <variables>
+    <variable type="" id="|77CT0-QUnZXeu.)}RiV">canvas</variable>
+  </variables>
+  <block type="procedures_defnoreturn" id="!un)A#F~hv4Bh#va5Q~n" x="3" y="3">
+    <field name="NAME">actions initiales</field>
+    <comment pinned="false" h="80" w="160">Fonction exécutée une fois, au départ</comment>
+  </block>
+  <block type="procedures_defnoreturn" id="sNnHnB2XE9|fCS-xN%`L" x="5" y="79">
+    <field name="NAME">actions en boucle</field>
+    <comment pinned="false" h="80" w="160">Fonction exécutée périodiquement, de façon répétée</comment>
+  </block>
+</xml>

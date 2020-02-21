@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <title>Éditeur p5Visuel</title>
+  <script src="../../../jquery.js"></script>
+  <script src="../../../blockly_compressed.js"></script>
+  <script src="../../../blocks_compressed.js"></script>
+  <script src="../../../fr.js"></script>
+  <script src="../../../javascript_compressed.js"></script>
+  <script src="../../../python_compressed.js"></script>
+  <script src="../../../run_prettify.js"></script>
+  <script src="../../../acorn_interpreter.js"></script>
+  <link href="../../../blockly-demo.css" rel="stylesheet">
+  <script src="../../../clipboard-polyfill.js"></script>
+  <script src="../../../blocsP5.js"></script>
+  <script src="../../../scriptsP5.js"></script>
+</head>
+<body>
+<div class="app-container">
+  <div id="blocklyDiv" class="main blockly-panel"></div>
+  <div id="codeDiv" class="main output-panel">
+    <div class="dropdown-bar">
+      	<div text-align:center;>
+      		<h2 style="color:#FE0054">Éditeur <a href="http://profmath.uqam.ca/~boileau/p5VisuelWEB/index.html" target="_blank" 
+      					style="color:#FE0054;text-decoration:none">p5Visuel</a></h2>
+      		<h2 style="color:#FE0054;font-size:12pt">     par <a href="http://profmath.uqam.ca/~boileau/index.php" target="_blank" 
+      					style="color:#FE0054;text-decoration:none">André Boileau</a></h2>
+        	<button onclick="changerVisibiliteMenu()" style="background-color: #FE0054; color:white;">MENU SAUVER - RAMENER</button>
+			<div id="divMenu" style="width:195px;border-style:ridge; display:none;"> <!- display:default | none | block ->
+				<div class="itemMenu" onclick="traiterMenuSauverRamener('ramener')">Ramener programme p5Visuel</div>
+				<div class="itemMenu" onclick="traiterMenuSauverRamener('sauver')">Sauver programme p5Visuel</div>
+				<div class="itemMenu" onclick="traiterMenuSauverRamener('sauverJS')">Sauver traduction JavaScript</div>
+				<div class="itemMenuInactif" onclick="traiterMenuSauverRamener('separation1')">-----------------------------------------</div>
+				<div class="itemMenu" onclick="traiterMenuSauverRamener('coller')">Coller programme p5Visuel</div>
+				<div class="itemMenu" onclick="traiterMenuSauverRamener('copier')">Copier programme p5Visuel</div>
+				<div class="itemMenu" onclick="traiterMenuSauverRamener('copierJS')">Copier traduction JavaScript</div>
+				<div class="itemMenuInactif" onclick="traiterMenuSauverRamener('separation2')">-----------------------------------------</div>
+				<div class="itemMenuInactif" onclick="traiterMenuSauverRamener('ajout')" style="color:gray">... Pour certains navigateurs ...</div>
+				<div class="itemMenu" onclick="traiterMenuSauverRamener('copierInit')">Copier programme p5Visuel</div>
+				<div class="itemMenu" onclick="traiterMenuSauverRamener('copierJSinit')">Copier traduction JavaScript</div>
+				<div class="itemMenuInactif" onclick="traiterMenuSauverRamener('separation3')">-----------------------------------------</div>
+				<div class="itemMenu" id="gererCheck" onclick="traiterMenuSauverRamener('sauverAvantExec')">  Sauver avant d'exécuter</div>
+			</div>
+		</div>
+		<div id="im-just-an-underline">
+			<select id="languageDropdown" onChange="myUpdateFunction();"  style="display:none;">
+				<option value="JavaScript">JavaScript</option>
+			</select>
+		</div>
+    </div>
+    <hr class="POps">
+    <pre></pre>
+  </div>
+  <div id="executer" class="play-button">Exécuter</div>
+</div>
+<xml id="toolbox" style="display: none">
+    <category id="catLogic" colour="210" name="Logique">
+      <block type="controls_if"></block>
+      <block type="logic_compare"></block>
+      <block type="logic_operation"></block>
+      <block type="logic_negate"></block>
+      <block type="logic_boolean"></block>
+      <block type="logic_null"></block>
+      <block type="logic_ternary"></block>
+    </category>
+    <category id="catLoops" colour="120" name="Boucles">
+      <block type="controls_repeat_ext">
+        <value name="TIMES">
+          <shadow type="math_number">
+            <field name="NUM">10</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="controls_whileUntil"></block>
+      <block type="programmation_pourCroiss">
+        <value name="FROM">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="TO">
+          <shadow type="math_number">
+            <field name="NUM">10</field>
+          </shadow>
+        </value>
+        <value name="BY">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="programmation_pourDecroiss">
+        <value name="FROM">
+          <shadow type="math_number">
+            <field name="NUM">10</field>
+          </shadow>
+        </value>
+        <value name="TO">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="BY">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="controls_forEach"></block>
+      <block type="controls_flow_statements"></block>
+    </category>
+    <category id="catMath" colour="230" name="Math">
+      <block type="math_number"></block>
+      <block type="math_arithmetic">
+        <value name="A">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="B">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_single">
+        <value name="NUM">
+          <shadow type="math_number">
+            <field name="NUM">9</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_trig">
+        <value name="NUM">
+          <shadow type="math_number">
+            <field name="NUM">45</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_constant"></block>
+      <block type="math_number_property">
+        <value name="NUMBER_TO_CHECK">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_change">
+        <value name="DELTA">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_round">
+        <value name="NUM">
+          <shadow type="math_number">
+            <field name="NUM">3.1</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_on_list"></block>
+      <block type="math_modulo">
+        <value name="DIVIDEND">
+          <shadow type="math_number">
+            <field name="NUM">64</field>
+          </shadow>
+        </value>
+        <value name="DIVISOR">
+          <shadow type="math_number">
+            <field name="NUM">10</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_constrain">
+        <value name="VALUE">
+          <shadow type="math_number">
+            <field name="NUM">50</field>
+          </shadow>
+        </value>
+        <value name="LOW">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="HIGH">
+          <shadow type="math_number">
+            <field name="NUM">100</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_random_int">
+        <value name="FROM">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="TO">
+          <shadow type="math_number">
+            <field name="NUM">100</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_random_float"></block>
+    </category>
+    <category id="catText" colour="160" name="Texte">
+      <block type="text"></block>
+      <block type="text_join"></block>
+      <block type="text_append">
+        <value name="TEXT">
+          <shadow type="text"></shadow>
+        </value>
+      </block>
+      <block type="text_length">
+        <value name="VALUE">
+          <shadow type="text">
+            <field name="TEXT">abc</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="text_isEmpty">
+        <value name="VALUE">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+      </block>
+      <block type="text_indexOf">
+        <value name="VALUE">
+          <block type="variables_get">
+            <field name="VAR">text</field>
+          </block>
+        </value>
+        <value name="FIND">
+          <shadow type="text">
+            <field name="TEXT">abc</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="text_charAt">
+        <value name="VALUE">
+          <block type="variables_get">
+            <field name="VAR">text</field>
+          </block>
+        </value>
+      </block>
+      <block type="text_getSubstring">
+        <value name="STRING">
+          <block type="variables_get">
+            <field name="VAR">text</field>
+          </block>
+        </value>
+      </block>
+      <block type="text_changeCase">
+        <value name="TEXT">
+          <shadow type="text">
+            <field name="TEXT">abc</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="text_trim">
+        <value name="TEXT">
+          <shadow type="text">
+            <field name="TEXT">abc</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="text_print">
+        <value name="TEXT">
+          <shadow type="text">
+            <field name="TEXT">abc</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="text_prompt_ext">
+        <value name="TEXT">
+          <shadow type="text">
+            <field name="TEXT">abc</field>
+          </shadow>
+        </value>
+      </block>
+    </category>
+    <category id="catLists" colour="260" name="Listes">
+      <block type="lists_create_with">
+        <mutation items="0"></mutation>
+      </block>
+      <block type="lists_create_with"></block>
+      <block type="lists_repeat">
+        <value name="NUM">
+          <shadow type="math_number">
+            <field name="NUM">5</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="lists_length"></block>
+      <block type="lists_isEmpty"></block>
+      <block type="listes_obtenir">
+        <value name="indice">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="listes_changer">
+        <value name="indice">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="listes_duplicata"></block>
+      <block type="lists_split">
+        <value name="DELIM">
+          <shadow type="text">
+            <field name="TEXT">,</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="lists_sort"></block>
+    </category>
+    <sep></sep>
+    <category id="catVariables" colour="330" custom="VARIABLE" name="Variables"></category>
+    <category id="catFunctions" colour="290" custom="PROCEDURE" name="Fonctions"></category>
+    <sep></sep>
+    <sep></sep>
+    <sep></sep>
+    <sep></sep>
+    <sep></sep>
+    <sep></sep>
+    <category id="programmation" colour="210" name="Programmation">  
+      <block type="programmation_commentaire">
+      	<value name="TEXTE">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+      </block> 
+      <block type="programmation_faire"></block> 
+      <block type="programmation_faireDelai">
+        <value name="delai">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+	  </block>
+      <block type="programmation_varLocale"></block>
+      <block type="programmation_quitter"></block>
+      <block type="programmation_estNombre">
+      	<value name="CHAINE">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+      </block>
+      <block type="programmation_radians">
+      	<value name="ANGLE">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="programmation_degres">
+      	<value name="ANGLE">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="programmation_clicSouris"></block>
+      <block type="programmation_sourisX"></block>
+      <block type="programmation_sourisY"></block>
+      <block type="programmation_remplacement">
+      	<value name="DEPART">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+      	<value name="ARRIVEE">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+      </block>
+      <block type="programmation_substitution">
+      	<value name="MODELE">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+      </block>
+      <block type="programmation_codeMath">
+      	<value name="CHAINE">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+      </block>
+      <block type="programmation_refreshMathJax"></block>
+    </category>
+    <category id="p5_js" colour="120" name="p5.js">
+    	<block type="catégorie_margeGauche">
+        <value name="NB_PIXELS">
+          <shadow type="math_number">
+            <field name="NUM"></field>
+          </shadow>
+        </value>
+        </block>
+    	<block type="p5_js_creerCanvas">
+    		<value name="HORIZ">
+          		<shadow type="math_number">
+            		<field name="NUM">800</field>
+          		</shadow>
+        	</value>
+        	<value name="VERT">
+          		<shadow type="math_number">
+            		<field name="NUM">600</field>
+          		</shadow>
+        	</value>
+    	</block>
+      <block type="p5_js_largeurCanvas"></block> 
+      <block type="p5_js_hauteurCanvas"></block> 
+      <block type="p5_js_enregistrerCanvas"></block>
+      <block type="p5_js_noLoop"></block> 
+      <block type="p5_js_vitesseDraw">
+    		<value name="VITESSE">
+          		<shadow type="math_number">
+            		<field name="NUM">60</field>
+          		</shadow>
+        	</value>
+      </block> 
+      <block type="p5_js_expression">
+      	<value name="TEXTE">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+      </block>  
+      <block type="p5_js_commande">
+      	<value name="TEXTE">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+      </block>  
+    </category> 
+    <category id="objetsWeb" colour="230" name="Objets web">
+      <block type="catégorie_objetsWebTexte">
+        <value name="CONTENU">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+      </block>
+      <block type="objetsWeb_zoneTexte"> 
+    		<value name="LIGNES">
+          		<shadow type="math_number">
+            		<field name="NUM">5</field>
+          		</shadow>
+        	</value>
+    		<value name="COLONNES">
+          		<shadow type="math_number">
+            		<field name="NUM">30</field>
+          		</shadow>
+        	</value>
+      </block>
+      <block type="catégorie_objetsWebEntree">
+        <value name="CONTENU">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+      </block>
+      <block type="objetsWeb_glissiere">
+    		<value name="MIN">
+          		<shadow type="math_number">
+            		<field name="NUM">0</field>
+          		</shadow>
+        	</value>
+    		<value name="MAX">
+          		<shadow type="math_number">
+            		<field name="NUM">1</field>
+          		</shadow>
+        	</value>
+    		<value name="VALEUR">
+          		<shadow type="math_number">
+            		<field name="NUM">0.5</field>
+          		</shadow>
+        	</value>
+    		<value name="PAS">
+          		<shadow type="math_number">
+            		<field name="NUM">0.01</field>
+          		</shadow>
+        	</value>
+      </block>
+      <block type="objetsWeb_bouton">
+      	<value name="TEXTE">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+      </block>
+      <block type="objetsWeb_caseCocher">
+      	<value name="TEXTE">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+      </block>
+      <block type="objetsWeb_paragraphe">
+      	<value name="TEXTE">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+      </block>
+      <block type="objetsWeb_titre">
+      	<value name="TEXTE">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+      </block>
+      <block type="objetsWeb_sautLigne"></block>
+      <block type="objetsWeb_espacement">
+    		<value name="NBPIX">
+          		<shadow type="math_number">
+            		<field name="NUM">0</field>
+          		</shadow>
+        	</value>
+      </block>
+      <block type="objetsWeb_element">
+      	<value name="TYPE">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+      	<value name="TEXTE">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+      </block>
+      <block type="objetsWeb_viaID">
+      	<value name="ID">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+      </block>
+    </category>
+    <category id="proprietes" colour="20" name="Propriétés">
+      <block type="proprietes_valeur"></block>
+      <block type="proprietes_contenu"></block>
+      <block type="proprietes_etatCC"></block>
+      <block type="proprietes_cacher"></block>
+	  <block type="proprietes_montrer"></block>
+	  <block type="proprietes_fixeValeur">
+      	<value name="VALEUR">
+          <shadow type="math_number">
+            <field name="NUM"></field>
+          </shadow>
+        </value>
+      </block>
+      <block type="proprietes_fixeContenu">
+      	<value name="TEXTE">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+      </block>
+      <block type="proprietes_fixeContenuZone"></block>
+      <block type="proprietes_boutonClic"></block>
+      <block type="proprietes_etatChange"></block>
+      <block type="proprietes_parent2"></block>
+      <block type="proprietes_style">
+      	<value name="ITEM">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+      	<value name="VALEUR">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+      </block>
+      <block type="proprietes_positionAbs">
+      	<value name="X">
+          <shadow type="math_number">
+            	<field name="NUM">0</field>
+          </shadow>
+        </value>
+      	<value name="Y">
+          <shadow type="math_number">
+            	<field name="NUM">0</field>
+          </shadow>
+        </value>
+      </block>
+    </category>
+    <category id="formes" colour="160" name="Formes">
+       <block type="formes_point">
+        <value name="X">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+        <value name="Y">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+      </block>
+       <block type="formes_segment">
+        <value name="X1">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+        <value name="Y1">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+        <value name="X2">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="Y2">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="formes_triangle">
+        <value name="X1">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+        <value name="Y1">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+        <value name="X2">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="Y2">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+        <value name="X3">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+        <value name="Y3">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+	</block>
+       <block type="formes_rectangle">
+        <value name="X1">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+        <value name="Y1">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+        <value name="X2">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="Y2">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+      </block>
+       <block type="formes_ellipse">
+        <value name="X">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+        <value name="Y">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+        <value name="A">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="B">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+      </block>
+       <block type="formes_arc">
+        <value name="X">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+        <value name="Y">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+        <value name="A">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="B">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="DEBUT">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+        <value name="FIN">
+          <shadow type="math_number">
+            <field name="NUM">90</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="formes_debutPoly"></block>
+      <block type="formes_sommet">
+        <value name="X">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+        <value name="Y">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="formes_finPoly"></block>
+      <block type="formes_translation">
+        <value name="X">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+        <value name="Y">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+      </block>
+    </category>
+    <category id="tortue" colour="260" name="Tortue">
+      <block type="tortue_initTortue"></block>
+      <block type="tortue_avance">
+      		<value name="distance">
+          		<shadow type="math_number">
+            		<field name="NUM">0</field>
+          		</shadow>
+        	</value>
+      </block>
+      <block type="tortue_recule">
+      		<value name="distance">
+          		<shadow type="math_number">
+            		<field name="NUM">0</field>
+          		</shadow>
+        	</value>
+      </block>
+      <block type="tortue_droite">
+      		<value name="alpha">
+          		<shadow type="math_number">
+            		<field name="NUM">0</field>
+          		</shadow>
+        	</value>
+      </block>
+      <block type="tortue_gauche">
+      		<value name="alpha">
+          		<shadow type="math_number">
+            		<field name="NUM">0</field>
+          		</shadow>
+        	</value>
+      </block>
+      <block type="tortue_posX"></block>
+      <block type="tortue_posY"></block>
+      <block type="tortue_fixePos">
+      		<value name="X">
+          		<shadow type="math_number">
+            		<field name="NUM">0</field>
+          		</shadow>
+        	</value>
+      		<value name="Y">
+          		<shadow type="math_number">
+            		<field name="NUM">0</field>
+          		</shadow>
+        	</value>
+      </block>
+      <block type="tortue_sautePos">
+      		<value name="X">
+          		<shadow type="math_number">
+            		<field name="NUM">0</field>
+          		</shadow>
+        	</value>
+      		<value name="Y">
+          		<shadow type="math_number">
+            		<field name="NUM">0</field>
+          		</shadow>
+        	</value>
+      </block>
+      <block type="tortue_cap"></block>
+      <block type="tortue_fixeCap">
+      		<value name="ALPHA">
+          		<shadow type="math_number">
+            		<field name="NUM">0</field>
+          		</shadow>
+        	</value>
+      </block>
+      <block type="tortue_vers">
+      		<value name="X">
+          		<shadow type="math_number">
+            		<field name="NUM">0</field>
+          		</shadow>
+        	</value>
+      		<value name="Y">
+          		<shadow type="math_number">
+            		<field name="NUM">0</field>
+          		</shadow>
+        	</value>
+      </block>
+    </category>
+    <category id="couleurs" colour="330" name="Apparence">
+      <block type="couleurs_fond_C"></block>
+      <block type="couleurs_trait_C"></block>
+	  <block type="couleurs_remplissage_C"></block>
+      <block type="couleurs_couleur">
+        <value name="R">
+          <shadow type="math_number">
+            <field name="NUM">255</field>
+          </shadow>
+        </value>
+        <value name="V">
+          <shadow type="math_number">
+            <field name="NUM">255</field>
+          </shadow>
+        </value>
+        <value name="B">
+          <shadow type="math_number">
+            <field name="NUM">255</field>
+          </shadow>
+        </value>
+        <value name="A">
+          <shadow type="math_number">
+            <field name="NUM">255</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="couleurs_tailleCrayon">
+        <value name="TAILLE">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+      </block>
+	  <block type="tortue_baisseCrayon"></block>
+      <block type="tortue_leveCrayon"></block>
+      <block type="tortue_sansRemplissage"></block>
+    </category>
+    <sep></sep>
+    <sep></sep>
+    <category id="catImages" colour="306" name="Images">
+    	<block type="image_charger">
+      	<value name="nomImage">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+		</block>
+    	<block type="image_placer">
+        <value name="posX">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+        <value name="posY">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+		</block>
+		<block type="image_chargerPixels"></block>
+		<block type="image_pixelsDuCanvas"></block>
+		<block type="image_obtenirPixel">
+        <value name="ligne">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+        <value name="colonne">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+        <value name="composante">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+        </block>
+        <block type="image_definirPixel">
+        <value name="ligne">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+        <value name="colonne">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+        <value name="composante">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+        <value name="valeur">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+        </block>
+		<block type="image_modifier"></block>
+		<block type="image_depot"></block>
+    </category>
+    <category id="catVideos" colour="114" name="Vidéos">
+    	<block type="video_charger">
+      	<value name="nomVideo">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+		</block>
+		<block type="video_marche"></block>
+		<block type="video_pause"></block>
+		<block type="video_fixePos"></block>
+		<block type="video_signal">
+        <value name="temps">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+        </block>
+    </category>
+  </xml>
+<xml id="blocklyDefault" style="display: none">
+  <variables></variables>
+</xml>
+<script>
+  var sauverAvantExecuter = false;
+  var modeSauvegarde='clipboard_polyfill'; // 'clipboard_polyfill' ou 'sans_biblio'
+  var workspace = Blockly.inject('blocklyDiv',
+    {toolbox: document.getElementById('toolbox'),
+     zoom:
+         {controls: false,
+          wheel: true,
+          startScale: 1.0,
+          maxScale: 3,
+          minScale: 0.3,
+          scaleSpeed: 1.2},
+     trashcan: true});
+  var defaultBlocks = document.getElementById('blocklyDefault');
+  
+  window.onbeforeunload = function (evt) { // fragment de code pris dans Snap
+        var e = evt || window.event,
+            msg = "Voulez-vous vraiment quitter?";
+        // Pour IE et Firefox
+        if (e) {
+            e.returnValue = msg;
+        }
+        // Pour Safari / chrome
+        return msg;
+  };
+  
+  Blockly.Xml.domToWorkspace(defaultBlocks, workspace);
+  function myUpdateFunction(event) {
+    var languageDropdown = document.getElementById('languageDropdown');
+    var languageSelection = languageDropdown.options[languageDropdown.selectedIndex].value;
+    var codeDiv = document.getElementById('codeDiv');
+    var codeHolder = document.createElement('pre');
+    codeHolder.className = 'prettyprint but-not-that-pretty';
+    var code = document.createTextNode(Blockly[languageSelection].workspaceToCode(workspace));
+    codeHolder.appendChild(code);
+    codeDiv.replaceChild(codeHolder, codeDiv.lastElementChild);
+    PR.prettyPrint();
+  }
+  workspace.addChangeListener(myUpdateFunction);
+  function traiterMenuSauverRamener(selectionMenu) {
+    var xmlText, xmlDom;
+    changerVisibiliteMenu('none');
+    switch(selectionMenu) {
+    	case 'ramener':
+    		//sauverProgrammeCommeFichierTexte("Voulez-vous d'abord enregistrer votre programme ?");
+    		fichier = fileSelector.files[0];
+    		fileSelector.click();
+    		xmlTextGlobal = 0;
+    		chargerContenuFichier();
+    		break;
+    	case 'sauver':
+    		sauverProgrammeCommeFichierTexte("Nom du fichier pour votre programme p5Visuel");
+    		break;
+    	case 'sauverJS':
+    		var code = Blockly.JavaScript.workspaceToCode(workspace);
+    		code=traiterPreload(code);
+    		saveTextAsFile(code, '.js', "Nom du fichier pour votre programme JavaScript");
+    		break;
+    	case 'coller':
+    		loadWorkspace();
+    		break;
+    	case 'copier':
+    		modeSauvegarde='clipboard_polyfill';
+    		saveWorkspace();
+    		break;
+    	case 'copierJS':
+    		modeSauvegarde='clipboard_polyfill';
+    		codeJS();
+    		break;
+    	case 'copierInit':
+    		modeSauvegarde='sans_biblio';
+    		saveWorkspace();
+    		break;
+    	case 'copierJSinit':
+    		modeSauvegarde='sans_biblio';
+    		codeJS();
+    		break;
+    	case 'sauverAvantExec':
+    		sauverAvantExecuter = !sauverAvantExecuter;
+    		if (sauverAvantExecuter) {document.getElementById("gererCheck").innerHTML = "✔︎ Sauver avant d'exécuter";} 
+    								 else {document.getElementById("gererCheck").innerHTML = "  Sauver avant d'exécuter";}
+    		break;
+    	default:
+    }
+  }
+  
+function testerMarqueProgramme(chaine) { return (0 == chaine.indexOf("Programme p5Visuel")); }
+function ajouterMarqueProgramme(chaine) { return "Programme p5Visuel"+"\n"+chaine; }
+function enleverMarqueProgramme(chaine) { return chaine.slice(chaine.indexOf("<xml")); }
+function accepterProgramme() { return confirm("Programme non conforme : on prend le risque ?"); } //*** Nouveau format de programme avec avertissement
+//function accepterProgramme() { return true; } //*** Nouveau format de programme sans avertissement
+  
+function sauverProgrammeCommeFichierTexte(invite) {
+    var xmlDom = Blockly.Xml.workspaceToDom(Blockly.mainWorkspace);
+    var xmlText = Blockly.Xml.domToPrettyText(xmlDom);
+	xmlText = xmlText.replace(new RegExp('&nbsp;','g'),' ');
+	xmlText = ajouterMarqueProgramme(xmlText); //*** Nouveau format de programme
+    saveTextAsFile(xmlText, '.txt',invite);
+}
+  
+function changerVisibiliteMenu(etat) {
+	var valeur = document.getElementById("divMenu").style.display;
+	if (valeur == "none") {valeur="block";} else {valeur="none";}
+	if(!(etat===undefined)) {valeur = etat;}
+	document.getElementById("divMenu").style.display = valeur;
+}
+
+  //workspace.addChangeListener(traiterMenuSauverRamener);
+  function executeBlockCode() {
+    var code = Blockly.JavaScript.workspaceToCode(workspace);
+    var initFunc = function(interpreter, scope) {
+      var alertWrapper = function(text) {
+        text = text ? text.toString() : '';
+        return interpreter.createPrimitive(alert(text));
+      };
+      interpreter.setProperty(scope, 'alert',
+          interpreter.createNativeFunction(alertWrapper));
+      var promptWrapper = function(text) {
+        text = text ? text.toString() : '';
+        return interpreter.createPrimitive(prompt(text));
+      };
+      interpreter.setProperty(scope, 'prompt',
+          interpreter.createNativeFunction(promptWrapper));
+    };
+    var myInterpreter = new Interpreter(code, initFunc);
+    var stepsAllowed = 10000;
+    while (myInterpreter.step() && stepsAllowed) {
+      stepsAllowed--;
+    }
+    if (!stepsAllowed) {
+      throw EvalError('Infinite loop.');
+    }
+  }
+  
+function saveWorkspace() {
+    var xmlDom = Blockly.Xml.workspaceToDom(Blockly.mainWorkspace);
+    var xmlText = Blockly.Xml.domToPrettyText(xmlDom);
+	xmlText = xmlText.replace(new RegExp('&nbsp;','g'),' ');
+	xmlText = ajouterMarqueProgramme(xmlText); //*** Nouveau format de programme
+	if (modeSauvegarde == 'clipboard_polyfill') {clipboard.writeText(xmlText); alert('Le programme visuel a été placé dans le presse-papier');}
+	if (modeSauvegarde == 'sans_biblio') {alert(xmlText);}
+    //localStorage.setItem("blockly.xml", xmlText);
+    //recopier(xmlText); // pour tests
+}
+
+
+function loadWorkspace() {
+    //var xmlText = localStorage.getItem("blockly.xml");
+    var xmlText = prompt("Collez votre programme visuel ci-dessous", ""); // amélioration ???
+    if (testerMarqueProgramme(xmlText)) {xmlText = enleverMarqueProgramme(xmlText);} 
+    else {if (!accepterProgramme()) {return;}} //*** Nouveau format de programme
+    if (xmlText) {
+        Blockly.mainWorkspace.clear();
+        xmlDom = Blockly.Xml.textToDom(xmlText);
+        Blockly.Xml.domToWorkspace(Blockly.mainWorkspace, xmlDom);
+    }
+}
+
+function codeJS() {
+	var code = Blockly.JavaScript.workspaceToCode(workspace);
+	code=traiterPreload(code);
+	if (modeSauvegarde == 'clipboard_polyfill') {clipboard.writeText(code); alert('Le code JavaScript a été placé dans le presse-papier');}
+	if (modeSauvegarde == 'sans_biblio') {alert(code);}
+}
+
+var autreFenetre=null;
+function executer() {
+	if (sauverAvantExecuter) {sauverProgrammeCommeFichierTexte("Voulez-vous d'abord enregistrer votre programme ?");}
+	var code = Blockly.JavaScript.workspaceToCode(workspace);
+	//clipboard.writeText(code); //À chaque exécution, le code JavaScript est mis dans le clipboard
+	code = changerAppelsFonctions("new p5(); \n" + code);
+	sessionStorage.setItem("donnee",code);
+    try {if (autreFenetre != null) {autreFenetre.close();}} catch(e) {}
+    autreFenetre=window.open(fichier_execution);
+}
+
+function changerAppelsFonctions(code) {
+	code=traiterPreload(code);
+	var exPos=0, pos=0, posParenthese, nom;
+	while (true) {
+		pos = code.indexOf("function",exPos);
+		if (pos == -1) {return code;}
+		posParenthese = code.indexOf("(",pos);
+		nom = code.substring(pos+9,posParenthese);
+		code = code.replace("function "+nom,nom+"=function");
+		exPos = posParenthese;
+	}
+}
+
+function traiterPreload(code) { return code.replace("avant_de_commencer","preload"); }
+  
+document.getElementById('executer').addEventListener('click', executer);
+var xmlTextGlobal=0, fichier = undefined, nomFichierSaveAs='Projet p5Visuel';
+var fileSelector = document.createElement('input');
+fileSelector.setAttribute('type', 'file');
+
+// ********** DÉBUT --> Tiré de : https://thiscouldbebetter.neocities.org/texteditor.html **********
+// ( Modifié légèrement par André Boileau )
+
+function saveTextAsFile(xmlText, suffixe, invite)
+{	
+    var nomFichierTemp = prompt(invite, nomFichierSaveAs);
+    if (nomFichierTemp=='' || nomFichierTemp==null) {return;}
+    nomFichierSaveAs = nomFichierTemp;
+    var textToSave = xmlText;
+    var textToSaveAsBlob = new Blob([textToSave], {type:"text/plain"});
+    var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
+    var fileNameToSaveAs = nomFichierSaveAs+suffixe;
+ 
+    var downloadLink = document.createElement("a");
+    downloadLink.download = fileNameToSaveAs;
+    downloadLink.innerHTML = "Download File";
+    downloadLink.href = textToSaveAsURL;
+    downloadLink.onclick = destroyClickedElement;
+    downloadLink.style.display = "none";
+    document.body.appendChild(downloadLink);
+ 
+    downloadLink.click();
+}
+ 
+function destroyClickedElement(event)
+{
+    document.body.removeChild(event.target);
+}
+
+function chargerContenuFichier() {
+	loadFileAsText();
+	if (xmlTextGlobal==0) {setTimeout(chargerContenuFichier, 1077); return;}
+	var xmlText = xmlTextGlobal;
+	if (testerMarqueProgramme(xmlText)) {xmlText = enleverMarqueProgramme(xmlText);} 
+	else {if (!accepterProgramme()) {return;}} //*** Nouveau format de programme
+    if (xmlText) {
+    	Blockly.mainWorkspace.clear();
+    	var xmlDom = Blockly.Xml.textToDom(xmlText);
+    	Blockly.Xml.domToWorkspace(Blockly.mainWorkspace, xmlDom);
+    }
+}
+ 
+function loadFileAsText()
+{
+    var fileToLoad = fileSelector.files[0]; 
+    if (fileToLoad == fichier) {setTimeout(loadFileAsText, 1000); return;}
+ 
+    var fileReader = new FileReader();
+    fileReader.onload = function(fileLoadedEvent) 
+    {
+        var textFromFileLoaded = fileLoadedEvent.target.result;
+        xmlTextGlobal = textFromFileLoaded;
+    };
+    fileReader.readAsText(fileToLoad, "UTF-8");
+    
+}
+
+// ********** FIN --> Tiré de : https://thiscouldbebetter.neocities.org/texteditor.html **********
+
+var fichier_programme = 'prog_init.txt';
+var fichier_execution = 'index.html';
+
+function ramenerProgrammeInitial() {
+	paramFichiers();
+	$.ajax({
+		url: fichier_programme,
+		success : function(data) {
+			if (testerMarqueProgramme(data)) {data = enleverMarqueProgramme(data);} 
+			else {if (!accepterProgramme()) {return;}} //*** Nouveau format de programme
+			if (data) {
+    			Blockly.mainWorkspace.clear();
+    			var xmlDom = Blockly.Xml.textToDom(data);
+    			Blockly.Xml.domToWorkspace(Blockly.mainWorkspace, xmlDom);
+    		}
+		}
+	});
+}
+
+function paramFichiers() {
+	var txtSearch=window.location.search.substring(1);
+	var regParametre=new RegExp("&", "g");
+	var parametres=txtSearch.split(regParametre);
+	for (var i=0; i<parametres.length ; i++) {
+		var regInfo=new RegExp("=", "g");
+		var infos=parametres[i].split(regInfo);
+		if (infos[0]=='prog') {fichier_programme = infos[1];}
+		if (infos[0]=='exec') {fichier_execution = infos[1];}
+	}
+}
+
+ramenerProgrammeInitial();
+
+</script>
+</body>

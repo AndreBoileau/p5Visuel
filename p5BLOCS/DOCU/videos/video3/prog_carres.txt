@@ -1,0 +1,260 @@
+Programme p5Visuel
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <variables>
+    <variable type="" id="|77CT0-QUnZXeu.)}RiV">canvas</variable>
+    <variable type="" id="JauP%9mrk1peVY=:f2v^">titre1</variable>
+    <variable type="" id="Iq%1:i=cfx.[w.kz}B1B">x</variable>
+    <variable type="" id="~d}7::1qL,[jVu{|+7_!">nbCarres</variable>
+  </variables>
+  <block type="procedures_defnoreturn" id="!un)A#F~hv4Bh#va5Q~n" x="3" y="3">
+    <field name="NAME">actions initiales</field>
+    <comment pinned="false" h="80" w="160">Fonction exécutée une fois, au départ</comment>
+    <statement name="STACK">
+      <block type="catégorie_margeGauche" id="?yx%/%O-4HFw;b^_d19e">
+        <value name="NB_PIXELS">
+          <shadow type="math_number" id="cEnvOxv{iyf8[2|:A(J(">
+            <field name="NUM">30</field>
+          </shadow>
+        </value>
+        <next>
+          <block type="objetsWeb_titre" id="8zo^__[}`=D77):XML5~">
+            <value name="NOM_VAR">
+              <block type="variables_get" id="ud:e99e._LIp};rU@4H-">
+                <field name="VAR" id="JauP%9mrk1peVY=:f2v^" variabletype="">titre1</field>
+              </block>
+            </value>
+            <value name="TEXTE">
+              <shadow type="text" id="hM;tj#**M:;LL%?CKMx[">
+                <field name="TEXT">Mon premier programme</field>
+              </shadow>
+            </value>
+            <next>
+              <block type="proprietes_style" id="(rO~1wfV`!d0Y5f)RfYI">
+                <value name="OBJET">
+                  <block type="variables_get" id="8CzT$=CA:;,Qv@|A*Rv3">
+                    <field name="VAR" id="JauP%9mrk1peVY=:f2v^" variabletype="">titre1</field>
+                  </block>
+                </value>
+                <value name="ITEM">
+                  <shadow type="text" id="8Ju+zc`$,chjJ^!u`V2q">
+                    <field name="TEXT">color</field>
+                  </shadow>
+                </value>
+                <value name="VALEUR">
+                  <shadow type="text" id="/mT,w{Faq|fk^jprhbV^">
+                    <field name="TEXT">red</field>
+                  </shadow>
+                  <block type="couleurs_couleur" id="57CMFfqu#*F7LNM4`kx.">
+                    <value name="R">
+                      <shadow type="math_number" id="}|SkSl3K1Ed.hrUi3d5J">
+                        <field name="NUM">255</field>
+                      </shadow>
+                    </value>
+                    <value name="V">
+                      <shadow type="math_number" id="n0](/T;i^px9zgP}A{90">
+                        <field name="NUM">0</field>
+                      </shadow>
+                    </value>
+                    <value name="B">
+                      <shadow type="math_number" id="8{[LfYf1ap~pZwVx):)]">
+                        <field name="NUM">0</field>
+                      </shadow>
+                    </value>
+                    <value name="A">
+                      <shadow type="math_number" id="(0og@OifZ2a4CyvP;3B1">
+                        <field name="NUM">255</field>
+                      </shadow>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="p5_js_creerCanvas" id="#I5J~5xevrzL?dwtcO?Z">
+                    <value name="HORIZ">
+                      <shadow type="math_number" id="e63Y2_;zIV_jQi8]*ZkJ">
+                        <field name="NUM">600</field>
+                      </shadow>
+                    </value>
+                    <value name="VERT">
+                      <shadow type="math_number" id="#]sd+T+)fD=]Yc4|59jw">
+                        <field name="NUM">600</field>
+                      </shadow>
+                    </value>
+                    <next>
+                      <block type="proprietes_parent2" id="Ql@*IN+lM`*`(OB6?OxA">
+                        <value name="VAR_OBJET">
+                          <block type="variables_get" id=":h-Dm1cl$qL#q=Wq5;zJ">
+                            <field name="VAR" id="JauP%9mrk1peVY=:f2v^" variabletype="">titre1</field>
+                          </block>
+                        </value>
+                        <value name="PAR">
+                          <block type="objetsWeb_viaID" id="J@)hJq]g~q`rrZpR^#|G">
+                            <value name="ID">
+                              <shadow type="text" id="@J5_{Ti8^`)YVh^C*6aZ">
+                                <field name="TEXT">p5Visuel</field>
+                              </shadow>
+                            </value>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="proprietes_parent2" id="*3$D-G?.N!Nyq,sUgFjb">
+                            <value name="VAR_OBJET">
+                              <block type="variables_get" id="b],fV-h^M`.*IG=74nu.">
+                                <field name="VAR" id="|77CT0-QUnZXeu.)}RiV" variabletype="">canvas</field>
+                              </block>
+                            </value>
+                            <value name="PAR">
+                              <block type="objetsWeb_viaID" id="8=#u4Akp^]j@-I]nCb8a">
+                                <value name="ID">
+                                  <shadow type="text" id="4I$^tS}d!osay29}TLRs">
+                                    <field name="TEXT">p5Visuel</field>
+                                  </shadow>
+                                </value>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="NtPJC;o}[SPd$j.ctNry" x="10" y="300">
+    <mutation>
+      <arg name="nbCarres"></arg>
+    </mutation>
+    <field name="NAME">figure</field>
+    <comment pinned="false" h="80" w="160">Décrire cette fonction…</comment>
+    <statement name="STACK">
+      <block type="controls_repeat_ext" id=".rZ1Yy-2s^D}pLFd4k6#">
+        <value name="TIMES">
+          <shadow type="math_number" id="Gi(16R)q/gRP29]8,..K">
+            <field name="NUM">10</field>
+          </shadow>
+          <block type="variables_get" id="]TtVy#C5,#v@Q/0J+|1]">
+            <field name="VAR" id="~d}7::1qL,[jVu{|+7_!" variabletype="">nbCarres</field>
+          </block>
+        </value>
+        <statement name="DO">
+          <block type="procedures_callnoreturn" id="?eY-8Pb1R|J9pW8vq5K*">
+            <mutation name="carre"></mutation>
+            <next>
+              <block type="tortue_droite" id="!S?5X9d_vS0fx6I+?||H">
+                <value name="alpha">
+                  <shadow type="math_number" id="C@DA{?2G@[c::a2o]CnT">
+                    <field name="NUM">0</field>
+                  </shadow>
+                  <block type="math_arithmetic" id="CF%R2F$LzG3^n{OBs,(=">
+                    <field name="OP">DIVIDE</field>
+                    <value name="A">
+                      <shadow type="math_number" id="}+AA,;_^h:_[7g3hm#Sm">
+                        <field name="NUM">360</field>
+                      </shadow>
+                    </value>
+                    <value name="B">
+                      <shadow type="math_number" id="busFux$/)e;H?%ON#/EK">
+                        <field name="NUM">1</field>
+                      </shadow>
+                      <block type="variables_get" id="Lqf5!^Jkeu@Q5wH7t`^n">
+                        <field name="VAR" id="~d}7::1qL,[jVu{|+7_!" variabletype="">nbCarres</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="Ah8;9JF=xF7#Lj_lJ!6." x="9" y="480">
+    <field name="NAME">carre</field>
+    <comment pinned="false" h="80" w="160">Décrire cette fonction…</comment>
+    <statement name="STACK">
+      <block type="controls_repeat_ext" id="ZOOwo@bt=n%O^7b`jBIi">
+        <value name="TIMES">
+          <shadow type="math_number" id="DpYymEW!Xm(ynREF4iS5">
+            <field name="NUM">4</field>
+          </shadow>
+        </value>
+        <statement name="DO">
+          <block type="tortue_avance" id="F@6l;Yn|-)S[fu;08X_}">
+            <value name="distance">
+              <shadow type="math_number" id="Bp4anw+f6l=x.3Q8GN7y">
+                <field name="NUM">200</field>
+              </shadow>
+            </value>
+            <next>
+              <block type="tortue_droite" id="Z~Y+`XWqjC.klT,{ninN">
+                <value name="alpha">
+                  <shadow type="math_number" id="LCT.gnTx3TnOcE=U;jz#">
+                    <field name="NUM">90</field>
+                  </shadow>
+                </value>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="sNnHnB2XE9|fCS-xN%`L" x="9" y="645">
+    <field name="NAME">actions en boucle</field>
+    <comment pinned="false" h="80" w="160">Fonction exécutée périodiquement, de façon répétée</comment>
+    <statement name="STACK">
+      <block type="couleurs_fond_C" id="d3]@YD-HZbKr%98^_s{7">
+        <value name="C">
+          <block type="couleurs_couleur" id="#nmw:uwpJFXDZL,j%aYo">
+            <value name="R">
+              <shadow type="math_number" id="{Q?1*m|4bwmo/H2VKX#w">
+                <field name="NUM">255</field>
+              </shadow>
+            </value>
+            <value name="V">
+              <shadow type="math_number" id="*C~h1ro0sF~Ng,5sP!c$">
+                <field name="NUM">240</field>
+              </shadow>
+            </value>
+            <value name="B">
+              <shadow type="math_number" id="TX2O6Uc+nBM5{p(~#)]E">
+                <field name="NUM">240</field>
+              </shadow>
+            </value>
+            <value name="A">
+              <shadow type="math_number" id="vOuYIVZSK5zCDS{Or/5h">
+                <field name="NUM">255</field>
+              </shadow>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="procedures_callnoreturn" id="dv*bNc](MTM?/8PHga!H" inline="true">
+            <mutation name="figure">
+              <arg name="nbCarres"></arg>
+            </mutation>
+            <value name="ARG0">
+              <block type="math_number" id=".66n[H0XCpG[$CFfoZ1m">
+                <field name="NUM">30</field>
+              </block>
+            </value>
+            <next>
+              <block type="tortue_droite" id="@cM2FKp1^!gthp2ygoq1">
+                <value name="alpha">
+                  <shadow type="math_number" id="R;CN/tcf~U[:HGARUpEf">
+                    <field name="NUM">1</field>
+                  </shadow>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>
