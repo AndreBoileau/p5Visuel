@@ -16,6 +16,8 @@
 goog.require('Blockly.Blocks');
 goog.require('Blockly');
 
+if (typeof(prefixeDOCU)=="undefined") {var prefixeDOCU = "";}
+
 Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 {
   "type": "repeter_tantque",
