@@ -1,6 +1,8 @@
 
 'use strict';
 
+var modeTortueRapideStandard=true;
+
 //goog.provide('Blockly.JavaScript.tortue');
 
 goog.require('Blockly.JavaScript');
@@ -166,10 +168,8 @@ Blockly.JavaScript['programmation_commentaire'] = function(block) {
 // Faire
 Blockly.JavaScript['programmation_faire'] = function(block) {
   var valeur1 = Blockly.JavaScript.valueToCode(block, 'fonction', Blockly.JavaScript.ORDER_ATOMIC);
-  if (valeur1.length > 4) {if (valeur1.slice(0,1) == "(" && valeur1.slice(-3,-1) == "()") {valeur1 = valeur1.slice(1,-3);}}
-  var code = 'faireDebug('+nomVal(valeur1)+');\n';
-  if (valeur1.length == 0) {
-  		code = 'messageERREUR("Il faut préciser ce qu\'on veut faire");\n';}
+  if (valeur1.slice(0,1) == "(") {valeur1 = valeur1.slice(1,-1);}
+  var code = valeur1+';\n';
   return code;
 };
 // Faire après délai
@@ -460,6 +460,17 @@ Blockly.JavaScript['p5_js_vitesseDraw'] = function(block) {
   return code;
 };
 //----------------------
+Blockly.JavaScript['p5_js_fenetreModale'] = function(block) {
+  var titre = Blockly.JavaScript.valueToCode(block, 'titre', Blockly.JavaScript.ORDER_ATOMIC);
+  var gauche = Blockly.JavaScript.valueToCode(block, 'gauche', Blockly.JavaScript.ORDER_ATOMIC);
+  var image = Blockly.JavaScript.valueToCode(block, 'image', Blockly.JavaScript.ORDER_ATOMIC);
+  var centre = Blockly.JavaScript.valueToCode(block, 'centre', Blockly.JavaScript.ORDER_ATOMIC);
+  var largeur = Blockly.JavaScript.valueToCode(block, 'largeur', Blockly.JavaScript.ORDER_ATOMIC);
+  var marge = Blockly.JavaScript.valueToCode(block, 'marge', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'afficherDialogueModalAB('+titre+','+gauche+','+image+','+centre+','+largeur+','+marge+');\n';
+  return code;
+};
+//----------------------
 //Expression p5
 Blockly.JavaScript['p5_js_expression'] = function(block) {
   var commande = Blockly.JavaScript.valueToCode(block, 'TEXTE', Blockly.JavaScript.ORDER_ATOMIC);
@@ -471,6 +482,12 @@ Blockly.JavaScript['p5_js_expression'] = function(block) {
 Blockly.JavaScript['p5_js_commande'] = function(block) {
   var commande = Blockly.JavaScript.valueToCode(block, 'TEXTE', Blockly.JavaScript.ORDER_ATOMIC);
   var code = 'eval('+commande+');\n';
+  return code;
+};
+//----------------------
+//Programme spécial
+Blockly.JavaScript['p5_js_progSpecial'] = function(block) {
+  var code = "nePasTesterFonctionsDeBase();\n";
   return code;
 };
 //----------------------
@@ -504,12 +521,29 @@ Blockly.JavaScript['objetsWeb_zoneTexte'] = function(block) {
   		code = 'messageERREUR("Il faut spécifier un tableau des lignes de la zone de texte");\n';}
   return code;
 };
-// Créer une entrée %1 de contenu initial %2
+// Créer une entrée %1 de contenu initial %2 -- Pour fins de compatibilité
 Blockly.JavaScript['catégorie_objetsWebEntree'] = function(block) {
   var objet = Blockly.JavaScript.valueToCode(block, 'OBJET', Blockly.JavaScript.ORDER_ATOMIC);
   if (objet.length != 0) {objet=objet+"=";}
   var contenu = Blockly.JavaScript.valueToCode(block, 'CONTENU', Blockly.JavaScript.ORDER_ATOMIC);
   var code = objet+"createInput("+contenu+");\n";
+  return code;
+};
+// Créer une entrée %1 de contenu initial %2 
+Blockly.JavaScript['objetsWeb_entree'] = function(block) {
+  var objet = Blockly.JavaScript.valueToCode(block, 'OBJET', Blockly.JavaScript.ORDER_ATOMIC);
+  if (objet.length != 0) {objet=objet+"=";}
+  var contenu = Blockly.JavaScript.valueToCode(block, 'CONTENU', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = objet+"createInput("+contenu+");\n";
+  return code;
+};
+// Créer une entrée %1 de nom %2 et de contenu initial %3
+Blockly.JavaScript['objetsWeb_entreeNommee'] = function(block) {
+  var objet = Blockly.JavaScript.valueToCode(block, 'OBJET', Blockly.JavaScript.ORDER_ATOMIC);
+  if (objet.length != 0) {objet=objet+"=";}
+  var nom = Blockly.JavaScript.valueToCode(block, 'NOM', Blockly.JavaScript.ORDER_ATOMIC);
+  var contenu = Blockly.JavaScript.valueToCode(block, 'CONTENU', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = objet+"creerEntreeNommee("+nom+","+contenu+");\n";
   return code;
 };
 //Glissière
@@ -521,6 +555,18 @@ Blockly.JavaScript['objetsWeb_glissiere'] = function(block) {
   var val_valeur = Blockly.JavaScript.valueToCode(block, 'VALEUR', Blockly.JavaScript.ORDER_ATOMIC);
   var val_pas = Blockly.JavaScript.valueToCode(block, 'PAS', Blockly.JavaScript.ORDER_ATOMIC);
   var code = nom_var+'createSlider('+val_min+','+val_max+','+val_valeur+','+val_pas+');\n';
+  return code;
+};
+//Glissière+valeur
+Blockly.JavaScript['objetsWeb_glissiereValeur'] = function(block) {
+  var nom_var = Blockly.JavaScript.valueToCode(block, 'NOM_VAR', Blockly.JavaScript.ORDER_ATOMIC);
+  if (nom_var.length != 0) {nom_var=nom_var+"=";}
+  var val_titre = Blockly.JavaScript.valueToCode(block, 'TITRE', Blockly.JavaScript.ORDER_ATOMIC);
+  var val_min = Blockly.JavaScript.valueToCode(block, 'MIN', Blockly.JavaScript.ORDER_ATOMIC);
+  var val_max = Blockly.JavaScript.valueToCode(block, 'MAX', Blockly.JavaScript.ORDER_ATOMIC);
+  var val_valeur = Blockly.JavaScript.valueToCode(block, 'VALEUR', Blockly.JavaScript.ORDER_ATOMIC);
+  var val_pas = Blockly.JavaScript.valueToCode(block, 'PAS', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = nom_var+'nouvelleGlissiereValeur('+val_titre+','+val_min+','+val_max+','+val_valeur+','+val_pas+');\n';
   return code;
 };
 //bouton
@@ -640,7 +686,8 @@ Blockly.JavaScript['couleurs_fond'] = function(block) {
   var value_R = Blockly.JavaScript.valueToCode(block, 'R', Blockly.JavaScript.ORDER_ATOMIC);
   var value_G = Blockly.JavaScript.valueToCode(block, 'G', Blockly.JavaScript.ORDER_ATOMIC);
   var value_B = Blockly.JavaScript.valueToCode(block, 'B', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = 'leGraphicsActif.background('+value_R+','+value_G+','+value_B+');\n';
+  //var code = 'leGraphicsActif.background('+value_R+','+value_G+','+value_B+');\n';
+  var code = 'couleurFond('+value_R+','+value_G+','+value_B+');\n';
   return code;
 };
 //couleur du trait
@@ -672,7 +719,8 @@ Blockly.JavaScript['couleurs_couleur'] = function(block) {
 //couleur du fond
 Blockly.JavaScript['couleurs_fond_C'] = function(block) {
   var c = Blockly.JavaScript.valueToCode(block, 'C', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = 'leGraphicsActif.background('+c+');\n'; 
+  //var code = 'leGraphicsActif.background('+c+');\n'; 
+  var code = 'couleurFondC('+c+');\n'; 
   return code; 
 };
 //couleur du trait
@@ -824,25 +872,33 @@ Blockly.JavaScript['tortue_initTortue'] = function(block) {
 //avance(distance)
 Blockly.JavaScript['tortue_avance'] = function(block) {
   var value_distance = Blockly.JavaScript.valueToCode(block, 'distance', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = 'avance('+value_distance+');\n';
+  var code;
+  if (modeTortueRapideStandard) {code = 'avance('+value_distance+');\n';}
+  else {code = 'Avance_('+value_distance+');\n';}
   return code;
 };
 //recule(distance)
 Blockly.JavaScript['tortue_recule'] = function(block) {
   var value_distance = Blockly.JavaScript.valueToCode(block, 'distance', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = 'recule('+value_distance+');\n';
+  var code;
+  if (modeTortueRapideStandard) {code = 'recule('+value_distance+');\n';}
+  else {code = 'Recule_('+value_distance+');\n';}
   return code;
 };
 //droite(angle)
 Blockly.JavaScript['tortue_droite'] = function(block) {
   var value_alpha = Blockly.JavaScript.valueToCode(block, 'alpha', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = 'droite('+value_alpha+');\n';
+  var code;
+  if (modeTortueRapideStandard) {code = 'droite('+value_alpha+');\n';}
+  else {code = 'Droite_('+value_alpha+');\n';}
   return code;
 };
 //gauche(angle)
 Blockly.JavaScript['tortue_gauche'] = function(block) {
   var value_alpha = Blockly.JavaScript.valueToCode(block, 'alpha', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = 'gauche('+value_alpha+');\n';
+  var code;
+  if (modeTortueRapideStandard) {code = 'gauche('+value_alpha+');\n';}
+  else {code = 'Gauche_('+value_alpha+');\n';}
   return code;
 };
 //posX()
@@ -859,14 +915,18 @@ Blockly.JavaScript['tortue_posY'] = function(block) {
 Blockly.JavaScript['tortue_fixePos'] = function(block) {
   var value_x = Blockly.JavaScript.valueToCode(block, 'X', Blockly.JavaScript.ORDER_ATOMIC);
   var value_y = Blockly.JavaScript.valueToCode(block, 'Y', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = 'fixePos('+value_x+','+value_y+');\n';
+  var code;
+  if (modeTortueRapideStandard) {code = 'fixePos('+value_x+','+value_y+');\n';}
+  else {code = 'Aller_('+value_x+','+value_y+');\n';}
   return code;
 };
 //sautePos(x,y)
 Blockly.JavaScript['tortue_sautePos'] = function(block) {
   var value_x = Blockly.JavaScript.valueToCode(block, 'X', Blockly.JavaScript.ORDER_ATOMIC);
   var value_y = Blockly.JavaScript.valueToCode(block, 'Y', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = 'sautePos('+value_x+','+value_y+');\n';
+  var code;
+  if (modeTortueRapideStandard) {code = 'sautePos('+value_x+','+value_y+');\n';}
+  else {code = 'Sauter_('+value_x+','+value_y+');\n';}
   return code;
 };
 //cap()
@@ -877,7 +937,9 @@ Blockly.JavaScript['tortue_cap'] = function(block) {
 //fixeCap(angle)
 Blockly.JavaScript['tortue_fixeCap'] = function(block) {
   var value_alpha = Blockly.JavaScript.valueToCode(block, 'ALPHA', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = 'fixeCap('+value_alpha+');\n';
+  var code;
+  if (modeTortueRapideStandard) {code = 'fixeCap('+value_alpha+');\n';}
+  else {code = 'Fixe_Cap_('+value_alpha+');\n';}
   return code;
 };
 //vers(x,y)
@@ -964,7 +1026,8 @@ Blockly.JavaScript['proprietes_fixeContenu'] = function(block) {
 Blockly.JavaScript['proprietes_fixeContenuZone'] = function(block) {
   var obj = Blockly.JavaScript.valueToCode(block, 'OBJET', Blockly.JavaScript.ORDER_ATOMIC);
   var contenu = Blockly.JavaScript.valueToCode(block, 'TEXTE', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = 'contenuZoneTexte('+obj+','+contenu+');\n';   
+  //var code = 'contenuZoneTexte('+obj+','+contenu+');\n';   
+  var code = 'contenuZoneTexteDebug('+nomVal(obj)+','+nomVal(contenu)+');\n';   
   if (obj.length == 0) {
   		code = 'messageERREUR("La zone de texte dont on veut fixer la valeur n\'est pas spécifiée");\n';}
   return code;
@@ -974,7 +1037,8 @@ Blockly.JavaScript['proprietes_boutonClic'] = function(block) {
   var bouton = Blockly.JavaScript.valueToCode(block, 'VAR_BOUTON', Blockly.JavaScript.ORDER_ATOMIC);
   var proc = Blockly.JavaScript.valueToCode(block, 'PROC', Blockly.JavaScript.ORDER_ATOMIC);
   proc=proc.slice(1,-3);
-  var code = bouton+'.mouseClicked('+proc+');\n';  
+  //var code = bouton+'.mouseClicked('+proc+');\n';  
+  var code = 'siClicDebug('+nomVal(bouton)+','+nomVal(proc)+');\n';
   if (bouton.length == 0 || proc.length == 0) {
   		code = 'messageERREUR("Erreur en spécifiant une action quand on clique sur un objet (l\'objet ou l\'action n\'est pas spécifié)");\n';}
   return code;
@@ -984,7 +1048,8 @@ Blockly.JavaScript['proprietes_etatChange'] = function(block) {
   var objet = Blockly.JavaScript.valueToCode(block, 'VAR_OBJET', Blockly.JavaScript.ORDER_ATOMIC);
   var proc = Blockly.JavaScript.valueToCode(block, 'PROC', Blockly.JavaScript.ORDER_ATOMIC);
   proc=proc.slice(1,-3);
-  var code = objet+'.changed('+proc+');\n';  
+  //var code = objet+'.changed('+proc+');\n'; 
+  var code = 'siChangementDebug('+nomVal(objet)+','+nomVal(proc)+');\n';  
   if (objet.length == 0 || proc.length == 0) {
   		code = 'messageERREUR("Erreur en spécifiant une action quand l\'état de l\'objet change (l\'objet ou l\'action n\'est pas spécifié)");\n';}
   return code;
@@ -1001,7 +1066,8 @@ Blockly.JavaScript['proprietes_parent'] = function(block) {
 Blockly.JavaScript['proprietes_parent2'] = function(block) {
   var objet = Blockly.JavaScript.valueToCode(block, 'VAR_OBJET', Blockly.JavaScript.ORDER_ATOMIC);
   var par = Blockly.JavaScript.valueToCode(block, 'PAR', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = objet+'.parent('+par+');\n';  
+  //var code = objet+'.parent('+par+');\n';  
+  var code = 'assignerParentDebug('+nomVal(objet)+','+nomVal(par)+');\n';
   if (objet.length == 0 || par.length == 0) {
   		code = 'messageERREUR("Erreur en spécifiant le parent d\'un objet (le parent ou l\'objet n\'est pas spécifié)");\n';}
   return code;
@@ -1011,7 +1077,8 @@ Blockly.JavaScript['proprietes_style'] = function(block) {
   var objet = Blockly.JavaScript.valueToCode(block, 'OBJET', Blockly.JavaScript.ORDER_ATOMIC);
   var item = Blockly.JavaScript.valueToCode(block, 'ITEM', Blockly.JavaScript.ORDER_ATOMIC);
   var valeur = Blockly.JavaScript.valueToCode(block, 'VALEUR', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = objet+'.style('+item+','+valeur+');\n';   
+  //var code = objet+'.style('+item+','+valeur+');\n';  
+  var code = 'stylerObjetDebug('+nomVal(objet)+','+item+','+valeur+');\n'; 
   if (objet.length == 0) {
   		code = 'messageERREUR("L\'objet à qui on veut attribuer un style n\'est pas spécifié");\n';}
   return code; 
@@ -1022,7 +1089,8 @@ Blockly.JavaScript['proprietes_positionAbs'] = function(block) {
   var x = Blockly.JavaScript.valueToCode(block, 'X', Blockly.JavaScript.ORDER_ATOMIC);
   var y = Blockly.JavaScript.valueToCode(block, 'Y', Blockly.JavaScript.ORDER_ATOMIC);
   //var code = objet+'.position('+x+','+y+');\n';    
-  var code = 'positionnerObjet('+objet+','+x+','+y+');\n';
+  //var code = 'positionnerObjet('+objet+','+x+','+y+');\n';  
+  var code = 'positionnerObjetDebug('+nomVal(objet)+','+x+','+y+');\n';
   if (objet.length == 0) {
   		code = 'messageERREUR("L\'objet à qui on veut attribuer une position n\'est pas spécifié");\n';}
   return code; 

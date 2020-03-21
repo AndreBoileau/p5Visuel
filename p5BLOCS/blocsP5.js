@@ -50,6 +50,9 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
       "check": "Boolean"
     }
   ],
+  "inputsInline": true,
+  "previousStatement": null,
+  "nextStatement": null,
   "colour": 120,
   "tooltip": "Répétition avec test à la fin",
   "helpUrl": "p5BLOCS/DOCU/adaptations.html#boucleFin"
@@ -1160,6 +1163,49 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "tooltip": "Spécifie à quelle fréquence la fonction 'actions en boucle' sera appelée (maximum : 60 fois par secondes).",
   "helpUrl": "p5BLOCS/DOCU/p5js.html#vitesseDraw"
 },
+// fenêtre modale
+{
+  "type": "p5_js_fenetreModale",
+  "message0": "Fenêtre modale : titre %1 message (à gauche) %2 chemin vers une image %3 message (centré) %4 largeur (en pixels) %5 marge du haut (pixels) %6",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "titre",
+      "check": "String"
+    },
+    {
+      "type": "input_value",
+      "name": "gauche",
+      "check": "String"
+    },
+    {
+      "type": "input_value",
+      "name": "image",
+      "check": "String"
+    },
+    {
+      "type": "input_value",
+      "name": "centre",
+      "check": "String"
+    },
+    {
+      "type": "input_value",
+      "name": "largeur",
+      "check": "Number"
+    },
+    {
+      "type": "input_value",
+      "name": "marge",
+      "check": "Number"
+    }
+  ],
+  "inputsInline": false,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": "#FF0066",
+  "tooltip": "Une fenêtre modale montre de l'information tout en prenant le contrôle du clavier et de l'écran.",
+  "helpUrl": "p5BLOCS/DOCU/p5js.html#fenetreModale"
+},
 //----------------------
 //Expression   --> modifié et à tester : output est null au lieu de "Number"
 {
@@ -1195,6 +1241,22 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "colour": "#FF0066",
   "tooltip": "Exécute une commande JavaScript. À n'utiliser que si vous savez ce que vous faites.",
   "helpUrl": "p5BLOCS/DOCU/p5js.html#commandeP5"
+},
+//programme spécial (sans fonctions de base)
+{
+  "type": "p5_js_progSpecial",
+  "message0": "Programme p5Visuel spécial%1(sans fonctions de base)",
+  "args0": [
+    {
+      "type": "input_dummy"
+    }
+  ],
+  "inputsInline": true,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": "#FF0066",
+  "tooltip": "Permet de déplacer les fonctions de base dans du code JavaScript.",
+  "helpUrl": "p5BLOCS/DOCU/p5js.html#progSpecial"
 },
 //----------------------
 //Page web d'exécution
@@ -1503,7 +1565,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "helpUrl": "p5BLOCS/DOCU/objetsWeb.html#zoneTexte"
 },
 
-// Créer une entrée %1 de contenu initial %2
+// Créer une entrée %1 de contenu initial %2 --- Pour fins de compatibilité
 {
   "type": "catégorie_objetsWebEntree",
   "message0": "Créer une entrée %1 de contenu initial %2",
@@ -1525,6 +1587,59 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "colour": "#CC0000",
   "tooltip": "Crée un objet 'entrée' dans lequel l'utilisateur pourra entrer du texte ou un nombre.",
   "helpUrl": "p5BLOCS/DOCU/objetsWeb.html#entree"
+},
+
+// Créer une entrée %1 de contenu initial %2
+{
+  "type": "objetsWeb_entree",
+  "message0": "Créer une entrée %1 de contenu initial %2",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "OBJET",
+      "check": "String"
+    },
+    {
+      "type": "input_value",
+      "name": "CONTENU",
+      "check": "String"
+    }
+  ],
+  "inputsInline": true,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": "#CC0000",
+  "tooltip": "Crée un objet 'entrée' dans lequel l'utilisateur pourra entrer du texte ou un nombre.",
+  "helpUrl": "p5BLOCS/DOCU/objetsWeb.html#entree"
+},
+
+// Créer une entrée %1 de nom %2 et de contenu initial %3
+{
+  "type": "objetsWeb_entreeNommee",
+  "message0": "Créer une entrée %1 de nom %2 et de contenu initial %3",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "OBJET",
+      "check": "String"
+    },
+    {
+      "type": "input_value",
+      "name": "NOM",
+      "check": "String"
+    },
+    {
+      "type": "input_value",
+      "name": "CONTENU",
+      "check": "String"
+    }
+  ],
+  "inputsInline": true,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": "#CC0000",
+  "tooltip": "Crée un objet 'entrée' dans lequel l'utilisateur pourra entrer du texte ou un nombre.",
+  "helpUrl": "p5BLOCS/DOCU/objetsWeb.html#entreePlus"
 },
 
 // Créer glissière
@@ -1564,6 +1679,49 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "colour": "#CC0000",
   "tooltip": "Crée un objet 'glissière' dotée des caractéristiques spécifiées.",
   "helpUrl": "p5BLOCS/DOCU/objetsWeb.html#glissiere"
+},
+// Créer glissière valeur
+{
+  "type": "objetsWeb_glissiereValeur",
+  "message0": "Créer glissière+valeur %1 titre %2 minimum %3 maximum %4 valeur initiale %5 pas %6",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "NOM_VAR",
+      "check": "String"
+    },
+    {
+      "type": "input_value",
+      "name": "TITRE",
+      "check": "String"
+    },
+    {
+      "type": "input_value",
+      "name": "MIN",
+      "check": "Number"
+    },
+    {
+      "type": "input_value",
+      "name": "MAX",
+      "check": "Number"
+    },
+    {
+      "type": "input_value",
+      "name": "VALEUR",
+      "check": "Number"
+    },
+    {
+      "type": "input_value",
+      "name": "PAS",
+      "check": "Number"
+    }
+  ],
+  "inputsInline": true,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": "#CC0000",
+  "tooltip": "Crée un objet 'glissière' dotée des caractéristiques spécifiées.",
+  "helpUrl": "p5BLOCS/DOCU/objetsWeb.html#glissierePlus"
 },
 //Créer bouton
 {
@@ -2493,7 +2651,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   ],
   "output": ["String","Number"],
   "colour": "#CC6600",
-  "tooltip": "Retourne la valeur actuelle de l'objet spécifié (entrée ou glissière).",
+  "tooltip": "Retourne la valeur actuelle de l'objet spécifié (entrée, glissière ou menu local).",
   "helpUrl": "p5BLOCS/DOCU/proprietes.html#valeur"
 },
 // contenu d'un élément
@@ -2586,7 +2744,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "previousStatement": null,
   "nextStatement": null,
   "colour": "#CC6600",
-  "tooltip": "Le nombre ou le texte devient la valeur de l'objet en question (entrée, glissière)",
+  "tooltip": "Le nombre ou le texte devient la valeur de l'objet en question (entrée, glissière, menu local)",
   "helpUrl": "p5BLOCS/DOCU/proprietes.html#fixerValeur"
 },
 
