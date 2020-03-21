@@ -3,8 +3,7 @@
   <meta charset="UTF-8">
   <title>Éditeur p5Visuel</title>
   
-  <!-- Mode autonome
-  -->
+  <script>var modeVisMathEd_local=false;</script>
   <script src="p5BLOCS/jquery.js"></script>
   <script src="p5BLOCS/blockly_compressed.js"></script>
   <script src="p5BLOCS/blocks_compressed.js"></script>
@@ -13,38 +12,10 @@
   <script src="p5BLOCS/python_compressed.js"></script>
   <script src="p5BLOCS/run_prettify.js"></script>
   <script src="p5BLOCS/acorn_interpreter.js"></script>
-  <link href="p5BLOCS/blockly-demo.css" rel="stylesheet">
+  <link  href="p5BLOCS/blockly-demo.css" rel="stylesheet">
   <script src="p5BLOCS/clipboard-polyfill.js"></script>
   <script src="p5BLOCS/blocsP5.js"></script>
   <script src="p5BLOCS/scriptsP5.js"></script>
-  <!-- Mode léger
-  <script src="http://profmath.uqam.ca/~boileau/p5VisuelWEB/p5Visuel/p5BLOCS/jquery.js"></script>
-  <script src="http://profmath.uqam.ca/~boileau/p5VisuelWEB/p5Visuel/p5BLOCS/blockly_compressed.js"></script>
-  <script src="http://profmath.uqam.ca/~boileau/p5VisuelWEB/p5Visuel/p5BLOCS/blocks_compressed.js"></script>
-  <script src="http://profmath.uqam.ca/~boileau/p5VisuelWEB/p5Visuel/p5BLOCS/fr.js"></script>
-  <script src="http://profmath.uqam.ca/~boileau/p5VisuelWEB/p5Visuel/p5BLOCS/javascript_compressed.js"></script>
-  <script src="http://profmath.uqam.ca/~boileau/p5VisuelWEB/p5Visuel/p5BLOCS/python_compressed.js"></script>
-  <script src="http://profmath.uqam.ca/~boileau/p5VisuelWEB/p5Visuel/p5BLOCS/run_prettify.js"></script>
-  <script src="http://profmath.uqam.ca/~boileau/p5VisuelWEB/p5Visuel/p5BLOCS/acorn_interpreter.js"></script>
-  <link href="http://profmath.uqam.ca/~boileau/p5VisuelWEB/p5Visuel/p5BLOCS/blockly-demo.css" rel="stylesheet">
-  <script src="http://profmath.uqam.ca/~boileau/p5VisuelWEB/p5Visuel/p5BLOCS/clipboard-polyfill.js"></script>
-  <script src="http://profmath.uqam.ca/~boileau/p5VisuelWEB/p5Visuel/p5BLOCS/blocsP5.js"></script>
-  <script src="http://profmath.uqam.ca/~boileau/p5VisuelWEB/p5Visuel/p5BLOCS/scriptsP5.js"></script>
-  -->
-  <!-- Mode léger GitHub
-  <script src="https://andreboileau.github.io/p5Visuel/p5BLOCS/jquery.js"></script>
-  <script src="https://andreboileau.github.io/p5Visuel/p5BLOCS/blockly_compressed.js"></script>
-  <script src="https://andreboileau.github.io/p5Visuel/p5BLOCS/blocks_compressed.js"></script>
-  <script src="https://andreboileau.github.io/p5Visuel/p5BLOCS/fr.js"></script>
-  <script src="https://andreboileau.github.io/p5Visuel/p5BLOCS/javascript_compressed.js"></script>
-  <script src="https://andreboileau.github.io/p5Visuel/p5BLOCS/python_compressed.js"></script>
-  <script src="https://andreboileau.github.io/p5Visuel/p5BLOCS/run_prettify.js"></script>
-  <script src="https://andreboileau.github.io/p5Visuel/p5BLOCS/acorn_interpreter.js"></script>
-  <link href="https://andreboileau.github.io/p5Visuel/p5BLOCS/blockly-demo.css" rel="stylesheet">
-  <script src="https://andreboileau.github.io/p5Visuel/p5BLOCS/clipboard-polyfill.js"></script>
-  <script src="https://andreboileau.github.io/p5Visuel/p5BLOCS/blocsP5.js"></script>
-  <script src="https://andreboileau.github.io/p5Visuel/p5BLOCS/scriptsP5.js"></script>
-  -->
   
 </head>
 <body>
@@ -563,6 +534,38 @@
           		</shadow>
         	</value>
       </block> 
+      <block type="p5_js_fenetreModale"> 
+      	<value name="titre">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>  
+      	<value name="gauche">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+      	<value name="image">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+      	<value name="centre">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>   	
+        <value name="largeur">
+          <shadow type="math_number">
+            <field name="NUM">800</field>
+          </shadow>
+        </value>  	
+        <value name="marge">
+          <shadow type="math_number">
+            <field name="NUM">200</field>
+          </shadow>
+        </value>
+      </block>
       <block type="p5_js_expression">
       	<value name="TEXTE">
           <shadow type="text">
@@ -577,6 +580,7 @@
           </shadow>
         </value>
       </block>    
+      <block type="p5_js_progSpecial"></block> 
       <block type="p5_js_definirPageWebExecution">
       	<value name="TEXTE">
           <shadow type="text">
@@ -619,7 +623,19 @@
           		</shadow>
         	</value>
       </block>
-      <block type="catégorie_objetsWebEntree">
+      <block type="objetsWeb_entree">
+        <value name="CONTENU">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+      </block>
+      <block type="objetsWeb_entreeNommee">
+    	<value name="NOM">
+          	<shadow type="text">
+            	<field name="TEXT"></field>
+          	</shadow>
+        </value>
         <value name="CONTENU">
           <shadow type="text">
             <field name="TEXT"></field>
@@ -627,6 +643,33 @@
         </value>
       </block>
       <block type="objetsWeb_glissiere">
+    		<value name="MIN">
+          		<shadow type="math_number">
+            		<field name="NUM">0</field>
+          		</shadow>
+        	</value>
+    		<value name="MAX">
+          		<shadow type="math_number">
+            		<field name="NUM">1</field>
+          		</shadow>
+        	</value>
+    		<value name="VALEUR">
+          		<shadow type="math_number">
+            		<field name="NUM">0.5</field>
+          		</shadow>
+        	</value>
+    		<value name="PAS">
+          		<shadow type="math_number">
+            		<field name="NUM">0.01</field>
+          		</shadow>
+        	</value>
+      </block>
+      <block type="objetsWeb_glissiereValeur">
+    		<value name="TITRE">
+          		<shadow type="text">
+            		<field name="TEXT"></field>
+          		</shadow>
+        	</value>
     		<value name="MIN">
           		<shadow type="math_number">
             		<field name="NUM">0</field>
@@ -1352,7 +1395,7 @@
   </block>
 </xml>
 <script>
-  var modeDebutant = false, montrerZoneGauche = true, zoneGaucheFixe = false, modeVisMathEd_local=false;
+  var modeDebutant = false, montrerZoneGauche = true, zoneGaucheFixe = false, testerFonctionsDeBase=true;
   var modeSauvegarde='clipboard_polyfill'; // 'clipboard_polyfill' ou 'sans_biblio'
   var workspace = Blockly.inject('blocklyDiv',
     {toolbox: document.getElementById('toolbox'),
@@ -1652,11 +1695,22 @@ function encapsulerDansPageWeb(programme) {
 	texte = texte + '    <script src="http://profmath.uqam.ca/~boileau/p5VisuelWEB/p5Visuel/p5/p5.dom.min.js"></scripte>'+lien;
 	texte = texte + '    <scripte src="http://profmath.uqam.ca/~boileau/p5VisuelWEB/p5Visuel/p5/p5.sound.min.js"></scripte>'+lien;
 	texte = texte + '    <scripte src="http://profmath.uqam.ca/~boileau/p5VisuelWEB/p5Visuel/p5/bibAB.js"></scripte>'+lien;
+	texte = texte + '    <scripte src="http://profmath.uqam.ca/~boileau/p5VisuelWEB/p5Visuel/utilisateur.js"></scripte>'+lien;
 	texte = texte + '    <scripte>'+lien;
 	texte = texte + programme +lien;
 	texte = texte + '    </scripte>'+lien;
     texte = texte + '  </head>'+lien;
 	texte = texte + '  <body>'+lien;
+	
+	texte = texte + '     <div id="messageModalAB" class="dialogueModalAB">'+lien;
+	texte = texte + '        <div id="contenantModal">'+lien;
+	texte = texte + '           <a href="#fermetureAB" title="Fermeture" class="fermetureAB" id="caseFermetureAB">X</a>'+lien;
+	texte = texte + '           <h2 id="messageModalTitre" style="text-align:center;color:#eb2560">Titre</h2>'+lien;
+	texte = texte + '           <p id="messageModalAvant">Message avant</p>'+lien;
+	texte = texte + '           <p id="messageModalParaImg" style="text-align:center;display:none"><img id="messageModalImage" src=""></p>'+lien;
+	texte = texte + '           <p id="messageModalApres" style="text-align:center;">Message après</p>'+lien;
+	texte = texte + '        </div>'+lien;
+	texte = texte + '     </div>'+lien;
 	//texte = texte + '  </body>'+lien;  // bizarre : si j'enlève ce commentaire, ne fonctionne pas dans 000webhost.com
 	texte = texte + '  </body>'+lien;
 	texte = texte + '</html>'+lien;	
@@ -1679,8 +1733,11 @@ function executer() {
 }
 
 function fonctionsBaseNonIntactes(code) {
-	if(code.indexOf("function actions_initiales() {")==-1) {window.alert('La fonction "actions initiales" a été supprimée.\nPeut-être parce que son nom a été modifié.'); return true;}
-	if(code.indexOf("function actions_en_boucle() {")==-1) {window.alert('La fonction "actions en boucle" a été supprimée.\nPeut-être parce que son nom a été modifié.'); return true;}
+	if(code.indexOf("nePasTesterFonctionsDeBase();")==-1){testerFonctionsDeBase = true;} else {testerFonctionsDeBase = false;}
+	if (testerFonctionsDeBase) {
+		if(code.indexOf("function actions_initiales() {")==-1) {window.alert('La fonction "actions initiales" a été supprimée.\nPeut-être parce que son nom a été modifié.'); return true;}
+		if(code.indexOf("function actions_en_boucle() {")==-1) {window.alert('La fonction "actions en boucle" a été supprimée.\nPeut-être parce que son nom a été modifié.'); return true;}
+	}
 	if((code.indexOf("canevas;")==-1 && code.indexOf("canevas,")==-1) && (code.indexOf("canvas;")==-1 && code.indexOf("canvas,")==-1)) 
 		{window.alert('La variable "canevas" a été supprimée.\nPeut-être parce que son nom a été modifié.'); return true;}
 	return false;

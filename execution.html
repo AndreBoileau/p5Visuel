@@ -6,41 +6,27 @@
     <meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
     <style> body {padding: 0; margin: 0;} </style>
     
-  <!-- Pour version autonome de p5Visuel
-  -->
-    <link rel="stylesheet" href="execution.css" type="text/css" />
+  	<link rel="stylesheet" href="execution.css" type="text/css" />
     <script type="text/javascript" 
-    		src="MathJax/MathJax.js?config=AM_HTMLorMML-full"></script>
+    		src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_HTMLorMML-full"
+    		async></script>
     <script src="p5/p5.min.js"></script>
     <script src="p5/p5.dom.min.js"></script>
     <script src="p5/p5.sound.min.js"></script>
     <script src="p5/bibAB.js"></script>
-    <script src="utilisateur.js"></script>
     <script src="programme.js"></script> 
-  <!-- Pour version légère de p5Visuel
-    <link rel="stylesheet" href="http://profmath.uqam.ca/~boileau/p5VisuelWEB/p5Visuel/execution.css" type="text/css" />
-    <script type="text/javascript" 
-    		src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_HTMLorMML-full" async></script>
-    <script src="http://profmath.uqam.ca/~boileau/p5VisuelWEB/p5Visuel/p5/p5.min.js"></script>
-    <script src="http://profmath.uqam.ca/~boileau/p5VisuelWEB/p5Visuel/p5/p5.dom.min.js"></script>
-    <script src="http://profmath.uqam.ca/~boileau/p5VisuelWEB/p5Visuel/p5/p5.sound.min.js"></script>
-    <script src="http://profmath.uqam.ca/~boileau/p5VisuelWEB/p5Visuel/p5/bibAB.js"></script>
     <script src="utilisateur.js"></script>
-    <script src="programme.js"></script>
-  -->
-  <!-- Pour version légère de p5Visuel sur GitHub
-    <link rel="stylesheet" href="https://andreboileau.github.io/p5Visuel/execution.css" type="text/css" />
-    <script type="text/javascript" 
-    		src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_HTMLorMML-full" async></script>
-    <script src="https://andreboileau.github.io/p5Visuel/p5/p5.min.js"></script>
-    <script src="https://andreboileau.github.io/p5Visuel/p5/p5.dom.min.js"></script>
-    <script src="https://andreboileau.github.io/p5Visuel/p5/p5.sound.min.js"></script>
-    <script src="https://andreboileau.github.io/p5Visuel/p5/bibAB.js"></script>
-    <script src="utilisateur.js"></script>
-    <script src="programme.js"></script> 
-  -->
   
   </head>
   <body>
+	  <div id="messageModalAB" class="dialogueModalAB">
+		<div id="contenantModal">
+			<a href="#fermetureAB" title="Fermeture" class="fermetureAB" id="caseFermetureAB">X</a>
+			<h2 id="messageModalTitre" style="text-align:center;color:#eb2560">Titre</h2>
+			<p id="messageModalAvant">Message avant</p>
+			<p id="messageModalParaImg" style="text-align:center;display:none"><img id="messageModalImage" src=""></p>
+			<p id="messageModalApres" style="text-align:center;">Message après</p>
+		</div>
+	</div>
   </body>
 </html>

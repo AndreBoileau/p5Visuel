@@ -167,11 +167,11 @@ function substitution(modele,liste){
   return cmd;
 }
 
-//var tempsMathJax=0;
 function refreshMathJax() {
-	//if (millis()-tempsMathJax <1000) {return;}
-	MathJax.Hub.Queue(["Typeset",MathJax.Hub]); //tempsMathJax = millis();
+	try { MathJax.Hub.Queue(["Typeset",MathJax.Hub]); }
+	catch(error) {setTimeout(refreshMathJax,1000*0.5);}
 }
+
 function codeMath(chaine)  {return "`"+chaine+"`";}
 
  // pour que touchés dans canvas pas interprétés comme des clics (sur tablettes)
@@ -201,7 +201,7 @@ function surMobile() {
 //var av = avance, dr = droite, lc = leveCrayon, bc = baisseCrayon;
 
 function initTortue(g) { // devrait-on retenir l'épaisseur du trait, les couleurs de fond, de remplissage et de tracé ?
-  if (g == null) {messageERREUR("On ne peut initialiser la tortue car le graphique actif n'est pas défini"); return;}  // *** outil de debug AB ***
+  if (g == null) {messageERREUR("On ne peut initialiser la tortue car le <b>graphique actif</b> n'est pas défini"); return;}  // *** outil de debug AB ***
   //pixelDensity(1); // pour faciliter le traitement des images
   rectMode(CORNERS); ellipseMode(RADIUS); g.textAlign(LEFT,TOP);
   if ((signeAxes == -1) && ((g==canevas)||(g==graphicsTortue))) {
@@ -220,7 +220,7 @@ function initTortue(g) { // devrait-on retenir l'épaisseur du trait, les couleu
 
 function avance(d) {
   var g = leGraphicsActif;
-  if (g == null) {messageERREUR("On ne peut avancer car le graphique actif n'est pas défini"); return;}  // *** outil de debug AB ***
+  if (g == null) {messageERREUR("On ne peut avancer car le <b>graphique actif</b> n'est pas défini"); return;}  // *** outil de debug AB ***
   var x=g.tortueX, y=g.tortueY;
   g.tortueX = g.tortueX +d*cos(radians(g.tortueAngle));
   g.tortueY = g.tortueY +d*sin(radians(g.tortueAngle));
@@ -230,7 +230,7 @@ function avance(d) {
 
 function segment(x1,y1,x2,y2) {
     var g = leGraphicsActif;
-    if (g == null) {messageERREUR("On ne peut tracer de segment car le graphique actif n'est pas défini"); return;}  // *** outil de debug AB ***
+    if (g == null) {messageERREUR("On ne peut tracer de segment car le <b>graphique actif</b> n'est pas défini"); return;}  // *** outil de debug AB ***
 	if (g.tortuePolyEnCours) {
 		if (g.tortueNbSommetsPoly==0) {vertex_(x1,y1); g.tortueNbSommetsPoly = g.tortueNbSommetsPoly+1;}
 		vertex_(x2,y2); g.tortueNbSommetsPoly = g.tortueNbSommetsPoly+1;
@@ -242,7 +242,7 @@ function segment(x1,y1,x2,y2) {
 
 function debutPoly() {
     var g = leGraphicsActif;
-    if (g == null) {messageERREUR("On ne peut débuter un polygone car le graphique actif n'est pas défini"); return;}  // *** outil de debug AB ***
+    if (g == null) {messageERREUR("On ne peut débuter un polygone car le <b>graphique actif</b> n'est pas défini"); return;}  // *** outil de debug AB ***
 	g.tortuePolyEnCours = true;
 	g.tortueNbSommetsPoly = 0;
 	beginShape_();
@@ -250,14 +250,14 @@ function debutPoly() {
 
 function finPoly() {
     var g = leGraphicsActif;   
-    if (g == null) {messageERREUR("On ne peut terminer un polygone car le graphique actif n'est pas défini"); return;}  // *** outil de debug AB ***
+    if (g == null) {messageERREUR("On ne peut terminer un polygone car le <b>graphique actif</b> n'est pas défini"); return;}  // *** outil de debug AB ***
 	endShape_();
 	g.tortuePolyEnCours = false;
 }
 
 function sommet(x,y) {
 	var g = leGraphicsActif; 
-    if (g == null) {messageERREUR("On ne peut définir un sommet car le graphique actif n'est pas défini"); return;}  // *** outil de debug AB ***
+    if (g == null) {messageERREUR("On ne peut définir un sommet car le <b>graphique actif</b> n'est pas défini"); return;}  // *** outil de debug AB ***
 	vertex_(x,y); 
 	g.tortueNbSommetsPoly = g.tortueNbSommetsPoly+1;
 }
@@ -266,7 +266,7 @@ function recule(d) {avance(-d)};
 
 function droite(a) {
   var g = leGraphicsActif;
-  if (g == null) {messageERREUR("On ne peut tourner car le graphique actif n'est pas défini"); return;}  // *** outil de debug AB ***
+  if (g == null) {messageERREUR("On ne peut tourner car le <b>graphique actif</b> n'est pas défini"); return;}  // *** outil de debug AB ***
   a = g.tortueAngle + signeAxes*a;
   var sgn = 1; if (a<0) {sgn=-1; a=-a;}
   a = (a - 360*floor(a/360))*sgn;
@@ -278,19 +278,19 @@ function gauche(d) {droite(-d)};
 
 function baisseCrayon() {
   var g = leGraphicsActif;
-  if (g == null) {messageERREUR("On ne peut baisser le crayon car le graphique actif n'est pas défini"); return;}  // *** outil de debug AB ***
+  if (g == null) {messageERREUR("On ne peut baisser le crayon car le <b>graphique actif</b> n'est pas défini"); return;}  // *** outil de debug AB ***
   g.tortueTrace = true;
 }
 
 function leveCrayon() {
   var g = leGraphicsActif;
-  if (g == null) {messageERREUR("On ne peut lever le crayon car le graphique actif n'est pas défini"); return;}  // *** debug AB **
+  if (g == null) {messageERREUR("On ne peut lever le crayon car le <b>graphique actif</b> n'est pas défini"); return;}  // *** debug AB **
   g.tortueTrace = false;
 }
 
 function fixePos(x,y) {
   var g = leGraphicsActif;
-  if (g == null) {messageERREUR("On ne peut fixer la position car le graphique actif n'est pas défini"); return;}  // *** debug AB **
+  if (g == null) {messageERREUR("On ne peut fixer la position car le <b>graphique actif</b> n'est pas défini"); return;}  // *** debug AB **
   var a=g.tortueX, b=g.tortueY;
   g.tortueX = x;
   g.tortueY = y;
@@ -300,7 +300,7 @@ function fixePos(x,y) {
 
 function sautePos(x,y) {
   var g = leGraphicsActif;
-  if (g == null) {messageERREUR("On ne peut sauter à la position car le graphique actif n'est pas défini"); return;}  // *** debug AB **
+  if (g == null) {messageERREUR("On ne peut sauter à la position car le <b>graphique actif</b> n'est pas défini"); return;}  // *** debug AB **
   var a=g.tortueX, b=g.tortueY;
   g.tortueX = x;
   g.tortueY = y;
@@ -309,7 +309,7 @@ function sautePos(x,y) {
 
 function fixeCap(a) {
   var g = leGraphicsActif;
-  if (g == null) {messageERREUR("On ne peut fixer le cap car le graphique actif n'est pas défini"); return;}  // *** debug AB **
+  if (g == null) {messageERREUR("On ne peut fixer le cap car le <b>graphique actif</b> n'est pas défini"); return;}  // *** debug AB **
   var sgn = 1; if (a<0) {sgn=-1; a=-a;}
   a = (a - 360*floor(a/360))*sgn;
   g.tortueAngle = a;
@@ -318,7 +318,7 @@ function fixeCap(a) {
 
 function vers(x,y) {
    var g = leGraphicsActif;
-  if (g == null) {messageERREUR("On ne peut calculer le cap car le graphique actif n'est pas défini"); return;}  // *** debug AB **
+  if (g == null) {messageERREUR("On ne peut calculer le cap car le <b>graphique actif</b> n'est pas défini"); return;}  // *** debug AB **
    g.tortueAngle = degrees(atan2(y-g.tortueY, x-g.tortueX));
    return g.tortueAngle;
 }
@@ -342,6 +342,7 @@ function imageDeposeeChargeeAB() {
   	fonctionUtilisateurDepotAB(monImageDeposeeAB);
 }
 function definirPageWebExecution(chemin) {}
+function nePasTesterFonctionsDeBase() {}
 
 // *************************** Ajouts pour sauver/ramener des données ***********************************
 
@@ -467,67 +468,77 @@ function creerMenuLocal(liste) {
 // **************************************************************
 
 function point_(x,y) {
-  	if (leGraphicsActif == null) {messageERREUR("On ne peut tracer un point car le graphique actif n'est pas défini");}  // *** debug AB **
+  	if (leGraphicsActif == null) {messageERREUR("On ne peut tracer un point car le <b>graphique actif</b> n'est pas défini");}  // *** debug AB **
 	if (leGraphicsActif == canvasP5visuel){point(x,y);} 
 	else {leGraphicsActif.point(x,y);} }
 
 function triangle_(x1,y1,x2,y2,x3,y3) {
-  	if (leGraphicsActif == null) {messageERREUR("On ne peut tracer un triangle car le graphique actif n'est pas défini");}  // *** debug AB **
+  	if (leGraphicsActif == null) {messageERREUR("On ne peut tracer un triangle car le <b>graphique actif</b> n'est pas défini");}  // *** debug AB **
 	if (leGraphicsActif == canvasP5visuel){triangle(x1,y1,x2,y2,x3,y3);} 
 	else {leGraphicsActif.triangle(x1,y1,x2,y2,x3,y3);} }
 
 function rect_(x1,y1,x2,y2) {
-  	if (leGraphicsActif == null) {messageERREUR("On ne peut tracer un rectangle car le graphique actif n'est pas défini");}  // *** debug AB **
+  	if (leGraphicsActif == null) {messageERREUR("On ne peut tracer un rectangle car le <b>graphique actif</b> n'est pas défini");}  // *** debug AB **
 	if (leGraphicsActif == canvasP5visuel){rect(x1,y1,x2,y2);} 
 	else {leGraphicsActif.rect(x1,y1,x2-x1,y2-y1);} }
 
 function cercle_(x,y,r) {
-  	if (leGraphicsActif == null) {messageERREUR("On ne peut tracer un cercle car le graphique actif n'est pas défini");}  // *** debug AB **
+  	if (leGraphicsActif == null) {messageERREUR("On ne peut tracer un cercle car le <b>graphique actif</b> n'est pas défini");}  // *** debug AB **
 	if (leGraphicsActif == canvasP5visuel){ellipse(x,y,r);} 
 	else {leGraphicsActif.ellipse(x,y,2*r);} }
 
 function ellipse_(x,y,a,b) {
-  	if (leGraphicsActif == null) {messageERREUR("On ne peut tracer une ellipse car le graphique actif n'est pas défini");}  // *** debug AB **
+  	if (leGraphicsActif == null) {messageERREUR("On ne peut tracer une ellipse car le <b>graphique actif</b> n'est pas défini");}  // *** debug AB **
 	if (leGraphicsActif == canvasP5visuel){ellipse(x,y,a,b);} 
 	else {leGraphicsActif.ellipse(x,y,2*a,2*b);} }
 
 function arc_(x,y,a,b,debut,fin) {
-  	if (leGraphicsActif == null) {messageERREUR("On ne peut tracer un arc car le graphique actif n'est pas défini");}  // *** debug AB **
+  	if (leGraphicsActif == null) {messageERREUR("On ne peut tracer un arc car le <b>graphique actif</b> n'est pas défini");}  // *** debug AB **
 	if (leGraphicsActif == canvasP5visuel){arc(x,y,a,b,debut,fin);} 
 	else {leGraphicsActif.arc(x,y,a,b,debut,fin);} }
 
+function couleurFond(r,g,b) {
+	if(leGraphicsActif == null) {messageERREUR("Il faut spécifier le canevas ou la zone graphique <b>avant</b> d'en déterminer le fond.");}
+	leGraphicsActif.background(r,g,b);
+}
+
+function couleurFondC(c) {
+	if(leGraphicsActif == null) {messageERREUR("Il faut spécifier le canevas ou la zone graphique <b>avant</b> d'en  déterminer le fond.");}
+	leGraphicsActif.background(c);
+}
+
 function fill_(c) {
-  	if (leGraphicsActif == null) {messageERREUR("On ne peut spécifier une couleur de remplissage car le graphique actif n'est pas défini");}  // *** debug AB **
+  	if (leGraphicsActif == null) {messageERREUR("On ne peut spécifier une couleur de remplissage car le <b>graphique actif</b> n'est pas défini");}  // *** debug AB **
 	if (leGraphicsActif == canvasP5visuel){fill(c);} 
 	else {leGraphicsActif.fill(c);} }
 
 function noFill_() {
-  	if (leGraphicsActif == null) {messageERREUR("On ne peut spécifier de ne plus remplir car le graphique actif n'est pas défini");}  // *** debug AB **
+  	if (leGraphicsActif == null) {messageERREUR("On ne peut spécifier de ne plus remplir car le <b>graphique actif</b> n'est pas défini");}  // *** debug AB **
 	if (leGraphicsActif == canvasP5visuel){noFill();} 
 	else {leGraphicsActif.noFill();} }
 
 function stroke_(c) {
-  	if (leGraphicsActif == null) {messageERREUR("On ne peut spécifier une couleur de trait car le graphique actif n'est pas défini");}  // *** debug AB **
+  	if (leGraphicsActif == null) {messageERREUR("On ne peut spécifier une couleur de trait car le <b>graphique actif</b> n'est pas défini");}  // *** debug AB **
 	if (leGraphicsActif == canvasP5visuel){stroke(c);}
 	else {leGraphicsActif.stroke(c);} }
 
 function strokeWeight_(c) {
-  	if (leGraphicsActif == null) {messageERREUR("On ne peut spécifier l'épaisseur du trait car le graphique actif n'est pas défini");}  // *** debug AB **
+  	if (leGraphicsActif == null) {messageERREUR("On ne peut spécifier l'épaisseur du trait car le <b>graphique actif</b> n'est pas défini");}  // *** debug AB **
 	if (leGraphicsActif == canvasP5visuel){strokeWeight(c);} 
 	else {leGraphicsActif.strokeWeight(c);} }
 
 function beginShape_() {
-  	if (leGraphicsActif == null) {messageERREUR("On ne peut commencer une forme car le graphique actif n'est pas défini");}  // *** debug AB **
+  	if (leGraphicsActif == null) {messageERREUR("On ne peut commencer une forme car le <b>graphique actif</b> n'est pas défini");}  // *** debug AB **
 	if (leGraphicsActif == canvasP5visuel){beginShape();} 
 	else {leGraphicsActif.beginShape();} }
 	
 function endShape_() {
-  	if (leGraphicsActif == null) {messageERREUR("On ne peut terminer une forme car le graphique actif n'est pas défini");}  // *** debug AB **
+  	if (leGraphicsActif == null) {messageERREUR("On ne peut terminer une forme car le <b>graphique actif</b> n'est pas défini");}  // *** debug AB **
 	if (leGraphicsActif == canvasP5visuel){endShape();} 
 	else {leGraphicsActif.endShape();} }
 	
 function vertex_(x,y) {
-  	if (leGraphicsActif == null) {messageERREUR("On ne peut spécifier un sommet car le graphique actif n'est pas défini");}  // *** debug AB **
+  	if (leGraphicsActif == null) {messageERREUR("On ne peut spécifier un sommet car le <b>graphique actif</b> n'est pas défini");}  // *** debug AB **
 	if (leGraphicsActif == canvasP5visuel){vertex(x,y);} 
 	else {leGraphicsActif.vertex(x,y);} }
 	
@@ -610,6 +621,8 @@ function positionnerObjet(objet,x,y){ // permet d'inclure les tableaux
 	for(var k=0; k<listeTableauxListesAB.length;k=k+2){
 		if(listeTableauxListesAB[k]==objet) {objet=listeTableauxListesAB[k+1];}
 	}
+	if (objet instanceof EntreeNommee) {objet=objet.contenant;}
+	if (objet instanceof Glissiere) {objet=objet.contenant;}
 	objet.position(x,y);
 	if ((objet == canvasP5visuel) && (canvasP5visuel != null)) {graphicsTortue.position(x,y);}
 }
@@ -657,8 +670,26 @@ function contenu_du_tableau_des_listes(listesAafficher) {
 //------------------------------------------------------------------
 function messageERREUR(message) {  // *** outil de debug AB ***
 	console.log("p5Visuel : "+message);
-	message = "Message d'erreur\n*******************\n"+message;
-	if (stopperApresUneErreur) {window.alert(message); info_debug(); fonctionNonDefinieP5Visuel();}
+	//message = "Message d'erreur\n*******************\n"+message;
+	//if (stopperApresUneErreur) {window.alert(message); info_debug(); fonctionNonDefinieP5Visuel();}
+	if (stopperApresUneErreur) {
+		try { afficherDialogueModalAB("Message d'erreur",message,"","",0,0); }
+		catch(erreur) { message = "Message d'erreur\n*******************\n"+message; window.alert(message); } 
+		info_debug(); fonctionNonDefinieP5Visuel();
+	}
+}
+
+function afficherDialogueModalAB(titre,messageAvant, srcImage, messageApres, largeur, marge) {
+	if (largeur == 0) {largeur = 800;}
+	document.getElementById("contenantModal").style.width = largeur+"px";
+	if (marge == 0) {marge = 200;}
+	document.getElementById("contenantModal").style.marginTop = marge+"px";
+	document.getElementById("messageModalTitre").innerHTML = titre;
+	document.getElementById("messageModalAvant").innerHTML = messageAvant;
+	if (srcImage.length == 0) {document.getElementById("messageModalParaImg").style.display="none"} 
+	else {document.getElementById("messageModalImage").src = srcImage; document.getElementById("messageModalParaImg").style.display="block";}
+	document.getElementById("messageModalApres").innerHTML = messageApres;
+	window.location="#messageModalAB";
 }
 
 
@@ -835,46 +866,142 @@ function testChiffreOUlettre(carG,carD) {
 	return test;
 }
 
+// **************************************************************
+
+function EntreeNommee(nom,valeur) {
+	this.contenant = createSpan('');
+	this.nom = createSpan(nom+"   ");
+	this.entree = createInput(valeur);
+	this.nom.parent(this.contenant);
+	this.entree.parent(this.contenant);
+}
+
+function creerEntreeNommee(nom,valeur) {
+	var monEntreeNommee = new EntreeNommee(nom,valeur);
+	return monEntreeNommee;
+}
+
+function Glissiere(texte, minG, maxG, valG, pasG) {
+	this.contenant = createSpan('');
+	this.texteG = createSpan(texte);
+	this.gliss = createSlider(minG, maxG, valG, pasG);
+	this.valeur = createSpan("  "+valG+"  ");
+	this.texteG.parent(this.contenant);
+	this.gliss.parent(this.contenant);
+	this.valeur.parent(this.contenant);
+}
+
+function nouvelleGlissiereValeur(texte,minG,maxG,valG,pasG) {
+	var maGliss = new Glissiere(texte, minG, maxG, valG, pasG);
+	maGliss.gliss.input(function () {maGliss.valeur.html("  "+traiterNombre(maGliss.gliss.value())+"  ")});
+	return maGliss;
+}
 
 //------------------------------------------------------------------
 // Pour DEBUG
 
-function faireDebug(nom,valeur) {
-	if(!(typeof(valeur) === 'function')) {messageERREUR("Le paramètre    "+nom+"    du bloc 'Faire' doit être une fonction.");}
-	valeur();
-}
 function faireDelaiDebug(nom,valeur,delai) {
-	if(!(typeof(valeur) === 'function')) {messageERREUR("Le paramètre    "+nom+"    du bloc 'Faire ... dans ... secondes' doit être une fonction.");}
+	if(!(typeof(valeur) === 'function')) {messageERREUR("Le paramètre    <i>"+nom+"</i>    du bloc <b>Faire ... dans ... secondes</b> doit être une fonction.");}
 	setTimeout(valeur,delai*1000);
 }
 function valeurDebug(nom,valeur) {
-	if(!(typeof(valeur) === 'object')) {messageERREUR("Le paramètre    "+nom+"    du bloc 'valeur de' doit être un objet (entrée ou glissière).");}
+	if(!(typeof(valeur) === 'object')) {messageERREUR("Le paramètre    <i>"+nom+"</i>    du bloc <b>valeur de</b> doit être un objet (entrée ou glissière).");}
+	if (valeur instanceof EntreeNommee) {valeur=valeur.entree;}
+	if (valeur instanceof Glissiere) {valeur=valeur.gliss;}
+	//if (!(["INPUT","SELECT"].includes(valeur.elt.tagName)))  {messageERREUR("Le paramètre    "+nom+"    du bloc 'valeur de' doit être une entrée, une glissière ou un menu local.");}
 	return traiterNombre(valeur.value());
 }
 function contenuDebug(nom,valeur) {
-	if(!(typeof(valeur) === 'object')) {messageERREUR("Le paramètre    "+nom+"    du bloc 'contenu de' doit être un objet (texte, paragraphe ou titre).");}
+	if(!(typeof(valeur) === 'object')) {messageERREUR("Le paramètre    <i>"+nom+"</i>    du bloc <b>contenu de</b> doit être un objet (texte, paragraphe ou titre).");}
+	if (valeur instanceof EntreeNommee) {valeur=valeur.nom;}
+	if (valeur instanceof Glissiere) {valeur=valeur.texteG;}
 	return valeur.html();
 }
 function etatCaseDebug(nom,valeur) {
-	if(!(typeof(valeur) === 'object')) {messageERREUR("Le paramètre    "+nom+"    du bloc 'contenu de' doit être un objet (case à cocher).");}
+	if(!(typeof(valeur) === 'object')) {messageERREUR("Le paramètre    <i>"+nom+"</i>    du bloc <b>état de la case à cocher</b> doit être un objet (case à cocher).");}
 	return valeur.checked();
 }
 function cacherObjetDebug(nom,valeur) {
-	if(!(typeof(valeur) === 'object')) {messageERREUR("Le paramètre    "+nom+"    du bloc 'Cacher l'objet' doit être un objet.");}
+	if(!(typeof(valeur) === 'object')) {messageERREUR("Le paramètre    <i>"+nom+"</i>    du bloc <b>Cacher l'objet</b> doit être un objet.");}
+	if (valeur instanceof EntreeNommee) {valeur=valeur.contenant;}
+	if (valeur instanceof Glissiere) {valeur=valeur.contenant;}
 	valeur.hide();
 }
 function montrerObjetDebug(nom,valeur) {
-	if(!(typeof(valeur) === 'object')) {messageERREUR("Le paramètre    "+nom+"    du bloc 'Montrer l'objet' doit être un objet.");}
+	if(!(typeof(valeur) === 'object')) {messageERREUR("Le paramètre    <i>"+nom+"</i>    du bloc <b>Montrer l'objet</b> doit être un objet.");}
+	if (valeur instanceof EntreeNommee) {valeur=valeur.contenant;}
+	if (valeur instanceof Glissiere) {valeur=valeur.contenant;}
 	valeur.show();
 }
 function fixeValeurDebug(nom,objet,valeur) {
 	if(!(typeof(objet) === 'object')) {
-		messageERREUR("Le paramètre    "+nom+"    du bloc 'Fixe la valeur de ... à ...' doit être un objet  (entrée ou glissière).");}
+		messageERREUR("Le paramètre    <i>"+nom+"</i>    du bloc <b>Fixe la valeur de ... à ...</b> doit être un objet  (entrée ou glissière).");}
+	if (objet instanceof EntreeNommee) {objet=objet.entree;}
+	if (objet instanceof Glissiere) {objet.valeur.html("  "+valeur+"  "); objet=objet.gliss;}
 	objet.value(valeur);
 	//try {objet.value(valeur);} catch(erreur) {messageERREUR("L'objet    "+nom+"    du bloc 'Fixe la valeur de ... à ...' n'est ni une entrée, ni une glissière).");}
 }
 function fixeContenuDebug(nom,objet,contenu) {
 	if(!(typeof(objet) === 'object')) {
-		messageERREUR("Le paramètre    "+nom+"    du bloc 'Fixe le contenu de ... à ...' doit être un objet  (texte, paragraphe ou titre).");}
+		messageERREUR("Le paramètre    <i>"+nom+"</i>    du bloc <b>Fixe le contenu de ... à ...</b> doit être un objet  (texte, paragraphe ou titre).");}
+	if (objet instanceof EntreeNommee) {objet=objet.nom; contenu=contenu+"   "}
+	if (objet instanceof Glissiere) {objet=objet.texteG;}
 	objet.html(contenu);
+}
+function contenuZoneTexteDebug(nomZone,zone,nomContenu,contenu) {
+	if(!(typeof(zone) === 'object')) {
+		messageERREUR("Le paramètre    <i>"+nomZone+"</i>    du bloc <b>Fixe le contenu de la zone de texte ...</b> doit être un objet zone de texte.");}
+	if(!(typeof(contenu) === 'object')) {
+		messageERREUR("Le paramètre    <i>"+nomContenu+"</i>    du bloc <b>Fixe le contenu de la zone de texte ...</b> doit être une liste.");}
+	var texte="",lien="";
+	for(var k=0;k<contenu.length;k++) {
+		texte = texte+lien+contenu[k]; lien="\n";
+	}
+	zone.html(texte);
+}
+function siClicDebug(nomObjet, objet, nomProc, proc) {
+	if(!(typeof(objet) === 'object')) {
+		messageERREUR("Le paramètre    <i>"+nomObjet+"</i>    du bloc <b>si clic sur ...</b> doit être un objet.");}
+	if(!(typeof(proc) === 'function')) {
+		messageERREUR("Le paramètre    <i>"+nomProc+"</i>    du bloc <b>si clic sur ...</b> doit être une fonction.");}
+	if (objet instanceof EntreeNommee) {objet=objet.contenant;}
+	if (objet instanceof Glissiere) {objet=objet.contenant;}
+	objet.mouseClicked(proc);
+}
+function siChangementDebug(nomObjet, objet, nomProc, proc) {
+	if(!(typeof(objet) === 'object')) {
+		messageERREUR("Le paramètre    <i>"+nomObjet+"</i>    du bloc <b>si l'état de ... change ...</b> doit être un objet (glissière ou case à cocher).");}
+	if(!(typeof(proc) === 'function')) {
+		messageERREUR("Le paramètre    <i>"+nomProc+"</i>    du bloc <b>si l'état de ... change ...</b> doit être une fonction.");}
+	if (objet instanceof Glissiere) {objet=objet.gliss;}
+	objet.changed(proc);
+}
+function assignerParentDebug(nomObjet,objet,nomParent,par) {
+	if(!(typeof(objet) === 'object')) {
+		messageERREUR("Le paramètre    <i>"+nomObjet+"</i>    du bloc <b>... aura ... pour parent</b> doit être un objet.");}
+	if(!(typeof(par) === 'object')) {
+		messageERREUR("Le paramètre    <i>"+nomParent+"</i>    du bloc <b>... aura ... pour parent</b> doit être unobjet.");}
+	if (objet instanceof EntreeNommee) {objet=objet.contenant;}
+	if (objet instanceof Glissiere) {objet=objet.contenant;}
+	if (par instanceof EntreeNommee) {par=par.contenant;}
+	if (par instanceof Glissiere) {par=par.contenant;}
+	objet.parent(par);
+}
+function stylerObjetDebug(nom, objet, propriete, valeur) {
+	if(!(typeof(objet) === 'object')) {
+		messageERREUR("Le paramètre    <i>"+nom+"</i>    du bloc <b>Pour l'objet ... style ...</b> doit être un objet.");}
+	if (objet instanceof EntreeNommee) {objet=objet.entree;}
+	if (objet instanceof Glissiere) {objet=objet.gliss;}
+	objet.style(propriete,valeur);
+}
+function positionnerObjetDebug(nom,objet,x,y){ // permet d'inclure les tableaux
+	if(!(typeof(objet) === 'object')) {
+		messageERREUR("Le paramètre    <i>"+nom+"</i>    du bloc <b>Placer l'élément ... en position ...</b> doit être un objet.");}
+	for(var k=0; k<listeTableauxListesAB.length;k=k+2){
+		if(listeTableauxListesAB[k]==objet) {objet=listeTableauxListesAB[k+1];}
+	}
+	if (objet instanceof EntreeNommee) {objet=objet.contenant;}
+	if (objet instanceof Glissiere) {objet=objet.contenant;}
+	objet.position(x,y);
+	if ((objet == canvasP5visuel) && (canvasP5visuel != null)) {graphicsTortue.position(x,y);}
 }
