@@ -670,16 +670,14 @@ function contenu_du_tableau_des_listes(listesAafficher) {
 //------------------------------------------------------------------
 function messageERREUR(message) {  // *** outil de debug AB ***
 	console.log("p5Visuel : "+message);
-	//message = "Message d'erreur\n*******************\n"+message;
-	//if (stopperApresUneErreur) {window.alert(message); info_debug(); fonctionNonDefinieP5Visuel();}
 	if (stopperApresUneErreur) {
-		try { afficherDialogueModalAB("Message d'erreur",message,"","",0,0); }
-		catch(erreur) { message = "Message d'erreur\n*******************\n"+message; window.alert(message); } 
+		try { afficherDialogueModalABint("Message d'erreur",message,"","",0,0); }
+		catch(erreur) { message = "Message d'erreur\n**********************\n"+message; window.alert(message); } 
 		info_debug(); fonctionNonDefinieP5Visuel();
 	}
 }
 
-function afficherDialogueModalAB(titre,messageAvant, srcImage, messageApres, largeur, marge) {
+function afficherDialogueModalABint(titre,messageAvant, srcImage, messageApres, largeur, marge) {
 	if (largeur == 0) {largeur = 800;}
 	document.getElementById("contenantModal").style.width = largeur+"px";
 	if (marge == 0) {marge = 200;}
@@ -690,6 +688,11 @@ function afficherDialogueModalAB(titre,messageAvant, srcImage, messageApres, lar
 	else {document.getElementById("messageModalImage").src = srcImage; document.getElementById("messageModalParaImg").style.display="block";}
 	document.getElementById("messageModalApres").innerHTML = messageApres;
 	window.location="#messageModalAB";
+}
+
+function afficherDialogueModalAB(titre,messageAvant, srcImage, messageApres, largeur, marge) {
+	try {afficherDialogueModalABint(titre,messageAvant, srcImage, messageApres, largeur, marge);} 
+	catch(error) {window.alert("Message d'erreur\n**********************\n"+"Ancienne version de p5Visuel\ndans laquelle le bloc 'Fenêtre modale...' n'était pas défini.");}
 }
 
 
