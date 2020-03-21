@@ -16,8 +16,8 @@
 goog.require('Blockly.Blocks');
 goog.require('Blockly');
 
-var prefixeDOCU = "";
-//var prefixeDOCU = "https://andreboileau.github.io/p5Visuel/";
+//var prefixeDOCU = "";
+var prefixeDOCU = "https://andreboileau.github.io/p5Visuel/";
 
 Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 {
