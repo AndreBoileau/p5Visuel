@@ -16,6 +16,11 @@
 goog.require('Blockly.Blocks');
 goog.require('Blockly');
 
+var prefixe = "";
+
+function changerPrefixeDocu(chemin) {prefixe = chemin;} 
+// prefixe =  ""   OU   "https://andreboileau.github.io/p5Visuel/"
+
 
 
 Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
@@ -55,7 +60,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": 120,
   "tooltip": "Répétition avec test à la fin",
-  "helpUrl": "p5BLOCS/DOCU/adaptations.html#boucleFin"
+  "helpUrl": prefixe+prefixe+"p5BLOCS/DOCU/adaptations.html#boucleFin"
 },
 //LISTES (modification de Blockly
 // Obtenir valeur de liste
@@ -78,7 +83,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "output": null,
   "colour": 260,
   "tooltip": "Retourne un élément d'une liste",
-  "helpUrl": "p5BLOCS/DOCU/adaptations.html#obtenirListe"
+  "helpUrl": prefixe+prefixe+"p5BLOCS/DOCU/adaptations.html#obtenirListe"
 },
 // Changer valeur de liste
 {
@@ -106,7 +111,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": 260,
   "tooltip": "Change un élément d'une liste",
-  "helpUrl": "p5BLOCS/DOCU/adaptations.html#definirListe"
+  "helpUrl": prefixe+prefixe+"p5BLOCS/DOCU/adaptations.html#definirListe"
 },
 // Duplicata d'une liste
 {
@@ -123,7 +128,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "output": "Array",
   "colour": 260,
   "tooltip": "Retourne une copie de la liste. Les changements apportés à la copie n'affectent pas la liste originale.",
-  "helpUrl": "p5BLOCS/DOCU/adaptations.html#duplicata"
+  "helpUrl": prefixe+prefixe+"p5BLOCS/DOCU/adaptations.html#duplicata"
 },
 //Nouveaux blocs sur lises
 {
@@ -153,7 +158,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "output": "Array",
   "colour": 260,
   "tooltip": "La liste initiale n'est pas modifiée",
-  "helpUrl": "p5BLOCS/DOCU/adaptations.html#enleverPD"
+  "helpUrl": prefixe+prefixe+"p5BLOCS/DOCU/adaptations.html#enleverPD"
 },
 {
   "type": "listes_ajouter_extremites",
@@ -187,7 +192,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "output": "Array",
   "colour": 260,
   "tooltip": "La liste initiale n'est pas modifiée",
-  "helpUrl": "p5BLOCS/DOCU/adaptations.html#ajouterPD"
+  "helpUrl": prefixe+prefixe+"p5BLOCS/DOCU/adaptations.html#ajouterPD"
 },
 {
   "type": "listes_element_extremites",
@@ -220,7 +225,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "output": null,
   "colour": 260,
   "tooltip": "Retourne l'élément décrit",
-  "helpUrl": "p5BLOCS/DOCU/adaptations.html#obtenirPD"
+  "helpUrl": prefixe+prefixe+"p5BLOCS/DOCU/adaptations.html#obtenirPD"
 },
 {
   "type": "listes_ajouter",
@@ -245,7 +250,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "output": "Array",
   "colour": 260,
   "tooltip": "Pour insérer un élément dans une liste",
-  "helpUrl": "p5BLOCS/DOCU/adaptations.html#ajouter"
+  "helpUrl": prefixe+prefixe+"p5BLOCS/DOCU/adaptations.html#ajouter"
 },
 {
   "type": "listes_enlever",
@@ -266,7 +271,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "output": "Array",
   "colour": 260,
   "tooltip": "La liste initiale n'est pas modifiée",
-  "helpUrl": "p5BLOCS/DOCU/adaptations.html#enlever"
+  "helpUrl": prefixe+prefixe+"p5BLOCS/DOCU/adaptations.html#enlever"
 },
 {
   "type": "listes_empiler",
@@ -287,7 +292,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#2FC1FF",
   "tooltip": "Attention : ce bloc modifie la liste",
-  "helpUrl": "p5BLOCS/DOCU/donnees.html#empiler"
+  "helpUrl": prefixe+prefixe+"p5BLOCS/DOCU/donnees.html#empiler"
 },
 {
   "type": "listes_depiler",
@@ -303,7 +308,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "output": null,
   "colour": "#2FC1FF",
   "tooltip": "Attention : ce bloc modifie la liste",
-  "helpUrl": "p5BLOCS/DOCU/donnees.html#depiler"
+  "helpUrl": prefixe+prefixe+"p5BLOCS/DOCU/donnees.html#depiler"
 },
 {
   "type": "listes_afficher_liste_depart",
@@ -374,7 +379,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#2FC1FF",
   "tooltip": "Premier affichage d'une liste",
-  "helpUrl": "p5BLOCS/DOCU/donnees.html#tableau"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/donnees.html#tableau"
 },
 {
   "type": "listes_afficher_liste",
@@ -396,7 +401,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#2FC1FF",
   "tooltip": "Le format a été via le bloc <i>Créer un tableau pour afficher la liste...</i>",
-  "helpUrl": "p5BLOCS/DOCU/donnees.html#afficher"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/donnees.html#afficher"
 },
 {
   "type": "listes_afficher_listes_depart",
@@ -467,7 +472,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#2FC1FF",
   "tooltip": "On doit fournir la liste des listes à afficher",
-  "helpUrl": "p5BLOCS/DOCU/donnees.html#tableauMult"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/donnees.html#tableauMult"
 },
 {
   "type": "listes_afficher_listes",
@@ -489,7 +494,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#2FC1FF",
   "tooltip": "Le format a été via le bloc <i>Créer un tableau pour afficher plusieurs listes...</i>",
-  "helpUrl": "p5BLOCS/DOCU/donnees.html#afficherMult"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/donnees.html#afficherMult"
 },
 {
   "type": "listes_positionner",
@@ -515,7 +520,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#2FC1FF",
   "tooltip": "On parle du tableau servant à afficher une ou plusieurs listes",
-  "helpUrl": "p5BLOCS/DOCU/donnees.html#position"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/donnees.html#position"
 },
 //----------------------
 //Programmation
@@ -536,7 +541,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#00AA00",
   "tooltip": "Un commentaire est un texte utile au programmeur. Il n'est jamais exécuté.",
-  "helpUrl": "p5BLOCS/DOCU/programmation.html#commentaire"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/programmation.html#commentaire"
 },
 // Faire
 {
@@ -554,7 +559,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#00AA00",
   "tooltip": "Permet d'oublier la valeur retournée par une fonction.",
-  "helpUrl": "p5BLOCS/DOCU/programmation.html#faire"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/programmation.html#faire"
 },
 // Faire après délai
 {
@@ -577,7 +582,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#00AA00",
   "tooltip": "Très peu utilisé. N'utiliser que si vous savez ce que vous faites.",
-  "helpUrl": "p5BLOCS/DOCU/programmation.html#faireDelai"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/programmation.html#faireDelai"
 },
 //----------------------
 //Variable locale
@@ -596,7 +601,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#00AA00",
   "tooltip": "Déclare une variable locale à une fonction.",
-  "helpUrl": "p5BLOCS/DOCU/programmation.html#varLocale"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/programmation.html#varLocale"
 },
 // Block pour boucle 'for' (croissant).
   {
@@ -637,7 +642,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     "nextStatement": null,
     "colour": 120,
     "tooltip": "Boucle avec compteur croissant.",
-    "helpUrl": "p5BLOCS/DOCU/adaptations.html#boucleAsc",
+    "helpUrl": prefixe+"p5BLOCS/DOCU/adaptations.html#boucleAsc",
     "extensions": [
       "contextMenu_newGetVariableBlock",
       "controls_for_tooltip"
@@ -682,7 +687,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     "nextStatement": null,
     "colour": 120,
     "tooltip": "Boucle avec compteur décroissant.",
-    "helpUrl": "p5BLOCS/DOCU/adaptations.html#boucleDesc",
+    "helpUrl": prefixe+"p5BLOCS/DOCU/adaptations.html#boucleDesc",
     "extensions": [
       "contextMenu_newGetVariableBlock",
       "controls_for_tooltip"
@@ -703,7 +708,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#00AA00",
   "tooltip": "Termine l'exécution de la fonction courante, en retournant éventuellement une valeur.",
-  "helpUrl": "p5BLOCS/DOCU/programmation.html#quitter"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/programmation.html#quitter"
 }, 
 //tester si chaine est un nombre
 {
@@ -719,7 +724,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "output": "Boolean",
   "colour": "#00AA00",
   "tooltip": "Retourne 'vrai' si c'est un nombre, et 'faux' sinon.",
-  "helpUrl": "p5BLOCS/DOCU/programmation.html#nombreP"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/programmation.html#nombreP"
 },
 //convertir une chaîne en nombre
 {
@@ -735,7 +740,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "output": "Number",
   "colour": "#00AA00",
   "tooltip": "Retourne le nombre calculé, ou 'NaN' en cas d erreur",
-  "helpUrl": "p5BLOCS/DOCU/programmation.html#evaluer"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/programmation.html#evaluer"
 },
 //conversion en radians
 {
@@ -751,7 +756,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "output": "Number",
   "colour": "#00AA00",
   "tooltip": "Conversion de degrés à radians.",
-  "helpUrl": "p5BLOCS/DOCU/programmation.html#radians"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/programmation.html#radians"
 },
 //conversion en degrés
 {
@@ -767,7 +772,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "output": "Number",
   "colour": "#00AA00",
   "tooltip": "Conversion de radians à degrés.",
-  "helpUrl": "p5BLOCS/DOCU/programmation.html#degres"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/programmation.html#degres"
 },
 //Clic sur bouton de la souris
 {
@@ -776,7 +781,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "output": "Boolean",
   "colour": "#00AA00",
   "tooltip": "Retourne 'vrai' si c'est le bouton de la souris est enfoncé, et 'faux' sinon.",
-  "helpUrl": "p5BLOCS/DOCU/programmation.html#boutonPresse"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/programmation.html#boutonPresse"
 },
 //Retourne l'ancienne position en X de la souris
 {
@@ -785,7 +790,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "output": "Number",
   "colour": "#00AA00",
   "tooltip": "",
-  "helpUrl": "p5BLOCS/DOCU/"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/"
 },
 //Retourne l'ancienne position en Y de la souris
 {
@@ -794,7 +799,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "output": "Number",
   "colour": "#00AA00",
   "tooltip": "",
-  "helpUrl": "p5BLOCS/DOCU/"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/"
 },
 //Retourne la position en X de la souris
 {
@@ -803,7 +808,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "output": "Number",
   "colour": "#00AA00",
   "tooltip": "Retourne la position en X de la souris, 0 correspondant à la gauche du canevas.",
-  "helpUrl": "p5BLOCS/DOCU/programmation.html#sourisX"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/programmation.html#sourisX"
 },
 //Retourne la position en Y de la souris
 {
@@ -812,7 +817,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "output": "Number",
   "colour": "#00AA00",
   "tooltip": "Retourne la position en X de la souris, 0 correspondant au haut du canevas.",
-  "helpUrl": "p5BLOCS/DOCU/programmation.html#sourisY"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/programmation.html#sourisY"
 },
 //remplacement
 {
@@ -839,7 +844,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "output": "String",
   "colour": "#00AA00",
   "tooltip": "Dans un texte, remplacer toutes les occurence d'un bloc de texte par un autre.",
-  "helpUrl": "p5BLOCS/DOCU/programmation.html#remplacer"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/programmation.html#remplacer"
 },
 //substitution
 {
@@ -861,7 +866,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "output": "String",
   "colour": "#00AA00",
   "tooltip": "Dans un texte, substituer les expressions @1, @2, ... par des valeurs prises dans une liste.",
-  "helpUrl": "p5BLOCS/DOCU/programmation.html#substituer"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/programmation.html#substituer"
 },
 //code mathématique
 {
@@ -877,7 +882,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "output": "String",
   "colour": "#00AA00",
   "tooltip": "Conversion d'une chaîne AsciiMath en une forme reconnaissable par MathJax. MathJax n'en fait pas encore le rendu.",
-  "helpUrl": "p5BLOCS/DOCU/programmation.html#codeMath"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/programmation.html#codeMath"
 },
 //Crée les formules mathématiques
 {
@@ -888,7 +893,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#00AA00",
   "tooltip": "Demande à MathJax de faire le rendu de toutes les expressions mathématiques de la page.",
-  "helpUrl": "p5BLOCS/DOCU/programmation.html#finaliserMaths"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/programmation.html#finaliserMaths"
 },
 // Choix des axes du canevas : info (par défaut) ou math
 {
@@ -914,7 +919,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#00AA00",
   "tooltip": "L'axe des y pointe vers le bas (type informatique) ou vers le haut (type mathématique)",
-  "helpUrl": "p5BLOCS/DOCU/programmation.html#axes"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/programmation.html#axes"
 },
 // try ...  catch ...
 {
@@ -940,7 +945,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#00AA00",
   "tooltip": "Pour gérer l'exécution en cas d'erreur",
-  "helpUrl": "p5BLOCS/DOCU/programmation.html#essai_erreur"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/programmation.html#essai_erreur"
 },
 //Enregistrer la liste %1
 {
@@ -958,7 +963,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#2FC1FF",
   "tooltip": "Enregistrer la liste spécifiée.",
-  "helpUrl": "p5BLOCS/DOCU/donnees.html#enregistrer"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/donnees.html#enregistrer"
 },
 //Ramener une liste, puis faire %1 quand c'est prêt
 {
@@ -976,7 +981,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#2FC1FF",
   "tooltip": "Enregistrer la liste spécifiée.",
-  "helpUrl": "p5BLOCS/DOCU/donnees.html#charger"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/donnees.html#charger"
 },
 //Retourne la liste chargée
 {
@@ -985,7 +990,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "output": "Array",
   "colour": "#2FC1FF",
   "tooltip": "Retourne la liste venant d'être chargée",
-  "helpUrl": "p5BLOCS/DOCU/donnees.html#retournerListe"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/donnees.html#retournerListe"
 },
 //p5.js
 //----------------------
@@ -1005,7 +1010,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#FF0066",
   "tooltip": "Spécifie une marge pour toute la page web.",
-  "helpUrl": "p5BLOCS/DOCU/p5js.html#margeG"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/p5js.html#margeG"
 },
 // Centrer les objets web de la page d'exécution
 {
@@ -1023,7 +1028,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#FF0066",
   "tooltip": "Pour centrer les objets web dans la page d'exécution.\nUne largeur de zéro centre par rapport à la largeur (variable) de la fenêtre.",
-  "helpUrl": "p5BLOCS/DOCU/p5js.html#centrerP5"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/p5js.html#centrerP5"
 },
 //Créer canevas
 {
@@ -1046,7 +1051,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#FF0066",
   "tooltip": "Crée le canevas, et place la référence à cet objet dans la variable 'canevas'.",
-  "helpUrl": "p5BLOCS/DOCU/p5js.html#dimCanvas"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/p5js.html#dimCanvas"
 },
 // Créer zone graphique
 {
@@ -1074,7 +1079,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#FF0066",
   "tooltip": "Crée une zone graphique et la rend 'active'.",
-  "helpUrl": "p5BLOCS/DOCU/p5js.html#zoneGraphique"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/p5js.html#zoneGraphique"
 },
 // Choisir zone graphique
 {
@@ -1092,7 +1097,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#FF0066",
   "tooltip": "Rendre 'active' la zone graphique choisie.",
-  "helpUrl": "p5BLOCS/DOCU/p5js.html#choixZoneGraphique"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/p5js.html#choixZoneGraphique"
 },
 //Retourne la largeur du canevas (width)
 {
@@ -1101,7 +1106,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "output": "Number",
   "colour": "#FF0066",
   "tooltip": "Retourne la largeur du graphique.",
-  "helpUrl": "p5BLOCS/DOCU/p5js.html#largeurCanvas"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/p5js.html#largeurCanvas"
 },
 //Retourne la hauteur du canevas (height)
 {
@@ -1110,7 +1115,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "output": "Number",
   "colour": "#FF0066",
   "tooltip": "Retourne la hauteur du graphique.",
-  "helpUrl": "p5BLOCS/DOCU/p5js.html#hauteurCanvas"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/p5js.html#hauteurCanvas"
 },
 //enregistre l'image du canevas
 {
@@ -1121,7 +1126,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#FF0066",
   "tooltip": "Enregistre le canevas en format 'png'.",
-  "helpUrl": "p5BLOCS/DOCU/p5js.html#enregistrerCanvas"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/p5js.html#enregistrerCanvas"
 },
 //noCanvas
 {
@@ -1132,7 +1137,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#FF0066",
   "tooltip": "",
-  "helpUrl": "p5BLOCS/DOCU/p5js.html#sansCanvas"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/p5js.html#sansCanvas"
 },
 //noLoop
 {
@@ -1143,7 +1148,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#FF0066",
   "tooltip": "Empêche la fonction 'actions en boucle' de s'exécuter plus d'une fois.",
-  "helpUrl": "p5BLOCS/DOCU/p5js.html#drawSansBoucle"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/p5js.html#drawSansBoucle"
 },
 // vitesse de boucle "draw" (en pourcentage)
 {
@@ -1161,7 +1166,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#FF0066",
   "tooltip": "Spécifie à quelle fréquence la fonction 'actions en boucle' sera appelée (maximum : 60 fois par secondes).",
-  "helpUrl": "p5BLOCS/DOCU/p5js.html#vitesseDraw"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/p5js.html#vitesseDraw"
 },
 // fenêtre modale
 {
@@ -1204,7 +1209,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#FF0066",
   "tooltip": "Une fenêtre modale montre de l'information tout en prenant le contrôle du clavier et de l'écran.",
-  "helpUrl": "p5BLOCS/DOCU/p5js.html#fenetreModale"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/p5js.html#fenetreModale"
 },
 //----------------------
 //Expression   --> modifié et à tester : output est null au lieu de "Number"
@@ -1221,7 +1226,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "output": null,
   "colour": "#FF0066",
   "tooltip": "Évalue une expression JavaScript. À n'utiliser que si vous savez ce que vous faites.",
-  "helpUrl": "p5BLOCS/DOCU/p5js.html#expressionP5"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/p5js.html#expressionP5"
 },
 //----------------------
 //Commande
@@ -1240,7 +1245,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#FF0066",
   "tooltip": "Exécute une commande JavaScript. À n'utiliser que si vous savez ce que vous faites.",
-  "helpUrl": "p5BLOCS/DOCU/p5js.html#commandeP5"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/p5js.html#commandeP5"
 },
 //programme spécial (sans fonctions de base)
 {
@@ -1256,7 +1261,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#FF0066",
   "tooltip": "Permet de déplacer les fonctions de base dans du code JavaScript.",
-  "helpUrl": "p5BLOCS/DOCU/p5js.html#progSpecial"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/p5js.html#progSpecial"
 },
 //----------------------
 //Page web d'exécution
@@ -1275,7 +1280,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#FF0066",
   "tooltip": "Permet au programme p5Visuel de s'exécuter dans une page web choisie par le programmeur.",
-  "helpUrl": "p5BLOCS/DOCU/p5js.html#definirPageWebExecution"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/p5js.html#definirPageWebExecution"
 },
 //***********************************************************
 //Couleurs
@@ -1296,7 +1301,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": 15,
   "tooltip": "Colore le fond de la page web avec la couleur spécifiée.",
-  "helpUrl": "p5BLOCS/DOCU/apparence.html#fondPageWeb"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/apparence.html#fondPageWeb"
 },
 // couleur de fond --> background(r,g,b)
 {
@@ -1324,7 +1329,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": 15,
   "tooltip": "",
-  "helpUrl": "p5BLOCS/DOCU/apparence.html#fond"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/apparence.html#fond"
 },
 // couleur du trait --> stroke(r,g,b)
 {
@@ -1352,7 +1357,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": 15,
   "tooltip": "",
-  "helpUrl": "p5BLOCS/DOCU/apparence.html#trait"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/apparence.html#trait"
 },
 // couleur de remplissage --> fill(r,g,b)
 {
@@ -1385,7 +1390,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": 15,
   "tooltip": "",
-  "helpUrl": "p5BLOCS/DOCU/apparence.html#remplissage"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/apparence.html#remplissage"
 },
 //retourne couleur associée
 {
@@ -1417,7 +1422,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "output": "String",
   "colour": 15,
   "tooltip": "Retourne une couleur définie par son format RVB.",
-  "helpUrl": "p5BLOCS/DOCU/apparence.html#couleur"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/apparence.html#couleur"
 },
 //couleur du fond
 {
@@ -1435,7 +1440,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": 15,
   "tooltip": "Efface le canevas en le remplissant avec la couleur spécifiée.",
-  "helpUrl": "p5BLOCS/DOCU/apparence.html#fond"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/apparence.html#fond"
 },
 //couleur du trait
 {
@@ -1453,7 +1458,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": 15,
   "tooltip": "Spécifie la couleur des tracés futurs.",
-  "helpUrl": "p5BLOCS/DOCU/apparence.html#trait"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/apparence.html#trait"
 },
 //couleur du remplissage
 {
@@ -1471,7 +1476,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": 15,
   "tooltip": "Spécifie la couleur des remplissages futurs.",
-  "helpUrl": "p5BLOCS/DOCU/apparence.html#remplissage"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/apparence.html#remplissage"
 },
 //Fixer la taille du crayon
 {
@@ -1489,7 +1494,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": 15,
   "tooltip": "Spécifie l'épaisseur des traits.",
-  "helpUrl": "p5BLOCS/DOCU/apparence.html#tailleCrayon"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/apparence.html#tailleCrayon"
 },
 //Rendre la zone graphique courante transparente 
 {
@@ -1500,7 +1505,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": 15,
   "tooltip": "La zone graphique courante sera transparente.",
-  "helpUrl": "p5BLOCS/DOCU/apparence.html#zoneTransparente"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/apparence.html#zoneTransparente"
 },
 //***********************************************************
 //Objets web
@@ -1527,7 +1532,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#CC0000",
   "tooltip": "Crée un objet 'texte', sans faire de saut de ligne.",
-  "helpUrl": "p5BLOCS/DOCU/objetsWeb.html#texte"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/objetsWeb.html#texte"
 },
 
 
@@ -1562,7 +1567,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#CC0000",
   "tooltip": "Crée un objet 'zone de texte' dont les dimensions sont spécifiées.",
-  "helpUrl": "p5BLOCS/DOCU/objetsWeb.html#zoneTexte"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/objetsWeb.html#zoneTexte"
 },
 
 // Créer une entrée %1 de contenu initial %2 --- Pour fins de compatibilité
@@ -1586,7 +1591,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#CC0000",
   "tooltip": "Crée un objet 'entrée' dans lequel l'utilisateur pourra entrer du texte ou un nombre.",
-  "helpUrl": "p5BLOCS/DOCU/objetsWeb.html#entree"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/objetsWeb.html#entree"
 },
 
 // Créer une entrée %1 de contenu initial %2
@@ -1610,7 +1615,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#CC0000",
   "tooltip": "Crée un objet 'entrée' dans lequel l'utilisateur pourra entrer du texte ou un nombre.",
-  "helpUrl": "p5BLOCS/DOCU/objetsWeb.html#entree"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/objetsWeb.html#entree"
 },
 
 // Créer une entrée %1 de nom %2 et de contenu initial %3
@@ -1639,7 +1644,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#CC0000",
   "tooltip": "Crée un objet 'entrée' dans lequel l'utilisateur pourra entrer du texte ou un nombre.",
-  "helpUrl": "p5BLOCS/DOCU/objetsWeb.html#entreePlus"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/objetsWeb.html#entreePlus"
 },
 
 // Créer glissière
@@ -1678,7 +1683,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#CC0000",
   "tooltip": "Crée un objet 'glissière' dotée des caractéristiques spécifiées.",
-  "helpUrl": "p5BLOCS/DOCU/objetsWeb.html#glissiere"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/objetsWeb.html#glissiere"
 },
 // Créer glissière valeur
 {
@@ -1721,7 +1726,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#CC0000",
   "tooltip": "Crée un objet 'glissière' dotée des caractéristiques spécifiées.",
-  "helpUrl": "p5BLOCS/DOCU/objetsWeb.html#glissierePlus"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/objetsWeb.html#glissierePlus"
 },
 //Créer bouton
 {
@@ -1744,7 +1749,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#CC0000",
   "tooltip": "Crée un objet 'bouton'.",
-  "helpUrl": "p5BLOCS/DOCU/objetsWeb.html#bouton"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/objetsWeb.html#bouton"
 },
 //Créer un menu local %1 de contenu %2
 {
@@ -1767,7 +1772,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#CC0000",
   "tooltip": "Crée un objet 'menu local' dont le contenu est spécifié.",
-  "helpUrl": "p5BLOCS/DOCU/objetsWeb.html#menuLocal"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/objetsWeb.html#menuLocal"
 },
 //Création d'une case à cocher
 {
@@ -1795,7 +1800,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#CC0000",
   "tooltip": "",
-  "helpUrl": "p5BLOCS/DOCU/objetsWeb.html#caseAcocher"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/objetsWeb.html#caseAcocher"
 },
 //Créer paragraphe
 {
@@ -1818,7 +1823,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#CC0000",
   "tooltip": "Crée un objet 'paragraphe', avec les sauts de lignes appropriés.",
-  "helpUrl": "p5BLOCS/DOCU/objetsWeb.html#paragraphe"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/objetsWeb.html#paragraphe"
 },
 //Créer titre
 {
@@ -1841,7 +1846,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#CC0000",
   "tooltip": "Crée un objet 'titre', avec les sauts de lignes appropriés.",
-  "helpUrl": "p5BLOCS/DOCU/objetsWeb.html#titre"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/objetsWeb.html#titre"
 },
 // Insérer un saut de ligne
 {
@@ -1859,7 +1864,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#CC0000",
   "tooltip": "Crée un objet 'saut de ligne'. Utile pour séparer les objets non dotés de sauts de lignes automatiques.",
-  "helpUrl": "p5BLOCS/DOCU/objetsWeb.html#sautLigne"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/objetsWeb.html#sautLigne"
 },
 // Insérer un espacement de pixels
 {
@@ -1882,7 +1887,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#CC0000",
   "tooltip": "Crée un espacement entre deux objets.",
-  "helpUrl": "p5BLOCS/DOCU/objetsWeb.html#espacement"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/objetsWeb.html#espacement"
 },
 //Créer élément
 {
@@ -1910,7 +1915,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#CC0000",
   "tooltip": "Si vous savez ce que vous faites, ce bloc vous permettra de créer certains types d'objets web non définis dans p5Visuel.",
-  "helpUrl": "p5BLOCS/DOCU/objetsWeb.html#elementGenerique"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/objetsWeb.html#elementGenerique"
 },
 //Retourner un lien
 {
@@ -1937,7 +1942,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "output": null,
   "colour": "#CC0000",
   "tooltip": "Retourne un lien HTML qu'on peut ensuite insérer dans du texte.",
-  "helpUrl": "p5BLOCS/DOCU/objetsWeb.html#lien"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/objetsWeb.html#lien"
 },
 //objet correspondant à ID
 {
@@ -1953,7 +1958,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "output": "String",
   "colour": "#CC0000",
   "tooltip": "Retourne une référence à un objet défini dans une page web qui n'a pas été créée uniquement avec p5Visuel.",
-  "helpUrl": "p5BLOCS/DOCU/objetsWeb.html#elementViaID"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/objetsWeb.html#elementViaID"
 },
 // Charger une image simple
 {
@@ -1976,7 +1981,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#CC0000",
   "tooltip": "Charge en mémoire un fichier image simple. Elle apparaît alors sur notre page web.",
-  "helpUrl": "p5BLOCS/DOCU/objetsWeb.html#chargerFichier"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/objetsWeb.html#chargerFichier"
 },
 //***********************************************************
 //Formes
@@ -2002,7 +2007,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#6600DD",
   "tooltip": "Trace un point à l'endroit spécifié.",
-  "helpUrl": "p5BLOCS/DOCU/formes.html#point"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/formes.html#point"
 },
 //Tracer un segment
 {
@@ -2035,7 +2040,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#6600DD",
   "tooltip": "Trace un segment joignant les points spécifiés.",
-  "helpUrl": "p5BLOCS/DOCU/formes.html#segment"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/formes.html#segment"
 },
   //tracer triangle de sommets donnés
 {
@@ -2078,7 +2083,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#6600DD",
   "tooltip": "Trace un triangle joignant les points spécifiés.",
-  "helpUrl": "p5BLOCS/DOCU/formes.html#triangle"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/formes.html#triangle"
 },
 //Tracer un rectangle
 {
@@ -2111,7 +2116,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#6600DD",
   "tooltip": "Trace un rectangle de diagonale spécifiée.",
-  "helpUrl": "p5BLOCS/DOCU/formes.html#rectangle"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/formes.html#rectangle"
 },
 //Tracer un cercle
 {
@@ -2139,7 +2144,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#6600DD",
   "tooltip": "Trace un cercle.",
-  "helpUrl": "p5BLOCS/DOCU/formes.html#cercle"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/formes.html#cercle"
 }, 
 //Tracer une ellipse
 {
@@ -2172,7 +2177,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#6600DD",
   "tooltip": "Trace une ellipse. Trace un cercle si les deux demi-axes sont égaux au rayon.",
-  "helpUrl": "p5BLOCS/DOCU/formes.html#ellipse"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/formes.html#ellipse"
 },  
 //Tracer un arc d'ellipse
 {
@@ -2215,7 +2220,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#6600DD",
   "tooltip": "Trace un arc d'ellipse joignant le premier angle au second, dans le sens des aiguilles d'une montre.",
-  "helpUrl": "p5BLOCS/DOCU/formes.html#arc"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/formes.html#arc"
 },    
 //débuter polygone
 {
@@ -2226,7 +2231,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#6600DD",
   "tooltip": "Annonce que l'on va spécifier les sommets d'un polygone.",
-  "helpUrl": "p5BLOCS/DOCU/formes.html#debutPoly"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/formes.html#debutPoly"
 },    
 //ajouter un sommet au polygone
 {
@@ -2249,7 +2254,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#6600DD",
   "tooltip": "Spécifie un sommet du polygone courant.",
-  "helpUrl": "p5BLOCS/DOCU/formes.html#sommet"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/formes.html#sommet"
 }, 
 //finir polygone
 {
@@ -2260,7 +2265,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#6600DD",
   "tooltip": "Annonce que l'on a fini de spécifier les sommets d'un polygone.",
-  "helpUrl": "p5BLOCS/DOCU/formes.html#finPoly"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/formes.html#finPoly"
 },  
 //Écrire du texte dans le canevas
 {
@@ -2288,7 +2293,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#6600DD",
   "tooltip": "Écrire le texte dans le canevas en position spécifiée.",
-  "helpUrl": "p5BLOCS/DOCU/formes.html#texteCanvas"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/formes.html#texteCanvas"
 },
 //Taille du texte dans le canevas
 {
@@ -2306,7 +2311,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#6600DD",
   "tooltip": "Spécifie la taille du texte qui sera placé dans le canevas.",
-  "helpUrl": "p5BLOCS/DOCU/formes.html#tailleTexteCanvas"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/formes.html#tailleTexteCanvas"
 },
 //Annule toutes les transformations du système de coordonnées
 {
@@ -2317,7 +2322,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#6655DD",
   "tooltip": "Annule toutes les transformations précédentes (translations, rotations, mises à l'échelle).",
-  "helpUrl": "p5BLOCS/DOCU/formes.html#annulerTransfos"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/formes.html#annulerTransfos"
 },
 //Translation du système de coordonnées
 {
@@ -2340,7 +2345,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#6655DD",
   "tooltip": "Déplace l'origine du système de coordonnées.",
-  "helpUrl": "p5BLOCS/DOCU/formes.html#translation"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/formes.html#translation"
 },
 //Rotation du système de coordonnées  --> autour de l'origine, sens horaire, en degrés
 {
@@ -2358,7 +2363,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#6655DD",
   "tooltip": "Tourne le système de coordonnées autour de l'origine.",
-  "helpUrl": "p5BLOCS/DOCU/formes.html#rotation"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/formes.html#rotation"
 },
 //***********************************************************
 //Géométrie de la tortue
@@ -2373,7 +2378,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#0000DD",
   "tooltip": "Efface le canevas et place la tortue dans son état initial",
-  "helpUrl": "p5BLOCS/DOCU/tortue.html#init"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/tortue.html#init"
 },
 
 //Lève le crayon de la tortue
@@ -2385,7 +2390,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": 15,
   "tooltip": "À partir de ce moment, la tortue se déplace sans laisser de trace.",
-  "helpUrl": "p5BLOCS/DOCU/apparence.html#leverCrayon"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/apparence.html#leverCrayon"
 },
 
 //Ne pas remplir
@@ -2397,7 +2402,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": 15,
   "tooltip": "Les figures seront tracées sans remplissage.",
-  "helpUrl": "p5BLOCS/DOCU/apparence.html#sansRemplissage"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/apparence.html#sansRemplissage"
 },
 
 //Baisse le crayon de la tortue
@@ -2409,7 +2414,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": 15,
   "tooltip": "À partir de ce moment, la tortue se déplace en laissant une trace.",
-  "helpUrl": "p5BLOCS/DOCU/apparence.html#baisserCrayon"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/apparence.html#baisserCrayon"
 },
 
 // avance(d)
@@ -2428,7 +2433,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#0000DD",
   "tooltip": "La tortue avance d'une distance (en pixels).",
-  "helpUrl": "p5BLOCS/DOCU/tortue.html#avance"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/tortue.html#avance"
 },
 
 // recule(d)
@@ -2447,7 +2452,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#0000DD",
   "tooltip": "La tortue recule d'une distance (en pixels).",
-  "helpUrl": "p5BLOCS/DOCU/tortue.html#recule"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/tortue.html#recule"
 },
 
 //droite(angle)
@@ -2466,7 +2471,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#0000DD",
   "tooltip": "La tortue tourne à droite d'un angle (en degrés).",
-  "helpUrl": "p5BLOCS/DOCU/tortue.html#droite"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/tortue.html#droite"
 },
 //gauche(angle)
 {
@@ -2484,7 +2489,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#0000DD",
   "tooltip": "La tortue tourne à gauche d'un angle (en degrés).",
-  "helpUrl": "p5BLOCS/DOCU/tortue.html#gauche"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/tortue.html#gauche"
 },
 // posX()
 {
@@ -2493,7 +2498,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     "output": "Number",
     "colour": "#0000DD",
     "tooltip": "Retourne la coordonnée en X de la position actuelle de la tortue.",
-    "helpUrl": "p5BLOCS/DOCU/tortue.html#coordX"
+    "helpUrl": prefixe+"p5BLOCS/DOCU/tortue.html#coordX"
 },
 //posY()
 {
@@ -2502,7 +2507,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     "output": "Number",
     "colour": "#0000DD",
     "tooltip": "Retourne la coordonnée en Y de la position actuelle de la tortue.",
-    "helpUrl": "p5BLOCS/DOCU/tortue.html#coordY"
+    "helpUrl": prefixe+"p5BLOCS/DOCU/tortue.html#coordY"
 },
 //fixePos(x,y)
 {
@@ -2525,7 +2530,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#0000DD",
   "tooltip": "Déplace la tortue à la position spécifiée. Laisse une trace si le crayon est baissé.",
-  "helpUrl": "p5BLOCS/DOCU/tortue.html#allerPos"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/tortue.html#allerPos"
 },
 //sautePos(x,y)
 {
@@ -2548,7 +2553,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#0000DD",
   "tooltip": "Déplace la tortue à la position spécifiée, sans laisser de trace, que le crayon soit levé ou non.",
-  "helpUrl": "p5BLOCS/DOCU/tortue.html#sauterPos"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/tortue.html#sauterPos"
 },
 //cap()
 {
@@ -2557,7 +2562,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     "output": "Number",
     "colour": "#0000DD",
     "tooltip": "Retourne le cap actuel de la tortue.",
-    "helpUrl": "p5BLOCS/DOCU/tortue.html#cap"
+    "helpUrl": prefixe+"p5BLOCS/DOCU/tortue.html#cap"
 },
 //fixeCap(angle)
 {
@@ -2575,7 +2580,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#0000DD",
   "tooltip": "Fixe de cap de la tortue à l'angle spécifié.",
-  "helpUrl": "p5BLOCS/DOCU/tortue.html#fixeCap"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/tortue.html#fixeCap"
 },
 //vers(x,y)
 {
@@ -2596,7 +2601,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "output": "Number",
   "colour": "#0000DD",
   "tooltip": "Retourne quel devrait être le cap de la tortue pour qu'elle pointe vers le point spécifié.",
-  "helpUrl": "p5BLOCS/DOCU/tortue.html#angleVers"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/tortue.html#angleVers"
 },
 
 //Cacher la tortue
@@ -2608,7 +2613,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#0000DD",
   "tooltip": "Cache la tortue du canevas",
-  "helpUrl": "p5BLOCS/DOCU/tortue.html#cacher"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/tortue.html#cacher"
 },
 //Montrer la tortue
 {
@@ -2631,7 +2636,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#0000DD",
   "tooltip": "Montre la tortue du canevas en spécifiant taille et couleur",
-  "helpUrl": "p5BLOCS/DOCU/tortue.html#montrer"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/tortue.html#montrer"
 },
 
 //***********************************************************
@@ -2652,7 +2657,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "output": ["String","Number"],
   "colour": "#CC6600",
   "tooltip": "Retourne la valeur actuelle de l'objet spécifié (entrée, glissière ou menu local).",
-  "helpUrl": "p5BLOCS/DOCU/proprietes.html#valeur"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/proprietes.html#valeur"
 },
 // contenu d'un élément
 {
@@ -2668,7 +2673,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "output": "String",
   "colour": "#CC6600",
   "tooltip": "Retourne un texte, qui est le contenu de l'objet en question (texte, paragraphe, titre)",
-  "helpUrl": "p5BLOCS/DOCU/proprietes.html#contenu"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/proprietes.html#contenu"
 },
 // état de la case à cocher
 {
@@ -2684,7 +2689,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "output": "Boolean",
   "colour": "#CC6600",
   "tooltip": "Retourne 'vrai' si la case est cochée, et 'faux' sinon",
-  "helpUrl": "p5BLOCS/DOCU/proprietes.html#etatCoche"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/proprietes.html#etatCoche"
 },
 //cacher l'objet
 {
@@ -2702,7 +2707,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#CC6600",
   "tooltip": "Fait disparaître l'objet spécifié.",
-  "helpUrl": "p5BLOCS/DOCU/proprietes.html#cacher"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/proprietes.html#cacher"
 },
 //montrer l'objet
 {
@@ -2720,7 +2725,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#CC6600",
   "tooltip": "Fait apparaître l'objet spécifié.",
-  "helpUrl": "p5BLOCS/DOCU/proprietes.html#montrer"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/proprietes.html#montrer"
 },
 
 //----------------------
@@ -2745,7 +2750,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#CC6600",
   "tooltip": "Le nombre ou le texte devient la valeur de l'objet en question (entrée, glissière, menu local)",
-  "helpUrl": "p5BLOCS/DOCU/proprietes.html#fixerValeur"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/proprietes.html#fixerValeur"
 },
 
 //----------------------
@@ -2770,7 +2775,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#CC6600",
   "tooltip": "Le texte devient le contenu de l'objet en question (texte, paragraphe, titre)",
-  "helpUrl": "p5BLOCS/DOCU/proprietes.html#fixerContenu"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/proprietes.html#fixerContenu"
 },
 
 //----------------------
@@ -2795,7 +2800,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#CC6600",
   "tooltip": "Les éléments de la liste deviennent les lignes successives de la zone de texte",
-  "helpUrl": "p5BLOCS/DOCU/proprietes.html#fixerContenuZone"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/proprietes.html#fixerContenuZone"
 },
 //----------------------
 //associe procédure à bouton
@@ -2819,7 +2824,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#CC6600",
   "tooltip": "En cas de clic sur l'objet (bouton, canevas, etc) exécuter la fonction spécifiée.",
-  "helpUrl": "p5BLOCS/DOCU/proprietes.html#siClic"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/proprietes.html#siClic"
 },
 //----------------------
 //associe procédure à changement
@@ -2843,7 +2848,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#CC6600",
   "tooltip": "En cas de changement de l'objet (glissière, case à cocher) exécuter la fonction spécifiée.",
-  "helpUrl": "p5BLOCS/DOCU/proprietes.html#siChangement"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/proprietes.html#siChangement"
 },
 //----------------------
 //associe parent à un objet
@@ -2867,7 +2872,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#CC6600",
   "tooltip": "Spécifie que l'objet doit être contenu dans le parent spécifié.",
-  "helpUrl": "p5BLOCS/DOCU/proprietes.html#parent"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/proprietes.html#parent"
 },
 //associe parent à un objet 2
 {
@@ -2890,7 +2895,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#CC6600",
   "tooltip": "Spécifie que l'objet doit être contenu dans le parent spécifié.",
-  "helpUrl": "p5BLOCS/DOCU/proprietes.html#parent"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/proprietes.html#parent"
 },
 //style
 {
@@ -2918,7 +2923,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#CC6600",
   "tooltip": "Permet de changer certaines caractéristiques de l'objet.",
-  "helpUrl": "p5BLOCS/DOCU/proprietes.html#propriete"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/proprietes.html#propriete"
 },
 //fixer position absolue
 {
@@ -2946,7 +2951,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#CC6600",
   "tooltip": "Fixe la position de l'objet. L'origine est en haut à gauche de la fenêtre (et non du canevas).",
-  "helpUrl": "p5BLOCS/DOCU/proprietes.html#position"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/proprietes.html#position"
 },
 // Charger une image
 {
@@ -2962,7 +2967,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "output": "String",
   "colour": "#FF8800",
   "tooltip": "Charge en mémoire un fichier image. Elle n'apparaît pas encore sur notre page web.",
-  "helpUrl": "p5BLOCS/DOCU/images.html#chargerFichier"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/images.html#chargerFichier"
 },
 // Placer une image
 {
@@ -2995,7 +3000,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#FF8800",
   "tooltip": "Place une image en mémoire dans le canevas.",
-  "helpUrl": "p5BLOCS/DOCU/images.html#placerImage"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/images.html#placerImage"
 },
 // Retourne la liste pixels
 {
@@ -3006,7 +3011,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "output": "Array",
   "colour": "#FF8800",
   "tooltip": "Retourne la liste des pixels du canevas (initiale ou modifiée).",
-  "helpUrl": "p5BLOCS/DOCU/images.html#initialiserPixels"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/images.html#initialiserPixels"
 },
 // Charger les pixels du canevas
 {
@@ -3017,7 +3022,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#FF8800",
   "tooltip": "Charge les pixels du canevas dans une liste, que l'on pourra récupérer et modifier via le bloc PIXELS.",
-  "helpUrl": "p5BLOCS/DOCU/images.html#chargerPixels"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/images.html#chargerPixels"
 },
 // Modifier les pixels
 {
@@ -3029,7 +3034,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#FF8800",
   "tooltip": "Redéfinir le canevas à partir de notre liste de pixels.",
-  "helpUrl": "p5BLOCS/DOCU/images.html#miseAjour"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/images.html#miseAjour"
 },
 // Obtenir valeur d'une composante de pixel
 {
@@ -3061,7 +3066,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "output": "Number",
   "colour": "#FF8800",
   "tooltip": "Obtenir la composante spécifiée de la liste des pixels.",
-  "helpUrl": "p5BLOCS/DOCU/images.html#lirePixel"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/images.html#lirePixel"
 },
 // Définir valeur d'une composante de pixel
 {
@@ -3099,7 +3104,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#FF8800",
   "tooltip": "Modifier la composante spécifiée de la liste des pixels.",
-  "helpUrl": "p5BLOCS/DOCU/images.html#ecrirePixel"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/images.html#ecrirePixel"
 },
 // Dépôt d'une image dans le canevas
 {
@@ -3117,7 +3122,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#FF8800",
   "tooltip": "Spécifie une fonction pour gérer un glisser-déposer dans le canevas.",
-  "helpUrl": "p5BLOCS/DOCU/images.html#depot"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/images.html#depot"
 },
 // Charger une vidéo
 {
@@ -3138,7 +3143,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "output": "String",
   "colour": "#FFAA00",
   "tooltip": "Charge en mémoire la vidéo contenue dans le fichier spécifié, et l'affiche dans notre page web",
-  "helpUrl": "p5BLOCS/DOCU/videos.html#charger"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/videos.html#charger"
 },
 // Vidéo en marche
 {
@@ -3156,7 +3161,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#FFAA00",
   "tooltip": "Mettre la vidéo en marche.",
-  "helpUrl": "p5BLOCS/DOCU/videos.html#marche"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/videos.html#marche"
 },
 // Vidéo en pause
 {
@@ -3174,7 +3179,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#FFAA00",
   "tooltip": "Mettre la vidéo en pause.",
-  "helpUrl": "p5BLOCS/DOCU/videos.html#pause"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/videos.html#pause"
 },
 // Fixer temps de la vidéo
 {
@@ -3197,7 +3202,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#FFAA00",
   "tooltip": "Faire sauter la vidéo au temps donné.",
-  "helpUrl": "p5BLOCS/DOCU/videos.html#sauter"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/videos.html#sauter"
 },
 // Action vidéo au temps donné
 {
@@ -3230,7 +3235,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#FFAA00",
   "tooltip": "Définir une action à réaliser quand la vidéo arrivera à un temps donné.",
-  "helpUrl": "p5BLOCS/DOCU/videos.html#action"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/videos.html#action"
 },
 // Categorie CADRES
 {
@@ -3258,7 +3263,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#00CCAA",
   "tooltip": "Si l'un des cadres est en fait la page web elle-même, laisser vide son nom",
-  "helpUrl": "p5BLOCS/DOCU/cadres.html#transfert"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/cadres.html#transfert"
 },
 {
   "type": "cadres_transfertF",
@@ -3280,7 +3285,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#00CCAA",
   "tooltip": "Si le cadre est en fait la page web elle-même, laisser vide son nom",
-  "helpUrl": "p5BLOCS/DOCU/cadres.html#transfert"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/cadres.html#transfert"
 },
 {
   "type": "cadres_chargement",
@@ -3317,7 +3322,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "output": "Boolean",
   "colour": "#00CCAA",
   "tooltip": "Retourne vrai si le chargement du cadre est terminé, et faux sinon",
-  "helpUrl": "p5BLOCS/DOCU/cadres.html#chargement"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/cadres.html#chargement"
 },
 {
   "type": "cadres_variableJS",
@@ -3338,7 +3343,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "output": null,
   "colour": "#00CCAA",
   "tooltip": "Attention : on parle ici de variable JavaScript (et non GeoGebra)",
-  "helpUrl": "p5BLOCS/DOCU/cadres.html#variableJS"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/cadres.html#variableJS"
 },
 {
   "type": "cadres_commandeggb",
@@ -3365,7 +3370,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#00CCAA",
   "tooltip": "Si l'un des cadres est en fait la page web elle-même, laisser vide son nom",
-  "helpUrl": "p5BLOCS/DOCU/cadres.html#commandeGGB"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/cadres.html#commandeGGB"
 },
 {
   "type": "cadres_commandeggbF",
@@ -3387,7 +3392,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#00CCAA",
   "tooltip": "Si le cadre est en fait la page web elle-même, laisser vide son nom",
-  "helpUrl": "p5BLOCS/DOCU/cadres.html#commandeGGB"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/cadres.html#commandeGGB"
 },
 {
   "type": "cadres_obtenirvarggb",
@@ -3413,7 +3418,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "output": null,
   "colour": "#00CCAA",
   "tooltip": "Si l'un des cadres est en fait la page web elle-même, laisser vide son nom",
-  "helpUrl": "p5BLOCS/DOCU/cadres.html#obtenirVarGGB"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/cadres.html#obtenirVarGGB"
 },
 {
   "type": "cadres_obtenirvarggbF",
@@ -3434,7 +3439,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "output": null,
   "colour": "#00CCAA",
   "tooltip": "Si le cadre est en fait la page web elle-même, laisser vide son nom",
-  "helpUrl": "p5BLOCS/DOCU/cadres.html#obtenirVarGGB"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/cadres.html#obtenirVarGGB"
 },
 {
   "type": "cadres_changervarggb",
@@ -3465,7 +3470,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#00CCAA",
   "tooltip": "Si l'un des cadres est en fait la page web elle-même, laisser vide son nom",
-  "helpUrl": "p5BLOCS/DOCU/cadres.html#changerVarGGB"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/cadres.html#changerVarGGB"
 },
 {
   "type": "cadres_changervarggbF",
@@ -3491,7 +3496,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#00CCAA",
   "tooltip": "Si le cadre est en fait la page web elle-même, laisser vide son nom",
-  "helpUrl": "p5BLOCS/DOCU/cadres.html#changerVarGGB"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/cadres.html#changerVarGGB"
 },
 {
   "type": "cadres_sage",
@@ -3560,7 +3565,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#00CCAA",
   "tooltip": "Si l'un des cadres est en fait la page web elle-même, laisser vide son nom",
-  "helpUrl": "p5BLOCS/DOCU/cadres.html#SAGE"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/cadres.html#SAGE"
 },
 {
   "type": "cadres_sageF",
@@ -3624,7 +3629,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#00CCAA",
   "tooltip": "Si le des cadre est en fait la page web elle-même, laisser vide son nom",
-  "helpUrl": "p5BLOCS/DOCU/cadres.html#SAGE"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/cadres.html#SAGE"
 },
 {
   "type": "cadres_sage_gen",
@@ -3661,7 +3666,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#00CCAA",
   "tooltip": "Si l'un des cadres est en fait la page web elle-même, laisser vide son nom",
-  "helpUrl": "p5BLOCS/DOCU/cadres.html#SAGE2"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/cadres.html#SAGE2"
 },
 {
   "type": "cadres_sage_genF",
@@ -3693,7 +3698,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#00CCAA",
   "tooltip": "Si le cadre est en fait la page web elle-même, laisser vide son nom",
-  "helpUrl": "p5BLOCS/DOCU/cadres.html#SAGE2"
+  "helpUrl": prefixe+"p5BLOCS/DOCU/cadres.html#SAGE2"
 }
 ]);  // END JSON EXTRACT (Do not delete this comment.)
 
