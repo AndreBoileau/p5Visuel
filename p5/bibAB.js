@@ -668,6 +668,13 @@ function contenu_du_tableau_des_listes(listesAafficher) {
 }
 
 //------------------------------------------------------------------
+function messageAVERTISSEMENT(message, messageAlt, largeur, marge) {  // *** outil de debug AB ***
+		if(messageAlt.length == 0) {messageAlt = message;}
+		try { afficherDialogueModalABint("Avertissement",message,"","",largeur, marge); }
+		catch(erreur) {  window.alert(messageAlt); } // info_debug(); 
+		fonctionNonDefinieP5Visuel();
+}
+
 function messageERREUR(message) {  // *** outil de debug AB ***
 	console.log("p5Visuel : "+message);
 	if (stopperApresUneErreur) {
