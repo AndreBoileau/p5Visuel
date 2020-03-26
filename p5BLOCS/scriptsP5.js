@@ -242,6 +242,13 @@ Blockly.JavaScript['programmation_estNombre'] = function(block) {
   var code = 'estNombre('+chaine+')'; 
   return [code, Blockly.JavaScript.ORDER_MEMBER];
 };
+//afficher le nombre avec le nb requis de décimales
+Blockly.JavaScript['programmation_afficherdecimales'] = function(block) {
+  var nombre = Blockly.JavaScript.valueToCode(block, 'NOMBRE', Blockly.JavaScript.ORDER_ATOMIC);
+  var decimales = Blockly.JavaScript.valueToCode(block, 'DECIMALES', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = '('+nombre+').toFixed('+decimales+')';
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
 //évaluer une chaîne en un nombre
 Blockly.JavaScript['programmation_evaluer'] = function(block) {
   var chaine = Blockly.JavaScript.valueToCode(block, 'CHAINE', Blockly.JavaScript.ORDER_ATOMIC);

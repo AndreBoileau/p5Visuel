@@ -721,6 +721,27 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "tooltip": "Retourne 'vrai' si c'est un nombre, et 'faux' sinon.",
   "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/programmation.html#nombreP"
 },
+// Afficher le nombre avec nb de décimales
+{
+  "type": "programmation_afficherdecimales",
+  "message0": "afficher %1 avec %2 décimales",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "NOMBRE",
+      "check": "Number"
+    },
+    {
+      "type": "input_value",
+      "name": "DECIMALES",
+      "check": "Number"
+    }
+  ],
+  "output": "String",
+  "colour": "#00AA00",
+  "tooltip": "Retourne un texte correspondant au nombre avec le nombre de décimales spécifié.",
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/programmation.html#afficherDecimales"
+},
 //convertir une chaîne en nombre
 {
   "type": "programmation_evaluer",

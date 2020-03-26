@@ -1002,6 +1002,9 @@ function stylerObjetDebug(nom, objet, propriete, valeur) {
 		messageERREUR("Le paramètre    <i>"+nom+"</i>    du bloc <b>Pour l'objet ... style ...</b> doit être un objet.");}
 	if (objet instanceof EntreeNommee) {objet=objet.entree;}
 	if (objet instanceof Glissiere) {objet=objet.gliss;}
+	var anglais = ['height','width','font-size','color','background-color'];
+	var francais = ['hauteur','largeur','taille-caractère','couleur','couleur-fond'];
+	for (k=0; k<francais.length; k++) { if (propriete == francais[k]) {propriete = anglais[k];} }
 	objet.style(propriete,valeur);
 }
 function positionnerObjetDebug(nom,objet,x,y){ // permet d'inclure les tableaux
