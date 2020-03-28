@@ -177,7 +177,7 @@ Blockly.JavaScript['programmation_faireDelai'] = function(block) {
   var valeur1 = Blockly.JavaScript.valueToCode(block, 'fonction', Blockly.JavaScript.ORDER_ATOMIC);
   var valeur2 = Blockly.JavaScript.valueToCode(block, 'delai', Blockly.JavaScript.ORDER_ATOMIC);
   if (valeur1.length > 4) {if (valeur1.slice(0,1) == "(" && valeur1.slice(-3,-1) == "()") {valeur1 = valeur1.slice(1,-3);}}
-  var code = 'faireDelaiDebug('+nomVal(valeur1)+','+valeur2+');\n'; 
+  var code = 'faireDelaiPrudent('+nomVal(valeur1)+','+valeur2+');\n'; 
   if (valeur1.length == 0) {
   		code = 'messageERREUR("Il faut préciser ce qu\'on veut faire après le délai spécifié");\n';}
   return code;
@@ -974,7 +974,7 @@ Blockly.JavaScript['tortue_montrer'] = function(block) {
 //valeur de la glissière
 Blockly.JavaScript['proprietes_valeur'] = function(block) {
   var value_obj = Blockly.JavaScript.valueToCode(block, 'OBJ', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = 'valeurDebug('+nomVal(value_obj)+')';
+  var code = 'valeurPrudent('+nomVal(value_obj)+')';
   if (value_obj.length == 0) {
   		code = 'messageERREUR("L\'objet dont on veut la valeur n\'est pas spécifié");\n';}
   return [code, Blockly.JavaScript.ORDER_MEMBER];
@@ -982,7 +982,7 @@ Blockly.JavaScript['proprietes_valeur'] = function(block) {
 //contenu de l'élément
 Blockly.JavaScript['proprietes_contenu'] = function(block) {
   var value_obj = Blockly.JavaScript.valueToCode(block, 'OBJ', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = 'contenuDebug('+nomVal(value_obj)+')';
+  var code = 'contenuPrudent('+nomVal(value_obj)+')';
   if (value_obj.length == 0) {
   		code = 'messageERREUR("L\'objet dont on veut le contenu n\'est pas spécifié");\n';} 
   return [code, Blockly.JavaScript.ORDER_MEMBER];
@@ -990,7 +990,7 @@ Blockly.JavaScript['proprietes_contenu'] = function(block) {
 //état de la case à cocher
 Blockly.JavaScript['proprietes_etatCC'] = function(block) {
   var value_obj = Blockly.JavaScript.valueToCode(block, 'OBJ', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = 'etatCaseDebug('+nomVal(value_obj)+')'; 
+  var code = 'etatCasePrudent('+nomVal(value_obj)+')'; 
   if (value_obj.length == 0) {
   		code = 'messageERREUR("La case à cocher dont on veut la valeur n\'est pas spécifiée");\n';}
   return [code, Blockly.JavaScript.ORDER_MEMBER];
@@ -998,7 +998,7 @@ Blockly.JavaScript['proprietes_etatCC'] = function(block) {
 //cacher l'objet
 Blockly.JavaScript['proprietes_cacher'] = function(block) {
   var objet = Blockly.JavaScript.valueToCode(block, 'OBJET', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = "cacherObjetDebug("+nomVal(objet)+");\n";  
+  var code = "cacherObjetPrudent("+nomVal(objet)+");\n";  
   if (objet.length == 0) {
   		code = 'messageERREUR("L\'objet qu\'on veut cacher n\'est pas spécifié");\n';}
   return code;
@@ -1006,7 +1006,7 @@ Blockly.JavaScript['proprietes_cacher'] = function(block) {
 //montrer l'objet
 Blockly.JavaScript['proprietes_montrer'] = function(block) {
   var objet = Blockly.JavaScript.valueToCode(block, 'OBJET', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = "montrerObjetDebug("+nomVal(objet)+");\n"; 
+  var code = "montrerObjetPrudent("+nomVal(objet)+");\n"; 
   if (objet.length == 0) {
   		code = 'messageERREUR("L\'objet qu\'on veut montrer n\'est pas spécifié");\n';}
   return code;
@@ -1015,7 +1015,7 @@ Blockly.JavaScript['proprietes_montrer'] = function(block) {
 Blockly.JavaScript['proprietes_fixeValeur'] = function(block) {
   var obj = Blockly.JavaScript.valueToCode(block, 'OBJET', Blockly.JavaScript.ORDER_ATOMIC);
   var valeur = Blockly.JavaScript.valueToCode(block, 'VALEUR', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = 'fixeValeurDebug('+nomVal(obj)+','+valeur+');\n';  
+  var code = 'fixeValeurPrudent('+nomVal(obj)+','+valeur+');\n';  
   if (obj.length == 0) {
   		code = 'messageERREUR("L\'objet dont on veut fixer la valeur n\'est pas spécifié");\n';}
   return code;
@@ -1024,7 +1024,7 @@ Blockly.JavaScript['proprietes_fixeValeur'] = function(block) {
 Blockly.JavaScript['proprietes_fixeContenu'] = function(block) {
   var obj = Blockly.JavaScript.valueToCode(block, 'OBJET', Blockly.JavaScript.ORDER_ATOMIC);
   var texte = Blockly.JavaScript.valueToCode(block, 'TEXTE', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = 'fixeContenuDebug('+nomVal(obj)+','+texte+');\n';
+  var code = 'fixeContenuPrudent('+nomVal(obj)+','+texte+');\n';
   if (obj.length == 0) {
   		code = 'messageERREUR("L\'objet dont on veut fixer le contenu n\'est pas spécifié");\n';}
   return code;
@@ -1034,7 +1034,7 @@ Blockly.JavaScript['proprietes_fixeContenuZone'] = function(block) {
   var obj = Blockly.JavaScript.valueToCode(block, 'OBJET', Blockly.JavaScript.ORDER_ATOMIC);
   var contenu = Blockly.JavaScript.valueToCode(block, 'TEXTE', Blockly.JavaScript.ORDER_ATOMIC);
   //var code = 'contenuZoneTexte('+obj+','+contenu+');\n';   
-  var code = 'contenuZoneTexteDebug('+nomVal(obj)+','+nomVal(contenu)+');\n';   
+  var code = 'contenuZoneTextePrudent('+nomVal(obj)+','+nomVal(contenu)+');\n';   
   if (obj.length == 0) {
   		code = 'messageERREUR("La zone de texte dont on veut fixer la valeur n\'est pas spécifiée");\n';}
   return code;
@@ -1045,7 +1045,7 @@ Blockly.JavaScript['proprietes_boutonClic'] = function(block) {
   var proc = Blockly.JavaScript.valueToCode(block, 'PROC', Blockly.JavaScript.ORDER_ATOMIC);
   proc=proc.slice(1,-3);
   //var code = bouton+'.mouseClicked('+proc+');\n';  
-  var code = 'siClicDebug('+nomVal(bouton)+','+nomVal(proc)+');\n';
+  var code = 'siClicPrudent('+nomVal(bouton)+','+nomVal(proc)+');\n';
   if (bouton.length == 0 || proc.length == 0) {
   		code = 'messageERREUR("Erreur en spécifiant une action quand on clique sur un objet (l\'objet ou l\'action n\'est pas spécifié)");\n';}
   return code;
@@ -1056,7 +1056,7 @@ Blockly.JavaScript['proprietes_etatChange'] = function(block) {
   var proc = Blockly.JavaScript.valueToCode(block, 'PROC', Blockly.JavaScript.ORDER_ATOMIC);
   proc=proc.slice(1,-3);
   //var code = objet+'.changed('+proc+');\n'; 
-  var code = 'siChangementDebug('+nomVal(objet)+','+nomVal(proc)+');\n';  
+  var code = 'siChangementPrudent('+nomVal(objet)+','+nomVal(proc)+');\n';  
   if (objet.length == 0 || proc.length == 0) {
   		code = 'messageERREUR("Erreur en spécifiant une action quand l\'état de l\'objet change (l\'objet ou l\'action n\'est pas spécifié)");\n';}
   return code;
@@ -1074,7 +1074,7 @@ Blockly.JavaScript['proprietes_parent2'] = function(block) {
   var objet = Blockly.JavaScript.valueToCode(block, 'VAR_OBJET', Blockly.JavaScript.ORDER_ATOMIC);
   var par = Blockly.JavaScript.valueToCode(block, 'PAR', Blockly.JavaScript.ORDER_ATOMIC);
   //var code = objet+'.parent('+par+');\n';  
-  var code = 'assignerParentDebug('+nomVal(objet)+','+nomVal(par)+');\n';
+  var code = 'assignerParentPrudent('+nomVal(objet)+','+nomVal(par)+');\n';
   if (objet.length == 0 || par.length == 0) {
   		code = 'messageERREUR("Erreur en spécifiant le parent d\'un objet (le parent ou l\'objet n\'est pas spécifié)");\n';}
   return code;
@@ -1085,7 +1085,7 @@ Blockly.JavaScript['proprietes_style'] = function(block) {
   var item = Blockly.JavaScript.valueToCode(block, 'ITEM', Blockly.JavaScript.ORDER_ATOMIC);
   var valeur = Blockly.JavaScript.valueToCode(block, 'VALEUR', Blockly.JavaScript.ORDER_ATOMIC);
   //var code = objet+'.style('+item+','+valeur+');\n';  
-  var code = 'stylerObjetDebug('+nomVal(objet)+','+item+','+valeur+');\n'; 
+  var code = 'stylerObjetPrudent('+nomVal(objet)+','+item+','+valeur+');\n'; 
   if (objet.length == 0) {
   		code = 'messageERREUR("L\'objet à qui on veut attribuer un style n\'est pas spécifié");\n';}
   return code; 
@@ -1097,7 +1097,7 @@ Blockly.JavaScript['proprietes_positionAbs'] = function(block) {
   var y = Blockly.JavaScript.valueToCode(block, 'Y', Blockly.JavaScript.ORDER_ATOMIC);
   //var code = objet+'.position('+x+','+y+');\n';    
   //var code = 'positionnerObjet('+objet+','+x+','+y+');\n';  
-  var code = 'positionnerObjetDebug('+nomVal(objet)+','+x+','+y+');\n';
+  var code = 'positionnerObjetPrudent('+nomVal(objet)+','+x+','+y+');\n';
   if (objet.length == 0) {
   		code = 'messageERREUR("L\'objet à qui on veut attribuer une position n\'est pas spécifié");\n';}
   return code; 
