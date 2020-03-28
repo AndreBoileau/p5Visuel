@@ -49,7 +49,7 @@ function creerCanvas(a,b) {
 	var leGraphics;
 	if (canvasCree) {
 		leGraphicsActif = canvasP5visuel;
-		if (!(width==a && height==b)) {resizeCanvas(a,b); initTortue(canevas); creerGraphicsTortue(); axesStandards(true);}
+		if (!(width==a && height==b)) {resizeCanvas(a,b,true); initTortue(canevas); creerGraphicsTortue(); axesStandards(true);}
 		return canvasP5visuel;
 	}
 	leGraphics = createCanvas(a,b); canvasCree=true; pixelDensity(1);
@@ -910,40 +910,40 @@ function nouvelleGlissiereValeur(texte,minG,maxG,valG,pasG) {
 //------------------------------------------------------------------
 // Pour DEBUG
 
-function faireDelaiDebug(nom,valeur,delai) {
+function faireDelaiPrudent(nom,valeur,delai) {
 	if(!(typeof(valeur) === 'function')) {messageERREUR("Le paramètre    <i>"+nom+"</i>    du bloc <b>Faire ... dans ... secondes</b> doit être une fonction.");}
 	setTimeout(valeur,delai*1000);
 }
-function valeurDebug(nom,valeur) {
+function valeurPrudent(nom,valeur) {
 	if(!(typeof(valeur) === 'object')) {messageERREUR("Le paramètre    <i>"+nom+"</i>    du bloc <b>valeur de</b> doit être un objet (entrée ou glissière).");}
 	if (valeur instanceof EntreeNommee) {valeur=valeur.entree;}
 	if (valeur instanceof Glissiere) {valeur=valeur.gliss;}
 	//if (!(["INPUT","SELECT"].includes(valeur.elt.tagName)))  {messageERREUR("Le paramètre    "+nom+"    du bloc 'valeur de' doit être une entrée, une glissière ou un menu local.");}
 	return traiterNombre(valeur.value());
 }
-function contenuDebug(nom,valeur) {
+function contenuPrudent(nom,valeur) {
 	if(!(typeof(valeur) === 'object')) {messageERREUR("Le paramètre    <i>"+nom+"</i>    du bloc <b>contenu de</b> doit être un objet (texte, paragraphe ou titre).");}
 	if (valeur instanceof EntreeNommee) {valeur=valeur.nom;}
 	if (valeur instanceof Glissiere) {valeur=valeur.texteG;}
 	return valeur.html();
 }
-function etatCaseDebug(nom,valeur) {
+function etatCasePrudent(nom,valeur) {
 	if(!(typeof(valeur) === 'object')) {messageERREUR("Le paramètre    <i>"+nom+"</i>    du bloc <b>état de la case à cocher</b> doit être un objet (case à cocher).");}
 	return valeur.checked();
 }
-function cacherObjetDebug(nom,valeur) {
+function cacherObjetPrudent(nom,valeur) {
 	if(!(typeof(valeur) === 'object')) {messageERREUR("Le paramètre    <i>"+nom+"</i>    du bloc <b>Cacher l'objet</b> doit être un objet.");}
 	if (valeur instanceof EntreeNommee) {valeur=valeur.contenant;}
 	if (valeur instanceof Glissiere) {valeur=valeur.contenant;}
 	valeur.hide();
 }
-function montrerObjetDebug(nom,valeur) {
+function montrerObjetPrudent(nom,valeur) {
 	if(!(typeof(valeur) === 'object')) {messageERREUR("Le paramètre    <i>"+nom+"</i>    du bloc <b>Montrer l'objet</b> doit être un objet.");}
 	if (valeur instanceof EntreeNommee) {valeur=valeur.contenant;}
 	if (valeur instanceof Glissiere) {valeur=valeur.contenant;}
 	valeur.show();
 }
-function fixeValeurDebug(nom,objet,valeur) {
+function fixeValeurPrudent(nom,objet,valeur) {
 	if(!(typeof(objet) === 'object')) {
 		messageERREUR("Le paramètre    <i>"+nom+"</i>    du bloc <b>Fixe la valeur de ... à ...</b> doit être un objet  (entrée ou glissière).");}
 	if (objet instanceof EntreeNommee) {objet=objet.entree;}
@@ -951,14 +951,14 @@ function fixeValeurDebug(nom,objet,valeur) {
 	objet.value(valeur);
 	//try {objet.value(valeur);} catch(erreur) {messageERREUR("L'objet    "+nom+"    du bloc 'Fixe la valeur de ... à ...' n'est ni une entrée, ni une glissière).");}
 }
-function fixeContenuDebug(nom,objet,contenu) {
+function fixeContenuPrudent(nom,objet,contenu) {
 	if(!(typeof(objet) === 'object')) {
 		messageERREUR("Le paramètre    <i>"+nom+"</i>    du bloc <b>Fixe le contenu de ... à ...</b> doit être un objet  (texte, paragraphe ou titre).");}
 	if (objet instanceof EntreeNommee) {objet=objet.nom; contenu=contenu+"   "}
 	if (objet instanceof Glissiere) {objet=objet.texteG;}
 	objet.html(contenu);
 }
-function contenuZoneTexteDebug(nomZone,zone,nomContenu,contenu) {
+function contenuZoneTextePrudent(nomZone,zone,nomContenu,contenu) {
 	if(!(typeof(zone) === 'object')) {
 		messageERREUR("Le paramètre    <i>"+nomZone+"</i>    du bloc <b>Fixe le contenu de la zone de texte ...</b> doit être un objet zone de texte.");}
 	if(!(typeof(contenu) === 'object')) {
@@ -969,7 +969,7 @@ function contenuZoneTexteDebug(nomZone,zone,nomContenu,contenu) {
 	}
 	zone.html(texte);
 }
-function siClicDebug(nomObjet, objet, nomProc, proc) {
+function siClicPrudent(nomObjet, objet, nomProc, proc) {
 	if(!(typeof(objet) === 'object')) {
 		messageERREUR("Le paramètre    <i>"+nomObjet+"</i>    du bloc <b>si clic sur ...</b> doit être un objet.");}
 	if(!(typeof(proc) === 'function')) {
@@ -978,7 +978,7 @@ function siClicDebug(nomObjet, objet, nomProc, proc) {
 	if (objet instanceof Glissiere) {objet=objet.contenant;}
 	objet.mouseClicked(proc);
 }
-function siChangementDebug(nomObjet, objet, nomProc, proc) {
+function siChangementPrudent(nomObjet, objet, nomProc, proc) {
 	if(!(typeof(objet) === 'object')) {
 		messageERREUR("Le paramètre    <i>"+nomObjet+"</i>    du bloc <b>si l'état de ... change ...</b> doit être un objet (glissière ou case à cocher).");}
 	if(!(typeof(proc) === 'function')) {
@@ -986,7 +986,7 @@ function siChangementDebug(nomObjet, objet, nomProc, proc) {
 	if (objet instanceof Glissiere) {objet=objet.gliss;}
 	objet.changed(proc);
 }
-function assignerParentDebug(nomObjet,objet,nomParent,par) {
+function assignerParentPrudent(nomObjet,objet,nomParent,par) {
 	if(!(typeof(objet) === 'object')) {
 		messageERREUR("Le paramètre    <i>"+nomObjet+"</i>    du bloc <b>... aura ... pour parent</b> doit être un objet.");}
 	if(!(typeof(par) === 'object')) {
@@ -997,7 +997,7 @@ function assignerParentDebug(nomObjet,objet,nomParent,par) {
 	if (par instanceof Glissiere) {par=par.contenant;}
 	objet.parent(par);
 }
-function stylerObjetDebug(nom, objet, propriete, valeur) {
+function stylerObjetPrudent(nom, objet, propriete, valeur) {
 	if(!(typeof(objet) === 'object')) {
 		messageERREUR("Le paramètre    <i>"+nom+"</i>    du bloc <b>Pour l'objet ... style ...</b> doit être un objet.");}
 	if (objet instanceof EntreeNommee) {objet=objet.entree;}
@@ -1007,7 +1007,7 @@ function stylerObjetDebug(nom, objet, propriete, valeur) {
 	for (k=0; k<francais.length; k++) { if (propriete == francais[k]) {propriete = anglais[k];} }
 	objet.style(propriete,valeur);
 }
-function positionnerObjetDebug(nom,objet,x,y){ // permet d'inclure les tableaux
+function positionnerObjetPrudent(nom,objet,x,y){ // permet d'inclure les tableaux
 	if(!(typeof(objet) === 'object')) {
 		messageERREUR("Le paramètre    <i>"+nom+"</i>    du bloc <b>Placer l'élément ... en position ...</b> doit être un objet.");}
 	for(var k=0; k<listeTableauxListesAB.length;k=k+2){
