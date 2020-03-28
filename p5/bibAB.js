@@ -1018,3 +1018,19 @@ function positionnerObjetPrudent(nom,objet,x,y){ // permet d'inclure les tableau
 	objet.position(x,y);
 	if ((objet == canvasP5visuel) && (canvasP5visuel != null)) {graphicsTortue.position(x,y);}
 }
+
+//Pour fins de compatibilité
+faireDelaiDebug=faireDelaiPrudent;
+valeurDebug=valeurPrudent;
+contenuDebug=contenuPrudent;
+etatCaseDebug=etatCasePrudent;
+cacherObjetDebug=cacherObjetPrudent;
+montrerObjetDebug=montrerObjetPrudent;
+fixeValeurDebug=fixeValeurPrudent;
+fixeContenuDebug=fixeContenuPrudent;
+contenuZoneTexteDebug=contenuZoneTextePrudent;
+siClicDebug=siClicPrudent;
+siChangementDebug=siChangementPrudent;
+assignerParentDebug=assignerParentPrudent;
+stylerObjetDebug=stylerObjetPrudent;
+positionnerObjetDebug=positionnerObjetPrudent;
