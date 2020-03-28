@@ -4,15 +4,9 @@
   <title>Éditeur p5Visuel</title>
   
   <script> 
-  	window.prefixeDOCU = "";   
-  		// prefixeDOCU = "" AVEC maison, p5Visuel.zip et serveur UQAM
-  		// prefixeDOCU = "http://profmath.uqam.ca/~boileau/p5VisuelWEB/p5Visuel/" AVEC serveur GitHub et p5VisuelLeger.zip
-  	window.modeVisMathEd_local= true;
-  		// modeVisMathEd_local= true  AVEC maison et p5Visuel.zip
-  		// modeVisMathEd_local= false AVEC serveurs (UQAM et GitHub) et p5VisuelLeger.zip
+  	window.prefixeDOCU = "http://profmath.uqam.ca/~boileau/p5VisuelWEB/p5Visuel/"; 
+  	window.modeVisMathEd_local= false;
   </script>
-  <!-- Mode autonome (maison, p5Visuel.zip, serveurs UQAM et GitHub)
-  -->
   <script src="p5BLOCS/jquery.js"></script>
   <script src="p5BLOCS/blockly_compressed.js"></script>
   <script src="p5BLOCS/blocks_compressed.js"></script>
@@ -25,21 +19,6 @@
   <script src="p5BLOCS/clipboard-polyfill.js"></script>
   <script src="p5BLOCS/blocsP5.js"></script>
   <script src="p5BLOCS/scriptsP5.js"></script>
-  <!-- Mode léger GitHub (p5VisuelLeger.zip)   
-      (avec ProfMath, c'était "http://profmath.uqam.ca/~boileau/p5VisuelWEB/p5Visuel/p5BLOCS/...")
-  <script src="https://andreboileau.github.io/p5Visuel/p5BLOCS/jquery.js"></script>
-  <script src="https://andreboileau.github.io/p5Visuel/p5BLOCS/blockly_compressed.js"></script>
-  <script src="https://andreboileau.github.io/p5Visuel/p5BLOCS/blocks_compressed.js"></script>
-  <script src="https://andreboileau.github.io/p5Visuel/p5BLOCS/fr.js"></script>
-  <script src="https://andreboileau.github.io/p5Visuel/p5BLOCS/javascript_compressed.js"></script>
-  <script src="https://andreboileau.github.io/p5Visuel/p5BLOCS/python_compressed.js"></script>
-  <script src="https://andreboileau.github.io/p5Visuel/p5BLOCS/run_prettify.js"></script>
-  <script src="https://andreboileau.github.io/p5Visuel/p5BLOCS/acorn_interpreter.js"></script>
-  <link href="https://andreboileau.github.io/p5Visuel/p5BLOCS/blockly-demo.css" rel="stylesheet">
-  <script src="https://andreboileau.github.io/p5Visuel/p5BLOCS/clipboard-polyfill.js"></script>
-  <script src="https://andreboileau.github.io/p5Visuel/p5BLOCS/blocsP5.js"></script>
-  <script src="https://andreboileau.github.io/p5Visuel/p5BLOCS/scriptsP5.js"></script>
-  -->
   
 </head>
 <body>
