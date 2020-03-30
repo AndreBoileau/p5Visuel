@@ -57,6 +57,60 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "tooltip": "Répétition avec test à la fin",
   "helpUrl": prefixeDOCU+prefixeDOCU+"p5BLOCS/DOCU/adaptations.html#boucleFin"
 },
+// Texte --> Retourne le texte avec indications de formatage
+{
+  "type": "texte_format",
+  "message0": "texte en %1 %2",
+  "args0": [
+    {
+      "type": "field_dropdown",
+      "name": "OPTION",
+      "options": [
+        [
+          "gras",
+          "b"
+        ],
+        [
+          "italique",
+          "i"
+        ],
+        [
+          "souligné",
+          "ins"
+        ],
+        [
+          "surligné",
+          "mark"
+        ],
+        [
+          "barré",
+          "del"
+        ],
+        [
+          "petit",
+          "small"
+        ],
+        [
+          "indice",
+          "sub"
+        ],
+        [
+          "exposant",
+          "sup"
+        ]
+      ]
+    },
+    {
+      "type": "input_value",
+      "name": "NAME",
+      "check": "String"
+    }
+  ],
+  "output": "String",
+  "colour": 160,
+  "tooltip": "Applique le style choisi au texte.",
+  "helpUrl": ""
+},
 //LISTES (modification de Blockly
 // Obtenir valeur de liste
 {

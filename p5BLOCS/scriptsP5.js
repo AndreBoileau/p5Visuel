@@ -16,6 +16,14 @@ Blockly.JavaScript['repeter_tantque'] = function(block) {
   return code;
 };
 
+// Texte --> Retourne le texte avec indications de formatage
+Blockly.JavaScript['texte_format'] = function(block) {
+  var option = block.getFieldValue('OPTION');
+  var texte = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = '("<'+option+'>"+'+texte+'+"</'+option+'>")';
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
+
 // Listes (Blockly modifié)
 //-------------------------
 // Obtenir valeur de liste
