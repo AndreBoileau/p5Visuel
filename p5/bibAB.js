@@ -996,6 +996,7 @@ function assignerParentPrudent(nomObjet,objet,nomParent,par) {
 	if (par instanceof EntreeNommee) {par=par.contenant;}
 	if (par instanceof Glissiere) {par=par.contenant;}
 	objet.parent(par);
+	if (objet == canvasP5visuel) {creerGraphicsTortue();}
 }
 function stylerObjetPrudent(nom, objet, propriete, valeur) {
 	if(!(typeof(objet) === 'object')) {
