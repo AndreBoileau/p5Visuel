@@ -729,7 +729,9 @@ function p5VisuelOnInit() {return;}
 function chargementCadreGGBtermine(cadre) {
 	var testOK=true, temp;
 	//try {document.getElementById(cadre).contentWindow.ggbOnInit();} catch(erreur) { testOK = false;}
-	try {temp=document.getElementById(cadre).contentWindow.ggbApplet.getMode();} catch(erreur) 
+	try {temp=document.getElementById(cadre).contentWindow.ggbApplet.getMode();
+		 document.getElementById(cadre).contentWindow.ggbApplet.evalCommand("abcdefghijklmn=GetTime()");
+		 document.getElementById(cadre).contentWindow.ggbApplet.evalCommand("Delete(abcdefghijklmn)");} catch(erreur) 
 		{ testOK = false;}
 	return testOK;
 }
