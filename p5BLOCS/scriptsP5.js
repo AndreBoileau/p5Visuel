@@ -1110,6 +1110,14 @@ Blockly.JavaScript['proprietes_positionAbs'] = function(block) {
   		code = 'messageERREUR("L\'objet à qui on veut attribuer une position n\'est pas spécifié");\n';}
   return code; 
 };
+//position absolue de l'objet
+Blockly.JavaScript['proprietes_posAbs'] = function(block) {
+  var value_obj = Blockly.JavaScript.valueToCode(block, 'OBJ', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'posAbsPrudent('+nomVal(value_obj)+')';
+  if (value_obj.length == 0) {
+  		code = 'messageERREUR("L\'objet dont on veut la position n\'est pas spécifié");\n';}
+  return [code, Blockly.JavaScript.ORDER_MEMBER];
+};
 // Charger une image
 Blockly.JavaScript['image_charger'] = function(block) {
   var valeur1 = Blockly.JavaScript.valueToCode(block, 'nomImage', Blockly.JavaScript.ORDER_ATOMIC);

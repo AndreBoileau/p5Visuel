@@ -3023,6 +3023,22 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "tooltip": "Fixe la position de l'objet. L'origine est en haut à gauche de la fenêtre (et non du canevas).",
   "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/proprietes.html#position"
 },
+// obtenir position absolue
+{
+  "type": "proprietes_posAbs",
+  "message0": "position de %1 dans la fenêtre",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "OBJ",
+      "check": "String"
+    }
+  ],
+  "output": "Array",
+  "colour": "#CC6600",
+  "tooltip": "Retourne la position absolue de l'objet spécifié dans la fenêtre.",
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/proprietes.html#posAbs"
+},
 // Charger une image
 {
   "type": "image_charger",
