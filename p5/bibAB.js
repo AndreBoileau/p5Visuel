@@ -731,8 +731,8 @@ function chargementCadreGGBtermine(cadre) {
 	//try {document.getElementById(cadre).contentWindow.ggbOnInit();} catch(erreur) { testOK = false;}
 	try {temp=document.getElementById(cadre).contentWindow.ggbApplet.getMode();
 		 document.getElementById(cadre).contentWindow.ggbApplet.evalCommand("abcdefghijklmn=GetTime()");
-		 document.getElementById(cadre).contentWindow.ggbApplet.evalCommand("Delete(abcdefghijklmn)");} catch(erreur) 
-		{ testOK = false;}
+		 document.getElementById(cadre).contentWindow.ggbApplet.evalCommand("Delete(abcdefghijklmn)");} 
+	catch(erreur) { testOK = false;}
 	return testOK;
 }
 
@@ -1020,6 +1020,10 @@ function positionnerObjetPrudent(nom,objet,x,y){ // permet d'inclure les tableau
 	if (objet instanceof Glissiere) {objet=objet.contenant;}
 	objet.position(x,y);
 	if ((objet == canvasP5visuel) && (canvasP5visuel != null)) {graphicsTortue.position(x,y);}
+}
+function posAbsPrudent(nom,valeur) {
+	if(!(typeof(valeur) === 'object')) {messageERREUR("Le paramètre    <i>"+nom+"</i>    du bloc <b>position absolue</b> doit être un objet.");}
+	return trouverPos(valeur.elt);
 }
 
 //Pour fins de compatibilité
