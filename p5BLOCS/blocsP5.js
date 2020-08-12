@@ -542,8 +542,35 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "previousStatement": null,
   "nextStatement": null,
   "colour": "#2FC1FF",
-  "tooltip": "Le format a été via le bloc <i>Créer un tableau pour afficher plusieurs listes...</i>",
+  "tooltip": "Le tableau a été prédéfini via le bloc <i>Créer un tableau pour afficher plusieurs listes...</i>",
   "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/donnees.html#afficherMult"
+},
+{
+  "type": "listes_afficher_listes_format",
+  "message0": "Afficher plusieurs listes %1 avec format %2 dans le tableau %3",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "LISTES",
+      "check": "Array"
+    },
+    {
+      "type": "input_value",
+      "name": "FORMAT",
+      "check": "Array"
+    },
+    {
+      "type": "input_value",
+      "name": "TABLEAU",
+      "check": "String"
+    }
+  ],
+  "inputsInline": true,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": "#2FC1FF",
+  "tooltip": "Le tableau a été prédéfini via le bloc <i>Créer un tableau pour afficher plusieurs listes...</i>",
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/donnees.html#afficherMultFormat"
 },
 {
   "type": "listes_positionner",

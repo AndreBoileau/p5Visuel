@@ -156,6 +156,15 @@ Blockly.JavaScript['listes_afficher_listes'] = function(block) {
   		code = 'messageERREUR("Il faut spécifier les listes et le tableau avant de pouvoir les afficher");\n';}
   return code;
 };
+Blockly.JavaScript['listes_afficher_listes_format'] = function(block) {
+  var value_listes = Blockly.JavaScript.valueToCode(block, 'LISTES', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_format = Blockly.JavaScript.valueToCode(block, 'FORMAT', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_tableau = Blockly.JavaScript.valueToCode(block, 'TABLEAU', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'afficherListesFormat('+value_listes+','+value_format+','+value_tableau+');\n';
+  if (value_listes.length == 0 || value_format.length == 0 || value_tableau.length == 0) {
+  		code = 'messageERREUR("Il faut spécifier les listes, le format, et le tableau avant de pouvoir les afficher");\n';}
+  return code;
+};
 Blockly.JavaScript['listes_positionner'] = function(block) {
   var value_tableau = Blockly.JavaScript.valueToCode(block, 'TABLEAU', Blockly.JavaScript.ORDER_ATOMIC);
   var value_x = Blockly.JavaScript.valueToCode(block, 'X', Blockly.JavaScript.ORDER_ATOMIC);
