@@ -617,6 +617,9 @@ function creerAffichageListes(listes,largeur,unite,scrollP,hauteur,taillePolice)
 function afficherListes(listes,tableau) {
   tableau.html(contenu_du_tableau_des_listes(listes));
 }
+function afficherListesFormat(listes,format,tableau) {
+  tableau.html(contenu_du_tableau_des_listesAvecFormat(listes,format));
+}
 function positionnerObjet(objet,x,y){ // permet d'inclure les tableaux
 	for(var k=0; k<listeTableauxListesAB.length;k=k+2){
 		if(listeTableauxListesAB[k]==objet) {objet=listeTableauxListesAB[k+1];}
@@ -661,6 +664,36 @@ function contenu_du_tableau_des_listes(listesAafficher) {
     Affichage = String(Affichage) + String('<tr>');
     for (j = 0; j <= listesAafficher.length - 1; j += abs(1)) {
       Affichage = [Affichage,'<td>',(listesAafficher[j])[i],'</td>'].join('');
+    }
+    Affichage = String(Affichage) + String('</tr>');
+  }
+  return Affichage;
+}
+function contenu_du_tableau_des_listesAvecFormat(listesAafficher,listesFormats) {
+  var Affichage;
+  var longueurMax;
+  var longueurCourante;
+  var format;
+  longueurMax = 0;
+  for (i = 0; i <= listesAafficher.length - 1; i += abs(1)) {
+    longueurCourante = listesAafficher[i].length;
+    if (longueurMax < longueurCourante) {
+      longueurMax = longueurCourante;
+    }
+  }
+  Affichage = '<thead><tr>';
+  for (i = 0; i <= listesAafficher.length - 1; i += abs(1)) {
+  	if (typeof listesFormats[i][0] == 'undefined' || listesFormats[i][0] == '') {format = '<th>'}
+  	else {format = '<th style="'+(listesFormats[i])[0]+'">'}
+    Affichage = [Affichage,format,(listesAafficher[i])[0],'</th>'].join('');
+  }
+  Affichage = String(Affichage) + String('</tr></thead>');
+  for (i = 1; i <= longueurMax - 1; i += abs(1)) {
+    Affichage = String(Affichage) + String('<tr>');
+    for (j = 0; j <= listesAafficher.length - 1; j += abs(1)) {
+  		if (typeof listesFormats[j][i] == 'undefined' || listesFormats[j][i] == '') {format = '<td>'}
+  		else {format = '<td style="'+(listesFormats[j])[i]+'">'}
+      Affichage = [Affichage,format,(listesAafficher[j])[i],'</td>'].join('');
     }
     Affichage = String(Affichage) + String('</tr>');
   }
