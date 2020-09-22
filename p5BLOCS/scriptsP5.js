@@ -1067,6 +1067,16 @@ Blockly.JavaScript['proprietes_boutonClic'] = function(block) {
   		code = 'messageERREUR("Erreur en spécifiant une action quand on clique sur un objet (l\'objet ou l\'action n\'est pas spécifié)");\n';}
   return code;
 };
+//associe procédure à entrée
+Blockly.JavaScript['proprietes_entreeRetour'] = function(block) {
+  var entree = Blockly.JavaScript.valueToCode(block, 'VAR_ENTREE', Blockly.JavaScript.ORDER_ATOMIC);
+  var proc = Blockly.JavaScript.valueToCode(block, 'PROC', Blockly.JavaScript.ORDER_ATOMIC);
+  proc=proc.slice(1,-3);  
+  var code = 'siRetourPrudent('+nomVal(entree)+','+nomVal(proc)+');\n';
+  if (entree.length == 0 || proc.length == 0) {
+  		code = 'messageERREUR("Erreur en spécifiant une action quand on tape \'retour\' dans une entrée (l\'objet ou l\'action n\'est pas spécifié)");\n';}
+  return code;
+};
 //associe procédure à changement
 Blockly.JavaScript['proprietes_etatChange'] = function(block) {
   var objet = Blockly.JavaScript.valueToCode(block, 'VAR_OBJET', Blockly.JavaScript.ORDER_ATOMIC);

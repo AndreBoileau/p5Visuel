@@ -2924,6 +2924,30 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/proprietes.html#siClic"
 },
 //----------------------
+//associe procédure à entrée
+{
+  "type": "proprietes_entreeRetour",
+  "message0": "si on tape 'retour' dans %1 faire  %2",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "VAR_ENTREE",
+      "check": "String"
+    },
+    {
+      "type": "input_value",
+      "name": "PROC",
+      "check": "String"
+    }
+  ],
+  "inputsInline": true,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": "#CC6600",
+  "tooltip": "Si on tape 'retour' dans l'entrée, exécuter la fonction spécifiée.",
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/proprietes.html#siRetour"
+},
+//----------------------
 //associe procédure à changement
 {
   "type": "proprietes_etatChange",
