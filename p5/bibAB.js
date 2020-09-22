@@ -1013,6 +1013,14 @@ function siClicPrudent(nomObjet, objet, nomProc, proc) {
 	if (objet instanceof Glissiere) {objet=objet.contenant;}
 	objet.mouseClicked(proc);
 }
+function siRetourPrudent(nomObjet, objet, nomProc, proc) {
+	if(!(typeof(objet) === 'object')) {
+		messageERREUR("Le paramètre    <i>"+nomObjet+"</i>    du bloc <b>si clic sur ...</b> doit être un objet.");}
+	if(!(typeof(proc) === 'function')) {
+		messageERREUR("Le paramètre    <i>"+nomProc+"</i>    du bloc <b>si clic sur ...</b> doit être une fonction.");}
+	if (objet instanceof EntreeNommee) {objet=objet.entree;}
+	objet.elt.addEventListener("keyup",function(event){ if(event.keyCode === 13){proc();};});
+}
 function siChangementPrudent(nomObjet, objet, nomProc, proc) {
 	if(!(typeof(objet) === 'object')) {
 		messageERREUR("Le paramètre    <i>"+nomObjet+"</i>    du bloc <b>si l'état de ... change ...</b> doit être un objet (glissière ou case à cocher).");}
