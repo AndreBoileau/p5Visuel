@@ -1,6 +1,6 @@
 var stopperApresUneErreur=true; // *** outil de debug AB ***
 var canvasP5visuel=null, canvasCree=false, leGraphicsActif=null; //, canvas=null, canevas=null
-var fonctionUtilisateurDepotAB, monImageDeposeeAB, listeTableauxListesAB;
+var fonctionUtilisateurDepotAB, monImageDeposeeAB, listeTableauxListesAB, centrerTableauxAB=false;
 var graphicsTortue=null, tortueVisibleAB=false, dimTortueAB=50, couleurTortueAB="rgb(255,0,0)";
 var signeAxes = 1; // 1 pour axes info et -1 pour axes maths (standards) --> canevas seulement
 
@@ -30,6 +30,7 @@ function axesStandards(complet) {
 	if (complet) {initTortue(canevas);initTortue(graphicsTortue);placerTortueSurCanevas();}
 }
 function centrerPageExecution(largeur) {
+	centrerTableauxAB=true;
 	document.getElementsByTagName("body")[0].style.textAlign="center";
 	if (largeur>0){
 		document.getElementsByTagName("body")[0].style.width=(largeur+"px");}
@@ -575,10 +576,18 @@ function creerAffichageListe(liste,largeur,unite,scrollP,hauteur,taillePolice) {
   	contenant.style('height',hauteur+'px');
   	contenant.style('overflow','scroll');
   	objetTable.parent(contenant);
+  	if (centrerTableauxAB) {
+  		contenant.style('margin-left','auto');
+  		contenant.style('margin-right','auto');
+  	}
   	listeTableauxListesAB.push(objetTable);
   	listeTableauxListesAB.push(contenant);
   } else {
   	objetTable.style('width',largeur+unite);
+  	if (centrerTableauxAB) {
+  		objetTable.style('margin-left','auto');
+  		objetTable.style('margin-right','auto');
+  	}
   	listeTableauxListesAB.push(objetTable);
   	listeTableauxListesAB.push(objetTable);
   }
@@ -605,10 +614,18 @@ function creerAffichageListes(listes,largeur,unite,scrollP,hauteur,taillePolice)
   	contenant.style('height',hauteur+'px');
   	contenant.style('overflow','scroll');
   	objetTable.parent(contenant);
+  	if (centrerTableauxAB) {
+  		contenant.style('margin-left','auto');
+  		contenant.style('margin-right','auto');
+  	}
   	listeTableauxListesAB.push(objetTable);
   	listeTableauxListesAB.push(contenant);
   } else {
   	objetTable.style('width',largeur+unite);
+  	if (centrerTableauxAB) {
+  		objetTable.style('margin-left','auto');
+  		objetTable.style('margin-right','auto');
+  	}
   	listeTableauxListesAB.push(objetTable);
   	listeTableauxListesAB.push(objetTable);
   }
