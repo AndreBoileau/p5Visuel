@@ -2968,7 +2968,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "previousStatement": null,
   "nextStatement": null,
   "colour": "#CC6600",
-  "tooltip": "En cas de changement de l'objet (glissière, case à cocher) exécuter la fonction spécifiée.",
+  "tooltip": "En cas de changement de l'objet (glissière, case à cocher, menu local) exécuter la fonction spécifiée.",
   "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/proprietes.html#siChangement"
 },
 //----------------------
