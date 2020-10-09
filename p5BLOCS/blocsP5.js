@@ -1018,6 +1018,24 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "tooltip": "L'axe des y pointe vers le bas (type informatique) ou vers le haut (type mathématique)",
   "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/programmation.html#axes"
 },
+//Info débogage
+{
+  "type": "programmation_infoDEBUG",
+  "message0": "Info débogage %1",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "INFO",
+      "check": ["Number", "String", "Array"]
+    }
+  ],
+  "inputsInline": true,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": "#00AA00",
+  "tooltip": "Après l'affichage, on continue si clic sur OK, on s'arrête si clic sur ANNULER.",
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/programmation.html#infoDEBUG"
+},
 // try ...  catch ...
 {
   "type": "essai_erreur",

@@ -373,6 +373,12 @@ Blockly.JavaScript['programmation_retournerListe'] = function(block) {
   var code = 'donneesChargees()'; 
   return [code, Blockly.JavaScript.ORDER_MEMBER];
 };
+//Info débogage
+Blockly.JavaScript['programmation_infoDEBUG'] = function(block) {
+  var info = Blockly.JavaScript.valueToCode(block, 'INFO', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'informationsMiseAuPointP5('+info+');\n';
+  return code;
+};
 //p5.js
 //----------------------
 // Créer une entrée %1 de contenu initial %2
