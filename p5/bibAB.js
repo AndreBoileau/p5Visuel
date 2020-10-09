@@ -718,6 +718,14 @@ function contenu_du_tableau_des_listesAvecFormat(listesAafficher,listesFormats) 
 }
 
 //------------------------------------------------------------------
+function informationsMiseAuPointP5(info) {  // *** outil de debug AB ***
+	var texte = "";
+	if (Array.isArray(info)) {
+		for (var k=0; k<info.length; k++) { texte = texte + info[k] + "\n"; }
+	} else { texte=info; }
+	if (!confirm(texte)) {fonctionNonDefinieP5Visuel();};
+}
+//------------------------------------------------------------------
 function messageAVERTISSEMENT(message, messageAlt, largeur, marge) {  // *** outil de debug AB ***
 		if(messageAlt.length == 0) {messageAlt = message;}
 		try { afficherDialogueModalABint("Avertissement",message,"","",largeur, marge); }
