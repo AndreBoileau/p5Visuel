@@ -1071,7 +1071,7 @@ function stylerObjetPrudent(nom, objet, propriete, valeurProp) {
 		messageERREUR("Le paramètre    <i>"+nom+"</i>    du bloc <b>Pour l'objet ... style ...</b> doit être un objet.");}
 	var anglais = ['height','width','font-size','color','background-color'];
 	var francais = ['hauteur','largeur','taille-caractère','couleur','couleur-fond'];
-	for (k=0; k<francais.length; k++) { if (propriete == francais[k]) {propriete = anglais[k];} }
+	for (kZythum=0; kZythum<francais.length; kZythum++) { if (propriete == francais[kZythum]) {propriete = anglais[kZythum];} }
 	if (objet instanceof EntreeNommee) {objet.entree.style(propriete,valeurProp); objet.nom.style(propriete,valeurProp);}
 	else if (objet instanceof Glissiere) {objet.gliss.style(propriete,valeurProp); objet.valeur.style(propriete,valeurProp); objet.texteG.style(propriete,valeurProp);}
 	else {objet.style(propriete,valeurProp);}
@@ -1079,8 +1079,8 @@ function stylerObjetPrudent(nom, objet, propriete, valeurProp) {
 function positionnerObjetPrudent(nom,objet,x,y){ // permet d'inclure les tableaux
 	if(!(typeof(objet) === 'object')) {
 		messageERREUR("Le paramètre    <i>"+nom+"</i>    du bloc <b>Placer l'élément ... en position ...</b> doit être un objet.");}
-	for(var k=0; k<listeTableauxListesAB.length;k=k+2){
-		if(listeTableauxListesAB[k]==objet) {objet=listeTableauxListesAB[k+1];}
+	for(var kZythum=0; kZythum<listeTableauxListesAB.length;kZythum=kZythum+2){
+		if(listeTableauxListesAB[kZythum]==objet) {objet=listeTableauxListesAB[kZythum+1];}
 	}
 	if (objet instanceof EntreeNommee) {objet=objet.contenant;}
 	if (objet instanceof Glissiere) {objet=objet.contenant;}
