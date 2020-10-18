@@ -7,7 +7,6 @@
   	window.prefixeDOCU = "http://profmath.uqam.ca/~boileau/p5VisuelWEB/p5Visuel/"; 
   	window.modeVisMathEd_local= false;
   </script>
-  
   <script src="p5BLOCS/jquery.js"></script>
   <script src="p5BLOCS/blockly_compressed.js"></script>
   <script src="p5BLOCS/blocks_compressed.js"></script>
@@ -20,7 +19,6 @@
   <script src="p5BLOCS/clipboard-polyfill.js"></script>
   <script src="p5BLOCS/blocsP5.js"></script>
   <script src="p5BLOCS/scriptsP5.js"></script>
-  
 </head>
 <body>
 <div id="contenu-app" class="app-container">
@@ -51,7 +49,7 @@
 				<div class="itemMenu" onclick="traiterMenuSauverRamener('copierJSinit')">Copier traduction JavaScript</div>-->
 			</div>
 			<br />
-			<button onclick="changerVisibiliteMenu2()" style="background-color: #FE0054; color:white;">MENU AIDE - CONFIGURATION</button>
+			<button onclick="changerVisibiliteMenu2()" style="background-color: #FE0054; color:white; font-size:12px; margin-top:3px;">MENU AIDE - CONFIGURATION</button>
 			<div id="divMenu2" style="width:195px;border-style:ridge; display:none;"> <!- display:default | none | block ->
 				<div class="itemMenu" id="gererCheck" onclick="traiterMenuSauverRamener('sauverAvantExec')">  Mode débutant</div>
 				<div class="itemMenu" id="gererPartieDroite" onclick="traiterMenuSauverRamener('gererPartieDroite')">  Cacher la zone droite</div>
@@ -1467,6 +1465,7 @@
     PR.prettyPrint();
   }
   workspace.addChangeListener(myUpdateFunction);
+  function modeDebutantP() {return modeDebutant}
   function traiterMenuSauverRamener(selectionMenu) {
     var xmlText, xmlDom;
     changerVisibiliteMenu('none'); changerVisibiliteMenu2('none');
