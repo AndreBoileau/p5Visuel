@@ -454,7 +454,7 @@ exposant = puissance; puiss = puissance; exp =exposant;
 function retourneLien(texte, adresse, autrePage) {
 	var creerPage='';
 	if (autrePage) {creerPage='" target="_blank';}
-	return '<a href="'+adresse+creerPage+'">'+texte+'</a>';
+	return '<a style= "text-decoration:inherit;color:inherit;" href="'+adresse+creerPage+'">'+texte+'</a>';
 }
 
 function creerMenuLocal(liste) {
