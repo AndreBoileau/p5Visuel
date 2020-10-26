@@ -4,7 +4,7 @@
   <title>Éditeur p5Visuel</title>
   
   <script> 
-  	window.prefixeDOCU = "http://profmath.uqam.ca/~boileau/p5VisuelWEB/p5Visuel/";   
+  	window.prefixeDOCU = "http://profmath.uqam.ca/~boileau/p5VisuelWEB/p5Visuel/";
   	window.modeVisMathEd_local= false;
   </script>
   <script src="p5BLOCS/jquery.js"></script>
@@ -19,9 +19,87 @@
   <script src="p5BLOCS/clipboard-polyfill.js"></script>
   <script src="p5BLOCS/blocsP5.js"></script>
   <script src="p5BLOCS/scriptsP5.js"></script>
+
+
+<style>
+.navbar { overflow: hidden; background-color: #FE0054; font-family: Arial, Helvetica, sans-serif; }
+.navbar a { float: left; font-size: 16px; color: white; text-align: center; padding: 14px 16px; text-decoration: none; }
+.dropdown { float: left; overflow: hidden; }
+.dropdown .dropbtn { font-size: 18px; border: none; outline: none; color: white;
+  padding: 14px 16px; background-color: inherit; font-family: inherit; margin: 0; }
+.navbar a:hover, .dropdown:hover .dropbtn { background-color: #CE0054; }
+.dropdown-content { display: none; position: absolute; background-color: #f9f9f9; min-width: 160px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); 
+	cursor:default; /* default OU pointer */ z-index: 1000; } /* ajuster */
+.dropdown-content a { float: none; color: black; padding: 8px 16px; text-decoration: none; display: block; text-align: left; }
+.dropdown-content a:hover { background-color: #FE0054; color: white; }
+.dropdown:hover .dropdown-content {display: block;}
+</style>
+<script>
+  	function cacherMenuHaut(cacher){
+  		var taille;
+  		if (cacher) { taille=0; document.getElementById("menuBarHaut").style.display="none";
+  		} else { taille=40; document.getElementById("menuBarHaut").style.display="block"; }
+  		document.getElementById("contenu-app").style.top=taille+'px'; }
+  	function traiterMenuHautSauverRamener(commande){
+  		toucheESCsimulee(true);
+  		setTimeout(function(){toucheESCsimulee(false); traiterMenuSauverRamener(commande);}, 300); }  	
+	function toucheESCsimulee(valeur) { cacherMenuHaut(valeur); retracer(); window.dispatchEvent(new Event('resize')); }
+</script>
+  
 </head>
-<body>
-<div id="contenu-app" class="app-container">
+<body style="min-width:800px;margin-top:0;">
+
+<div id="menuBarHaut" class="navbar">
+  <div class="dropdown">
+    <button class="dropbtn">Éditeur p5Visuel</button>
+    <div id="contenu1" class="dropdown-content">
+      <a onclick="traiterMenuHautSauverRamener('boileau')">par André Boileau</a>
+      <a onclick="traiterMenuHautSauverRamener('siteP5Visuel')">Site de p5Visuel</a>
+    </div>
+  </div> 
+  <div class="dropdown">
+    <button class="dropbtn">Fichier</button>
+    <div class="dropdown-content">
+      <a onclick="traiterMenuHautSauverRamener('ramener')">Ramener un programme p5Visuel</a>
+      <a onclick="traiterMenuHautSauverRamener('ajouter')">Ajouter un programme au programme courant</a>
+          -------------------------------------------------------------
+      <a onclick="traiterMenuHautSauverRamener('sauver')">Sauver le programme p5Visuel</a>
+      <a onclick="traiterMenuHautSauverRamener('sauverJS')">Sauver la traduction JavaScript</a>
+      <a onclick="traiterMenuHautSauverRamener('sauverWeb')">Sauver dans une page web</a>
+    </div>
+  </div>  
+  <div class="dropdown">
+    <button class="dropbtn">Édition</button>
+    <div class="dropdown-content">
+      <a onclick="traiterMenuHautSauverRamener('coller')">Coller un programme p5Visuel</a>
+      <a onclick="traiterMenuHautSauverRamener('collerPROG')">Coller un programme au programme courant</a>
+          ------------------------------------------------------------
+      <a onclick="traiterMenuHautSauverRamener('copier')">Copier le programme p5Visuel</a>
+      <a onclick="traiterMenuHautSauverRamener('copierJS')">Copier la traduction JavaScript</a>
+      <a onclick="traiterMenuHautSauverRamener('copierWeb')">Copier dans une page web</a>
+    </div>
+  </div> 
+  <div class="dropdown">
+    <button class="dropbtn">Aide</button>
+    <div class="dropdown-content">
+      <a id="gererCheckHaut" onclick="traiterMenuHautSauverRamener('sauverAvantExec')">  Mode débutant</a>
+      <a onclick="traiterMenuHautSauverRamener('gererPartieDroite')">Montrer la zone droite</a>
+      <a onclick="traiterMenuHautSauverRamener('aide')">Documentation de p5Visuel</a>
+      <a onclick="traiterMenuHautSauverRamener('accesVisualMathEditor')">Accès au Visual Math Editor</a>
+      <a onclick="traiterMenuHautSauverRamener('accesEditeurCode')">Accès à un éditeur textuel de code<br />(HTML, CSS, JavaScript, etc.)</a>
+    </div>
+  </div> 
+  <div class="dropdown">
+    <button class="dropbtn">Configuration</button>
+    <div class="dropdown-content">
+      <a  id="gererBlocsImagesHaut" onclick="traiterMenuHautSauverRamener('gererBlocsImages')">  Montrer les blocs Images</a>
+      <a  id="gererBlocsVideosHaut" onclick="traiterMenuHautSauverRamener('gererBlocsVideos')">  Montrer les blocs Vidéos</a>
+      <a  id="gererBlocsCadresHaut" onclick="traiterMenuHautSauverRamener('gererBlocsCadres')">  Montrer les blocs Cadres</a>
+    </div>
+  </div> 
+</div>
+
+<div id="contenu-app" class="app-container" style="position:absolute;top:38px;">
   <div id="blocklyDiv" class="main blockly-panel"></div>
   <div id="codeDiv" class="main output-panel">
     <div class="dropdown-bar">
@@ -1426,7 +1504,7 @@
   </block>
 </xml>
 <script>
-  var modeDebutant = false, montrerZoneGauche = true, zoneGaucheFixe = false, testerFonctionsDeBase=true;
+  var modeDebutant = false, montrerZoneGauche = false, zoneGaucheFixe = false, testerFonctionsDeBase=true;
   var modeSauvegarde='clipboard_polyfill'; // 'clipboard_polyfill' ou 'sans_biblio'
   var workspace = Blockly.inject('blocklyDiv',
     {toolbox: document.getElementById('toolbox'),
@@ -1469,7 +1547,14 @@
   function traiterMenuSauverRamener(selectionMenu) {
     var xmlText, xmlDom;
     changerVisibiliteMenu('none'); changerVisibiliteMenu2('none');
+    //if (montrerZoneGauche) {fermerMenuHaut();}
     switch(selectionMenu) {
+    	case 'boileau':
+    		window.open('http://profmath.uqam.ca/~boileau/index.php');
+    		break;
+    	case 'siteP5Visuel':
+    		window.open('http://profmath.uqam.ca/~boileau/p5VisuelWEB/index.html');
+    		break;
     	case 'ramener':
     		if (modeDebutant) {sauverProgrammeCommeFichierTexte("Voulez-vous d'abord enregistrer votre programme ?");}
     		fichier = fileSelector.files[0];
@@ -1539,40 +1624,53 @@
     			window.open('http://visualmatheditor.equatheque.net/VisualMathEditor.html?style=aguas&localType=fr_FR&codeType=AsciiMath&encloseAllFormula=false&saveOptionInCookies=false');
     		}
     		break;
+    	case 'accesEditeurCode':
+    		window.open('https://ace.c9.io/build/kitchen-sink.html');
+    		break;
     	case 'sauverAvantExec':
     		modeDebutant = !modeDebutant;
-    		if (modeDebutant) {document.getElementById("gererCheck").innerHTML = "✔︎ Mode débutant";} 
-    							else {document.getElementById("gererCheck").innerHTML = "  Mode débutant";}
+    		if (modeDebutant) {
+    			document.getElementById("gererCheck").innerHTML = "✔︎ Mode débutant";
+    			document.getElementById("gererCheckHaut").innerHTML = "✔︎ Mode débutant";
+    		} else {
+    			document.getElementById("gererCheck").innerHTML = "  Mode débutant";
+    			document.getElementById("gererCheckHaut").innerHTML = "  Mode débutant";
+    		}
     		break;
     	case 'gererPartieDroite':
     		if (zoneGaucheFixe) {alert("Cette fonction a été désactivée"); break;}
-    		montrerZoneGauche = false; retracer(); window.dispatchEvent(new Event('resize'));
-    		alert("Presser sur la touche ESCAPE pour faire apparaître la zone droite");
+    		toucheESCpressee();
     		break;
     	case 'gererBlocsImages':
     		if (document.getElementById("gererBlocsImages").innerHTML.indexOf('✔︎') > -1) {
     			document.getElementById("gererBlocsImages").innerHTML = "  Montrer les blocs Images";
+    			document.getElementById("gererBlocsImagesHaut").innerHTML = "  Montrer les blocs Images";
     			document.getElementById(':p').style.display = 'none';
     		} else {
     			document.getElementById("gererBlocsImages").innerHTML = "✔︎ Montrer les blocs Images";
+    			document.getElementById("gererBlocsImagesHaut").innerHTML = "✔︎ Montrer les blocs Images";
     			document.getElementById(':p').style.display = '';
     		}
     		break;
     	case 'gererBlocsVideos':
     		if (document.getElementById("gererBlocsVideos").innerHTML.indexOf('✔︎') > -1) {
     			document.getElementById("gererBlocsVideos").innerHTML = "  Montrer les blocs Vidéos";
+    			document.getElementById("gererBlocsVideosHaut").innerHTML = "  Montrer les blocs Vidéos";
     			document.getElementById(':q').style.display = 'none';
     		} else {
     			document.getElementById("gererBlocsVideos").innerHTML = "✔︎ Montrer les blocs Vidéos";
+    			document.getElementById("gererBlocsVideosHaut").innerHTML = "✔︎ Montrer les blocs Vidéos";
     			document.getElementById(':q').style.display = '';
     		}
     		break;
     	case 'gererBlocsCadres':
     		if (document.getElementById("gererBlocsCadres").innerHTML.indexOf('✔︎') > -1) {
     			document.getElementById("gererBlocsCadres").innerHTML = "  Montrer les blocs Cadres";
+    			document.getElementById("gererBlocsCadresHaut").innerHTML = "  Montrer les blocs Cadres";
     			document.getElementById(':t').style.display = 'none';
     		} else {
     			document.getElementById("gererBlocsCadres").innerHTML = "✔︎ Montrer les blocs Cadres";
+    			document.getElementById("gererBlocsCadresHaut").innerHTML = "✔︎ Montrer les blocs Cadres";
     			document.getElementById(':t').style.display = '';
     		}
     		break;
@@ -1583,10 +1681,13 @@ window.onresize = function(event) { retracer(); };
 document.onkeydown = function(evt) {
     if (zoneGaucheFixe) {return;}
     evt = evt || window.event;
-    if (evt.keyCode == 27) { montrerZoneGauche = !montrerZoneGauche; 
-    						 if (modeDebutant && !montrerZoneGauche) {alert("Presser à nouveau sur la touche ESCAPE pour faire apparaître la zone droite");}
-    						 retracer(); window.dispatchEvent(new Event('resize')); }
+    if (evt.keyCode == 27) { toucheESCpressee(); }
 };
+function toucheESCpressee() {
+	montrerZoneGauche = !montrerZoneGauche;
+    cacherMenuHaut(montrerZoneGauche);
+    retracer(); window.dispatchEvent(new Event('resize'));
+}
 function retracer() {
  	if (zoneGaucheFixe) {return;}
  	if(montrerZoneGauche) {
@@ -1948,6 +2049,7 @@ ramenerProgrammeInitial();
 gererCategoriesBlocs();
 if (modeDebutant) {document.getElementById("gererCheck").innerHTML = "✔︎ Mode débutant";} 
     		 else {document.getElementById("gererCheck").innerHTML = "  Mode débutant";}
+traiterMenuSauverRamener('gererPartieDroite');
     		 
 </script>
 </body>
