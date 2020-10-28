@@ -55,7 +55,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": 120,
   "tooltip": "Répétition avec test à la fin",
-  "helpUrl": prefixeDOCU+prefixeDOCU+"p5BLOCS/DOCU/adaptations.html#boucleFin"
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/adaptations.html#boucleFin"
 },
 // Texte --> Retourne le texte avec indications de formatage
 {
@@ -132,7 +132,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "output": null,
   "colour": 260,
   "tooltip": "Retourne un élément d'une liste",
-  "helpUrl": prefixeDOCU+prefixeDOCU+"p5BLOCS/DOCU/adaptations.html#obtenirListe"
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/adaptations.html#obtenirListe"
 },
 // Changer valeur de liste
 {
@@ -160,7 +160,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": 260,
   "tooltip": "Change un élément d'une liste",
-  "helpUrl": prefixeDOCU+prefixeDOCU+"p5BLOCS/DOCU/adaptations.html#definirListe"
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/adaptations.html#definirListe"
 },
 // Duplicata d'une liste
 {
@@ -177,7 +177,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "output": "Array",
   "colour": 260,
   "tooltip": "Retourne une copie de la liste. Les changements apportés à la copie n'affectent pas la liste originale.",
-  "helpUrl": prefixeDOCU+prefixeDOCU+"p5BLOCS/DOCU/adaptations.html#duplicata"
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/adaptations.html#duplicata"
 },
 //Nouveaux blocs sur lises
 {
@@ -207,7 +207,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "output": "Array",
   "colour": 260,
   "tooltip": "La liste initiale n'est pas modifiée",
-  "helpUrl": prefixeDOCU+prefixeDOCU+"p5BLOCS/DOCU/adaptations.html#enleverPD"
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/adaptations.html#enleverPD"
 },
 {
   "type": "listes_ajouter_extremites",
@@ -241,7 +241,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "output": "Array",
   "colour": 260,
   "tooltip": "La liste initiale n'est pas modifiée",
-  "helpUrl": prefixeDOCU+prefixeDOCU+"p5BLOCS/DOCU/adaptations.html#ajouterPD"
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/adaptations.html#ajouterPD"
 },
 {
   "type": "listes_element_extremites",
@@ -274,7 +274,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "output": null,
   "colour": 260,
   "tooltip": "Retourne l'élément décrit",
-  "helpUrl": prefixeDOCU+prefixeDOCU+"p5BLOCS/DOCU/adaptations.html#obtenirPD"
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/adaptations.html#obtenirPD"
 },
 {
   "type": "listes_ajouter",
@@ -299,7 +299,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "output": "Array",
   "colour": 260,
   "tooltip": "Pour insérer un élément dans une liste",
-  "helpUrl": prefixeDOCU+prefixeDOCU+"p5BLOCS/DOCU/adaptations.html#ajouter"
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/adaptations.html#ajouter"
 },
 {
   "type": "listes_enlever",
@@ -320,7 +320,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "output": "Array",
   "colour": 260,
   "tooltip": "La liste initiale n'est pas modifiée",
-  "helpUrl": prefixeDOCU+prefixeDOCU+"p5BLOCS/DOCU/adaptations.html#enlever"
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/adaptations.html#enlever"
 },
 {
   "type": "listes_empiler",
@@ -341,7 +341,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#2FC1FF",
   "tooltip": "Attention : ce bloc modifie la liste",
-  "helpUrl": prefixeDOCU+prefixeDOCU+"p5BLOCS/DOCU/donnees.html#empiler"
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/donnees.html#empiler"
 },
 {
   "type": "listes_depiler",
@@ -357,7 +357,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "output": null,
   "colour": "#2FC1FF",
   "tooltip": "Attention : ce bloc modifie la liste",
-  "helpUrl": prefixeDOCU+prefixeDOCU+"p5BLOCS/DOCU/donnees.html#depiler"
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/donnees.html#depiler"
 },
 {
   "type": "listes_afficher_liste_depart",
