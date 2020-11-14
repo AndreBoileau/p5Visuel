@@ -19,8 +19,7 @@
   <script src="p5BLOCS/clipboard-polyfill.js"></script>
   <script src="p5BLOCS/blocsP5.js"></script>
   <script src="p5BLOCS/scriptsP5.js"></script>
-
-
+  
 <style>
 .navbar { overflow: hidden; background-color: #FE0054; font-family: Arial, Helvetica, sans-serif; }
 .navbar a { float: left; font-size: 16px; color: white; text-align: center; padding: 14px 16px; text-decoration: none; }
@@ -1764,7 +1763,8 @@ function saveWorkspace() {
     var xmlText = Blockly.Xml.domToPrettyText(xmlDom);
 	xmlText = xmlText.replace(new RegExp('&nbsp;','g'),' ');
 	xmlText = ajouterMarqueProgramme(xmlText); //*** Nouveau format de programme
-	if (modeSauvegarde == 'clipboard_polyfill') {clipboard.writeText(xmlText); alert('Le programme visuel a été placé dans le presse-papier');}
+	if (modeSauvegarde == 'clipboard_polyfill') {clipboard.writeText(xmlText); 
+		if (modeDebutant) {alert('Le programme visuel a été placé dans le presse-papier');}}
 	if (modeSauvegarde == 'sans_biblio') {alert(xmlText);}
     //localStorage.setItem("blockly.xml", xmlText);
     //recopier(xmlText); // pour tests
@@ -1800,7 +1800,8 @@ function loadWorkspaceModeAdd() {
 function codeJS() {
 	var code = Blockly.JavaScript.workspaceToCode(workspace);
 	code=traiterPreload(code);
-	if (modeSauvegarde == 'clipboard_polyfill') {clipboard.writeText(code); alert('Le code JavaScript a été placé dans le presse-papier');}
+	if (modeSauvegarde == 'clipboard_polyfill') {clipboard.writeText(code); 
+		if (modeDebutant) {alert('Le code JavaScript a été placé dans le presse-papier');}}
 	if (modeSauvegarde == 'sans_biblio') {alert(code);}
 }
 
@@ -1808,7 +1809,8 @@ function codeWeb() {
 	var code = Blockly.JavaScript.workspaceToCode(workspace);
 	code=traiterPreload(code);
 	code=encapsulerDansPageWeb(code);
-	if (modeSauvegarde == 'clipboard_polyfill') {clipboard.writeText(code); alert('Le code de la page web a été placé dans le presse-papier');}
+	if (modeSauvegarde == 'clipboard_polyfill') {clipboard.writeText(code); 
+		if (modeDebutant) {alert('Le code de la page web a été placé dans le presse-papier');}}
 	if (modeSauvegarde == 'sans_biblio') {alert(code);}
 }
 
