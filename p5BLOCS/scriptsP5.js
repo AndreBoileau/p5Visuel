@@ -707,8 +707,9 @@ Blockly.JavaScript['objetsWeb_image_charger'] = function(block) {
 //----------------------
 //couleur du fond de la page web
 Blockly.JavaScript['couleurs_fond_pageWeb_C'] = function(block) {
-  var c = Blockly.JavaScript.valueToCode(block, 'C', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = 'document.body.style.backgroundColor = '+c+';\n';  
+  var code, c = Blockly.JavaScript.valueToCode(block, 'C', Blockly.JavaScript.ORDER_ATOMIC);
+  if (c.includes("url")) {code = 'document.body.style.backgroundImage = '+c+';\n';} 
+  else {code = 'document.body.style.backgroundColor = '+c+';\n';}
   return code; 
 };
 //couleur de fond
