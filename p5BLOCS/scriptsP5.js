@@ -1265,6 +1265,15 @@ function enleverParentheses(liste) {
 
 // Catégorie CADRES ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
 
+Blockly.JavaScript['creer_cadre_ggb'] = function(block) {
+  var value_id = Blockly.JavaScript.valueToCode(block, 'ID', Blockly.JavaScript.ORDER_ATOMIC);
+  var dropdown_forme = block.getFieldValue('FORME');
+  var value_largeur = Blockly.JavaScript.valueToCode(block, 'LARGEUR', Blockly.JavaScript.ORDER_ATOMIC);
+  var dropdown_menus = block.getFieldValue('MENUS');
+  var code = 'creerCadreGGB('+value_id+',\''+dropdown_forme+'\','+value_largeur+',\''+dropdown_menus+'\');\n';
+  return code;
+};
+
 Blockly.JavaScript['cadres_transfert'] = function(block) {
   var liste = Blockly.JavaScript.valueToCode(block, 'liste', Blockly.JavaScript.ORDER_ATOMIC);
   var cadre1 = Blockly.JavaScript.valueToCode(block, 'cadre1', Blockly.JavaScript.ORDER_ATOMIC);
@@ -1301,6 +1310,14 @@ Blockly.JavaScript['cadres_commandeggb'] = function(block) {
   var cadred = Blockly.JavaScript.valueToCode(block, 'cadreD', Blockly.JavaScript.ORDER_ATOMIC);
   // TODO: Assemble JavaScript into code variable.
   var code = 'executerCommandeGeoGebra2('+commande+','+cadred+','+cadrea+')\n';
+  return code;
+};
+
+Blockly.JavaScript['jsdansggb'] = function(block) {
+  var value_code = Blockly.JavaScript.valueToCode(block, 'CODE', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_cadre = Blockly.JavaScript.valueToCode(block, 'CADRE', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = 'document.getElementById('+value_cadre+').contentWindow.ggbApplet.'+value_code.slice(1,-1)+';\n';
   return code;
 };
 

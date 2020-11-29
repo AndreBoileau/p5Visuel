@@ -3443,6 +3443,63 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/cadres.html#transfert"
 },
 {
+  "type": "creer_cadre_ggb",
+  "message0": "Cadre GeoGebra  avec ID %1 de forme %2 %3 de largeur %4 et %5 interface",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "ID",
+      "check": "String"
+    },
+    {
+      "type": "field_dropdown",
+      "name": "FORME",
+      "options": [
+        [
+          "1:1",
+          "C"
+        ],
+        [
+          "4:3",
+          "SD"
+        ],
+        [
+          "16:9",
+          "HD"
+        ]
+      ]
+    },
+    {
+      "type": "input_dummy"
+    },
+    {
+      "type": "input_value",
+      "name": "LARGEUR",
+      "check": "Number"
+    },
+    {
+      "type": "field_dropdown",
+      "name": "MENUS",
+      "options": [
+        [
+          "avec",
+          "avec"
+        ],
+        [
+          "sans",
+          "sans"
+        ]
+      ]
+    }
+  ],
+  "inputsInline": true,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": "#00CCAA",
+  "tooltip": "Crée un cadre GeoGebra avec les caractéristiques spécifiées",
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/cadres.html#creerCadreGGB"
+},
+{
   "type": "cadres_chargement",
   "message0": "Le chargement du cadre %1 de type %2 est terminé",
   "args0": [
@@ -3526,6 +3583,28 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "colour": "#00CCAA",
   "tooltip": "Si l'un des cadres est en fait la page web elle-même, laisser vide son nom",
   "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/cadres.html#commandeGGB"
+},
+{
+  "type": "jsdansggb",
+  "message0": "Exécuter le code JavaScript %1 dans le cadre GeoGebra %2",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "CODE",
+      "check": "String"
+    },
+    {
+      "type": "input_value",
+      "name": "CADRE",
+      "check": "String"
+    }
+  ],
+  "inputsInline": true,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": "#00CCAA",
+  "tooltip": "Transmettre une instruction JavaScript à un cadre GeoGebra",
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/cadres.html#JSdansGGB"
 },
 {
   "type": "cadres_commandeggbF",
