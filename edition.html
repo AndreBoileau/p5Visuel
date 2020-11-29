@@ -4,7 +4,7 @@
   <title>Éditeur p5Visuel</title>
   
   <script> 
-  	window.prefixeDOCU = "http://profmath.uqam.ca/~boileau/p5VisuelWEB/p5Visuel/";
+  	window.prefixeDOCU = "http://profmath.uqam.ca/~boileau/p5VisuelWEB/p5Visuel/"; 
   	window.modeVisMathEd_local= false;
   </script>
   <script src="p5BLOCS/jquery.js"></script>
@@ -19,7 +19,6 @@
   <script src="p5BLOCS/clipboard-polyfill.js"></script>
   <script src="p5BLOCS/blocsP5.js"></script>
   <script src="p5BLOCS/scriptsP5.js"></script>
-  
 <style>
 .navbar { overflow: hidden; background-color: #FE0054; font-family: Arial, Helvetica, sans-serif; }
 .navbar a { float: left; font-size: 16px; color: white; text-align: center; padding: 14px 16px; text-decoration: none; }
@@ -1394,6 +1393,18 @@
     <sep></sep>
     <sep></sep>
     <category id="catCadres" colour="#00CCAA" name="Cadres">
+    <block type="creer_cadre_ggb">
+        <value name="ID">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+        <value name="LARGEUR">
+          <shadow type="math_number">
+            <field name="NUM"></field>
+          </shadow>
+        </value>
+    </block>
     <block type="cadres_chargement">
         <value name="cadre">
           <shadow type="text">
@@ -1427,6 +1438,18 @@
           </shadow>
         </value>
         <value name="cadreA">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+    </block>
+    <block type="jsdansggb">
+        <value name="CODE">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+        <value name="CADRE">
           <shadow type="text">
             <field name="TEXT"></field>
           </shadow>
