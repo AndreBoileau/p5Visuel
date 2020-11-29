@@ -1,3 +1,4 @@
+var prefixeCadresGeoGebra = "https://andreboileau.github.io/p5Visuel/GGBexterne/";
 var stopperApresUneErreur=true; // *** outil de debug AB ***
 var canvasP5visuel=null, canvasCree=false, leGraphicsActif=null; //, canvas=null, canevas=null
 var fonctionUtilisateurDepotAB, monImageDeposeeAB, listeTableauxListesAB, centrerTableauxAB=false;
@@ -763,6 +764,32 @@ function afficherDialogueModalAB(titre,messageAvant, srcImage, messageApres, lar
 
 //------------------------------------------------------------------
 // Gestion des cadres
+
+function creerCadreGGB(id, forme, largeur, menus) {
+	if (id.length == 0) {messageERREUR("Pour créer un cadre, son ID doit être explicité");}
+	if (largeur < 400) {largeur = 400;}
+	var cadreGGB, source, dimH, dimV, facteur, marge=20;
+	cadreGGB=createElement('iframe','');
+	cadreGGB.elt.setAttribute("id",id);
+	if (forme == "C") {dimH = 800; dimV = 800;}
+	if (forme == "SD") {dimH = 800; dimV = 600;}
+	if (forme == "HD") {dimH = 800; dimV = 450;}
+	cadreGGB.elt.style.width = (largeur+marge)+"px";
+	cadreGGB.elt.style.height = round(marge+largeur*dimV/dimH)+"px";
+	cadreGGB.elt.style.borderStyle = "none";
+	if (menus == "sans") {forme = forme + "0";}
+	source = prefixeCadresGeoGebra+forme+".html"; 
+	document.getElementById(id).setAttribute("src",source);
+	if (menus == "avec") {facteur = (dimV-72)/dimH;} else {facteur = dimV/dimH;}
+	function changerAxes() {
+		if (chargementCadreGGBtermine(id)) 
+	{cadreGGB.elt.contentWindow.ggbApplet.setWidth(largeur);
+	cadreGGB.elt.contentWindow.ggbApplet.setHeight(round(largeur*dimV/dimH));
+	cadreGGB.elt.contentWindow.ggbApplet.setCoordSystem(-10,10,-10*facteur,10*facteur);}
+		else {setTimeout(changerAxes,200);}
+	}
+	changerAxes();
+}
 
 // Test si cadre chargé
 function retournerSiCadreCharge(cadre,typeCADRE) {
