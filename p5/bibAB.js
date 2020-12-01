@@ -1,4 +1,7 @@
-var prefixeCadresGeoGebra = "https://andreboileau.github.io/p5Visuel/GGBexterne/"; 
+var prefixeCadresGeoGebra = "GGBexterne/";  
+	// maison, p5Visuel.zip  	   :  var prefixeCadresGeoGebra = "GGB/";																	--> avec dossiers GGB et GeoGebra
+	// UQAM : 					   :  var prefixeCadresGeoGebra = "http://profmath.uqam.ca/~boileau/p5VisuelWEB/p5Visuel/GGBexterne/";		--> avec dossier GGBexterne
+	// GitHub (p5VisuelLeger.zip)  :  var prefixeCadresGeoGebra = "https://andreboileau.github.io/p5Visuel/GGBexterne/";					--> avec dossier GGBexterne
 var stopperApresUneErreur=true; // *** outil de debug AB ***
 var canvasP5visuel=null, canvasCree=false, leGraphicsActif=null; //, canvas=null, canevas=null
 var fonctionUtilisateurDepotAB, monImageDeposeeAB, listeTableauxListesAB, centrerTableauxAB=false;
@@ -784,9 +787,9 @@ function creerCadreGGB(dimension,id, forme, largeur, menus) {
 	if (menus == "avec") {facteur = (dimV-72)/dimH;} else {facteur = dimV/dimH;}
 	function changerAxes() {
 		if (chargementCadreGGBtermine(id)) 
-	{cadreGGB.elt.contentWindow.ggbApplet.setWidth(largeur);
-	cadreGGB.elt.contentWindow.ggbApplet.setHeight(round(largeur*dimV/dimH));
-	cadreGGB.elt.contentWindow.ggbApplet.setCoordSystem(-10,10,-10*facteur,10*facteur);}
+			{cadreGGB.elt.contentWindow.ggbApplet.setWidth(largeur);
+			 cadreGGB.elt.contentWindow.ggbApplet.setHeight(round(largeur*dimV/dimH));
+			 cadreGGB.elt.contentWindow.ggbApplet.setCoordSystem(-10,10,-10*facteur,10*facteur);}
 		else {setTimeout(changerAxes,200);}
 	}
 	changerAxes();
