@@ -1266,11 +1266,12 @@ function enleverParentheses(liste) {
 // Catégorie CADRES ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
 
 Blockly.JavaScript['creer_cadre_ggb'] = function(block) {
+  var dropdown_dimension = block.getFieldValue('DIMENSION');
   var value_id = Blockly.JavaScript.valueToCode(block, 'ID', Blockly.JavaScript.ORDER_ATOMIC);
   var dropdown_forme = block.getFieldValue('FORME');
   var value_largeur = Blockly.JavaScript.valueToCode(block, 'LARGEUR', Blockly.JavaScript.ORDER_ATOMIC);
   var dropdown_menus = block.getFieldValue('MENUS');
-  var code = 'creerCadreGGB('+value_id+',\''+dropdown_forme+'\','+value_largeur+',\''+dropdown_menus+'\');\n';
+  var code = 'creerCadreGGB(\''+dropdown_dimension+'\','+value_id+',\''+dropdown_forme+'\','+value_largeur+',\''+dropdown_menus+'\');\n';
   return code;
 };
 
@@ -1316,7 +1317,6 @@ Blockly.JavaScript['cadres_commandeggb'] = function(block) {
 Blockly.JavaScript['jsdansggb'] = function(block) {
   var value_code = Blockly.JavaScript.valueToCode(block, 'CODE', Blockly.JavaScript.ORDER_ATOMIC);
   var value_cadre = Blockly.JavaScript.valueToCode(block, 'CADRE', Blockly.JavaScript.ORDER_ATOMIC);
-  // TODO: Assemble JavaScript into code variable.
   var code = 'document.getElementById('+value_cadre+').contentWindow.ggbApplet.'+value_code.slice(1,-1)+';\n';
   return code;
 };

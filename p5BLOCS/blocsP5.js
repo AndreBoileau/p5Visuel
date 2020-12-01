@@ -3444,8 +3444,22 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 },
 {
   "type": "creer_cadre_ggb",
-  "message0": "Cadre GeoGebra  avec ID %1 de forme %2 %3 de largeur %4 et %5 interface",
+  "message0": "Cadre GeoGebra %1 avec ID %2 de forme %3 %4 de largeur %5 et %6 interface",
   "args0": [
+    {
+      "type": "field_dropdown",
+      "name": "DIMENSION",
+      "options": [
+        [
+          "2D",
+          "d2D"
+        ],
+        [
+          "3D",
+          "d3D"
+        ]
+      ]
+    },
     {
       "type": "input_value",
       "name": "ID",
