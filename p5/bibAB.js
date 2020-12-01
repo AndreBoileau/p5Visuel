@@ -1,7 +1,4 @@
-var prefixeCadresGeoGebra = "GGBexterne/";  
-	// maison, p5Visuel.zip  	   :  var prefixeCadresGeoGebra = "GGB/";																	--> avec dossiers GGB et GeoGebra
-	// UQAM : 					   :  var prefixeCadresGeoGebra = "http://profmath.uqam.ca/~boileau/p5VisuelWEB/p5Visuel/GGBexterne/";		--> avec dossier GGBexterne
-	// GitHub (p5VisuelLeger.zip)  :  var prefixeCadresGeoGebra = "https://andreboileau.github.io/p5Visuel/GGBexterne/";					--> avec dossier GGBexterne
+var prefixeCadresGeoGebra = "GGB/"; 
 var stopperApresUneErreur=true; // *** outil de debug AB ***
 var canvasP5visuel=null, canvasCree=false, leGraphicsActif=null; //, canvas=null, canevas=null
 var fonctionUtilisateurDepotAB, monImageDeposeeAB, listeTableauxListesAB, centrerTableauxAB=false;
