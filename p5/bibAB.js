@@ -1,4 +1,4 @@
-var prefixeCadresGeoGebra = "GGB/"; 
+var prefixeCadresGeoGebra = "GGB/";
 var stopperApresUneErreur=true; // *** outil de debug AB ***
 var canvasP5visuel=null, canvasCree=false, leGraphicsActif=null; //, canvas=null, canevas=null
 var fonctionUtilisateurDepotAB, monImageDeposeeAB, listeTableauxListesAB, centrerTableauxAB=false;
@@ -764,7 +764,6 @@ function afficherDialogueModalAB(titre,messageAvant, srcImage, messageApres, lar
 
 //------------------------------------------------------------------
 // Gestion des cadres
-
 function creerCadreGGB(dimension,id, forme, largeur, menus) {
 	if (id.length == 0) {messageERREUR("Pour créer un cadre, son ID doit être explicité");}
 	if (largeur < 400) {largeur = 400;}
@@ -787,7 +786,7 @@ function creerCadreGGB(dimension,id, forme, largeur, menus) {
 			{cadreGGB.elt.contentWindow.ggbApplet.setWidth(largeur);
 			 cadreGGB.elt.contentWindow.ggbApplet.setHeight(round(largeur*dimV/dimH));
 			 cadreGGB.elt.contentWindow.ggbApplet.setCoordSystem(-10,10,-10*facteur,10*facteur);}
-		else {setTimeout(changerAxes,200);}
+		else {setTimeout(changerAxes,500);}
 	}
 	changerAxes();
 }
@@ -845,7 +844,13 @@ function transfertListeEntreCadresF(liste, cadreArrivee) {
 
 // cadres GeoGebra
 function executerCommandeGeoGebra(commande,cadre) {
+	//if (changerAxesGGB) {continuer();} else {setTimeout(continuer,200); return;}
 	document.getElementById(cadre).contentWindow.ggbApplet.evalCommand(commande);
+}
+
+function executerCommandeJSdansGGB(commande,cadre) {
+	//if (changerAxesGGB) {continuer();} else {setTimeout(continuer,200); return;}
+	eval("document.getElementById('"+cadre+"').contentWindow.ggbApplet."+commande);
 }
 
 function valeurVariableGeoGebra(nomVariable,cadre) {
