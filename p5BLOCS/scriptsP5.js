@@ -1317,7 +1317,7 @@ Blockly.JavaScript['cadres_commandeggb'] = function(block) {
 Blockly.JavaScript['jsdansggb'] = function(block) {
   var value_code = Blockly.JavaScript.valueToCode(block, 'CODE', Blockly.JavaScript.ORDER_ATOMIC);
   var value_cadre = Blockly.JavaScript.valueToCode(block, 'CADRE', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = 'document.getElementById('+value_cadre+').contentWindow.ggbApplet.'+value_code.slice(1,-1)+';\n';
+  var code = 'executerCommandeJSdansGGB('+value_code+','+value_cadre+')\n';
   return code;
 };
 
