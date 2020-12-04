@@ -1275,6 +1275,16 @@ Blockly.JavaScript['creer_cadre_ggb'] = function(block) {
   return code;
 };
 
+Blockly.JavaScript['creer_cadre_ggb_plus'] = function(block) {
+  var dropdown_dimension = block.getFieldValue('DIMENSION');
+  var value_id = Blockly.JavaScript.valueToCode(block, 'ID', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_largeur = Blockly.JavaScript.valueToCode(block, 'LARGEUR', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_hauteur = Blockly.JavaScript.valueToCode(block, 'HAUTEUR', Blockly.JavaScript.ORDER_ATOMIC);
+  var dropdown_menus = block.getFieldValue('MENUS');
+  var code = 'creerCadreGGBplus(\''+dropdown_dimension+'\','+value_id+','+value_largeur+','+value_hauteur+',\''+dropdown_menus+'\');\n';
+  return code;
+};
+
 Blockly.JavaScript['cadres_transfert'] = function(block) {
   var liste = Blockly.JavaScript.valueToCode(block, 'liste', Blockly.JavaScript.ORDER_ATOMIC);
   var cadre1 = Blockly.JavaScript.valueToCode(block, 'cadre1', Blockly.JavaScript.ORDER_ATOMIC);

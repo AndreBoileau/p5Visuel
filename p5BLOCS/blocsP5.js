@@ -3514,6 +3514,61 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/cadres.html#creerCadreGGB"
 },
 {
+  "type": "creer_cadre_ggb_plus",
+  "message0": "Cadre GeoGebra %1 avec ID %2 de largeur %3 de hauteur %4 et %5 interface",
+  "args0": [
+    {
+      "type": "field_dropdown",
+      "name": "DIMENSION",
+      "options": [
+        [
+          "2D",
+          "d2D"
+        ],
+        [
+          "3D",
+          "d3D"
+        ]
+      ]
+    },
+    {
+      "type": "input_value",
+      "name": "ID",
+      "check": "String"
+    },
+    {
+      "type": "input_value",
+      "name": "LARGEUR",
+      "check": "Number"
+    },
+    {
+      "type": "input_value",
+      "name": "HAUTEUR",
+      "check": "Number"
+    },
+    {
+      "type": "field_dropdown",
+      "name": "MENUS",
+      "options": [
+        [
+          "avec",
+          "avec"
+        ],
+        [
+          "sans",
+          "sans"
+        ]
+      ]
+    }
+  ],
+  "inputsInline": true,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": "#00CCAA",
+  "tooltip": "Crée un cadre GeoGebra avec les caractéristiques spécifiées",
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/cadres.html#creerCadreGGB"
+},
+{
   "type": "cadres_chargement",
   "message0": "Le chargement du cadre %1 de type %2 est terminé",
   "args0": [
