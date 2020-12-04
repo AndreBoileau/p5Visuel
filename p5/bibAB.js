@@ -1,4 +1,4 @@
-var prefixeCadresGeoGebra = "GGB/";
+var prefixeCadresGeoGebra = "GGB/"; 
 var stopperApresUneErreur=true; // *** outil de debug AB ***
 var canvasP5visuel=null, canvasCree=false, leGraphicsActif=null; //, canvas=null, canevas=null
 var fonctionUtilisateurDepotAB, monImageDeposeeAB, listeTableauxListesAB, centrerTableauxAB=false;
@@ -785,6 +785,30 @@ function creerCadreGGB(dimension,id, forme, largeur, menus) {
 		if (chargementCadreGGBtermine(id)) 
 			{cadreGGB.elt.contentWindow.ggbApplet.setWidth(largeur);
 			 cadreGGB.elt.contentWindow.ggbApplet.setHeight(round(largeur*dimV/dimH));
+			 cadreGGB.elt.contentWindow.ggbApplet.setCoordSystem(-10,10,-10*facteur,10*facteur);}
+		else {setTimeout(changerAxes,500);}
+	}
+	changerAxes();
+}
+function creerCadreGGBplus(dimension, id, largeur, hauteur, menus) {
+	if (id.length == 0) {messageERREUR("Pour créer un cadre, son ID doit être explicité");}
+	if (largeur < 400) {largeur = 400;}
+	if (hauteur < 400) {hauteur = 400;}
+	var cadreGGB, source, dimH, dimV, facteur, forme="C", marge=10;
+	cadreGGB=createElement('iframe','');
+	cadreGGB.elt.setAttribute("id",id);
+	cadreGGB.elt.style.borderStyle = "none";
+	if (menus == "sans") {forme = forme + "0";}
+	if (dimension == "d3D") {forme = "d3D_"+forme;}
+	source = prefixeCadresGeoGebra+forme+".html"; 
+	document.getElementById(id).setAttribute("src",source);
+	if (menus == "avec") {facteur = (hauteur-72)/largeur;} else {facteur = hauteur/largeur;}
+	function changerAxes() {
+		if (chargementCadreGGBtermine(id)) {
+			 cadreGGB.elt.style.width = (largeur+marge)+"px";
+			 cadreGGB.elt.style.height = (hauteur+marge)+"px";
+			 cadreGGB.elt.contentWindow.ggbApplet.setWidth(largeur);
+			 cadreGGB.elt.contentWindow.ggbApplet.setHeight(hauteur);
 			 cadreGGB.elt.contentWindow.ggbApplet.setCoordSystem(-10,10,-10*facteur,10*facteur);}
 		else {setTimeout(changerAxes,500);}
 	}
