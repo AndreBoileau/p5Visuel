@@ -4,7 +4,7 @@
   <title>Éditeur p5Visuel</title>
   
   <script> 
-  	window.prefixeDOCU = "http://profmath.uqam.ca/~boileau/p5VisuelWEB/p5Visuel/"; 
+  	window.prefixeDOCU = "http://profmath.uqam.ca/~boileau/p5VisuelWEB/p5Visuel/";
   	window.modeVisMathEd_local= false;
   </script>
   <script src="p5BLOCS/jquery.js"></script>
@@ -478,6 +478,23 @@
       </block>
       <block type="listes_afficher_listes"></block>
       <block type="listes_afficher_listes_format"></block>
+      <block type="tableaux_format">
+      	<value name="couleur">
+          <shadow type="text">
+            <field name="TEXT">rgb(0,0,0)</field>
+          </shadow>
+        </value>
+      	<value name="fond">
+          <shadow type="text">
+            <field name="TEXT">rgb(255,255,255)</field>
+          </shadow>
+        </value>
+      	<value name="taille">
+          <shadow type="math_number">
+            <field name="NUM">12</field>
+          </shadow>
+        </value>
+      </block>
       <block type="listes_positionner">
         <value name="X">
           <shadow type="math_number">
@@ -1393,23 +1410,6 @@
     <sep></sep>
     <sep></sep>
     <category id="catCadres" colour="#00CCAA" name="Cadres">
-    <block type="creer_cadre_ggb_plus">
-        <value name="ID">
-          <shadow type="text">
-            <field name="TEXT"></field>
-          </shadow>
-        </value>
-        <value name="LARGEUR">
-          <shadow type="math_number">
-            <field name="NUM">800</field>
-          </shadow>
-        </value>
-        <value name="HAUTEUR">
-          <shadow type="math_number">
-            <field name="NUM">600</field>
-          </shadow>
-        </value>
-    </block>
     <block type="cadres_chargement">
         <value name="cadre">
           <shadow type="text">
@@ -1431,54 +1431,6 @@
     </block>
     <block type="cadres_transfertF">
         <value name="cadre2">
-          <shadow type="text">
-            <field name="TEXT"></field>
-          </shadow>
-        </value>
-    </block>
-  	<block type="cadres_commandeggbF">
-        <value name="commande">
-          <shadow type="text">
-            <field name="TEXT"></field>
-          </shadow>
-        </value>
-        <value name="cadreA">
-          <shadow type="text">
-            <field name="TEXT"></field>
-          </shadow>
-        </value>
-    </block>
-    <block type="jsdansggb">
-        <value name="CODE">
-          <shadow type="text">
-            <field name="TEXT"></field>
-          </shadow>
-        </value>
-        <value name="CADRE">
-          <shadow type="text">
-            <field name="TEXT"></field>
-          </shadow>
-        </value>
-    </block>
-    <block type="cadres_obtenirvarggbF">
-        <value name="nomVar">
-          <shadow type="text">
-            <field name="TEXT"></field>
-          </shadow>
-        </value>
-        <value name="cadreA">
-          <shadow type="text">
-            <field name="TEXT"></field>
-          </shadow>
-        </value>
-    </block>
-    <block type="cadres_changervarggbF">
-        <value name="nom_var">
-          <shadow type="text">
-            <field name="TEXT"></field>
-          </shadow>
-        </value>
-        <value name="cadreA">
           <shadow type="text">
             <field name="TEXT"></field>
           </shadow>
@@ -1515,6 +1467,116 @@
     </block>
     </category>
     <category id="catVaria" colour="114" name="Divers">
+    </category>
+    <category id="catGGB" colour="#857DF7" name="GeoGebra">
+    <block type="creer_cadre_ggb_plus">
+        <value name="ID">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+        <value name="LARGEUR">
+          <shadow type="math_number">
+            <field name="NUM">800</field>
+          </shadow>
+        </value>
+        <value name="HAUTEUR">
+          <shadow type="math_number">
+            <field name="NUM">600</field>
+          </shadow>
+        </value>
+    </block>
+    <block type="geogebra_chargement">
+        <value name="cadre">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+    </block>
+  	<block type="cadres_commandeggbF">
+        <value name="commande">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+        <value name="cadreA">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+    </block>
+    <block type="cadres_changervarggbF">
+        <value name="nom_var">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+        <value name="cadreA">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+    </block>
+    <block type="cadres_obtenirvarggbF">
+        <value name="nomVar">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+        <value name="cadreA">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+    </block>
+    <block type="jsdansggb">
+        <value name="CODE">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+        <value name="CADRE">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+    </block>
+    <block type="geogebra_expressionJS">
+        <value name="expression">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+        <value name="cadreA">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+    </block>
+    <block type="geogebra_algoGGB">
+        <value name="CODE">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+        <value name="CADRE">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+    </block>
+    <block type="geogebra_expressionAlgo">
+        <value name="expression">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+        <value name="cadreA">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+    </block>
     </category>
   </xml>
 <xml id="blocklyDefault" style="display: none">
