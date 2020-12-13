@@ -3762,7 +3762,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "args0": [
     {
       "type": "field_image",
-      "src": "p5BLOCS/images/javascript.png",
+      "src": prefixeDOCU+"p5BLOCS/images/javascript.png",
       "width": 15,
       "height": 15,
       "alt": "*"
@@ -3791,7 +3791,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "args0": [
     {
       "type": "field_image",
-      "src": "p5BLOCS/images/javascript.png",
+      "src": prefixeDOCU+"p5BLOCS/images/javascript.png",
       "width": 15,
       "height": 15,
       "alt": "*"
@@ -3819,7 +3819,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "args0": [
     {
       "type": "field_image",
-      "src": "p5BLOCS/images/algoGGB.png",
+      "src": prefixeDOCU+"p5BLOCS/images/algoGGB.png",
       "width": 15,
       "height": 15,
       "alt": "*"
@@ -3847,7 +3847,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "args0": [
     {
       "type": "field_image",
-      "src": "p5BLOCS/images/algoGGB.png",
+      "src": prefixeDOCU+"p5BLOCS/images/algoGGB.png",
       "width": 15,
       "height": 15,
       "alt": "*"
