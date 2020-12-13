@@ -165,6 +165,16 @@ Blockly.JavaScript['listes_afficher_listes_format'] = function(block) {
   		code = 'messageERREUR("Il faut spécifier les listes, le format, et le tableau avant de pouvoir les afficher");\n';}
   return code;
 };
+Blockly.JavaScript['tableaux_format'] = function(block) {
+  var couleur = Blockly.JavaScript.valueToCode(block, 'couleur', Blockly.JavaScript.ORDER_ATOMIC);
+  var fond = Blockly.JavaScript.valueToCode(block, 'fond', Blockly.JavaScript.ORDER_ATOMIC);
+  var taille = Blockly.JavaScript.valueToCode(block, 'taille', Blockly.JavaScript.ORDER_ATOMIC);
+  var italique = block.getFieldValue('italique');
+  var gras = block.getFieldValue('gras');
+  var disposition = block.getFieldValue('disposition');
+  var code = 'formatElementTableau('+couleur+','+fond+','+taille+',"'+italique+'","'+gras+'","'+disposition+'")';
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
 Blockly.JavaScript['listes_positionner'] = function(block) {
   var value_tableau = Blockly.JavaScript.valueToCode(block, 'TABLEAU', Blockly.JavaScript.ORDER_ATOMIC);
   var value_x = Blockly.JavaScript.valueToCode(block, 'X', Blockly.JavaScript.ORDER_ATOMIC);
@@ -708,7 +718,7 @@ Blockly.JavaScript['objetsWeb_image_charger'] = function(block) {
 //couleur du fond de la page web
 Blockly.JavaScript['couleurs_fond_pageWeb_C'] = function(block) {
   var code, c = Blockly.JavaScript.valueToCode(block, 'C', Blockly.JavaScript.ORDER_ATOMIC);
-  if (c.includes("url")) {code = 'document.body.style.backgroundImage = '+c+';\n';} 
+  if (c.includes("url")) {code = 'document.body.style.backgroundImage = '+c+';\ndocument.body.style.backgroundSize = "cover";\n';} 
   else {code = 'document.body.style.backgroundColor = '+c+';\n';}
   return code; 
 };
@@ -1307,6 +1317,13 @@ Blockly.JavaScript['cadres_chargement'] = function(block) {
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
 
+Blockly.JavaScript['geogebra_chargement'] = function(block) {
+  var cadre = Blockly.JavaScript.valueToCode(block, 'cadre', Blockly.JavaScript.ORDER_ATOMIC);
+  var typeCADRE = block.getFieldValue('NAME');
+  var code = 'chargementCadreGGBtermine('+cadre+')';
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
+
 Blockly.JavaScript['cadres_variableJS'] = function(block) {
   var nomVar = Blockly.JavaScript.valueToCode(block, 'nomVar', Blockly.JavaScript.ORDER_ATOMIC);
   var cadrea = Blockly.JavaScript.valueToCode(block, 'cadreA', Blockly.JavaScript.ORDER_ATOMIC);
@@ -1329,6 +1346,27 @@ Blockly.JavaScript['jsdansggb'] = function(block) {
   var value_cadre = Blockly.JavaScript.valueToCode(block, 'CADRE', Blockly.JavaScript.ORDER_ATOMIC);
   var code = 'executerCommandeJSdansGGB('+value_code+','+value_cadre+')\n';
   return code;
+};
+
+Blockly.JavaScript['geogebra_expressionJS'] = function(block) {
+  var expression = Blockly.JavaScript.valueToCode(block, 'expression', Blockly.JavaScript.ORDER_ATOMIC);
+  var cadrea = Blockly.JavaScript.valueToCode(block, 'cadreA', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'valeurExpressionJSdansGGB('+expression+','+cadrea+')';
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
+
+Blockly.JavaScript['geogebra_algoGGB'] = function(block) {
+  var value_code = Blockly.JavaScript.valueToCode(block, 'CODE', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_cadre = Blockly.JavaScript.valueToCode(block, 'CADRE', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'executerCommandeAlgoGGBdansGGB('+value_code+','+value_cadre+')\n';
+  return code;
+};
+
+Blockly.JavaScript['geogebra_expressionAlgo'] = function(block) {
+  var expression = Blockly.JavaScript.valueToCode(block, 'expression', Blockly.JavaScript.ORDER_ATOMIC);
+  var cadrea = Blockly.JavaScript.valueToCode(block, 'cadreA', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'valeurExpressionAlgoGGBdansGGB('+expression+','+cadrea+')';
+  return [code, Blockly.JavaScript.ORDER_NONE];
 };
 
 Blockly.JavaScript['cadres_commandeggbF'] = function(block) {

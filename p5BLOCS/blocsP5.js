@@ -573,6 +573,94 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/donnees.html#afficherMultFormat"
 },
 {
+  "type": "tableaux_format",
+  "message0": "format %1 couleur %2 fond %3 taille des caractères %4 pt %5 italique %6 %7 gras %8 %9 disposition %10",
+  "args0": [
+    {
+      "type": "input_dummy"
+    },
+    {
+      "type": "input_value",
+      "name": "couleur",
+      "check": ["String","Colour"]
+    },
+    {
+      "type": "input_value",
+      "name": "fond",
+      "check": ["String","Colour"]
+    },
+    {
+      "type": "input_value",
+      "name": "taille",
+      "check": "Number"
+    },
+    {
+      "type": "input_dummy"
+    },
+    {
+      "type": "field_dropdown",
+      "name": "italique",
+      "options": [
+        [
+          "non",
+          "non"
+        ],
+        [
+          "oui",
+          "oui"
+        ]
+      ]
+    },
+    {
+      "type": "input_dummy"
+    },
+    {
+      "type": "field_dropdown",
+      "name": "gras",
+      "options": [
+        [
+          "non",
+          "non"
+        ],
+        [
+          "oui",
+          "oui"
+        ]
+      ]
+    },
+    {
+      "type": "input_dummy"
+    },
+    {
+      "type": "field_dropdown",
+      "name": "disposition",
+      "options": [
+        [
+          "inchangé",
+          "inchange"
+        ],
+        [
+          "centré",
+          "centre"
+        ],
+        [
+          "gauche",
+          "gauche"
+        ],
+        [
+          "droite",
+          "droite"
+        ]
+      ]
+    }
+  ],
+  "inputsInline": true,
+  "output": "String",
+  "colour": "#2FC1FF",
+  "tooltip": "Pour décrire le format d'un élément d'un tableau",
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/donnees.html#formatElement"
+},
+{
   "type": "listes_positionner",
   "message0": "Positionner le tableau %1 en ( %2 , %3 )",
   "args0": [
@@ -3564,9 +3652,9 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "inputsInline": true,
   "previousStatement": null,
   "nextStatement": null,
-  "colour": "#00CCAA",
+  "colour": "#857DF7",
   "tooltip": "Crée un cadre GeoGebra avec les caractéristiques spécifiées",
-  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/cadres.html#creerCadreGGB"
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/geogebra.html#creerCadreGGB"
 },
 {
   "type": "cadres_chargement",
@@ -3604,6 +3692,21 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "colour": "#00CCAA",
   "tooltip": "Retourne vrai si le chargement du cadre est terminé, et faux sinon",
   "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/cadres.html#chargement"
+},
+{
+  "type": "geogebra_chargement",
+  "message0": "Le chargement du cadre GeoGebra %1 est terminé",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "cadre",
+      "check": "String"
+    }
+  ],
+  "output": "Boolean",
+  "colour": "#857DF7",
+  "tooltip": "Retourne vrai si le chargement du cadre est terminé, et faux sinon",
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/geogebra.html#chargement"
 },
 {
   "type": "cadres_variableJS",
@@ -3649,14 +3752,21 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "inputsInline": true,
   "previousStatement": null,
   "nextStatement": null,
-  "colour": "#00CCAA",
+  "colour": "#857DF7",
   "tooltip": "Si l'un des cadres est en fait la page web elle-même, laisser vide son nom",
-  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/cadres.html#commandeGGB"
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/geogebra.html#commandeGGB"
 },
 {
   "type": "jsdansggb",
-  "message0": "Exécuter le code JavaScript %1 dans le cadre GeoGebra %2",
+  "message0": "%1 Exécuter le code JavaScript %2 dans le cadre GeoGebra %3",
   "args0": [
+    {
+      "type": "field_image",
+      "src": "p5BLOCS/images/javascript.png",
+      "width": 15,
+      "height": 15,
+      "alt": "*"
+    },
     {
       "type": "input_value",
       "name": "CODE",
@@ -3671,9 +3781,94 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "inputsInline": true,
   "previousStatement": null,
   "nextStatement": null,
-  "colour": "#00CCAA",
+  "colour": "#857DF7",
   "tooltip": "Transmettre une instruction JavaScript à un cadre GeoGebra",
-  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/cadres.html#JSdansGGB"
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/geogebra.html#JSdansGGB"
+},
+{
+  "type": "geogebra_expressionJS",
+  "message0": "%1 valeur de l'expression JavaScript %2 dans le cadre %3",
+  "args0": [
+    {
+      "type": "field_image",
+      "src": "p5BLOCS/images/javascript.png",
+      "width": 15,
+      "height": 15,
+      "alt": "*"
+    },
+    {
+      "type": "input_value",
+      "name": "expression",
+      "check": "String"
+    },
+    {
+      "type": "input_value",
+      "name": "cadreA",
+      "check": "String"
+    }
+  ],
+  "inputsInline": true,
+  "output": null,
+  "colour": "#857DF7",
+  "tooltip": "Valeur d'une expression JavaScript dans un cadre GeoGebra",
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/geogebra.html#expressionJSdansGGB"
+},
+{
+  "type": "geogebra_expressionAlgo",
+  "message0": "%1 valeur de l'expression algoGGB %2 dans le cadre %3",
+  "args0": [
+    {
+      "type": "field_image",
+      "src": "p5BLOCS/images/algoGGB.png",
+      "width": 15,
+      "height": 15,
+      "alt": "*"
+    },
+    {
+      "type": "input_value",
+      "name": "expression",
+      "check": "String"
+    },
+    {
+      "type": "input_value",
+      "name": "cadreA",
+      "check": "String"
+    }
+  ],
+  "inputsInline": true,
+  "output": null,
+  "colour": "#857DF7",
+  "tooltip": "Valeur d'une expression algoGGB dans un cadre GeoGebra",
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/geogebra.html#expressionALGOdansGGB"
+},
+{
+  "type": "geogebra_algoGGB",
+  "message0": "%1 Exécuter le code algoGGB %2 dans le cadre GeoGebra %3",
+  "args0": [
+    {
+      "type": "field_image",
+      "src": "p5BLOCS/images/algoGGB.png",
+      "width": 15,
+      "height": 15,
+      "alt": "*"
+    },
+    {
+      "type": "input_value",
+      "name": "CODE",
+      "check": "String"
+    },
+    {
+      "type": "input_value",
+      "name": "CADRE",
+      "check": "String"
+    }
+  ],
+  "inputsInline": true,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": "#857DF7",
+  "tooltip": "Transmettre une instruction algoGGB à un cadre GeoGebra",
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/geogebra.html#algoGGB"
 },
 {
   "type": "cadres_commandeggbF",
@@ -3693,9 +3888,9 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "inputsInline": true,
   "previousStatement": null,
   "nextStatement": null,
-  "colour": "#00CCAA",
+  "colour": "#857DF7",
   "tooltip": "Si le cadre est en fait la page web elle-même, laisser vide son nom",
-  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/cadres.html#commandeGGB"
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/geogebra.html#commandeGGB"
 },
 {
   "type": "cadres_obtenirvarggb",
@@ -3719,9 +3914,9 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   ],
   "inputsInline": true,
   "output": null,
-  "colour": "#00CCAA",
+  "colour": "#857DF7",
   "tooltip": "Si l'un des cadres est en fait la page web elle-même, laisser vide son nom",
-  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/cadres.html#obtenirVarGGB"
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/geogebra.html#obtenirVarGGB"
 },
 {
   "type": "cadres_obtenirvarggbF",
@@ -3740,9 +3935,9 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   ],
   "inputsInline": true,
   "output": null,
-  "colour": "#00CCAA",
+  "colour": "#857DF7",
   "tooltip": "Si le cadre est en fait la page web elle-même, laisser vide son nom",
-  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/cadres.html#obtenirVarGGB"
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/geogebra.html#obtenirVarGGB"
 },
 {
   "type": "cadres_changervarggb",
@@ -3771,9 +3966,9 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "inputsInline": true,
   "previousStatement": null,
   "nextStatement": null,
-  "colour": "#00CCAA",
+  "colour": "#857DF7",
   "tooltip": "Si l'un des cadres est en fait la page web elle-même, laisser vide son nom",
-  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/cadres.html#changerVarGGB"
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/geogebra.html#changerVarGGB"
 },
 {
   "type": "cadres_changervarggbF",
@@ -3797,9 +3992,9 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "inputsInline": true,
   "previousStatement": null,
   "nextStatement": null,
-  "colour": "#00CCAA",
+  "colour": "#857DF7",
   "tooltip": "Si le cadre est en fait la page web elle-même, laisser vide son nom",
-  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/cadres.html#changerVarGGB"
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/geogebra.html#changerVarGGB"
 },
 {
   "type": "cadres_sage",
