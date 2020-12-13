@@ -1,4 +1,4 @@
-var prefixeCadresGeoGebra = "GGB/"; 
+var prefixeCadresGeoGebra = "GGB/";  
 var stopperApresUneErreur=true; // *** outil de debug AB ***
 var canvasP5visuel=null, canvasCree=false, leGraphicsActif=null; //, canvas=null, canevas=null
 var fonctionUtilisateurDepotAB, monImageDeposeeAB, listeTableauxListesAB, centrerTableauxAB=false;
@@ -717,6 +717,19 @@ function contenu_du_tableau_des_listesAvecFormat(listesAafficher,listesFormats) 
   }
   return Affichage;
 }
+function formatElementTableau(couleur,fond,taille,italique,gras,disposition) {
+	var description = "";
+	if (couleur.length > 0) {description = description+";color:"+couleur;}
+	if (fond.length > 0) {description = description+";background:"+fond;}
+	if (taille > 0) {description = description+";font-size:"+taille+"pt";}
+	if (italique == "oui") {description = description+";font-style:italic";}
+	if (gras == "oui") {description = description+";font-weight:bold";}
+	if (disposition == "centre") {description = description+";text-align:center";}
+	if (disposition == "gauche") {description = description+";text-align:left";}
+	if (disposition == "droite") {description = description+";text-align:right";}
+	if (description.length > 0) {description = description.slice(1);}
+	return description;
+}
 
 //------------------------------------------------------------------
 function informationsMiseAuPointP5(info) {  // *** outil de debug AB ***
@@ -875,6 +888,21 @@ function executerCommandeGeoGebra(commande,cadre) {
 function executerCommandeJSdansGGB(commande,cadre) {
 	//if (changerAxesGGB) {continuer();} else {setTimeout(continuer,200); return;}
 	eval("document.getElementById('"+cadre+"').contentWindow.ggbApplet."+commande);
+}
+
+function valeurExpressionJSdansGGB(expression,cadre) {
+	//if (changerAxesGGB) {continuer();} else {setTimeout(continuer,200); return;}
+	return eval("document.getElementById('"+cadre+"').contentWindow.ggbApplet."+expression);
+}
+
+function executerCommandeAlgoGGBdansGGB(commande,cadre) {
+	//if (changerAxesGGB) {continuer();} else {setTimeout(continuer,200); return;}
+	eval("document.getElementById('"+cadre+"').contentWindow."+commande);
+}
+
+function valeurExpressionAlgoGGBdansGGB(expression,cadre) {
+	//if (changerAxesGGB) {continuer();} else {setTimeout(continuer,200); return;}
+	return eval("document.getElementById('"+cadre+"').contentWindow."+expression);
 }
 
 function valeurVariableGeoGebra(nomVariable,cadre) {
