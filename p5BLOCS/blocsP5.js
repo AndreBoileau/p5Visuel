@@ -3694,6 +3694,23 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/cadres.html#chargement"
 },
 {
+  "type": "geogebra_choisir",
+  "message0": "Choisir la figure GeoGebra %1",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "figure",
+      "check": "String"
+    }
+  ],
+  "inputsInline": true,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": "#857DF7",
+  "tooltip": "Les prochaines commandes viseront la figure choisie",
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/geogebra.html#choisirGGB"
+},
+{
   "type": "geogebra_chargement",
   "message0": "Le chargement du cadre GeoGebra %1 est terminé",
   "args0": [
@@ -3786,6 +3803,30 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/geogebra.html#JSdansGGB"
 },
 {
+  "type": "jsdansggbCourt",
+  "message0": "%1 Exécuter le code JavaScript %2",
+  "args0": [
+    {
+      "type": "field_image",
+      "src": prefixeDOCU+"p5BLOCS/images/javascript.png",
+      "width": 15,
+      "height": 15,
+      "alt": "*"
+    },
+    {
+      "type": "input_value",
+      "name": "CODE",
+      "check": "String"
+    }
+  ],
+  "inputsInline": true,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": "#857DF7",
+  "tooltip": "Transmettre une instruction JavaScript à un cadre GeoGebra",
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/geogebra.html#JSdansGGB"
+},
+{
   "type": "geogebra_expressionJS",
   "message0": "%1 valeur de l'expression JavaScript %2 dans le cadre %3",
   "args0": [
@@ -3814,6 +3855,29 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/geogebra.html#expressionJSdansGGB"
 },
 {
+  "type": "geogebra_expressionJSCourt",
+  "message0": "%1 valeur de l'expression JavaScript %2",
+  "args0": [
+    {
+      "type": "field_image",
+      "src": prefixeDOCU+"p5BLOCS/images/javascript.png",
+      "width": 15,
+      "height": 15,
+      "alt": "*"
+    },
+    {
+      "type": "input_value",
+      "name": "expression",
+      "check": "String"
+    }
+  ],
+  "inputsInline": true,
+  "output": null,
+  "colour": "#857DF7",
+  "tooltip": "Valeur d'une expression JavaScript dans un cadre GeoGebra",
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/geogebra.html#expressionJSdansGGB"
+},
+{
   "type": "geogebra_expressionAlgo",
   "message0": "%1 valeur de l'expression algoGGB %2 dans le cadre %3",
   "args0": [
@@ -3832,6 +3896,29 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     {
       "type": "input_value",
       "name": "cadreA",
+      "check": "String"
+    }
+  ],
+  "inputsInline": true,
+  "output": null,
+  "colour": "#857DF7",
+  "tooltip": "Valeur d'une expression algoGGB dans un cadre GeoGebra",
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/geogebra.html#expressionALGOdansGGB"
+},
+{
+  "type": "geogebra_expressionAlgoCourt",
+  "message0": "%1 valeur de l'expression algoGGB %2",
+  "args0": [
+    {
+      "type": "field_image",
+      "src": prefixeDOCU+"p5BLOCS/images/algoGGB.png",
+      "width": 15,
+      "height": 15,
+      "alt": "*"
+    },
+    {
+      "type": "input_value",
+      "name": "expression",
       "check": "String"
     }
   ],
@@ -3871,6 +3958,30 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/geogebra.html#algoGGB"
 },
 {
+  "type": "geogebra_algoGGBCourt",
+  "message0": "%1 Exécuter le code algoGGB %2",
+  "args0": [
+    {
+      "type": "field_image",
+      "src": prefixeDOCU+"p5BLOCS/images/algoGGB.png",
+      "width": 15,
+      "height": 15,
+      "alt": "*"
+    },
+    {
+      "type": "input_value",
+      "name": "CODE",
+      "check": "String"
+    }
+  ],
+  "inputsInline": true,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": "#857DF7",
+  "tooltip": "Transmettre une instruction algoGGB à un cadre GeoGebra",
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/geogebra.html#algoGGB"
+},
+{
   "type": "cadres_commandeggbF",
   "message0": "Exécuter la commande GeoGebra %1 dans le cadre %2",
   "args0": [
@@ -3882,6 +3993,23 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     {
       "type": "input_value",
       "name": "cadreA",
+      "check": "String"
+    }
+  ],
+  "inputsInline": true,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": "#857DF7",
+  "tooltip": "Si le cadre est en fait la page web elle-même, laisser vide son nom",
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/geogebra.html#commandeGGB"
+},
+{
+  "type": "cadres_commandeggbFCourt",
+  "message0": "Exécuter la commande GeoGebra %1",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "commande",
       "check": "String"
     }
   ],
@@ -3940,6 +4068,22 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/geogebra.html#obtenirVarGGB"
 },
 {
+  "type": "cadres_obtenirvarggbFCourt",
+  "message0": "Obtenir la valeur de la variable GeoGebra %1",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "nomVar",
+      "check": "String"
+    }
+  ],
+  "inputsInline": true,
+  "output": null,
+  "colour": "#857DF7",
+  "tooltip": "Si le cadre est en fait la page web elle-même, laisser vide son nom",
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/geogebra.html#obtenirVarGGB"
+},
+{
   "type": "cadres_changervarggb",
   "message0": "Donner à la variable GeoGebra %1 du cadre %2 la valeur %3 (Demande originant du cadre %4 )",
   "args0": [
@@ -3982,6 +4126,27 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     {
       "type": "input_value",
       "name": "cadreA",
+      "check": "String"
+    },
+    {
+      "type": "input_value",
+      "name": "valeur"
+    }
+  ],
+  "inputsInline": true,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": "#857DF7",
+  "tooltip": "Si le cadre est en fait la page web elle-même, laisser vide son nom",
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/geogebra.html#changerVarGGB"
+},
+{
+  "type": "cadres_changervarggbFCourt",
+  "message0": "Donner à la variable GeoGebra %1 la valeur %2",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "nom_var",
       "check": "String"
     },
     {
