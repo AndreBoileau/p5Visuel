@@ -4,7 +4,7 @@
   <title>Éditeur p5Visuel</title>
   
   <script> 
-  	window.prefixeDOCU = "http://profmath.uqam.ca/~boileau/p5VisuelWEB/p5Visuel/";
+  	window.prefixeDOCU = "http://profmath.uqam.ca/~boileau/p5VisuelWEB/p5Visuel/"; 
   	window.modeVisMathEd_local= false;
   </script>
   <script src="p5BLOCS/jquery.js"></script>
@@ -1486,6 +1486,13 @@
           </shadow>
         </value>
     </block>
+  	<block type="geogebra_choisir">
+        <value name="figure">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+    </block>
     <block type="geogebra_chargement">
         <value name="cadre">
           <shadow type="text">
@@ -1493,85 +1500,50 @@
           </shadow>
         </value>
     </block>
-  	<block type="cadres_commandeggbF">
+  	<block type="cadres_commandeggbFCourt">
         <value name="commande">
           <shadow type="text">
             <field name="TEXT"></field>
           </shadow>
         </value>
-        <value name="cadreA">
-          <shadow type="text">
-            <field name="TEXT"></field>
-          </shadow>
-        </value>
     </block>
-    <block type="cadres_changervarggbF">
+    <block type="cadres_changervarggbFCourt">
         <value name="nom_var">
           <shadow type="text">
             <field name="TEXT"></field>
           </shadow>
         </value>
-        <value name="cadreA">
-          <shadow type="text">
-            <field name="TEXT"></field>
-          </shadow>
-        </value>
     </block>
-    <block type="cadres_obtenirvarggbF">
+    <block type="cadres_obtenirvarggbFCourt">
         <value name="nomVar">
           <shadow type="text">
             <field name="TEXT"></field>
           </shadow>
         </value>
-        <value name="cadreA">
-          <shadow type="text">
-            <field name="TEXT"></field>
-          </shadow>
-        </value>
     </block>
-    <block type="jsdansggb">
+    <block type="jsdansggbCourt">
         <value name="CODE">
           <shadow type="text">
             <field name="TEXT"></field>
           </shadow>
         </value>
-        <value name="CADRE">
-          <shadow type="text">
-            <field name="TEXT"></field>
-          </shadow>
-        </value>
     </block>
-    <block type="geogebra_expressionJS">
+    <block type="geogebra_expressionJSCourt">
         <value name="expression">
           <shadow type="text">
             <field name="TEXT"></field>
           </shadow>
         </value>
-        <value name="cadreA">
-          <shadow type="text">
-            <field name="TEXT"></field>
-          </shadow>
-        </value>
     </block>
-    <block type="geogebra_algoGGB">
+    <block type="geogebra_algoGGBCourt">
         <value name="CODE">
           <shadow type="text">
             <field name="TEXT"></field>
           </shadow>
         </value>
-        <value name="CADRE">
-          <shadow type="text">
-            <field name="TEXT"></field>
-          </shadow>
-        </value>
     </block>
-    <block type="geogebra_expressionAlgo">
+    <block type="geogebra_expressionAlgoCourt">
         <value name="expression">
-          <shadow type="text">
-            <field name="TEXT"></field>
-          </shadow>
-        </value>
-        <value name="cadreA">
           <shadow type="text">
             <field name="TEXT"></field>
           </shadow>
