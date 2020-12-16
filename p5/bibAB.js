@@ -1,4 +1,4 @@
-var prefixeCadresGeoGebra = "GGB/"; 
+var prefixeCadresGeoGebra = "GGB/";
 var stopperApresUneErreur=true; // *** outil de debug AB ***
 var canvasP5visuel=null, canvasCree=false, leGraphicsActif=null; //, canvas=null, canevas=null
 var fonctionUtilisateurDepotAB, monImageDeposeeAB, listeTableauxListesAB, centrerTableauxAB=false;
@@ -889,6 +889,7 @@ function fixerValeurVariableGeoGebraFCourt(nomVariable,valeur) {fixerValeurVaria
 function valeurVariableGeoGebraFCourt(nomVariable) {return valeurVariableGeoGebraF(nomVariable,nomCadreGeoGebraCourant);}
 function executerCommandeJSdansGGBCourt(commande) {executerCommandeJSdansGGB(commande, nomCadreGeoGebraCourant);}
 function executerCommandeAlgoGGBdansGGBCourt(commande) {executerCommandeAlgoGGBdansGGB(commande, nomCadreGeoGebraCourant);}
+function valeurExpressionGGBCourt(expression) {return valeurExpressionGGB(expression, nomCadreGeoGebraCourant);}
 function valeurExpressionJSdansGGBCourt(expression) {return valeurExpressionJSdansGGB(expression, nomCadreGeoGebraCourant);}
 function valeurExpressionAlgoGGBdansGGBCourt(expression) {return valeurExpressionAlgoGGBdansGGB(expression, nomCadreGeoGebraCourant);}
 
@@ -946,6 +947,13 @@ function executerCommandeGeoGebraF(commande,cadreArrivee) {
 	else {parent.document.getElementById(cadreArrivee).contentWindow.ggbApplet.evalCommand(commande);}
 }
 
+function valeurExpressionGGB(expression,cadreArrivee) {
+	var originePageWeb = ( window.location == window.parent.location );
+	if (originePageWeb) {document.getElementById(cadreArrivee).contentWindow.ggbApplet.evalCommand("temp1234567AB="+expression);}
+	else {parent.document.getElementById(cadreArrivee).contentWindow.ggbApplet.evalCommand("temp1234567AB="+expression);}
+	return valeurVariableGeoGebra("temp1234567AB",cadreArrivee);
+}
+
 function valeurVariableGeoGebraF(nomVariable,cadreArrivee) {
 	var originePageWeb = ( window.location == window.parent.location );
 	if (originePageWeb) {return document.getElementById(cadreArrivee).contentWindow.ggbApplet.getValue(nomVariable);}
@@ -956,6 +964,30 @@ function fixerValeurVariableGeoGebraF(nomVariable,valeur,cadreArrivee) {
 	var originePageWeb = ( window.location == window.parent.location );
 	if (originePageWeb) {document.getElementById(cadreArrivee).contentWindow.ggbApplet.setValue(nomVariable,valeur);}
 	else {parent.document.getElementById(cadreArrivee).contentWindow.ggbApplet.setValue(nomVariable,valeur);}
+}
+
+function effacerFigureGGbcourante(){
+	executerCommandeJSdansGGBCourt('reset()');
+}
+
+function rendre_visible(axes, grille) {
+  executerCommandeJSdansGGBCourt(('setAxesVisible(@,@)'.replace(new RegExp('@',"g"),axes)));
+  executerCommandeJSdansGGBCourt(('setGridVisible(@)'.replace(new RegExp('@',"g"),grille)));
+  executerCommandeJSdansGGBCourt(('setAxesVisible(3,@,@,@)'.replace(new RegExp('@',"g"),axes)));
+  executerCommandeJSdansGGBCourt(('setVisible("xOyPlane", @)'.replace(new RegExp('@',"g"),grille)));
+}
+
+function axesFigureGGB_2D(xmin, xmax, ymin, ymax) {
+  executerCommandeJSdansGGBCourt((substitution('setCoordSystem(@1,@2,@3,@4)',[xmin, xmax, ymin, ymax])));
+}
+
+function axesFigureGGB_3D(xmin, xmax, ymin, ymax, zmin, zmax) {
+  executerCommandeJSdansGGBCourt((substitution('setCoordSystem(@1,@2,@3,@4,@5,@6,false)',[xmin, xmax, ymin, ymax, zmin, zmax])));
+}
+
+function apparenceObjetFigureGGB(nom, rouge, vert, bleu, opacite) {
+  executerCommandeGeoGebraFCourt((substitution('SetColor(@1,@2,@3,@4)',[nom, rouge / 255, vert / 255, bleu / 255])));
+  executerCommandeGeoGebraFCourt((substitution('SetFilling(@1,@2)',[nom, opacite / 255])));
 }
 
 // cadres SAGE
