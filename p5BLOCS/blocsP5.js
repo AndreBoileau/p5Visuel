@@ -3800,7 +3800,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#857DF7",
   "tooltip": "Transmettre une instruction JavaScript à un cadre GeoGebra",
-  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/geogebra.html#JSdansGGB"
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/cadres.html#JSdansGGB"
 },
 {
   "type": "jsdansggbCourt",
@@ -3852,7 +3852,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "output": null,
   "colour": "#857DF7",
   "tooltip": "Valeur d'une expression JavaScript dans un cadre GeoGebra",
-  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/geogebra.html#expressionJSdansGGB"
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/cadres.html#expressionJSdansGGB"
 },
 {
   "type": "geogebra_expressionJSCourt",
@@ -3903,7 +3903,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "output": null,
   "colour": "#857DF7",
   "tooltip": "Valeur d'une expression algoGGB dans un cadre GeoGebra",
-  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/geogebra.html#expressionALGOdansGGB"
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/cadres.html#expressionALGOdansGGB"
 },
 {
   "type": "geogebra_expressionAlgoCourt",
@@ -3955,7 +3955,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#857DF7",
   "tooltip": "Transmettre une instruction algoGGB à un cadre GeoGebra",
-  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/geogebra.html#algoGGB"
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/cadres.html#algoGGB"
 },
 {
   "type": "geogebra_algoGGBCourt",
@@ -4001,7 +4001,23 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#857DF7",
   "tooltip": "Si le cadre est en fait la page web elle-même, laisser vide son nom",
-  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/geogebra.html#commandeGGB"
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/cadres.html#commandeGGB"
+},    
+{
+  "type": "geogebra_expressionGGB",
+  "message0": "valeur de l'expression GeoGebra %1",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "expression",
+      "check": "String"
+    }
+  ],
+  "inputsInline": true,
+  "output": null,
+  "colour": "#857DF7",
+  "tooltip": "Valeur d'une expression GeoGebra dans un cadre GeoGebra",
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/geogebra.html#expressionGGB"
 },
 {
   "type": "cadres_commandeggbFCourt",
@@ -4065,7 +4081,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "output": null,
   "colour": "#857DF7",
   "tooltip": "Si le cadre est en fait la page web elle-même, laisser vide son nom",
-  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/geogebra.html#obtenirVarGGB"
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/cadres.html#obtenirVarGGB"
 },
 {
   "type": "cadres_obtenirvarggbFCourt",
@@ -4138,7 +4154,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "nextStatement": null,
   "colour": "#857DF7",
   "tooltip": "Si le cadre est en fait la page web elle-même, laisser vide son nom",
-  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/geogebra.html#changerVarGGB"
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/cadres.html#changerVarGGB"
 },
 {
   "type": "cadres_changervarggbFCourt",
@@ -4362,6 +4378,204 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "colour": "#00CCAA",
   "tooltip": "Si le cadre est en fait la page web elle-même, laisser vide son nom",
   "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/cadres.html#SAGE2"
+},
+{
+  "type": "geogebra_effacer",
+  "message0": "%1 Effacer la figure",
+  "args0": [
+    {
+      "type": "field_image",
+      "src": prefixeDOCU+"p5BLOCS/images/disque.png",
+      "width": 15,
+      "height": 15,
+      "alt": "*"
+    }
+  ],
+  "inputsInline": true,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": "#857DF7",
+  "tooltip": "Efface la figure GeoGebra courante",
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/geogebra.html#effacer"
+},   
+{
+  "type": "geogebra_visibles",
+  "message0": "%1 Figure avec axes %2 et grille %3",
+  "args0": [
+    {
+      "type": "field_image",
+      "src": prefixeDOCU+"p5BLOCS/images/disque.png",
+      "width": 15,
+      "height": 15,
+      "alt": "*"
+    },
+    {
+      "type": "field_dropdown",
+      "name": "axes",
+      "options": [
+        [
+          "visibles",
+          "VISIBLE"
+        ],
+        [
+          "invisibles",
+          "INVISIBLE"
+        ]
+      ]
+    },
+    {
+      "type": "field_dropdown",
+      "name": "grille",
+      "options": [
+        [
+          "visible",
+          "VISIBLE"
+        ],
+        [
+          "invisible",
+          "INVISIBLE"
+        ]
+      ]
+    }
+  ],
+  "inputsInline": true,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": "#857DF7",
+  "tooltip": "Montrer ou cacher les axes et la grille de la figure",
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/geogebra.html#visibles"
+},
+{
+  "type": "geogebra_axes2D",
+  "message0": "%1 Axes 2D : xmin %2 xmax %3 ymin %4 ymax %5",
+  "args0": [
+    {
+      "type": "field_image",
+      "src": prefixeDOCU+"p5BLOCS/images/disque.png",
+      "width": 15,
+      "height": 15,
+      "alt": "*"
+    },
+    {
+      "type": "input_value",
+      "name": "xmin",
+      "check": "Number"
+    },
+    {
+      "type": "input_value",
+      "name": "xmax",
+      "check": "Number"
+    },
+    {
+      "type": "input_value",
+      "name": "ymin",
+      "check": "Number"
+    },
+    {
+      "type": "input_value",
+      "name": "ymax",
+      "check": "Number"
+    }
+  ],
+  "inputsInline": true,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": "#857DF7",
+  "tooltip": "Valeurs minimales et maximales des axes visibles",
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/geogebra.html#axes2D"
+},
+{
+  "type": "geogebra_axes3D",
+  "message0": "%1 Axes 3D : xmin %2 xmax %3 ymin %4 ymax %5 zmin %6 zmax %7",
+  "args0": [
+    {
+      "type": "field_image",
+      "src": prefixeDOCU+"p5BLOCS/images/disque.png",
+      "width": 15,
+      "height": 15,
+      "alt": "*"
+    },
+    {
+      "type": "input_value",
+      "name": "xmin",
+      "check": "Number"
+    },
+    {
+      "type": "input_value",
+      "name": "xmax",
+      "check": "Number"
+    },
+    {
+      "type": "input_value",
+      "name": "ymin",
+      "check": "Number"
+    },
+    {
+      "type": "input_value",
+      "name": "ymax",
+      "check": "Number"
+    },
+    {
+      "type": "input_value",
+      "name": "zmin",
+      "check": "Number"
+    },
+    {
+      "type": "input_value",
+      "name": "zmax",
+      "check": "Number"
+    }
+  ],
+  "inputsInline": true,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": "#857DF7",
+  "tooltip": "Valeurs minimales et maximales des axes visibles",
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/geogebra.html#axes3D"
+},
+{
+  "type": "geogebra_couleur",
+  "message0": "%1 Objet nom %2 de couleur rouge %3 vert %4 bleu %5 et opacité %6",
+  "args0": [
+    {
+      "type": "field_image",
+      "src": prefixeDOCU+"p5BLOCS/images/disque.png",
+      "width": 15,
+      "height": 15,
+      "alt": "*"
+    },
+    {
+      "type": "input_value",
+      "name": "nom",
+      "check": "String"
+    },
+    {
+      "type": "input_value",
+      "name": "rouge",
+      "check": "Number"
+    },
+    {
+      "type": "input_value",
+      "name": "vert",
+      "check": "Number"
+    },
+    {
+      "type": "input_value",
+      "name": "bleu",
+      "check": "Number"
+    },
+    {
+      "type": "input_value",
+      "name": "opacite",
+      "check": "Number"
+    }
+  ],
+  "inputsInline": true,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": "#857DF7",
+  "tooltip": "Modifier la couleur d'un objet existant",
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/geogebra.html#couleur"
 }
 ]);  // END JSON EXTRACT (Do not delete this comment.)
 

@@ -1421,6 +1421,12 @@ Blockly.JavaScript['cadres_commandeggbFCourt'] = function(block) {
   return code;
 };
 
+Blockly.JavaScript['geogebra_expressionGGB'] = function(block) {
+  var expression = Blockly.JavaScript.valueToCode(block, 'expression', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'valeurExpressionGGBCourt('+expression+')';
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
+
 Blockly.JavaScript['cadres_obtenirvarggbFCourt'] = function(block) {
   var nomvar = Blockly.JavaScript.valueToCode(block, 'nomVar', Blockly.JavaScript.ORDER_ATOMIC);
   var code = 'valeurVariableGeoGebraFCourt('+nomvar+')';
@@ -1456,6 +1462,48 @@ Blockly.JavaScript['geogebra_expressionAlgoCourt'] = function(block) {
   var expression = Blockly.JavaScript.valueToCode(block, 'expression', Blockly.JavaScript.ORDER_ATOMIC);
   var code = 'valeurExpressionAlgoGGBdansGGBCourt('+expression+')';
   return [code, Blockly.JavaScript.ORDER_NONE];
+};
+
+Blockly.JavaScript['geogebra_effacer'] = function(block) {
+  var code = 'effacerFigureGGbcourante();\n';
+  return code;
+};
+
+Blockly.JavaScript['geogebra_visibles'] = function(block) {
+  var axes = block.getFieldValue('axes') == "VISIBLE";
+  var grille = block.getFieldValue('grille') == "VISIBLE";
+  var code = 'rendre_visible('+axes+','+grille+');\n';
+  return code;
+};
+
+Blockly.JavaScript['geogebra_axes2D'] = function(block) {
+  var xmin = Blockly.JavaScript.valueToCode(block, 'xmin', Blockly.JavaScript.ORDER_ATOMIC);
+  var xmax = Blockly.JavaScript.valueToCode(block, 'xmax', Blockly.JavaScript.ORDER_ATOMIC);
+  var ymin = Blockly.JavaScript.valueToCode(block, 'ymin', Blockly.JavaScript.ORDER_ATOMIC);
+  var ymax = Blockly.JavaScript.valueToCode(block, 'ymax', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'axesFigureGGB_2D('+xmin+','+xmax+','+ymin+','+ymax+');\n';
+  return code;
+};
+
+Blockly.JavaScript['geogebra_axes3D'] = function(block) {
+  var xmin = Blockly.JavaScript.valueToCode(block, 'xmin', Blockly.JavaScript.ORDER_ATOMIC);
+  var xmax = Blockly.JavaScript.valueToCode(block, 'xmax', Blockly.JavaScript.ORDER_ATOMIC);
+  var ymin = Blockly.JavaScript.valueToCode(block, 'ymin', Blockly.JavaScript.ORDER_ATOMIC);
+  var ymax = Blockly.JavaScript.valueToCode(block, 'ymax', Blockly.JavaScript.ORDER_ATOMIC);
+  var zmin = Blockly.JavaScript.valueToCode(block, 'zmin', Blockly.JavaScript.ORDER_ATOMIC);
+  var zmax = Blockly.JavaScript.valueToCode(block, 'zmax', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'axesFigureGGB_3D('+xmin+','+xmax+','+ymin+','+ymax+','+zmin+','+zmax+');\n';
+  return code;
+};
+
+Blockly.JavaScript['geogebra_couleur'] = function(block) {
+  var nom = Blockly.JavaScript.valueToCode(block, 'nom', Blockly.JavaScript.ORDER_ATOMIC);
+  var rouge = Blockly.JavaScript.valueToCode(block, 'rouge', Blockly.JavaScript.ORDER_ATOMIC);
+  var vert = Blockly.JavaScript.valueToCode(block, 'vert', Blockly.JavaScript.ORDER_ATOMIC);
+  var bleu = Blockly.JavaScript.valueToCode(block, 'bleu', Blockly.JavaScript.ORDER_ATOMIC);
+  var opacite = Blockly.JavaScript.valueToCode(block, 'opacite', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'apparenceObjetFigureGGB('+nom+','+rouge+','+vert+','+bleu+','+opacite+');\n';
+  return code;
 };
 
 Blockly.JavaScript['cadres_sage'] = function(block) {
