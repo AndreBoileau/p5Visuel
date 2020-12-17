@@ -985,6 +985,13 @@ function axesFigureGGB_3D(xmin, xmax, ymin, ymax, zmin, zmax) {
   executerCommandeJSdansGGBCourt((substitution('setCoordSystem(@1,@2,@3,@4,@5,@6,false)',[xmin, xmax, ymin, ymax, zmin, zmax])));
 }
 
+function rendre_objetGGB_visible(nom,visible){
+	var commande ="SetVisibleInView("+nom+",1,"+visible+")";
+	executerCommandeGeoGebraF(commande, nomCadreGeoGebraCourant);
+	commande ="SetVisibleInView("+nom+",-1,"+visible+")";
+	executerCommandeGeoGebraF(commande, nomCadreGeoGebraCourant);
+}
+
 function apparenceObjetFigureGGB(nom, rouge, vert, bleu, opacite) {
   executerCommandeGeoGebraFCourt((substitution('SetColor(@1,@2,@3,@4)',[nom, rouge / 255, vert / 255, bleu / 255])));
   executerCommandeGeoGebraFCourt((substitution('SetFilling(@1,@2)',[nom, opacite / 255])));
