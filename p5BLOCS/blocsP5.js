@@ -4381,16 +4381,8 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 },
 {
   "type": "geogebra_effacer",
-  "message0": "%1 Effacer la figure",
-  "args0": [
-    {
-      "type": "field_image",
-      "src": prefixeDOCU+"p5BLOCS/images/disque.png",
-      "width": 15,
-      "height": 15,
-      "alt": "*"
-    }
-  ],
+  "message0": "Effacer la figure",
+  "args0": [],
   "inputsInline": true,
   "previousStatement": null,
   "nextStatement": null,
@@ -4400,15 +4392,8 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 },   
 {
   "type": "geogebra_visibles",
-  "message0": "%1 Figure avec axes %2 et grille %3",
+  "message0": "Figure avec axes %1 et grille %2",
   "args0": [
-    {
-      "type": "field_image",
-      "src": prefixeDOCU+"p5BLOCS/images/disque.png",
-      "width": 15,
-      "height": 15,
-      "alt": "*"
-    },
     {
       "type": "field_dropdown",
       "name": "axes",
@@ -4447,15 +4432,8 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 },
 {
   "type": "geogebra_axes2D",
-  "message0": "%1 Axes 2D : xmin %2 xmax %3 ymin %4 ymax %5",
+  "message0": "Axes 2D : xmin %1 xmax %2 ymin %3 ymax %4",
   "args0": [
-    {
-      "type": "field_image",
-      "src": prefixeDOCU+"p5BLOCS/images/disque.png",
-      "width": 15,
-      "height": 15,
-      "alt": "*"
-    },
     {
       "type": "input_value",
       "name": "xmin",
@@ -4486,15 +4464,8 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 },
 {
   "type": "geogebra_axes3D",
-  "message0": "%1 Axes 3D : xmin %2 xmax %3 ymin %4 ymax %5 zmin %6 zmax %7",
+  "message0": "Axes 3D : xmin %1 xmax %2 ymin %3 ymax %4 zmin %5 zmax %6",
   "args0": [
-    {
-      "type": "field_image",
-      "src": prefixeDOCU+"p5BLOCS/images/disque.png",
-      "width": 15,
-      "height": 15,
-      "alt": "*"
-    },
     {
       "type": "input_value",
       "name": "xmin",
@@ -4534,16 +4505,40 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/geogebra.html#axes3D"
 },
 {
-  "type": "geogebra_couleur",
-  "message0": "%1 Objet nom %2 de couleur rouge %3 vert %4 bleu %5 et opacité %6",
+  "type": "geogebra_objetVisible",
+  "message0": "Objet %1  %2",
   "args0": [
     {
-      "type": "field_image",
-      "src": prefixeDOCU+"p5BLOCS/images/disque.png",
-      "width": 15,
-      "height": 15,
-      "alt": "*"
+      "type": "input_value",
+      "name": "nom",
+      "check": "String"
     },
+    {
+      "type": "field_dropdown",
+      "name": "visible",
+      "options": [
+        [
+          "visible",
+          "VISIBLE"
+        ],
+        [
+          "invisible",
+          "INVISIBLE"
+        ]
+      ]
+    }
+  ],
+  "inputsInline": true,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": "#857DF7",
+  "tooltip": "Montrer ou cacher un objet de la figure courante",
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/geogebra.html#objetVisible"
+},
+{
+  "type": "geogebra_couleur",
+  "message0": "Objet nom %1 de couleur rouge %2 vert %3 bleu %4 et opacité %5",
+  "args0": [
     {
       "type": "input_value",
       "name": "nom",

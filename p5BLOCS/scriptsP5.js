@@ -1496,6 +1496,13 @@ Blockly.JavaScript['geogebra_axes3D'] = function(block) {
   return code;
 };
 
+Blockly.JavaScript['geogebra_objetVisible'] = function(block) {
+  var nom = Blockly.JavaScript.valueToCode(block, 'nom', Blockly.JavaScript.ORDER_ATOMIC);
+  var visible = block.getFieldValue('visible') == "VISIBLE";
+  var code = 'rendre_objetGGB_visible('+nom+','+visible+');\n';
+  return code;
+};
+
 Blockly.JavaScript['geogebra_couleur'] = function(block) {
   var nom = Blockly.JavaScript.valueToCode(block, 'nom', Blockly.JavaScript.ORDER_ATOMIC);
   var rouge = Blockly.JavaScript.valueToCode(block, 'rouge', Blockly.JavaScript.ORDER_ATOMIC);
