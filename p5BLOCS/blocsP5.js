@@ -3657,6 +3657,38 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/geogebra.html#creerCadreGGB"
 },
 {
+  "type": "geogebra_importerFigure",
+  "message0": "Importer figure avec ID %1 : adresse %2  largeur %3  hauteur %4",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "id",
+      "check": "String"
+    },
+    {
+      "type": "input_value",
+      "name": "adresse",
+      "check": "String"
+    },
+    {
+      "type": "input_value",
+      "name": "LARGEUR",
+      "check": "Number"
+    },
+    {
+      "type": "input_value",
+      "name": "HAUTEUR",
+      "check": "Number"
+    }
+  ],
+  "inputsInline": true,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": "#857DF7",
+  "tooltip": "Importer une figure GeoGebra (au format html) placé sur le même serveur",
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/geogebra.html#importerFigure"
+},
+{
   "type": "cadres_chargement",
   "message0": "Le chargement du cadre %1 de type %2 est terminé",
   "args0": [

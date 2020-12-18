@@ -1295,6 +1295,15 @@ Blockly.JavaScript['creer_cadre_ggb_plus'] = function(block) {
   return code;
 };
 
+Blockly.JavaScript['geogebra_importerFigure'] = function(block) {
+  var id = Blockly.JavaScript.valueToCode(block, 'id', Blockly.JavaScript.ORDER_ATOMIC);
+  var adresse = Blockly.JavaScript.valueToCode(block, 'adresse', Blockly.JavaScript.ORDER_ATOMIC);
+  var largeur = Blockly.JavaScript.valueToCode(block, 'LARGEUR', Blockly.JavaScript.ORDER_ATOMIC);
+  var hauteur = Blockly.JavaScript.valueToCode(block, 'HAUTEUR', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'importerFigureGGB('+id+','+adresse+','+largeur+','+hauteur+');\n';
+  return code;
+};
+
 Blockly.JavaScript['geogebra_choisir'] = function(block) {
   var figure = Blockly.JavaScript.valueToCode(block, 'figure', Blockly.JavaScript.ORDER_ATOMIC);
   var code = 'choisirFigureGGB('+figure+');\n';
