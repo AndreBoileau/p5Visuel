@@ -4,7 +4,7 @@
   <title>Éditeur p5Visuel</title>
   
   <script> 
-  	window.prefixeDOCU = "http://profmath.uqam.ca/~boileau/p5VisuelWEB/p5Visuel/";  
+  	window.prefixeDOCU = "http://profmath.uqam.ca/~boileau/p5VisuelWEB/p5Visuel/"; 
   	window.modeVisMathEd_local= false;
   </script>
   <script src="p5BLOCS/jquery.js"></script>
@@ -93,6 +93,7 @@
       <a  id="gererBlocsImagesHaut" onclick="traiterMenuHautSauverRamener('gererBlocsImages')">  Montrer les blocs Images</a>
       <a  id="gererBlocsVideosHaut" onclick="traiterMenuHautSauverRamener('gererBlocsVideos')">  Montrer les blocs Vidéos</a>
       <a  id="gererBlocsCadresHaut" onclick="traiterMenuHautSauverRamener('gererBlocsCadres')">  Montrer les blocs Cadres</a>
+      <a  id="gererBlocsGeoGebraHaut" onclick="traiterMenuHautSauverRamener('gererBlocsGeoGebra')">✔︎ Montrer les blocs GeoGebra</a>
     </div>
   </div> 
 </div>
@@ -135,6 +136,7 @@
 				<div class="itemMenu" id="gererBlocsImages" onclick="traiterMenuSauverRamener('gererBlocsImages')">  Montrer les blocs Images</div>
 				<div class="itemMenu" id="gererBlocsVideos" onclick="traiterMenuSauverRamener('gererBlocsVideos')">  Montrer les blocs Vidéos</div>
 				<div class="itemMenu" id="gererBlocsCadres" onclick="traiterMenuSauverRamener('gererBlocsCadres')">  Montrer les blocs Cadres</div>
+				<div class="itemMenu" id="gererBlocsGeoGebra" onclick="traiterMenuSauverRamener('gererBlocsGeoGebra')">✔︎ Montrer les blocs GeoGebra</div>
 			</div>
 		</div>
 		<div id="im-just-an-underline">
@@ -1550,8 +1552,6 @@
         </value>
     </block>
     </category>
-    <category id="catVaria" colour="114" name="Divers">
-    </category>
     <category id="catGGB" colour="#857DF7" name="GeoGebra">
     <block type="creer_cadre_ggb_plus">
         <value name="ID">
@@ -1753,6 +1753,7 @@
         </value>
     </block>
     </category>
+    <category id="catDivers" colour="#FFAA00" name="Divers"></category>
   </xml>
 <xml id="blocklyDefault" style="display: none">
   <variables>
@@ -1936,6 +1937,17 @@
     			document.getElementById("gererBlocsCadres").innerHTML = "✔︎ Montrer les blocs Cadres";
     			document.getElementById("gererBlocsCadresHaut").innerHTML = "✔︎ Montrer les blocs Cadres";
     			document.getElementById(':t').style.display = '';
+    		}
+    		break;
+    	case 'gererBlocsGeoGebra':
+    		if (document.getElementById("gererBlocsGeoGebra").innerHTML.indexOf('✔︎') > -1) {
+    			document.getElementById("gererBlocsGeoGebra").innerHTML = "  Montrer les blocs GeoGebra";
+    			document.getElementById("gererBlocsGeoGebraHaut").innerHTML = "  Montrer les blocs GeoGebra";
+    			document.getElementById(':u').style.display = 'none';
+    		} else {
+    			document.getElementById("gererBlocsGeoGebra").innerHTML = "✔︎︎ Montrer les blocs GeoGebra";
+    			document.getElementById("gererBlocsGeoGebraHaut").innerHTML = "✔︎ Montrer les blocs GeoGebra";
+    			document.getElementById(':u').style.display = '';
     		}
     		break;
     	default:
@@ -2295,21 +2307,31 @@ function gererCategoriesBlocs() {
 	if (catBlocsVisibles.indexOf('images') > -1) {
 		document.getElementById(':p').style.display = '';
 		document.getElementById("gererBlocsImages").innerHTML = "✔︎ Montrer les blocs Images";
-	} // pour montrer la catégorie Cadres
+		document.getElementById("gererBlocsImagesHaut").innerHTML = "✔︎ Montrer les blocs Images";
+	} // pour montrer la catégorie Images
 	document.getElementById(':q').style.display = 'none'; // pour cacher la catégorie Videos
 	if (catBlocsVisibles.indexOf('videos') > -1) {
 		document.getElementById(':q').style.display = '';
 		document.getElementById("gererBlocsVideos").innerHTML = "✔︎ Montrer les blocs Vidéos";
-	} // pour montrer la catégorie Cadres
+		document.getElementById("gererBlocsVideosHaut").innerHTML = "✔︎ Montrer les blocs Vidéos";
+	} // pour montrer la catégorie Videos
 	
 	document.getElementById(':t').style.display = 'none'; // pour cacher la catégorie Cadres
 	if (catBlocsVisibles.indexOf('cadres') > -1) {
 		document.getElementById(':t').style.display = '';
 		document.getElementById("gererBlocsCadres").innerHTML = "✔︎ Montrer les blocs Cadres";
+		document.getElementById("gererBlocsCadresHaut").innerHTML = "✔︎ Montrer les blocs Cadres";
 	} // pour montrer la catégorie Cadres
 	
-	document.getElementById(':u').style.display = 'none'; // pour cacher la catégorie Divers
-	if (catBlocsVisibles.indexOf('divers') > -1) {document.getElementById(':u').style.display = '';} // pour montrer la catégorie Divers
+	document.getElementById(':u').style.display = ''; // pour montrer la catégorie GeoGebra
+	if (catBlocsVisibles.indexOf('geogebra') > -1) {
+		document.getElementById(':u').style.display = 'none';
+		document.getElementById("gererBlocsGeoGebra").innerHTML = " ︎ Montrer les blocs GeoGebra";
+		document.getElementById("gererBlocsGeoGebraHaut").innerHTML = "  Montrer les blocs GeoGebra";
+	} // pour cacher la catégorie GeoGebra
+	
+	document.getElementById(':v').style.display = 'none'; // pour cacher la catégorie Divers
+	if (catBlocsVisibles.indexOf('divers') > -1) {document.getElementById(':v').style.display = '';} // pour montrer la catégorie Divers
 }
 
 ramenerProgrammeInitial();
