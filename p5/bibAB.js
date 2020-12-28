@@ -468,6 +468,34 @@ function creerMenuLocal(liste) {
     return menuLocal;
 }
 
+function insererVideo(source, controles, depart, repetitions, largeur, hauteur) {
+	if (source.toLowerCase().includes("https://www.youtu")) {
+		return insererVideoYouTube(source, controles, depart, repetitions, largeur, hauteur);}
+	var video = createVideo(source);
+	video.elt.controls=controles;
+	video.elt.autoplay=depart;
+	video.elt.loop=repetitions;
+	if (largeur>0 && hauteur>0) {
+  		video.style('width',largeur+'px');
+  		video.style('height',hauteur+'px');}
+	return video;
+}
+
+function insererVideoYouTube(source, controles, depart, repetitions, largeur, hauteur) {
+	var prefixe = "?";
+	var cadreYouTube=createElement('iframe','');
+	cadreYouTube.elt.style.borderStyle = "none";
+	if (depart) {source = source + prefixe+"autoplay=1"; prefixe = "&";}
+	if (repetitions) {source = source + prefixe+"loop=1"; prefixe = "&";}
+	if (!controles) {source = source + prefixe+"controls=0"; prefixe = "&";}
+	cadreYouTube.elt.setAttribute("src",source);
+	cadreYouTube.elt.setAttribute("allowfullscreen",true);
+	if (largeur>0 && hauteur>0) {
+		cadreYouTube.elt.width = largeur;
+		cadreYouTube.elt.height = hauteur;}
+	return cadreYouTube;
+}
+
 // **************************************************************
 
 function point_(x,y) {
