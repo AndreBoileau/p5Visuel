@@ -2186,6 +2186,89 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "tooltip": "Charge en mémoire un fichier image simple. Elle apparaît alors sur notre page web.",
   "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/objetsWeb.html#chargerFichier"
 },
+// Charger une vidéo
+{
+  "type": "objetsWeb_video_charger",
+  "message0": "Charger une vidéo %1 depuis l'adresse %2 avec contrôles %3 %4 départ %5 %6 en jouant %7 %8 largeur %9 hauteur %10",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "nom"
+    },
+    {
+      "type": "input_value",
+      "name": "adresse",
+      "check": "String"
+    },
+    {
+      "type": "field_dropdown",
+      "name": "controles",
+      "options": [
+        [
+          "visibles",
+          "VISIBLES"
+        ],
+        [
+          "invisibles",
+          "INVISIBLES"
+        ]
+      ]
+    },
+    {
+      "type": "input_dummy"
+    },
+    {
+      "type": "field_dropdown",
+      "name": "depart",
+      "options": [
+        [
+          "manuel",
+          "MANUEL"
+        ],
+        [
+          "automatique",
+          "AUTOMATIQUE"
+        ]
+      ]
+    },
+    {
+      "type": "input_dummy"
+    },
+    {
+      "type": "field_dropdown",
+      "name": "repetitions",
+      "options": [
+        [
+          "une fois",
+          "UNE"
+        ],
+        [
+          "en boucle",
+          "PLUSIEURS"
+        ]
+      ]
+    },
+    {
+      "type": "input_dummy"
+    },
+    {
+      "type": "input_value",
+      "name": "largeur",
+      "check": "Number"
+    },
+    {
+      "type": "input_value",
+      "name": "hauteur",
+      "check": "Number"
+    }
+  ],
+  "inputsInline": false,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": "#CC0000",
+  "tooltip": "Insère une vidéo (YouTube ou autre) avec les caractéristiques spécifiées",
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/objetsWeb.html#insererVideo"
+},
 //***********************************************************
 //Formes
 //----------------------

@@ -712,6 +712,20 @@ Blockly.JavaScript['objetsWeb_image_charger'] = function(block) {
   var code = nom_var+'createImg('+valeur1+');\n';
   return code;
 };
+// Charger une video
+Blockly.JavaScript['objetsWeb_video_charger'] = function(block) {
+  var nom = Blockly.JavaScript.valueToCode(block, 'nom', Blockly.JavaScript.ORDER_ATOMIC);
+  if (nom.length != 0) {nom=nom+"=";}
+  var adresse = Blockly.JavaScript.valueToCode(block, 'adresse', Blockly.JavaScript.ORDER_ATOMIC);
+  var controles = block.getFieldValue('controles') == "VISIBLES";
+  var depart = block.getFieldValue('depart') == "AUTOMATIQUE";
+  var repetitions = block.getFieldValue('repetitions') == "PLUSIEURS";
+  var largeur = Blockly.JavaScript.valueToCode(block, 'largeur', Blockly.JavaScript.ORDER_ATOMIC);
+  var hauteur = Blockly.JavaScript.valueToCode(block, 'hauteur', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = nom+'insererVideo('+adresse+','+controles+','+depart+','+repetitions+','+largeur+','+hauteur+');\n';
+  return code;
+};
 //******************************************************
 //Couleurs
 //----------------------
