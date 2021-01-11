@@ -471,6 +471,8 @@ function creerMenuLocal(liste) {
 function insererVideo(source, controles, depart, repetitions, largeur, hauteur) {
 	if (source.toLowerCase().includes("https://www.youtu")) {
 		return insererVideoYouTube(source, controles, depart, repetitions, largeur, hauteur);}
+	if (source.toLowerCase().includes("vimeo.com/")) {
+		return insererVideoVimeo(source, controles, depart, repetitions, largeur, hauteur);}
 	var video = createVideo(source);
 	video.elt.controls=controles;
 	video.elt.autoplay=depart;
@@ -494,6 +496,23 @@ function insererVideoYouTube(source, controles, depart, repetitions, largeur, ha
 		cadreYouTube.elt.width = largeur;
 		cadreYouTube.elt.height = hauteur;}
 	return cadreYouTube;
+}
+
+function insererVideoVimeo(source, controles, depart, repetitions, largeur, hauteur) {
+	source = source + "?title=0&byline=0&portrait=0";
+	var cadreVimeo=createElement('iframe','');
+	cadreVimeo.elt.style.borderStyle = "none";
+	if (depart) {source = source + "&autoplay=1";}
+	if (repetitions) {source = source + "&loop=1";}
+	if (!controles) {source = source + "&controls=0";}
+	cadreVimeo.elt.setAttribute("src",source);
+	cadreVimeo.elt.setAttribute("frameborder","0");
+	cadreVimeo.elt.setAttribute("allow","autoplay; fullscreen");
+	cadreVimeo.elt.setAttribute("allowfullscreen",true);
+	if (largeur>0 && hauteur>0) {
+		cadreVimeo.elt.width = largeur;
+		cadreVimeo.elt.height = hauteur;}
+	return cadreVimeo;
 }
 
 // **************************************************************
