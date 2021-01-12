@@ -1,4 +1,4 @@
-var prefixeCadresGeoGebra = "GGB/";
+var prefixeCadresGeoGebra = "GGB/"; 
 var stopperApresUneErreur=true; // *** outil de debug AB ***
 var canvasP5visuel=null, canvasCree=false, leGraphicsActif=null; //, canvas=null, canevas=null
 var fonctionUtilisateurDepotAB, monImageDeposeeAB, listeTableauxListesAB, centrerTableauxAB=false;
@@ -504,11 +504,13 @@ function insererVideoVimeo(source, controles, depart, repetitions, largeur, haut
 	cadreVimeo.elt.style.borderStyle = "none";
 	if (depart) {source = source + "&autoplay=1";}
 	if (repetitions) {source = source + "&loop=1";}
-	if (!controles) {source = source + "&controls=0";}
+	//if (!controles) {source = source + "&controls=0";}
 	cadreVimeo.elt.setAttribute("src",source);
 	cadreVimeo.elt.setAttribute("frameborder","0");
 	cadreVimeo.elt.setAttribute("allow","autoplay; fullscreen");
 	cadreVimeo.elt.setAttribute("allowfullscreen",true);
+	cadreVimeo.elt.setAttribute("webkitallowfullscreen ",true);
+	cadreVimeo.elt.setAttribute("mozallowfullscreen",true);
 	if (largeur>0 && hauteur>0) {
 		cadreVimeo.elt.width = largeur;
 		cadreVimeo.elt.height = hauteur;}
