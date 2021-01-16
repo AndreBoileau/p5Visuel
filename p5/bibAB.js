@@ -469,10 +469,21 @@ function creerMenuLocal(liste) {
 }
 
 function insererVideo(source, controles, depart, repetitions, largeur, hauteur) {
+	if (source.toLowerCase().includes("https://youtu.be/")) {
+		source=source.replace("https://youtu.be/","https://www.youtube.com/embed/");
+		return insererVideoYouTube(source, controles, depart, repetitions, largeur, hauteur);}
 	if (source.toLowerCase().includes("https://www.youtu")) {
 		return insererVideoYouTube(source, controles, depart, repetitions, largeur, hauteur);}
+	if (source.toLowerCase().includes("https://vimeo.com/")) {
+		source=source.replace("https://vimeo.com/","https://player.vimeo.com/video/");
+		return insererVideoVimeo(source, controles, depart, repetitions, largeur, hauteur);}
 	if (source.toLowerCase().includes("vimeo.com/")) {
 		return insererVideoVimeo(source, controles, depart, repetitions, largeur, hauteur);}
+	if (source.toLowerCase().includes("dai.ly/")) {
+		source=source.replace("dai.ly/","dailymotion.com/embed/video/");
+		return insererVideoDailyMotion(source, controles, depart, repetitions, largeur, hauteur);}
+	if (source.toLowerCase().includes("dailymotion.com/")) {
+		return insererVideoDailyMotion(source, controles, depart, repetitions, largeur, hauteur);}
 	var video = createVideo(source);
 	video.elt.controls=controles;
 	video.elt.autoplay=depart;
@@ -515,6 +526,22 @@ function insererVideoVimeo(source, controles, depart, repetitions, largeur, haut
 		cadreVimeo.elt.width = largeur;
 		cadreVimeo.elt.height = hauteur;}
 	return cadreVimeo;
+}
+
+function insererVideoDailyMotion(source, controles, depart, repetitions, largeur, hauteur) {
+	if (source.toLowerCase().includes("sv4.dailymotion.com")) {source=source.replace("sv4.dailymotion.com","dailymotion.com");}
+	var prefixe = "?";
+	var cadreDM=createElement('iframe','');
+	cadreDM.elt.style.borderStyle = "none";
+	if (depart) {source = source + prefixe+"autoplay=1"; prefixe = "&";}
+	if (repetitions) {source = source + prefixe+"loop=1"; prefixe = "&";}
+	if (!controles) {source = source + prefixe+"controls=0"; prefixe = "&";}
+	cadreDM.elt.setAttribute("src",source);
+	cadreDM.elt.setAttribute("allowfullscreen",true);
+	if (largeur>0 && hauteur>0) {
+		cadreDM.elt.width = largeur;
+		cadreDM.elt.height = hauteur;}
+	return cadreDM;
 }
 
 // **************************************************************
