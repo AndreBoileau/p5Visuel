@@ -707,6 +707,38 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "tooltip": "Un commentaire est un texte utile au programmeur. Il n'est jamais exécuté.",
   "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/programmation.html#commentaire"
 },
+//Lien vers une adresse web
+{
+  "type": "programmation_vers_lien",
+  "message0": "Aller à l'adresse web %1 %2",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "adresse",
+      "check": "String"
+    },
+    {
+      "type": "field_dropdown",
+      "name": "destination",
+      "options": [
+        [
+          "dans la même fenêtre",
+          "MEME"
+        ],
+        [
+          "dans une autre fenêtre",
+          "AUTRE"
+        ]
+      ]
+    }
+  ],
+  "inputsInline": true,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": "#00AA00",
+  "tooltip": "Ouvre une page web à l'adresse spécifiée.",
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/programmation.html#versLien"
+},
 // Faire
 {
   "type": "programmation_faire",

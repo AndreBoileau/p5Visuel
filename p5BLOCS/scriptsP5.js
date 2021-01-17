@@ -192,6 +192,13 @@ Blockly.JavaScript['programmation_commentaire'] = function(block) {
   var code = '// '+value_comment+'\n';
   return code;
 };
+// Ouvrir page web
+Blockly.JavaScript['programmation_vers_lien'] = function(block) {
+  var adresse = Blockly.JavaScript.valueToCode(block, 'adresse', Blockly.JavaScript.ORDER_ATOMIC);
+  var destination = (block.getFieldValue('destination') == 'AUTRE');
+  var code = 'versAdresseWeb('+adresse+','+destination+');\n';
+  return code;
+};
 // Faire
 Blockly.JavaScript['programmation_faire'] = function(block) {
   var valeur1 = Blockly.JavaScript.valueToCode(block, 'fonction', Blockly.JavaScript.ORDER_ATOMIC);
