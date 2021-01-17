@@ -1,4 +1,4 @@
-var prefixeCadresGeoGebra = "GGB/";  
+var prefixeCadresGeoGebra = "GGB/"; 
 var stopperApresUneErreur=true; // *** outil de debug AB ***
 var canvasP5visuel=null, canvasCree=false, leGraphicsActif=null; //, canvas=null, canevas=null
 var fonctionUtilisateurDepotAB, monImageDeposeeAB, listeTableauxListesAB, centrerTableauxAB=false;
@@ -454,7 +454,15 @@ exposant = puissance; puiss = puissance; exp =exposant;
 // **************************************************************
 
 function versAdresseWeb(adresse,autreFenetre) {
-	if (autreFenetre) { window.open(adresse,"_blank"); } else { window.open(adresse,"_self"); }
+	if (autreFenetre) { 
+		if (null == window.open(adresse,"_blank")) {
+			informationsMiseAuPointP5(["Adresse web : ",
+										"    "+adresse, "",
+										"La page web n'a pu être ouverte dans une autre fenêtre.",
+										"Votre navigateur bloque peut-être les fenêtres surgissantes...","",
+										"Pour corriger : ",
+										"    déclencher l'ouverture suite à une action de l'utilisateur."]);}
+	} else { window.open(adresse,"_self"); } //
 }
 
 function retourneLien(texte, adresse, autrePage) {
