@@ -1,4 +1,4 @@
-var prefixeCadresGeoGebra = "GGB/";
+var prefixeCadresGeoGebra = "GGB/";  
 var stopperApresUneErreur=true; // *** outil de debug AB ***
 var canvasP5visuel=null, canvasCree=false, leGraphicsActif=null; //, canvas=null, canevas=null
 var fonctionUtilisateurDepotAB, monImageDeposeeAB, listeTableauxListesAB, centrerTableauxAB=false;
@@ -452,6 +452,10 @@ function racine(x) {return Math.sqrt(x);}
 function puissance(x,y) {return Math.pow(x,y);}
 exposant = puissance; puiss = puissance; exp =exposant;
 // **************************************************************
+
+function versAdresseWeb(adresse,autreFenetre) {
+	if (autreFenetre) { window.open(adresse,"_blank"); } else { window.open(adresse,"_self"); }
+}
 
 function retourneLien(texte, adresse, autrePage) {
 	var creerPage='';
