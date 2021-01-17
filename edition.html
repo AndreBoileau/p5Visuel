@@ -4,7 +4,7 @@
   <title>Éditeur p5Visuel</title>
   
   <script> 
-  	window.prefixeDOCU = "http://profmath.uqam.ca/~boileau/p5VisuelWEB/p5Visuel/";  
+  	window.prefixeDOCU = "http://profmath.uqam.ca/~boileau/p5VisuelWEB/p5Visuel/"; 
   	window.modeVisMathEd_local= false;
   </script>
   <script src="p5BLOCS/jquery.js"></script>
@@ -525,6 +525,13 @@
     <category id="programmation" colour="#00AA00" name="Programmation">  
       <block type="programmation_commentaire">
       	<value name="TEXTE">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+      </block>
+      <block type="programmation_vers_lien">
+      	<value name="adresse">
           <shadow type="text">
             <field name="TEXT"></field>
           </shadow>
