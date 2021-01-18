@@ -1,4 +1,4 @@
-var prefixeCadresGeoGebra = "GGB/"; 
+var prefixeCadresGeoGebra = "GGB/";
 var stopperApresUneErreur=true; // *** outil de debug AB ***
 var canvasP5visuel=null, canvasCree=false, leGraphicsActif=null; //, canvas=null, canevas=null
 var fonctionUtilisateurDepotAB, monImageDeposeeAB, listeTableauxListesAB, centrerTableauxAB=false;
@@ -555,6 +555,20 @@ function insererVideoDailyMotion(source, controles, depart, repetitions, largeur
 		cadreDM.elt.height = hauteur;}
 	return cadreDM;
 }
+
+function insererPageWeb(source, largeur, hauteur, bordEpaisseur, bordCouleur) {
+	var cadreP5V=createElement('iframe','');
+	cadreP5V.elt.style.borderStyle = "solid";
+	cadreP5V.elt.style.borderWidth = bordEpaisseur+"px";
+	cadreP5V.elt.style.borderColor = bordCouleur;
+	cadreP5V.elt.setAttribute("src",source);
+	cadreP5V.elt.setAttribute("allowfullscreen",true);
+	if (largeur>0 && hauteur>0) {
+		cadreP5V.elt.width = largeur;
+		cadreP5V.elt.height = hauteur;}
+	return cadreP5V;
+}
+insererP5Visuel=insererPageWeb;
 
 // **************************************************************
 
