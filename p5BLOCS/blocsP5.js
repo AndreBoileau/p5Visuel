@@ -2301,6 +2301,47 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "tooltip": "Insère une vidéo (YouTube ou autre) avec les caractéristiques spécifiées",
   "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/objetsWeb.html#insererVideo"
 },
+//Charger une page web
+{
+  "type": "objetsWeb_insererPageWeb",
+  "message0": "Intégrer une page web %1 d'adresse web %2 de largeur %3 de hauteur %4 avec cadre (en pixels) %5 de couleur %6",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "objet"
+    },
+    {
+      "type": "input_value",
+      "name": "adresse",
+      "check": "String"
+    },
+    {
+      "type": "input_value",
+      "name": "largeur",
+      "check": "Number"
+    },
+    {
+      "type": "input_value",
+      "name": "hauteur",
+      "check": "Number"
+    },
+    {
+      "type": "input_value",
+      "name": "cadre",
+      "check": "Number"
+    },
+    {
+      "type": "input_value",
+      "name": "couleur",
+      "check": ["String","Colour"]
+    }
+  ],
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": "#CC0000",
+  "tooltip": "Insérer une page web dans un cadre de dimensions données.",
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/objetsWeb.html#insererPageWeb"
+},
 //***********************************************************
 //Formes
 //----------------------

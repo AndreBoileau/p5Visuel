@@ -733,6 +733,19 @@ Blockly.JavaScript['objetsWeb_video_charger'] = function(block) {
   var code = nom+'insererVideo('+adresse+','+controles+','+depart+','+repetitions+','+largeur+','+hauteur+');\n';
   return code;
 };
+// Charger une page web
+Blockly.JavaScript['objetsWeb_insererPageWeb'] = function(block) {
+  var objet = Blockly.JavaScript.valueToCode(block, 'objet', Blockly.JavaScript.ORDER_ATOMIC);
+  if (objet.length != 0) {objet=objet+"=";}
+  var adresse = Blockly.JavaScript.valueToCode(block, 'adresse', Blockly.JavaScript.ORDER_ATOMIC);
+  var largeur = Blockly.JavaScript.valueToCode(block, 'largeur', Blockly.JavaScript.ORDER_ATOMIC);
+  var hauteur = Blockly.JavaScript.valueToCode(block, 'hauteur', Blockly.JavaScript.ORDER_ATOMIC);
+  var cadre = Blockly.JavaScript.valueToCode(block, 'cadre', Blockly.JavaScript.ORDER_ATOMIC);
+  var couleur = Blockly.JavaScript.valueToCode(block, 'couleur', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = objet+'insererPageWeb('+adresse+','+largeur+','+hauteur+','+cadre+','+couleur+');\n';
+  return code;
+};
 //******************************************************
 //Couleurs
 //----------------------
