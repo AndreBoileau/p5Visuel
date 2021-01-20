@@ -31,12 +31,14 @@ function axesStandards(complet) {
 	}
 	if (complet) {initTortue(canevas);initTortue(graphicsTortue);placerTortueSurCanevas();}
 }
-function centrerPageExecution(largeur) {
-	centrerTableauxAB=true;
-	document.getElementsByTagName("body")[0].style.textAlign="center";
+function disposerPageExecution(centrer,largeur) {
+	if (centrer) {
+		centrerTableauxAB=true;
+		document.getElementsByTagName("body")[0].style.textAlign="center";}
 	if (largeur>0){
 		document.getElementsByTagName("body")[0].style.width=(largeur+"px");}
 }
+function centrerPageExecution(largeur) { disposerPageExecution(true,largeur); }
 
 function trouverPos(obj) {
 	var curleft = curtop = 0;
