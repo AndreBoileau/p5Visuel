@@ -1265,6 +1265,38 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "tooltip": "Pour centrer les objets web dans la page d'exécution.\nUne largeur de zéro centre par rapport à la largeur (variable) de la fenêtre.",
   "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/p5js.html#centrerP5"
 },
+// Disposer les éléments (au centre ou à gauche) dans une page web de largeur fixée
+{
+  "type": "p5_js_disposer_page",
+  "message0": "Disposer  %1 les objets dans une page web de largeur %2 pixels",
+  "args0": [
+    {
+      "type": "field_dropdown",
+      "name": "centrer",
+      "options": [
+        [
+          "au centre",
+          "CENTRE"
+        ],
+        [
+          "à gauche",
+          "GAUCHE"
+        ]
+      ]
+    },
+    {
+      "type": "input_value",
+      "name": "largeur",
+      "check": "Number"
+    }
+  ],
+  "inputsInline": true,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": "#FF0066",
+  "tooltip": "Une largeur zéro désigne la largeur totale de la fenêtre, dont les dimensions peuvent varier.",
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/p5js.html#disposerPage"
+},
 //Créer canevas
 {
   "type": "p5_js_creerCanvas",

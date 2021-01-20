@@ -419,6 +419,13 @@ Blockly.JavaScript['catégorie_centrerP5'] = function(block) {
   var code = 'centrerPageExecution('+largeur+');\n';
   return code;
 };
+// Disposer les objets (gauche ou centre) dans une page web de largeur fixée
+Blockly.JavaScript['p5_js_disposer_page'] = function(block) {
+  var centrer = (block.getFieldValue('centrer') == "CENTRE");
+  var largeur = Blockly.JavaScript.valueToCode(block, 'largeur', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'disposerPageExecution('+centrer+','+largeur+');\n';
+  return code;
+};
 //Créer le canvas (ancienne version)
 //Blockly.JavaScript['p5_js_creerCanvas'] = function(block) {
 //  var nom_var = Blockly.JavaScript.valueToCode(block, 'NOM_VAR', Blockly.JavaScript.ORDER_ATOMIC);
