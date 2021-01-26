@@ -164,6 +164,34 @@ function contenuZoneTexte(zone, contenu) {
 	zone.html(texte);
 }
 
+function creerBlocTexteFormat(contenu,largeur,hauteur,disposition,rembourrage,taille,couleur,fond) {
+	var blocTexte;
+	if (Array.isArray(contenu)) {contenu = contenuBlocTexte(contenu);}
+	//largeur=largeur-2*rembourrage; hauteur=hauteur-2*rembourrage;
+	blocTexte=createSpan(contenu);
+	blocTexte.style("display","inline-block");
+	blocTexte.style("vertical-align","top");
+	blocTexte.style("overflow-x","auto");
+	if (disposition) {blocTexte.style("text-align","center");} else {blocTexte.style("text-align","left");}
+	blocTexte.style("width",largeur+"px");
+	blocTexte.style("height",hauteur+"px");
+	blocTexte.style("padding",rembourrage+"px");
+	blocTexte.style("font-size",taille+"px");
+	blocTexte.style("color",couleur);
+	if (fond.includes("url")) {blocTexte.style("background-image",fond); blocTexte.style("background-size","cover");} 
+	else {blocTexte.style("background",fond);}
+	return blocTexte;
+}
+function contenuBlocTexte(contenu) {
+	var texte="";
+	for(var k=0;k<contenu.length;k++) {
+		texte = texte+contenu[k];
+		if (k+1 < contenu.length) {texte = texte + "<br />";}
+	}
+	return texte;
+}
+
+
 function substitution(modele,liste){
   var cmd = modele;
   for (var k=liste.length - 1; k>=0; k--) {
