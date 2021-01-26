@@ -575,6 +575,21 @@ Blockly.JavaScript['objetsWeb_zoneTexte'] = function(block) {
   		code = 'messageERREUR("Il faut spécifier un tableau des lignes de la zone de texte");\n';}
   return code;
 };
+// Créer un bloc de texte avec format
+Blockly.JavaScript['objetsWeb_blocTexte'] = function(block) {
+  var nom = Blockly.JavaScript.valueToCode(block, 'nom', Blockly.JavaScript.ORDER_ATOMIC);
+  if (nom.length != 0) {nom=nom+"=";}
+  var contenu = Blockly.JavaScript.valueToCode(block, 'contenu', Blockly.JavaScript.ORDER_ATOMIC);
+  var largeur = Blockly.JavaScript.valueToCode(block, 'largeur', Blockly.JavaScript.ORDER_ATOMIC);
+  var hauteur = Blockly.JavaScript.valueToCode(block, 'hauteur', Blockly.JavaScript.ORDER_ATOMIC);
+  var disposition = (block.getFieldValue('disposition') == 'CENTRE');
+  var rembourrage = Blockly.JavaScript.valueToCode(block, 'padding', Blockly.JavaScript.ORDER_ATOMIC);
+  var taille = Blockly.JavaScript.valueToCode(block, 'taille', Blockly.JavaScript.ORDER_ATOMIC);
+  var couleur = Blockly.JavaScript.valueToCode(block, 'couleur', Blockly.JavaScript.ORDER_ATOMIC);
+  var fond = Blockly.JavaScript.valueToCode(block, 'fond', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = nom+'creerBlocTexteFormat('+contenu+','+largeur+','+hauteur+','+disposition+','+rembourrage+','+taille+','+couleur+','+fond+');\n';
+  return code;
+};
 // Créer une entrée %1 de contenu initial %2 -- Pour fins de compatibilité
 Blockly.JavaScript['catégorie_objetsWebEntree'] = function(block) {
   var objet = Blockly.JavaScript.valueToCode(block, 'OBJET', Blockly.JavaScript.ORDER_ATOMIC);

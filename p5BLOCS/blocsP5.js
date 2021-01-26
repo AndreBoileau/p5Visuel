@@ -1837,6 +1837,79 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/objetsWeb.html#zoneTexte"
 },
 
+//Créer un bloc de texte avec format
+{
+  "type": "objetsWeb_blocTexte",
+  "message0": "Créer un bloc de texte %1 de contenu %2 avec largeur %3  hauteur %4 disposition %5 %6 marge intérieure %7 taille des caractères %8 couleur des caractères %9 couleur du fond %10",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "nom"
+    },
+    {
+      "type": "input_value",
+      "name": "contenu",
+      "check": [
+        "String",
+        "Array"
+      ]
+    },
+    {
+      "type": "input_value",
+      "name": "largeur",
+      "check": "Number"
+    },
+    {
+      "type": "input_value",
+      "name": "hauteur",
+      "check": "Number"
+    },
+    {
+      "type": "field_dropdown",
+      "name": "disposition",
+      "options": [
+        [
+          "non centrée",
+          "GAUCHE"
+        ],
+        [
+          "centrée",
+          "CENTRE"
+        ]
+      ]
+    },
+    {
+      "type": "input_dummy"
+    },
+    {
+      "type": "input_value",
+      "name": "padding",
+      "check": "Number"
+    },
+    {
+      "type": "input_value",
+      "name": "taille",
+      "check": "Number"
+    },
+    {
+      "type": "input_value",
+      "name": "couleur",
+      "check": ["String","Colour"]
+    },
+    {
+      "type": "input_value",
+      "name": "fond",
+      "check": ["String","Colour"]
+    }
+  ],
+  "inputsInline": false,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": "#CC0000",
+  "tooltip": "Crée un bloc de texte avec le format désiré",
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/objetsWeb.html#blocTexteFormat"
+},
+
 // Créer une entrée %1 de contenu initial %2 --- Pour fins de compatibilité
 {
   "type": "catégorie_objetsWebEntree",
