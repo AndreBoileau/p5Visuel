@@ -3877,6 +3877,14 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
         [
           "3D",
           "d3D"
+        ],
+        [
+          "tableur",
+          "TAB"
+        ],
+        [
+          "calcul formel",
+          "FORM"
         ]
       ]
     },
