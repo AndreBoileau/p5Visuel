@@ -946,6 +946,8 @@ function creerCadreGGBplus(dimension, id, largeur, hauteur, menus) {
 	cadreGGB.elt.style.borderStyle = "none";
 	if (menus == "sans") {forme = forme + "0";}
 	if (dimension == "d3D") {forme = "d3D_"+forme;}
+	if (dimension == "TAB") {forme = "TAB_"+forme;}
+	if (dimension == "FORM") {forme = "FORM_"+forme;}
 	source = prefixeCadresGeoGebra+forme+".html"; 
 	document.getElementById(id).setAttribute("src",source);
 	if (menus == "avec") {facteur = (hauteur-72)/largeur;} else {facteur = hauteur/largeur;}
