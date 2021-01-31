@@ -4,7 +4,7 @@
   <title>Éditeur p5Visuel</title>
   
   <script> 
-  	window.prefixeDOCU = "http://profmath.uqam.ca/~boileau/p5VisuelWEB/p5Visuel/";
+  	window.prefixeDOCU = "http://profmath.uqam.ca/~boileau/p5VisuelWEB/p5Visuel/"; 
   	window.modeVisMathEd_local= false;
   </script>
   <script src="p5BLOCS/jquery.js"></script>
@@ -60,6 +60,7 @@
     <div class="dropdown-content">
       <a onclick="traiterMenuHautSauverRamener('ramener')">Ramener un programme p5Visuel</a>
       <a onclick="traiterMenuHautSauverRamener('ajouter')">Ajouter un programme au programme courant</a>
+      <a onclick="traiterMenuHautSauverRamener('ramenerWeb')">Ramener un programme WEB</a>
           -------------------------------------------------------------
       <a onclick="traiterMenuHautSauverRamener('sauver')">Sauver le programme p5Visuel</a>
       <a onclick="traiterMenuHautSauverRamener('sauverJS')">Sauver la traduction JavaScript</a>
@@ -111,6 +112,7 @@
 			<div id="divMenu" style="width:195px;border-style:ridge; display:none;"> <!- display:default | none | block ->
 				<div class="itemMenu" onclick="traiterMenuSauverRamener('ramener')">Ramener programme p5Visuel</div>
 				<div class="itemMenu" onclick="traiterMenuSauverRamener('ajouter')">Ajouter un programme<br />   au programme courant</div>
+				<div class="itemMenu" onclick="traiterMenuSauverRamener('ramenerWeb')">Ramener programme WEB</div>
 				<div class="itemMenu" onclick="traiterMenuSauverRamener('sauver')">Sauver programme p5Visuel</div>
 				<div class="itemMenu" onclick="traiterMenuSauverRamener('sauverJS')">Sauver traduction JavaScript</div>
 				<div class="itemMenu" onclick="traiterMenuSauverRamener('sauverWeb')">Sauver dans une page web</div>
@@ -1923,6 +1925,23 @@
     		fileSelector.click();
     		xmlTextGlobal = 0;
     		chargerContenuFichierAAjouter();
+    		break;
+    	case 'ramenerWeb':
+    		if (modeDebutant) {sauverProgrammeCommeFichierTexte("Voulez-vous d'abord enregistrer votre programme ?");}
+		    var lieu = window.prompt("Taper l'adresse web du programme p5Visuel");
+		    if ((lieu == null) || (lieu.length == 0)) {return;}
+			$.ajax({
+				url: lieu,
+				success : function(data) {
+					if (testerMarqueProgramme(data)) {data = enleverMarqueProgramme(data);} 
+					else {if (!accepterProgramme()) {return;}} //*** Nouveau format de programme
+					if (data) {
+						Blockly.mainWorkspace.clear();
+						var xmlDom = Blockly.Xml.textToDom(data);
+						Blockly.Xml.domToWorkspace(Blockly.mainWorkspace, xmlDom);
+					}
+				}
+			});
     		break;
     	case 'sauver':
     		sauverProgrammeCommeFichierTexte("Nom du fichier pour votre programme p5Visuel");
