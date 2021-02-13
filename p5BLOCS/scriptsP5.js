@@ -24,6 +24,20 @@ Blockly.JavaScript['texte_format'] = function(block) {
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
 
+//Maths : vecteurs
+Blockly.JavaScript['math_longueur'] = function(block) {
+  var x = Blockly.JavaScript.valueToCode(block, 'x', Blockly.JavaScript.ORDER_ATOMIC);
+  var y = Blockly.JavaScript.valueToCode(block, 'y', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'normeVecteur2D('+x+','+y+')';
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
+Blockly.JavaScript['math_orientation'] = function(block) {
+  var x = Blockly.JavaScript.valueToCode(block, 'x', Blockly.JavaScript.ORDER_ATOMIC);
+  var y = Blockly.JavaScript.valueToCode(block, 'y', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'orientationVecteur2D('+x+','+y+')';
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
+
 // Listes (Blockly modifié)
 //-------------------------
 // Obtenir valeur de liste
@@ -732,10 +746,24 @@ Blockly.JavaScript['objetsWeb_viaID'] = function(block) {
   var code = 'select(\'#\'+'+nom_ID+')';
   return [code, Blockly.JavaScript.ORDER_MEMBER];
 };
+// Sélectionner une couleur
+Blockly.JavaScript['objetsweb_choixcouleur'] = function(block) {
+  var objet = Blockly.JavaScript.valueToCode(block, 'objet', Blockly.JavaScript.ORDER_ATOMIC);
+  if (objet.length != 0) {objet=objet+"=";}
+  var couleurDepart = Blockly.JavaScript.valueToCode(block, 'initial', Blockly.JavaScript.ORDER_ATOMIC);
+  var transparence = (block.getFieldValue('transparence')=='AVEC')
+  var action = Blockly.JavaScript.valueToCode(block, 'action', Blockly.JavaScript.ORDER_ATOMIC);
+  if (action.indexOf("(")==0) {action = action.substring(1, action.length);}; action = action+"(";
+  action = action.substring(0, action.indexOf("("))
+  var continuellement = (block.getFieldValue('continuellement')=='EN_COURS');
+  // TODO: Assemble JavaScript into code variable.
+  var code = objet+'choisirCouleurAction('+couleurDepart+','+transparence+',"'+action+'",'+continuellement+');\n';
+  return code;
+};
 // Charger une image simple
 Blockly.JavaScript['objetsWeb_image_charger'] = function(block) {
   var nom_var = Blockly.JavaScript.valueToCode(block, 'NOM_VAR', Blockly.JavaScript.ORDER_ATOMIC);
-  if (nom_var.length != 0) {nom_var=nom_var+"=";}
+  if (nom_var.length != 0) {nom_var=nom_var+"=";} ;alert(action);
   var valeur1 = Blockly.JavaScript.valueToCode(block, 'nomImage', Blockly.JavaScript.ORDER_ATOMIC);
   var code = 'createImg('+valeur1+')'; 
   var code = nom_var+'createImg('+valeur1+');\n';
@@ -1308,6 +1336,27 @@ Blockly.JavaScript['video_fixePos'] = function(block) {
   var code = valeur1+'.time('+valeur2+');\n'; 
   if (valeur1.length == 0) {
   		code = 'messageERREUR("Il faut spécifier la vidéo qu\'on veut amener au temps donné");\n';}
+  return code;
+};
+//Position -  temps écoulé
+Blockly.JavaScript['video_tempsEcoule'] = function(block) {
+  var video = Blockly.JavaScript.valueToCode(block, 'video', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'tempsEcouleVideoPrudent('+nomVal(video)+')';
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
+//Durée totale
+Blockly.JavaScript['video_dureeTotale'] = function(block) {
+  var video = Blockly.JavaScript.valueToCode(block, 'video', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'dureeTotaleVideoPrudent('+nomVal(video)+')';
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
+//Paramètres
+Blockly.JavaScript['video_parametres'] = function(block) {
+  var video = Blockly.JavaScript.valueToCode(block, 'video', Blockly.JavaScript.ORDER_ATOMIC);
+  var boucle = (block.getFieldValue('NBFOIS')=='PLUSIEURS');
+  var vitesse = Blockly.JavaScript.valueToCode(block, 'vitesse', Blockly.JavaScript.ORDER_ATOMIC);
+  var controles = (block.getFieldValue('CONTROLES')=='PRESENTS');
+  var code = 'paramsVideoPrudent('+nomVal(video)+','+boucle+','+vitesse+','+controles+');\n';
   return code;
 };
 // Action vidéo au temps donné

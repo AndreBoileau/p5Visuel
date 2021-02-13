@@ -111,6 +111,49 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "tooltip": "Applique le style choisi au texte.",
   "helpUrl": ""
 },
+//Opérations sur les vecteurs
+{
+  "type": "math_longueur",
+  "message0": "longueur du vecteur ( %1 , %2 )",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "x",
+      "check": "Number"
+    },
+    {
+      "type": "input_value",
+      "name": "y",
+      "check": "Number"
+    }
+  ],
+  "inputsInline": true,
+  "output": "Number",
+  "colour": 230,
+  "tooltip": "Longueur du vecteur 2D dont les coordonnées sont données.",
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/adaptations.html#longueur"
+},
+{
+  "type": "math_orientation",
+  "message0": "orientation du vecteur ( %1 , %2 )",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "x",
+      "check": "Number"
+    },
+    {
+      "type": "input_value",
+      "name": "y",
+      "check": "Number"
+    }
+  ],
+  "inputsInline": true,
+  "output": "Number",
+  "colour": 230,
+  "tooltip": "Angle du vecteur 2D (dont les coordonnées sont données) avec le vecteur pointant vers la droite.",
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/adaptations.html#orientation"
+},
 //LISTES (modification de Blockly
 // Obtenir valeur de liste
 {
@@ -2300,6 +2343,63 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "tooltip": "Retourne une référence à un objet défini dans une page web qui n'a pas été créée uniquement avec p5Visuel.",
   "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/objetsWeb.html#elementViaID"
 },
+// Créer un sélecteur de couleurs
+{
+  "type": "objetsweb_choixcouleur",
+  "lastDummyAlign0": "CENTRE",
+  "message0": "Bloc de choix de couleur %1 avec couleur de départ %2 et transparence %3 %4 et modifications apportées %5 %6",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "objet"
+    },
+    {
+      "type": "input_value",
+      "name": "initial"
+    },
+    {
+      "type": "field_dropdown",
+      "name": "transparence",
+      "options": [
+        [
+          "inactive",
+          "SANS"
+        ],
+        [
+          "permise",
+          "AVEC"
+        ]
+      ]
+    },
+    {
+      "type": "input_dummy"
+    },
+    {
+      "type": "input_value",
+      "name": "action"
+    },
+    {
+      "type": "field_dropdown",
+      "name": "continuellement",
+      "options": [
+        [
+          "continuellement",
+          "EN_COURS"
+        ],
+        [
+          "à la fin seulement",
+          "FINALE"
+        ]
+      ]
+    }
+  ],
+  "inputsInline": false,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": "#CC0000",
+  "tooltip": "Un clic sur la couleur ouvre une zone de dialogue. Un clic hors de la zone termine le tout.",
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/objetsWeb.html#selecteurCouleur"
+},
 // Charger une image simple
 {
   "type": "objetsWeb_image_charger",
@@ -3707,6 +3807,88 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "colour": "#FFAA00",
   "tooltip": "Faire sauter la vidéo au temps donné.",
   "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/videos.html#sauter"
+},
+//Obtenir le temps écoulé de la vidéo
+{
+  "type": "video_tempsEcoule",
+  "message0": "temps écoulé de la vidéo %1",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "video"
+    }
+  ],
+  "inputsInline": true,
+  "output": "Number",
+  "colour": "#FFAA00",
+  "tooltip": "Obtenir le temps écoulé (en secondes) dans la vidéo choisie.",
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/videos.html#temps"
+},
+//Obtenir la durée totale de la vidéo
+{
+  "type": "video_dureeTotale",
+  "message0": "durée totale de la vidéo %1",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "video"
+    }
+  ],
+  "inputsInline": true,
+  "output": "Number",
+  "colour": "#FFAA00",
+  "tooltip": "Obtenir la durée totale (en secondes) de la vidéo choisie.",
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/videos.html#dureeTotale"
+},
+//Définir les paramètres de la vidéo
+{
+  "type": "video_parametres",
+  "message0": "La vidéo %1 jouera %2 à la vitesse %3 avec les contrôles %4",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "video"
+    },
+    {
+      "type": "field_dropdown",
+      "name": "NBFOIS",
+      "options": [
+        [
+          "une fois",
+          "UN"
+        ],
+        [
+          "en boucle",
+          "PLUSIEURS"
+        ]
+      ]
+    },
+    {
+      "type": "input_value",
+      "name": "vitesse",
+      "check": "Number"
+    },
+    {
+      "type": "field_dropdown",
+      "name": "CONTROLES",
+      "options": [
+        [
+          "montrés",
+          "PRESENTS"
+        ],
+        [
+          "cachés",
+          "ABSENTS"
+        ]
+      ]
+    }
+  ],
+  "inputsInline": true,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": "#FFAA00",
+  "tooltip": "Définir divers paramètres de la vidéo.",
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/videos.html#parametres"
 },
 // Action vidéo au temps donné
 {
