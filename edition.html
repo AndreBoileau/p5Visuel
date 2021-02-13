@@ -4,7 +4,7 @@
   <title>Éditeur p5Visuel</title>
   
   <script> 
-  	window.prefixeDOCU = "http://profmath.uqam.ca/~boileau/p5VisuelWEB/p5Visuel/"; 
+  	window.prefixeDOCU = "http://profmath.uqam.ca/~boileau/p5VisuelWEB/p5Visuel/";
   	window.modeVisMathEd_local= false;
   </script>
   <script src="p5BLOCS/jquery.js"></script>
@@ -302,6 +302,30 @@
         </value>
       </block>
       <block type="math_random_float"></block>
+  	  <block type="math_longueur">
+        <value name="x">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="y">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+      </block>
+  	  <block type="math_orientation">
+        <value name="x">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="y">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+      </block>
     </category>
     <category id="catText" colour="160" name="Texte">
       <block type="text"></block>
@@ -899,7 +923,7 @@
           		</shadow>
         	</value>
       </block>
-      <block type="objetsWeb_element">
+	  <block type="objetsWeb_element">
       	<value name="TYPE">
           <shadow type="text">
             <field name="TEXT"></field>
@@ -911,6 +935,13 @@
           </shadow>
         </value>
       </block>
+	  <block type="objetsweb_choixcouleur">
+		<value name="initial">
+			<shadow type="text">
+				<field name="TEXT">rgb(255,128,0)</field>
+			</shadow>
+		</value>
+	  </block>
       <block type="objetsWeb_image_charger">
       	<value name="nomImage">
           <shadow type="text">
@@ -1491,6 +1522,15 @@
           </shadow>
          </value>
 		</block>
+		<block type="video_tempsEcoule"></block>
+		<block type="video_dureeTotale"></block>
+		<block type="video_parametres">
+        	<value name="vitesse">
+          		<shadow type="math_number">
+            		<field name="NUM">1</field>
+          		</shadow>
+        	</value>
+    	</block>
 		<block type="video_signal">
          <value name="temps">
           <shadow type="math_number">
