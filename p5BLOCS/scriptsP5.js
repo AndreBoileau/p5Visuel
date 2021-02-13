@@ -763,7 +763,7 @@ Blockly.JavaScript['objetsweb_choixcouleur'] = function(block) {
 // Charger une image simple
 Blockly.JavaScript['objetsWeb_image_charger'] = function(block) {
   var nom_var = Blockly.JavaScript.valueToCode(block, 'NOM_VAR', Blockly.JavaScript.ORDER_ATOMIC);
-  if (nom_var.length != 0) {nom_var=nom_var+"=";} ;alert(action);
+  if (nom_var.length != 0) {nom_var=nom_var+"=";} ;
   var valeur1 = Blockly.JavaScript.valueToCode(block, 'nomImage', Blockly.JavaScript.ORDER_ATOMIC);
   var code = 'createImg('+valeur1+')'; 
   var code = nom_var+'createImg('+valeur1+');\n';
