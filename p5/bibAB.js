@@ -146,6 +146,8 @@ function estNombre(x) {return !isNaN(x) && isFinite(x);}
 function traiterNombre(val) {if (estNombre(val)) {return Number(val);} else {return val;}}
 function degres(x) {return x*180/PI;}
 function radians(x) {return x*PI/180;}
+function normeVecteur2D(x,y) {return sqrt(x*x+y*y);}
+function orientationVecteur2D(x,y) {return degres(atan2(y,x));}
 function creerZoneTexte(contenu, lignes, colonnes) {
 	var texte="",lien="";
 	for(var k=0;k<contenu.length;k++) {
@@ -508,6 +510,34 @@ function creerMenuLocal(liste) {
   		menuLocal.option(liste[k]);
     }
     return menuLocal;
+}
+
+var noSelecteurCouleur = 1;
+function choisirCouleurAction(couleurDepart,transparence,action,continuellement) {
+	var bouton, idBouton, typeCouleur, monSelecteur;
+	if (action.indexOf("'")==0) {action = action.substring(1, action.length-1);};
+	bouton = createButton("");
+	idBouton = 'entreeCouleur'+noSelecteurCouleur;   noSelecteurCouleur = noSelecteurCouleur +1;
+	bouton.elt.id = idBouton;
+	if (transparence) {typeCouleur='rgba';} else {typeCouleur='rgb';}
+	monSelecteur = new JSColor('#'+idBouton, {format:typeCouleur,value:couleurDepart.toString()});
+	monSelecteur.option('palette', [
+			'#ffffff', '#ffcccc', '#ffcc99', '#ffff99', '#ffffcc', '#99ff99', '#99ffff', '#ccffff', '#ccccff', '#ffccff',
+			'#cccccc', '#ff6666', '#ff9966', '#ffff66', '#ffff33', '#66ff99', '#33ffff', '#66ffff', '#9999ff', '#ff99ff',
+			'#c0c0c0', '#ff0000', '#ff9900', '#ffcc66', '#33ff33', '#33ff33', '#66cccc', '#33ccff', '#6666cc', '#cc66cc',
+			'#999999', '#cc0000', '#ff6600', '#ffcc33', '#ffcc00', '#33cc00', '#00cccc', '#3366ff', '#6633ff', '#cc33cc',
+			'#666666', '#990000', '#cc6600', '#cc9933', '#999900', '#009900', '#339999', '#3333ff', '#6600cc', '#993399',
+			'#333333', '#660000', '#993300', '#996633', '#666600', '#006600', '#336666', '#000099', '#333399', '#663366',
+			'#000000', '#330000', '#663300', '#663333', '#333300', '#003300', '#003333', '#000066', '#330099', '#330033',
+		]);	
+	monSelecteur.option({
+		'width': 200,
+		'position': 'right',
+		'backgroundColor': '#FFF'
+	});
+	if (continuellement) {monSelecteur.option('onInput',action+'(this.toRGBAString())');} 
+					else {monSelecteur.option('onChange',action+'(this.toRGBAString())');}
+	return bouton;
 }
 
 function insererVideo(source, controles, depart, repetitions, largeur, hauteur) {
@@ -1373,6 +1403,22 @@ function posAbsPrudent(nom,valeur) {
 	if(!(typeof(valeur) === 'object')) {messageERREUR("Le paramètre    <i>"+nom+"</i>    du bloc <b>position absolue</b> doit être un objet.");}
 	return trouverPos(valeur.elt);
 }
+function tempsEcouleVideoPrudent(nomVideo,video) {
+	if(!(typeof(video) === 'object')) {messageERREUR("Le paramètre    <i>"+nomVideo+"</i>    du bloc <b>temps écoulé de la vidéo ...</b> doit être une vidéo.");}
+	return video.time();
+}
+function dureeTotaleVideoPrudent(nomVideo,video) {
+	if(!(typeof(video) === 'object')) {messageERREUR("Le paramètre    <i>"+nomVideo+"</i>    du bloc <b>durée totale de la vidéo ...</b> doit être une vidéo.");}
+	return video.duration();
+}
+function paramsVideoPrudent(nomVideo, video, boucle, vitesse, controles) {
+	if(!(typeof(video) === 'object')) {messageERREUR("Le paramètre    <i>"+nomVideo+"</i>    du bloc <b>La vidéo ... jouera ... à la vitesse ... avec les contrôles ...</b> doit être une vidéo.");}
+	video.elt.defaultPlaybackRate=vitesse;
+	video.elt.playbackRate=vitesse;
+	video.elt.loop=boucle;
+	video.elt.controls=controles
+}
+
 
 //Pour fins de compatibilité
 faireDelaiDebug=faireDelaiPrudent;
