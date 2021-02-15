@@ -133,12 +133,12 @@ function choisirZoneGraphique(g) {leGraphicsActif = g;}
 function posXsouris() {
 	if (leGraphicsActif == null) {return winMouseX;}
 	if (leGraphicsActif == canvasP5visuel) {return mouseX;}
-	return winMouseX - trouverPos(leGraphicsActif.elt)[0];
+	return mouseX + trouverPos(canevas.elt)[0] - trouverPos(leGraphicsActif.elt)[0];
 }
 function posYsouris() {
 	if (leGraphicsActif == null) {return winMouseY;}
 	if (leGraphicsActif == canvasP5visuel) {return mouseY;}
-	return winMouseY - trouverPos(leGraphicsActif.elt)[1];
+	return mouseY + trouverPos(canevas.elt)[1] - trouverPos(leGraphicsActif.elt)[1];
 }
 
 function enregistrerCanvas() {saveCanvas();}
