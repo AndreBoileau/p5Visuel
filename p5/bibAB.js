@@ -567,7 +567,7 @@ function insererVideo(source, controles, depart, repetitions, largeur, hauteur) 
 }
 
 function insererVideoYouTube(source, controles, depart, repetitions, largeur, hauteur) {
-	var prefixe = "?";
+	var prefixe = "?"; if (source.includes("?")) {prefixe = "&";}
 	var cadreYouTube=createElement('iframe','');
 	cadreYouTube.elt.style.borderStyle = "none";
 	if (depart) {source = source + prefixe+"autoplay=1"; prefixe = "&";}
@@ -582,7 +582,8 @@ function insererVideoYouTube(source, controles, depart, repetitions, largeur, ha
 }
 
 function insererVideoVimeo(source, controles, depart, repetitions, largeur, hauteur) {
-	source = source + "?title=0&byline=0&portrait=0";
+	var prefixe = "?"; if (source.includes("?")) {prefixe = "&";}
+	source = source + prefixe + "title=0&byline=0&portrait=0";
 	var cadreVimeo=createElement('iframe','');
 	cadreVimeo.elt.style.borderStyle = "none";
 	if (depart) {source = source + "&autoplay=1";}
@@ -602,7 +603,7 @@ function insererVideoVimeo(source, controles, depart, repetitions, largeur, haut
 
 function insererVideoDailyMotion(source, controles, depart, repetitions, largeur, hauteur) {
 	if (source.toLowerCase().includes("sv4.dailymotion.com")) {source=source.replace("sv4.dailymotion.com","dailymotion.com");}
-	var prefixe = "?";
+	var prefixe = "?"; if (source.includes("?")) {prefixe = "&";}
 	var cadreDM=createElement('iframe','');
 	cadreDM.elt.style.borderStyle = "none";
 	if (depart) {source = source + prefixe+"autoplay=1"; prefixe = "&";}
