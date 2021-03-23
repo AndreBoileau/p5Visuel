@@ -379,6 +379,23 @@ function imageDeposeeChargeeAB() {
 function definirPageWebExecution(chemin) {}
 function nePasTesterFonctionsDeBase() {}
 
+// *************************** Ajouts pour textes (commençant en position zéro) ***********************************
+function occurenceChaine(texte,premiere,chaine) {
+	if (premiere) {return texte.indexOf(chaine);} 
+	else {return texte.lastIndexOf(chaine);}
+}
+function lettreDansTexte(texte,position) {
+	if (position < 0) {position = texte.length + position;}
+	return texte.charAt(position);
+}
+function chaineDansTexte(texte,debut,fin) {
+	if (debut < 0) {debut = texte.length + debut;}
+	if (fin < 0) {fin = texte.length + fin;}
+	// fin = fin + 1; // si on voulait inclure la borne de fin
+	return texte.slice(debut,fin);
+}
+
+
 // *************************** Ajouts pour sauver/ramener des données ***********************************
 
 var nomFichierSaveAs = "Fichier de données";
