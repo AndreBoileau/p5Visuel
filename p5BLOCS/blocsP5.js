@@ -154,7 +154,92 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "tooltip": "Angle du vecteur 2D (dont les coordonnées sont données) avec le vecteur pointant vers la droite.",
   "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/adaptations.html#orientation"
 },
-//LISTES (modification de Blockly
+//TEXTES (modification de Blockly)
+// Trouver première/dernière occurence dans un texte
+{
+  "type": "texte_occurence",
+  "message0": "dans le texte %1 trouver la  %2 occurence de la chaîne %3",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "texte",
+      "check": "String"
+    },
+    {
+      "type": "field_dropdown",
+      "name": "position",
+      "options": [
+        [
+          "première",
+          "PREMIERE"
+        ],
+        [
+          "dernière",
+          "DERNIERE"
+        ]
+      ]
+    },
+    {
+      "type": "input_value",
+      "name": "chaine",
+      "check": "String"
+    }
+  ],
+  "output": null,
+  "colour": 160,
+  "tooltip": "Position de la chaîne dans le texte.\nRetourne -1 si la sous-chaîne n'est pas présente.",
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/adaptations.html#occurence"
+},
+// Retourner lettre en position # dans un texte
+{
+  "type": "texte_lettre",
+  "message0": "dans le texte %1 obtenir la lettre en position %2",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "texte",
+      "check": "String"
+    },
+    {
+      "type": "input_value",
+      "name": "positionLettre",
+      "check": "Number"
+    }
+  ],
+  "inputsInline": true,
+  "output": null,
+  "colour": 160,
+  "tooltip": "Lettre à la position indiquée.\nLa première position est la position 0.",
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/adaptations.html#lettrePosition"
+},
+// Sous-chaine dans un texte
+{
+  "type": "texte_sous_chaine",
+  "message0": "dans le texte %1 obtenir la sous-chaine débutant en position %2 et se terminant en position %3",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "texte",
+      "check": "String"
+    },
+    {
+      "type": "input_value",
+      "name": "debut",
+      "check": "Number"
+    },
+    {
+      "type": "input_value",
+      "name": "fin",
+      "check": "Number"
+    }
+  ],
+  "inputsInline": false,
+  "output": null,
+  "colour": 160,
+  "tooltip": "Retourne la sous-chaîne entre la première et la dernière position.\nLa dernière position est exclue.",
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/adaptations.html#chainePosition"
+},
+//LISTES (modification de Blockly)
 // Obtenir valeur de liste
 {
   "type": "listes_obtenir",

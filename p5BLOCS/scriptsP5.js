@@ -38,6 +38,29 @@ Blockly.JavaScript['math_orientation'] = function(block) {
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
 
+// Textes (Blockly modifié)
+//-------------------------
+Blockly.JavaScript['texte_occurence'] = function(block) {
+  var texte = Blockly.JavaScript.valueToCode(block, 'texte', Blockly.JavaScript.ORDER_ATOMIC);
+  var position = (block.getFieldValue('position')=="PREMIERE");
+  var chaine = Blockly.JavaScript.valueToCode(block, 'chaine', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'occurenceChaine('+texte+','+position+','+chaine+')';
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
+Blockly.JavaScript['texte_lettre'] = function(block) {
+  var texte = Blockly.JavaScript.valueToCode(block, 'texte', Blockly.JavaScript.ORDER_ATOMIC);
+  var positionLettre = Blockly.JavaScript.valueToCode(block, 'positionLettre', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'lettreDansTexte('+texte+','+positionLettre+')';
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
+Blockly.JavaScript['texte_sous_chaine'] = function(block) {
+  var texte = Blockly.JavaScript.valueToCode(block, 'texte', Blockly.JavaScript.ORDER_ATOMIC);
+  var debut = Blockly.JavaScript.valueToCode(block, 'debut', Blockly.JavaScript.ORDER_ATOMIC);
+  var fin = Blockly.JavaScript.valueToCode(block, 'fin', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'chaineDansTexte('+texte+','+debut+','+fin+')';
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
+
 // Listes (Blockly modifié)
 //-------------------------
 // Obtenir valeur de liste
