@@ -826,6 +826,8 @@ Blockly.JavaScript['objetsWeb_insererPageWeb'] = function(block) {
 Blockly.JavaScript['couleurs_fond_pageWeb_C'] = function(block) {
   var code, c = Blockly.JavaScript.valueToCode(block, 'C', Blockly.JavaScript.ORDER_ATOMIC);
   if (c.includes("url")) {code = 'document.body.style.backgroundImage = '+c+';\ndocument.body.style.backgroundSize = "cover";\n';} 
+  else if (c.includes("http") || c.includes(".png") || c.includes(".jpeg") || c.includes(".jpg") || c.includes(".gif")) 
+  			{code = 'document.body.style.backgroundImage = "url('+c+')";\ndocument.body.style.backgroundSize = "cover";\n';}
   else {code = 'document.body.style.backgroundColor = '+c+';\n';}
   return code; 
 };
