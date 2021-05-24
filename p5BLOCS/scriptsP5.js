@@ -16,6 +16,13 @@ Blockly.JavaScript['repeter_tantque'] = function(block) {
   return code;
 };
 
+// Texte est vide (de longueur 0)
+Blockly.JavaScript['texte_estVide'] = function(block) {
+  var valeur = Blockly.JavaScript.valueToCode(block, 'texte', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = valeur+'.length==0';
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
+
 // Texte --> Retourne le texte avec indications de formatage
 Blockly.JavaScript['texte_format'] = function(block) {
   var option = block.getFieldValue('OPTION');
@@ -63,6 +70,12 @@ Blockly.JavaScript['texte_sous_chaine'] = function(block) {
 
 // Listes (Blockly modifié)
 //-------------------------
+// Tester si la liste est vide (de longueur zéro)
+Blockly.JavaScript['listes_estVide'] = function(block) {
+  var valeur = Blockly.JavaScript.valueToCode(block, 'liste', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = valeur+'.length==0';
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
 // Obtenir valeur de liste
 Blockly.JavaScript['listes_obtenir'] = function(block) {
   var valeur1 = Blockly.JavaScript.valueToCode(block, 'liste', Blockly.JavaScript.ORDER_ATOMIC);

@@ -155,6 +155,22 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/adaptations.html#orientation"
 },
 //TEXTES (modification de Blockly)
+// Tester si un texte est vide (de longueur zéro)
+{
+  "type": "texte_estVide",
+  "message0": "%1 est vide",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "texte",
+      "check": "String"
+    }
+  ],
+  "output": "Boolean",
+  "colour": 160,
+  "tooltip": "Retourne VRAI si le texte est vide (de longueur 0) et FAUX sinon",
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/adaptations.html#texteEstVide"
+},
 // Trouver première/dernière occurence dans un texte
 {
   "type": "texte_occurence",
@@ -240,6 +256,22 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/adaptations.html#chainePosition"
 },
 //LISTES (modification de Blockly)
+// Texter si une liste est vide (de longueur zéro)
+{
+  "type": "listes_estVide",
+  "message0": "%1 est vide",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "liste",
+      "check": "Array"
+    }
+  ],
+  "output": "Boolean",
+  "colour": 260,
+  "tooltip": "Retourne VRAI si la liste est vide (de longueur 0) et FAUX sinon",
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/adaptations.html#listeEstVide"
+},
 // Obtenir valeur de liste
 {
   "type": "listes_obtenir",
