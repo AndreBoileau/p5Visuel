@@ -2462,9 +2462,14 @@ function paramFichiers() {
 		if (infos[0]=='prog') {fichier_programme = infos[1];}
 		if (infos[0]=='exec') {fichier_execution = infos[1];}
 		if (infos[0]=='blocs') {catBlocsVisibles = infos[1].toLowerCase();}
+		if (infos[0]=='config') {traiterConfigInit(infos[1]);} // ajout AB
 	}
 }
 
+function traiterConfigInit(configuration) {  // ajout AB
+	if (configuration.indexOf('modeDebutant') > -1) {traiterMenuSauverRamener('sauverAvantExec');}
+	if (configuration.indexOf('menusHaut') > -1) {toucheESCpressee();}
+}
 function gererCategoriesBlocs() {
 	document.getElementById(':p').style.display = 'none'; // pour cacher la catégorie Images
 	if (catBlocsVisibles.indexOf('images') > -1) {
