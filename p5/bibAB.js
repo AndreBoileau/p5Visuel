@@ -623,6 +623,7 @@ function insererVideoDailyMotion(source, controles, depart, repetitions, largeur
 	var prefixe = "?"; if (source.includes("?")) {prefixe = "&";}
 	var cadreDM=createElement('iframe','');
 	cadreDM.elt.style.borderStyle = "none";
+	source = source + prefixe+"queue-enable=false"; prefixe = "&";
 	if (depart) {source = source + prefixe+"autoplay=1"; prefixe = "&";}
 	if (repetitions) {source = source + prefixe+"loop=1"; prefixe = "&";}
 	if (!controles) {source = source + prefixe+"controls=0"; prefixe = "&";}
