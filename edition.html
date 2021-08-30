@@ -52,6 +52,7 @@
     <button class="dropbtn">Éditeur p5Visuel</button>
     <div id="contenu1" class="dropdown-content">
       <a onclick="traiterMenuHautSauverRamener('boileau')">par André Boileau</a>
+      <a onclick="traiterMenuHautSauverRamener('coupOeil')">Coup d'oeil sur p5Visuel</a>
       <a onclick="traiterMenuHautSauverRamener('siteP5Visuel')">Site de p5Visuel</a>
     </div>
   </div> 
@@ -1961,6 +1962,9 @@
     switch(selectionMenu) {
     	case 'boileau':
     		window.open('http://profmath.uqam.ca/~boileau/index.php');
+    		break;
+    	case 'coupOeil':
+    		window.open('http://profmath.uqam.ca/~boileau/p5VisuelWEB/pub/index.html');
     		break;
     	case 'siteP5Visuel':
     		window.open('http://profmath.uqam.ca/~boileau/p5VisuelWEB/index.html');
