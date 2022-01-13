@@ -168,7 +168,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "output": "Number",
   "colour": 230,
   "tooltip": "Crée un grand entier à partir de l'entier donné.",
-  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/adaptations.html#creerGrandEntier"
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/adaptations.html#creerGE"
 },    
 {
   "type": "math_exposantGrandEntier",
@@ -189,7 +189,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "output": "Number",
   "colour": 230,
   "tooltip": "Un entier ou un grand entier exposant un entier ou un grand entier.",
-  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/adaptations.html#exposantGrandEntier"
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/adaptations.html#exposantGE"
 },
 //TEXTES (modification de Blockly)
 // Tester si un texte est vide (de longueur zéro)
