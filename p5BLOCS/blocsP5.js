@@ -153,6 +153,43 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "colour": 230,
   "tooltip": "Angle du vecteur 2D (dont les coordonnées sont données) avec le vecteur pointant vers la droite.",
   "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/adaptations.html#orientation"
+}, 
+{
+  "type": "math_creerGrandEntier",
+  "message0": "grand entier %1",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "x",
+      "check": "Number"
+    }
+  ],
+  "inputsInline": true,
+  "output": "Number",
+  "colour": 230,
+  "tooltip": "Crée un grand entier à partir de l'entier donné.",
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/adaptations.html#creerGrandEntier"
+},    
+{
+  "type": "math_exposantGrandEntier",
+  "message0": "%1 exposant %2",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "x",
+      "check": "Number"
+    },
+    {
+      "type": "input_value",
+      "name": "y",
+      "check": "Number"
+    }
+  ],
+  "inputsInline": true,
+  "output": "Number",
+  "colour": 230,
+  "tooltip": "Un entier ou un grand entier exposant un entier ou un grand entier.",
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/adaptations.html#exposantGrandEntier"
 },
 //TEXTES (modification de Blockly)
 // Tester si un texte est vide (de longueur zéro)

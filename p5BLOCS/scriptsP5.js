@@ -44,6 +44,17 @@ Blockly.JavaScript['math_orientation'] = function(block) {
   var code = 'orientationVecteur2D('+x+','+y+')';
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
+Blockly.JavaScript['math_creerGrandEntier'] = function(block) {
+  var x = Blockly.JavaScript.valueToCode(block, 'x', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'BigInt('+x+')';
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
+Blockly.JavaScript['math_exposantGrandEntier'] = function(block) {
+  var x = Blockly.JavaScript.valueToCode(block, 'x', Blockly.JavaScript.ORDER_ATOMIC);
+  var y = Blockly.JavaScript.valueToCode(block, 'y', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'BigInt('+x+')**BigInt('+y+')';
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
 
 // Textes (Blockly modifié)
 //-------------------------
