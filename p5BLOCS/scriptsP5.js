@@ -55,6 +55,20 @@ Blockly.JavaScript['math_exposantGrandEntier'] = function(block) {
   var code = 'BigInt('+x+')**BigInt('+y+')';
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
+Blockly.JavaScript['activer_SAGE'] = function(block) {
+  var code = 'activerSAGE();\n';
+  return code;
+};
+Blockly.JavaScript['question_SAGE'] = function(block) {
+  var question = Blockly.JavaScript.valueToCode(block, 'question', Blockly.JavaScript.ORDER_ATOMIC);
+  var fonctionRetour = Blockly.JavaScript.valueToCode(block, 'fonction', Blockly.JavaScript.ORDER_ATOMIC);
+  fonctionRetour = fonctionRetour.slice(1,-1);
+  var fin = fonctionRetour.indexOf('('); if(fin==-1) {fin = fonctionRetour.length;}
+  fonctionRetour = fonctionRetour.slice(0,fin);
+  var code = 'questionSAGE('+question+','+fonctionRetour+');\n'; 
+  if (fonctionRetour.length == 0) { code = 'messageERREUR("Il faut spécifier la fonction à appeler pour retourner la réponse.");\n';}
+  return code;
+};
 
 // Textes (Blockly modifié)
 //-------------------------

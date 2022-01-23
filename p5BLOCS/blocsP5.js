@@ -191,6 +191,39 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   "tooltip": "Un entier ou un grand entier exposant un entier ou un grand entier.",
   "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/adaptations.html#exposantGE"
 },
+{
+  "type": "activer_SAGE",
+  "message0": "Activer SAGE",
+  "args0": [],
+  "inputsInline": true,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 230,
+  "tooltip": "Rends le cadre SAGE disponible pour p5Visuel.",
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/adaptations.html#activerSAGE"
+},
+{
+  "type": "question_SAGE",
+  "message0": "Demander %1 à SAGE puis retourner la réponse via %2",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "question",
+      "check": "String",
+    },
+    {
+      "type": "input_value",
+      "name": "fonction",
+      "check": ["Number", "String", "Array"]
+    }
+  ],
+  "inputsInline": true,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 230,
+  "tooltip": "Pose la question à SAGE et retournera la réponse via la fonction spécifiée.",
+  "helpUrl": prefixeDOCU+"p5BLOCS/DOCU/adaptations.html#questionSAGE"
+},
 //TEXTES (modification de Blockly)
 // Tester si un texte est vide (de longueur zéro)
 {
