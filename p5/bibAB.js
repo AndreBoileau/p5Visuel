@@ -587,6 +587,7 @@ function insererVideoYouTube(source, controles, depart, repetitions, largeur, ha
 	var prefixe = "?"; if (source.includes("?")) {prefixe = "&";}
 	var cadreYouTube=createElement('iframe','');
 	cadreYouTube.elt.style.borderStyle = "none";
+	// source = source + prefixe+"enablejsapi=1"; prefixe = "&";
 	if (depart) {source = source + prefixe+"autoplay=1"; prefixe = "&";}
 	if (repetitions) {source = source + prefixe+"loop=1"; prefixe = "&";}
 	if (!controles) {source = source + prefixe+"controls=0"; prefixe = "&";}
@@ -1438,6 +1439,33 @@ function paramsVideoPrudent(nomVideo, video, boucle, vitesse, controles) {
 	video.elt.controls=controles
 }
 
+//------------------------------------------------------------------
+// Pour intégration de SAGE
+
+var cadreSAGEp5VisuelPresent=false , fonctionRetourSAGEp5Visuel;
+function activerSAGE() {
+	if (cadreSAGEp5VisuelPresent) {return;}
+	var id = "cadreSAGEp5Visuel", cadreSAGE;
+	cadreSAGEp5VisuelPresent = true;
+	cadreSAGE=createElement('iframe','');
+	cadreSAGE.elt.setAttribute("id",id);
+	document.getElementById(id).setAttribute("src","GGB/cadreSAGE.html");
+	document.getElementById(id).setAttribute("width","1000px");
+	document.getElementById(id).setAttribute("height","350px");
+	document.getElementById(id).setAttribute("style","display:none");
+}
+
+function questionSAGE(question,fonctionRetour) {
+    if (!cadreSAGEp5VisuelPresent) {window.alert("SAGE n'a pas été activé."); return;}
+    fonctionRetourSAGEp5Visuel = fonctionRetour;
+    question=String(question);
+    question = question.replace(new RegExp(' ',"g"),'');
+    question = question.replace(new RegExp('π',"g"),'pi');
+    question = question.replace(new RegExp('!',"g"),'.factorial()');
+	document.getElementById('cadreSAGEp5Visuel').contentWindow.recevoir_envoi_vers_cadre(question);
+}
+
+function recevoir_reponse_du_cadre(reponse) { fonctionRetourSAGEp5Visuel(reponse); }
 
 //Pour fins de compatibilité
 faireDelaiDebug=faireDelaiPrudent;
