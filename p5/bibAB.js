@@ -1,4 +1,4 @@
-var prefixeCadresGeoGebra = "GGB/";
+var prefixeCadresGeoGebra = "GGB/
 var stopperApresUneErreur=true; // *** outil de debug AB ***
 var canvasP5visuel=null, canvasCree=false, leGraphicsActif=null; //, canvas=null, canevas=null
 var fonctionUtilisateurDepotAB, monImageDeposeeAB, listeTableauxListesAB, centrerTableauxAB=false;
@@ -1459,13 +1459,14 @@ function questionSAGE(question,fonctionRetour) {
     if (!cadreSAGEp5VisuelPresent) {window.alert("SAGE n'a pas été activé."); return;}
     fonctionRetourSAGEp5Visuel = fonctionRetour;
     question=String(question);
-    question = question.replace(new RegExp(' ',"g"),'');
+    //question = question.replace(new RegExp(' ',"g"),''); // utile ???
     question = question.replace(new RegExp('π',"g"),'pi');
     question = question.replace(new RegExp('!',"g"),'.factorial()');
 	document.getElementById('cadreSAGEp5Visuel').contentWindow.recevoir_envoi_vers_cadre(question);
 }
 
-function recevoir_reponse_du_cadre(reponse) { fonctionRetourSAGEp5Visuel(reponse); }
+//function recevoir_reponse_du_cadre(reponse) { fonctionRetourSAGEp5Visuel(reponse); }
+function recevoir_reponse_du_cadre(reponse) { fonctionRetourSAGEp5Visuel(reponse.replace(new RegExp('==',"g"),'=')) }
 
 //Pour fins de compatibilité
 faireDelaiDebug=faireDelaiPrudent;
