@@ -1,4 +1,4 @@
-var prefixeCadresGeoGebra = "GGB/
+var prefixeCadresGeoGebra = "GGB/";
 var stopperApresUneErreur=true; // *** outil de debug AB ***
 var canvasP5visuel=null, canvasCree=false, leGraphicsActif=null; //, canvas=null, canevas=null
 var fonctionUtilisateurDepotAB, monImageDeposeeAB, listeTableauxListesAB, centrerTableauxAB=false;
