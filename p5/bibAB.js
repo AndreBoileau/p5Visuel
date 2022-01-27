@@ -155,7 +155,7 @@ function creerZoneTexte(contenu, lignes, colonnes) {
 	}
 	var zone = createElement('TEXTAREA',texte);
 	zone.elt.rows = lignes; zone.elt.cols = colonnes;
-	zone.elt.readOnly = true; // sinon, quand modifiée par l'utilisateur, non modifiable par programme
+	//zone.elt.readOnly = true; // sinon, quand modifiée par l'utilisateur, non modifiable par programme --> NON : utiliser .value plutôt que .html
 	return zone;
 }
 function contenuZoneTexte(zone, contenu) {
