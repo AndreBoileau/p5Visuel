@@ -1360,6 +1360,7 @@ function contenuZoneTextePrudent(nomZone,zone,nomContenu,contenu) {
 		texte = texte+lien+contenu[k]; lien="\n";
 	}
 	zone.html(texte);
+	zone.value(texte);
 }
 function siClicPrudent(nomObjet, objet, nomProc, proc) {
 	if(!(typeof(objet) === 'object')) {
