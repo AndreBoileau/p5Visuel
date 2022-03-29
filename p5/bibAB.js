@@ -587,7 +587,7 @@ function insererVideoYouTube(source, controles, depart, repetitions, largeur, ha
 	var prefixe = "?"; if (source.includes("?")) {prefixe = "&";}
 	var cadreYouTube=createElement('iframe','');
 	cadreYouTube.elt.style.borderStyle = "none";
-	// source = source + prefixe+"enablejsapi=1"; prefixe = "&";
+	source = source + prefixe+"enablejsapi=1"; prefixe = "&";
 	if (depart) {source = source + prefixe+"autoplay=1"; prefixe = "&";}
 	if (repetitions) {source = source + prefixe+"loop=1"; prefixe = "&";}
 	if (!controles) {source = source + prefixe+"controls=0"; prefixe = "&";}
@@ -597,6 +597,20 @@ function insererVideoYouTube(source, controles, depart, repetitions, largeur, ha
 		cadreYouTube.elt.width = largeur;
 		cadreYouTube.elt.height = hauteur;}
 	return cadreYouTube;
+}
+
+function mettreEnPauseYT(video,lecteur) { // ajout pause YT
+  if (lecteur == false) { 
+  	lecteur = new YT.Player(video.elt, { events: { onReady: mettreEnPauseYTAux } }); }
+  else {lecteur.pauseVideo();}
+  return lecteur;
+  
+  function mettreEnPauseYTAux(event) { lecteur.pauseVideo(); }
+}
+
+function inserer_sous_titresYT(adresse, langue) { // ajout pause YT
+  if (langue == '') { return adresse; };
+  return adresse + '?&hl='+langue+'&cc_lang_pref='+langue+'&cc_load_policy=1';
 }
 
 function insererVideoVimeo(source, controles, depart, repetitions, largeur, hauteur) {
