@@ -31,6 +31,19 @@ function axesStandards(complet) {
 	}
 	if (complet) {initTortue(canevas);initTortue(graphicsTortue);placerTortueSurCanevas();}
 }
+function zoneGraphiqueTransparente() {
+	if (leGraphicsActif != canvasP5visuel) {leGraphicsActif.clear(); return;}
+	if (canvasP5visuel == null) {return;}
+	canevas.resetMatrix();
+	graphicsTortue.resetMatrix();
+	leGraphicsActif.clear();
+	if (signeAxes == -1) {
+		canevas.translate(width/2, height/2);
+		canevas.scale(1,-1);
+		graphicsTortue.translate(width/2, height/2);
+		graphicsTortue.scale(1,-1);
+	} 
+}
 function disposerPageExecution(centrer,largeur) {
 	if (centrer) {
 		centrerTableauxAB=true;
@@ -1484,6 +1497,7 @@ function questionSAGE(question,fonctionRetour) {
 function recevoir_reponse_du_cadre(reponse) { fonctionRetourSAGEp5Visuel(reponse.replace(new RegExp('==',"g"),'=')) }
 
 //Pour fins de compatibilité
+function Avis_(x,y) {}  // pour inclure programmes de tortue PaP
 faireDelaiDebug=faireDelaiPrudent;
 valeurDebug=valeurPrudent;
 contenuDebug=contenuPrudent;
