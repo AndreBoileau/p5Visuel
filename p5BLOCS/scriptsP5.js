@@ -554,7 +554,7 @@ Blockly.JavaScript['tortue_sansRemplissage'] = function(block) {
 };
 //Rendre la zone graphique courante transparente
 Blockly.JavaScript['apparence_graphiqueTransparent'] = function(block) {
-  var code = 'leGraphicsActif.clear();\n'; 
+  var code = 'zoneGraphiqueTransparente();\n'; 
   return code;
 };
 //Retourne la largeur du canvas (width)
