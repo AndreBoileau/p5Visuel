@@ -4,7 +4,7 @@
   <title>Éditeur p5Visuel</title>
   
   <script> 
-  	window.prefixeDOCU = "http://profmath.uqam.ca/~boileau/p5VisuelWEB/p5Visuel/"; 
+  	window.prefixeDOCU = "http://profmath.uqam.ca/~boileau/p5VisuelWEB/p5Visuel/";
   	window.modeVisMathEd_local= false;
   	window.codeIdentificateurProgramme = "Programme p5Visuel";
   </script>
@@ -2168,6 +2168,8 @@ function retracer() {
 }
   
 function testerMarqueProgramme(chaine) { return (0 == chaine.indexOf(codeIdentificateurProgramme)); }
+function testerMarqueProgrammeModeAdd(chaine) { 
+	return ( (0 == chaine.indexOf("Programme p5Visuel")) || (0 == chaine.indexOf("Programme PaP p5Visuel")) ); }
 function ajouterMarqueProgramme(chaine) { return codeIdentificateurProgramme+"\n"+chaine; }
 function enleverMarqueProgramme(chaine) { return chaine.slice(chaine.indexOf("<xml")); }
 function accepterProgramme() { return confirm("Programme non conforme : on prend le risque ?"); } //*** Nouveau format de programme avec avertissement
@@ -2250,11 +2252,11 @@ function loadWorkspace() {
 }
 
 
-function loadWorkspaceModeAdd() {
-    //var xmlText = localStorage.getItem("blockly.xml");
-    var xmlText = prompt("Collez votre programme visuel ci-dessous", ""); // amélioration ???
-    if (testerMarqueProgramme(xmlText)) {xmlText = enleverMarqueProgramme(xmlText);} 
-    else {xmlText = enleverMarqueProgramme(xmlText); if (!accepterProgramme()) {return;}} //*** Nouveau format de programme
+function loadWorkspaceModeAdd() {;
+    var xmlText = prompt("Collez votre (fragment de) programme visuel ci-dessous", "");
+    if (testerMarqueProgrammeModeAdd(xmlText)) {
+    	xmlText = enleverMarqueProgramme(xmlText);} 
+    else {if (!accepterProgramme()) {return;}}
     if (xmlText) {
         xmlText = combinerProgrammes(texteProgrammeCourant,xmlText);
         Blockly.mainWorkspace.clear();
@@ -2421,12 +2423,13 @@ function chargerContenuFichier() {
     }
 }
 
-function chargerContenuFichierAAjouter() { // appelé ???
+function chargerContenuFichierAAjouter() {
 	loadFileAsText();
 	if (xmlTextGlobal==0) {setTimeout(chargerContenuFichierAAjouter, 1077); return;}
 	var xmlText = xmlTextGlobal;
-	if (testerMarqueProgramme(xmlText)) {xmlText = enleverMarqueProgramme(xmlText);} 
-	else {xmlText = enleverMarqueProgramme(xmlText); if (!accepterProgramme()) {return;}} //*** Nouveau format de programme
+	if (testerMarqueProgrammeModeAdd(xmlText)) {
+    	xmlText = enleverMarqueProgramme(xmlText);} 
+    else {if (!accepterProgramme()) {return;}}
     if (xmlText) {
     	xmlText = combinerProgrammes(texteProgrammeCourant,xmlText);
     	Blockly.mainWorkspace.clear();
