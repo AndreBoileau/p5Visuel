@@ -1043,7 +1043,7 @@ function creerCadreGGBplus(dimension, id, largeur, hauteur, menus) {
 function importerFigureGGB(id, adresseWeb, largeur, hauteur) {
 	if (id.length == 0) {
 		messageERREUR("Pour utiliser un cadre, son ID doit être explicité");}
-	var cadreGGB, marge=10;
+	var cadreGGB, marge=16;
 	cadreGGB=createElement('iframe','');
 	cadreGGB.elt.setAttribute("id",id);
 	cadreGGB.elt.style.borderStyle = "none"; 
