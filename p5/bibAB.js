@@ -511,8 +511,8 @@ function evaluerExpressionX(chaine,x) { // Pour bloc "evaluer la fonction f(x) %
 }
 evaluerFonction = evaluerExpressionX;
 function racine(x) {return Math.sqrt(x);}
-function puissance(x,y) {return Math.pow(x,y);}
-exposant = puissance; puiss = puissance; exp =exposant;
+function puissance(x,y) {if (y === undefined) {y=2;}; return Math.pow(x,y);}
+puiss = puissance; exposant = puissance; // exp =exposant; NON car exp déjà utilisé
 // **************************************************************
 
 function versAdresseWeb(adresse,autreFenetre) {
