@@ -1,4 +1,6 @@
-var prefixeCadresGeoGebra = "GGB/";
+var prefixeCadresGeoGebra = "GGBlocal/";  
+	// maison, p5Visuel.zip :  var prefixeCadresGeoGebra = "GGBlocal/";								--> avec dossiers GGBlocal et GeoGebra
+	// UQAM, GitHub, PlanetHoster (p5VisuelLeger.zip)  :  var prefixeCadresGeoGebra = "GGB/";		--> avec dossier GGB
 var stopperApresUneErreur=true; // *** outil de debug AB ***
 var canvasP5visuel=null, canvasCree=false, leGraphicsActif=null; //, canvas=null, canevas=null
 var fonctionUtilisateurDepotAB, monImageDeposeeAB, listeTableauxListesAB, centrerTableauxAB=false;
@@ -342,7 +344,7 @@ function fixePos(x,y) {
   var a=g.tortueX, b=g.tortueY;
   g.tortueX = x;
   g.tortueY = y;
-  if (g.tortueTrace) {line(a,b,g.tortueX,g.tortueY);} // line OU segment ??? (voir aussi sommet)
+  if (g.tortueTrace) {segment(a,b,g.tortueX,g.tortueY);} // line OU segment ??? (voir aussi sommet)
   placerTortueSurCanevas();
 }
 
