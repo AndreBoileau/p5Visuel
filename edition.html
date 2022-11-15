@@ -1971,7 +1971,11 @@
     var codeDiv = document.getElementById('codeDiv');
     var codeHolder = document.createElement('pre');
     codeHolder.className = 'prettyprint but-not-that-pretty';
-    var code = document.createTextNode(Blockly[languageSelection].workspaceToCode(workspace));
+    //var code = document.createTextNode(Blockly[languageSelection].workspaceToCode(workspace));
+    var code = Blockly.JavaScript.workspaceToCode(workspace);
+    code=traiterPreload(code);
+    code = commenterCodeIsole(code); 
+    code = document.createTextNode(code);
     codeHolder.appendChild(code);
     codeDiv.replaceChild(codeHolder, codeDiv.lastElementChild);
     PR.prettyPrint();
@@ -2031,11 +2035,13 @@
     	case 'sauverJS':
     		var code = Blockly.JavaScript.workspaceToCode(workspace);
     		code=traiterPreload(code);
+    		code = commenterCodeIsole(code);
     		saveTextAsFile(code, '.js', "Nom du fichier pour votre programme JavaScript");
     		break;
     	case 'sauverWeb':
     		var code = Blockly.JavaScript.workspaceToCode(workspace);
     		code=traiterPreload(code);
+    		code = commenterCodeIsole(code);
     		code = encapsulerDansPageWeb(code);
     		saveTextAsFile(code, '.html', "Nom du fichier pour votre page web");
     		break;
@@ -2202,6 +2208,8 @@ function changerVisibiliteMenu2(etat) {
   //workspace.addChangeListener(traiterMenuSauverRamener);
   function executeBlockCode() {
     var code = Blockly.JavaScript.workspaceToCode(workspace);
+	code=traiterPreload(code);
+	code = commenterCodeIsole(code);
     var initFunc = function(interpreter, scope) {
       var alertWrapper = function(text) {
         text = text ? text.toString() : '';
@@ -2268,6 +2276,7 @@ function loadWorkspaceModeAdd() {;
 function codeJS() {
 	var code = Blockly.JavaScript.workspaceToCode(workspace);
 	code=traiterPreload(code);
+	code = commenterCodeIsole(code);
 	if (modeSauvegarde == 'clipboard_polyfill') {clipboard.writeText(code); 
 		if (modeDebutant) {alert('Le code JavaScript a été placé dans le presse-papier');}}
 	if (modeSauvegarde == 'sans_biblio') {alert(code);}
@@ -2276,6 +2285,7 @@ function codeJS() {
 function codeWeb() {
 	var code = Blockly.JavaScript.workspaceToCode(workspace);
 	code=traiterPreload(code);
+	code = commenterCodeIsole(code);
 	code=encapsulerDansPageWeb(code);
 	if (modeSauvegarde == 'clipboard_polyfill') {clipboard.writeText(code); 
 		if (modeDebutant) {alert('Le code de la page web a été placé dans le presse-papier');}}
@@ -2327,6 +2337,8 @@ var autreFenetre=null;
 function executer() {
 	if (modeDebutant) {sauverProgrammeCommeFichierTexte("Voulez-vous d'abord enregistrer votre programme ?");}
 	var code = Blockly.JavaScript.workspaceToCode(workspace);
+	code=traiterPreload(code);
+	code = commenterCodeIsole(code);
 	//clipboard.writeText(code); //À chaque exécution, le code JavaScript est mis dans le clipboard
 	if(fonctionsBaseNonIntactes(code)) {return;}
 	redefinirFichierExecution(code);
@@ -2375,6 +2387,28 @@ function changerAppelsFonctions(code) {
 }
 
 function traiterPreload(code) { return code.replace("avant_de_commencer","preload"); }
+function commenterCodeIsole(codeJS) {
+	var texte = ''; 
+	var ajout = '*';
+	var mesLignes = codeJS.split('\n');
+	for(var k=0;k<mesLignes.length;k++) {
+		if (mesLignes[k].length == 0) {
+			texte = texte + '\n';
+			ajout = '*';
+			continue;
+		}
+		if (ajout == '*') {
+			ajout = '//';
+			if ( (mesLignes[k].indexOf('var ') == 0 && texte.length <= 1)
+					|| (mesLignes[k].indexOf('/**') == 0)
+					|| (mesLignes[k].indexOf('function ') == 0) ) {
+				ajout = '';
+			}
+		}
+		texte = texte + '\n' + ajout + mesLignes[k];
+	}
+	return texte;
+  };
   
 document.getElementById('executer').addEventListener('click', executer);
 var xmlTextGlobal=0, fichier = undefined, nomFichierSaveAs='Projet p5Visuel';
