@@ -1,8 +1,6 @@
-var prefixeCadresGeoGebra = "GGBlocal/";  
-	// maison, p5Visuel.zip :  var prefixeCadresGeoGebra = "GGBlocal/";								--> avec dossiers GGBlocal et GeoGebra
-	// UQAM, GitHub, PlanetHoster (p5VisuelLeger.zip)  :  var prefixeCadresGeoGebra = "GGB/";		--> avec dossier GGB
+var prefixeCadresGeoGebra = "GGB/";
 var stopperApresUneErreur=true; // *** outil de debug AB ***
-var canvasP5visuel=null, canvasCree=false, leGraphicsActif=null; //, canvas=null, canevas=null
+var canvasP5visuel=null, canvasCree=false, leGraphicsActif=null, canvas=null, canevas=null;
 var fonctionUtilisateurDepotAB, monImageDeposeeAB, listeTableauxListesAB, centrerTableauxAB=false;
 var graphicsTortue=null, tortueVisibleAB=false, dimTortueAB=50, couleurTortueAB="rgb(255,0,0)";
 var signeAxes = 1; // 1 pour axes info et -1 pour axes maths (standards) --> canevas seulement
