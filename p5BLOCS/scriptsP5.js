@@ -12,7 +12,7 @@ Blockly.JavaScript['repeter_tantque'] = function(block) {
   var dropdown_option = block.getFieldValue('OPTION');
   var value_name = Blockly.JavaScript.valueToCode(block, 'CONDITION', Blockly.JavaScript.ORDER_ATOMIC);
   if (dropdown_option == 'JUSQUA') {value_name = '!'+value_name;}
-  var code = 'do {\n'+statements_name+'\n} while ('+value_name+');\n';
+  var code = 'do {\n'+statements_name+'} while ('+value_name+');\n';  // +statements_name+'\n  BLOQUE les blocs orphelins
   return code;
 };
 
