@@ -4,7 +4,7 @@
   <title>Éditeur p5Visuel</title>
   
   <script> 
-  	window.prefixeDOCU = "http://profmath.uqam.ca/~boileau/p5VisuelWEB/p5Visuel/";
+  	window.prefixeDOCU = "http://profmath.uqam.ca/~boileau/p5VisuelWEB/p5Visuel/"; 
   	window.modeVisMathEd_local= false;
   	window.codeIdentificateurProgramme = "Programme p5Visuel";
   </script>
@@ -2349,7 +2349,7 @@ function executer() {
     else {autreFenetre=window.open(fichier_execution);} // --> pas de délai nécessaire pour ordinateurs
 }
 
-function fonctionsBaseNonIntactes(code) {
+function EX_fonctionsBaseNonIntactes(code) {
 	if(code.indexOf("nePasTesterFonctionsDeBase();")==-1){testerFonctionsDeBase = true;} else {testerFonctionsDeBase = false;}
 	if (testerFonctionsDeBase) {
 		if(code.indexOf("function actions_initiales() {")==-1) {window.alert('La fonction "actions initiales" a été supprimée.\nPeut-être parce que son nom a été modifié.'); return true;}
@@ -2358,6 +2358,36 @@ function fonctionsBaseNonIntactes(code) {
 	if((code.indexOf("canevas;")==-1 && code.indexOf("canevas,")==-1) && (code.indexOf("canvas;")==-1 && code.indexOf("canvas,")==-1)) 
 		{window.alert('La variable "canevas" a été supprimée.\nPeut-être parce que son nom a été modifié.'); return true;}
 	return false;
+}
+
+function fonctionsBaseNonIntactes(code) {
+	var valeurAretourner=false;
+	if(code.indexOf("nePasTesterFonctionsDeBase();")==-1){testerFonctionsDeBase = true;} else {testerFonctionsDeBase = false;}
+	if (testerFonctionsDeBase) {
+		if(code.indexOf("function actions_initiales() {")==-1) 
+			{window.alert('La fonction "actions initiales" a été supprimée.\nPeut-être parce que son nom a été modifié.\nOn va recréer cette fonction.');
+			 var fragment = '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="procedures_defnoreturn" x="3" y="3"><field name="NAME">actions initiales</field></block></xml>';
+			 ajouterFragment(fragment); valeurAretourner=true;}
+		if(code.indexOf("function actions_en_boucle() {")==-1) 
+			{window.alert('La fonction "actions en boucle" a été supprimée.\nPeut-être parce que son nom a été modifié.\nOn va recréer cette fonction.');
+			 var fragment = '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="procedures_defnoreturn" x="5" y="79"><field name="NAME">actions en boucle</field></block></xml>';
+			 ajouterFragment(fragment); valeurAretourner=true;}
+	}
+	if((code.indexOf("canevas;")==-1 && code.indexOf("canevas,")==-1) && (code.indexOf("canvas;")==-1 && code.indexOf("canvas,")==-1)) 
+		{window.alert('La variable "canevas" a été supprimée.\nPeut-être parce que son nom a été modifié.\nOn va recréer cette variable.');
+		 var fragment = '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="variables_get" x="250" y="0"><field name="VAR" variabletype="">canevas</field></block></xml>';
+		 ajouterFragment(fragment); valeurAretourner=true;}
+	return valeurAretourner;
+}
+
+function ajouterFragment(fragment) {
+    	var prog1 = Blockly.Xml.workspaceToDom(Blockly.mainWorkspace);
+    	prog1 = Blockly.Xml.domToPrettyText(prog1);
+		texteProgrammeCourant = prog1.replace(new RegExp('&nbsp;','g'),' ');
+        xmlText = combinerProgrammes(texteProgrammeCourant,fragment);
+        Blockly.mainWorkspace.clear();
+        xmlDom = Blockly.Xml.textToDom(xmlText);
+        Blockly.Xml.domToWorkspace(Blockly.mainWorkspace, xmlDom);
 }
 
 function surMobile() {
