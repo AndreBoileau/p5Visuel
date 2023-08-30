@@ -4,7 +4,7 @@
   <title>Éditeur p5Visuel</title>
   
   <script> 
-  	window.prefixeDOCU = "http://profmath.uqam.ca/~boileau/p5VisuelWEB/p5Visuel/"; 
+  	window.prefixeDOCU = "http://profmath.uqam.ca/~boileau/p5VisuelWEB/p5Visuel/";
   	window.modeVisMathEd_local= false;
   	window.codeIdentificateurProgramme = "Programme p5Visuel";
   </script>
@@ -89,6 +89,7 @@
       <a onclick="traiterMenuHautSauverRamener('aide')">Documentation de p5Visuel</a>
       <a onclick="traiterMenuHautSauverRamener('accesVisualMathEditor')">Accès au Visual Math Editor</a>
       <a onclick="traiterMenuHautSauverRamener('accesEditeurCode')">Accès à un éditeur textuel de code<br />(HTML, CSS, JavaScript, etc.)</a>
+      <a onclick="traiterMenuHautSauverRamener('accesPartageImages')">Accès à un site de partage d'images</a>
     </div>
   </div> 
   <div class="dropdown">
@@ -2086,6 +2087,9 @@
     		break;
     	case 'accesEditeurCode':
     		window.open('https://ace.c9.io/build/kitchen-sink.html');
+    		break;
+    	case 'accesPartageImages':
+    		window.open('https://pixabay.com');
     		break;
     	case 'sauverAvantExec':
     		modeDebutant = !modeDebutant;
